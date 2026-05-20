@@ -1,0 +1,3488 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tools and Lua scripts for dynamic DCS World missions">
+      
+      
+      
+        <link rel="canonical" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/backlog/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Backlog — VEAF Mission Creation Tools v6 - VEAF Mission Creation Tools</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#backlog-veaf-mission-creation-tools-v6" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="VEAF Mission Creation Tools" class="md-header__button md-logo" aria-label="VEAF Mission Creation Tools" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VEAF Mission Creation Tools
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Backlog — VEAF Mission Creation Tools v6
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/VEAF/VEAF-Mission-Creation-Tools" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    VEAF/VEAF-Mission-Creation-Tools
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../pilot/" class="md-tabs__link">
+          
+  
+  
+  Pilot Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../mission-maker/" class="md-tabs__link">
+          
+  
+  
+  Mission Maker
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../developer/" class="md-tabs__link">
+          
+  
+  
+  Developer
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../TOOLS_REFERENCE/" class="md-tabs__link">
+          
+  
+  
+  References
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="VEAF Mission Creation Tools" class="md-nav__button md-logo" aria-label="VEAF Mission Creation Tools" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VEAF Mission Creation Tools
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/VEAF/VEAF-Mission-Creation-Tools" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    VEAF/VEAF-Mission-Creation-Tools
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pilot Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pilot Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pilot/GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pilot/fr/GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide (Français)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mission Maker
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mission Maker
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/MIGRATION_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide (Français)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Scripts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafAirWaves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafAirWaves
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafAirbases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafAirbases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafAssets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafAssets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafCarrierOperations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafCarrierOperations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafCasMission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafCasMission
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafCombatZone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafCombatZone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafGrass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafGrass
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafHoundElintHelper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafHoundElintHelper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafMissileGuardian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafMissileGuardian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafMove/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafMove
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafNamedPoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafNamedPoints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafQraManager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafQraManager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafSanctuary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafSanctuary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafSecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafSecurity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafSkynetIadsHelper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafSkynetIadsHelper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafSpawn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafSpawn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafTransportMission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafTransportMission
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafWeather/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafWeather
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts (Français)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Scripts (Français)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafAirWaves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafAirWaves
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafAirbases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafAirbases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafAssets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafAssets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafCarrierOperations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafCarrierOperations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafCasMission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafCasMission
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafCombatZone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafCombatZone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafGrass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafGrass
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafHoundElintHelper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafHoundElintHelper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafMissileGuardian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafMissileGuardian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafMove/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafMove
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafNamedPoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafNamedPoints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafQraManager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafQraManager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafSanctuary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafSanctuary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafSecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafSecurity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafSkynetIadsHelper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafSkynetIadsHelper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafSpawn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafSpawn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafTransportMission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafTransportMission
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/fr/scripts/veafWeather/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafWeather
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developer/GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developer/fr/GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide (Français)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    References
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TOOLS_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LUA_API_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lua API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../USER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ROADMAP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#calibration-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration Table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Legend
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-0b-github-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 0b — GitHub cleanup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lot-5-release-v610" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lot 5 — RELEASE: v6.1.0
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lot-9-lua-refactor-refactoring-structurel-des-modules-majeurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lot 9 — LUA-REFACTOR: Refactoring structurel des modules majeurs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lot-13-discuss-standards-industrie-a-evaluer-et-decider" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lot 13 — DISCUSS: Standards industrie — à évaluer et décider
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="backlog-veaf-mission-creation-tools-v6">Backlog — VEAF Mission Creation Tools v6</h1>
+<h2 id="calibration-table">Calibration Table</h2>
+<table>
+<thead>
+<tr>
+<th>Lot</th>
+<th>Estimated (min)</th>
+<th>Actual (min)</th>
+<th>Ratio</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(no lot completed yet)</em></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Initial factor: 1.15</td>
+</tr>
+<tr>
+<td>Lot 6 — BONUS</td>
+<td>210</td>
+<td>—</td>
+<td>—</td>
+<td>LUA-006 + TOOL-004 + LUA-007</td>
+</tr>
+</tbody>
+</table>
+<h2 id="legend">Legend</h2>
+<ul>
+<li><strong>Effort</strong>: estimated Copilot time in minutes (excludes user decisions and review)</li>
+<li><strong>Type</strong>: <code>feat</code> / <code>fix</code> / <code>chore</code></li>
+<li><strong>Status</strong>: <code>⬜</code> to do · <code>🔄</code> in progress · <code>✅</code> done</li>
+</ul>
+<blockquote>
+<p>Completed lots (&gt; 3 days ago) are moved to <a href="../backlog-archive/">backlog-archive.md</a>.</p>
+</blockquote>
+<hr />
+<h2 id="summary">Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Lot</th>
+<th>Estimate</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase 0 — Restart</td>
+<td>~3h</td>
+<td><a href="../backlog-archive/">archived</a></td>
+</tr>
+<tr>
+<td>Phase 0b — GitHub cleanup</td>
+<td>~25 min</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>Lot 1 — INFRA</td>
+<td>~4h15</td>
+<td><a href="../backlog-archive/">archived</a></td>
+</tr>
+<tr>
+<td>Lot 2 — CLI</td>
+<td>~2h35</td>
+<td><a href="../backlog-archive/">archived</a></td>
+</tr>
+<tr>
+<td>Lot 3 — TUI</td>
+<td>~2h20</td>
+<td><a href="../backlog-archive/">archived</a></td>
+</tr>
+<tr>
+<td>Lot 4 — LUA-CONFIG</td>
+<td>~6h</td>
+<td><a href="../backlog-archive/">archived</a></td>
+</tr>
+<tr>
+<td>Lot 5 — RELEASE</td>
+<td>~1h30</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>Lot 6 — BONUS</td>
+<td>~3h30</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Lot 7 — LUA FIXES</td>
+<td>~5h45</td>
+<td><a href="../backlog-archive/">archived</a></td>
+</tr>
+<tr>
+<td>Lot 8 — LUA-QUALITY</td>
+<td>~3h35</td>
+<td><a href="../backlog-archive/">archived</a></td>
+</tr>
+<tr>
+<td>Lot RC — v6.1.0 RC fixes</td>
+<td>~1h35</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Lot 9 — LUA-REFACTOR</td>
+<td>~11h30</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>Lot 10 — YAML-CONFIG</td>
+<td>~14h</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Lot 11 — I18N</td>
+<td>~7h10</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Lot 12 — QUALITY</td>
+<td>~16h35</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Lot 13 — DISCUSS</td>
+<td>~13h50</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~95h</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><em>Initial calibration factor: 1.15 — recalculate after each completed lot.</em></p>
+<hr />
+<h2 id="phase-0b-github-cleanup">Phase 0b — GitHub cleanup</h2>
+<p>Close issues identified during triage. <strong>Verify each one before closing.</strong>
+Direct commits on <code>develop-v6</code> (no feature branch needed — no code change).</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Ticket</th>
+<th>Type</th>
+<th>Effort</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CLOSE-001</td>
+<td>Close WONTFIX issues: #55, #146, #147, #180, #193, #246</td>
+<td>chore</td>
+<td>15 min</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>CLOSE-002</td>
+<td>Close STALE issues: #9, #19, #41, #167</td>
+<td>chore</td>
+<td>10 min</td>
+<td>⬜</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>Issues to close</summary>
+
+**WONTFIX — Already implemented or out of scope**
+
+| # | Title | Reason |
+|---|-------|--------|
+| #55 | Faire un système de zone de combat dynamique | Already implemented → `veafCombatZone` |
+| #146 | CTLD JTAC 9-line | External project (CTLD/Ciribob) |
+| #147 | CTLD JTAC Ask for wind/speed correction | External project (CTLD/Ciribob) |
+| #180 | AirWaves - forcer à rester dans la zone | Both tasks already checked ✅ in the issue |
+| #193 | CTLD - gestion d'emport multiple de caisses | Requires upstream PR to CTLD, out of scope |
+| #246 | CTLD - orientation des unités Patriot | CTLD external bug, out of scope |
+
+**STALE — No activity, too vague, or superseded**
+
+| # | Title | Reason |
+|---|-------|--------|
+| #9 | Marker command to build a transport mission interception | 2018, no activity since 2021, too vague |
+| #19 | Idée - spawn facile avec inventaire des unités par coalition | 2020, informal idea, no spec |
+| #41 | Tester spawn humains CASE 1 téléportés à la bonne position | 2021, vague, no activity |
+| #167 | Tester gRPC | 2023 tech spike, no follow-up planned |
+
+</details>
+
+<hr />
+<h2 id="lot-5-release-v610">Lot 5 — RELEASE: v6.1.0</h2>
+<p><strong>Goal</strong>: Merge v6 to master and publish the official release.
+<strong>From</strong>: <code>develop-v6</code> directly</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Ticket</th>
+<th>Type</th>
+<th>Effort</th>
+<th>Depends on</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REL-001</td>
+<td>Finalize <code>CHANGELOG.md</code> for v6.1.0</td>
+<td>chore</td>
+<td>20 min</td>
+<td>Lots 1–4</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>REL-002</td>
+<td>Write <code>RELEASE_NOTES.md</code> for v6.1.0</td>
+<td>chore</td>
+<td>20 min</td>
+<td>REL-001</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>REL-003</td>
+<td>Squash merge <code>develop-v6</code> → <code>master</code></td>
+<td>chore</td>
+<td>15 min</td>
+<td>REL-002</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>REL-004</td>
+<td>Tag <code>v6.1.0</code> + publish GitHub (<code>veaf-build publish</code>)</td>
+<td>chore</td>
+<td>30 min</td>
+<td>REL-003</td>
+<td>⬜</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Estimated total: ~85 min (~1h30)</strong></p>
+<hr />
+<h2 id="lot-9-lua-refactor-refactoring-structurel-des-modules-majeurs">Lot 9 — LUA-REFACTOR: Refactoring structurel des modules majeurs</h2>
+<p><strong>Goal</strong>: Réduire la complexité des modules les plus chargés du codebase Lua.
+Chaque ticket est indépendant mais risqué — à traiter un par un avec tests en mission réelle.
+<strong>Branch</strong>: une branche par ticket <code>refactor/lua-xxx</code> → PR → <code>develop-v6</code>
+⚠️ Impact fort sur les missions existantes : chaque PR doit être testée en mission avant merge.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Ticket</th>
+<th>File(s)</th>
+<th>Type</th>
+<th>Effort</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LUAR-001</td>
+<td>Scinder <code>veafSpawn.lua</code> (3200+ lignes) en 4 modules thématiques</td>
+<td><code>veafSpawn*.lua</code></td>
+<td>feat</td>
+<td>240 min</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>LUAR-002</td>
+<td>Machine d'état explicite (FSM) pour <code>AirWaveZone</code></td>
+<td><code>veafAirWaves.lua</code></td>
+<td>feat</td>
+<td>120 min</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>LUAR-003</td>
+<td>Scinder <code>VeafQRA</code> (1200+ lignes) en <code>VeafQRACore</code> + <code>VeafQRALogistics</code></td>
+<td><code>veafQraManager.lua</code></td>
+<td>feat</td>
+<td>150 min</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>LUAR-004</td>
+<td><code>RadioMenuBuilder</code> — abstraction de la construction des menus dans veafRadio</td>
+<td><code>veafRadio.lua</code></td>
+<td>feat</td>
+<td>90 min</td>
+<td>⬜</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raw total: 600 min → estimated (×1.15): ~690 min (~11h30)</strong></p>
+<details>
+<summary>Ticket details</summary>
+
+**LUAR-001 — Split veafSpawn.lua**
+3200+ lignes, 35+ fonctions publiques avec 5 responsabilités distinctes. Proposition de découpage :
+- `veafSpawnCore.lua` — `executeCommand`, parsing de markers, `doSpawnGroup`, `_createDcsUnits`, dessin (addPointToDrawing, drawCircle, drawSquare, eraseDrawing)
+- `veafSpawnGround.lua` — `spawnGroup`, `spawnInfantryGroup`, `spawnArmoredPlatoon`, `spawnAirDefenseBattery`, `spawnTransportCompany`, `spawnFullCombatGroup`, `spawnConvoy`, `spawnFarp`, `spawnFob`
+- `veafSpawnAircraft.lua` — `spawnUnit` (avions/hélicos), `spawnCombatAirPatrol`, JTAC/lasing
+- `veafSpawnEffects.lua` — `spawnBomb`, `spawnSmoke`, `spawnSignalFlare`, `spawnIlluminationFlare`, `spawnCargo`, `spawnLogistic`, `destroy`, `teleport`
+
+`veafSpawn.lua` devient un proxy qui charge les 4 sous-modules et ré-exporte les fonctions publiques pour backward compatibility.
+
+**LUAR-002 — FSM AirWaveZone**
+`AirWaveZone` gère 7+ états (`READY`, `WAITING_FOR_HUMANS`, `ACTIVE`, `WAITING_FOR_NEXTWAVE`, `CLEANUP`, `DONE`, `PAUSED`) via des variables booléennes et des `if/elseif` chaînés dans `check()`.
+Refactorer en FSM explicite :
+
+<pre><code class="language-lua">AirWaveZone.FSM = {
+  READY = { enter = AirWaveZone._onEnterReady, transitions = { WAITING_FOR_HUMANS = AirWaveZone._canWaitForHumans } },
+  ACTIVE = { enter = AirWaveZone._onEnterActive, transitions = { WAITING_FOR_NEXTWAVE = AirWaveZone._waveEnded } },
+  ...
+}
+</code></pre>
+
+Bénéfice : `check()` devient une boucle sur `FSM[self.state].transitions`, pas de if imbriqués, états clairement documentés.
+
+**LUAR-003 — Split VeafQRA**
+`VeafQRA` fait 1200+ lignes avec 3 responsabilités :
+1. **Détection + spawn** : `check()`, `humanBornEvent()`, `spawnQra()`, `despawnQra()`
+2. **Logistique** : `rearm()`, `resupply()`, `refuel()`, délais de ravitaillement
+3. **Communication** : messages radio, marqueurs carte, `getInformation()`
+
+Proposition :
+- `VeafQRACore` — état, détection, spawn/despawn
+- `VeafQRALogistics` — rearm/resupply/refuel (classe séparée, référencée depuis Core)
+- Laisser les messages dans Core mais extraire `VeafQRA:buildStatusMessage()` en helpers
+
+**LUAR-004 — RadioMenuBuilder**
+`veafRadio.lua` construit les menus DCS missionCommands via des appels `missionCommands.addSubMenu` / `addCommand` entrelacés avec la logique de rebuild. Créer `RadioMenuBuilder` :
+
+<pre><code class="language-lua">local RadioMenuBuilder = {}
+function RadioMenuBuilder:new(root) ... end
+function RadioMenuBuilder:addMenu(label, parent) ... end
+function RadioMenuBuilder:addCommand(label, parent, fn, args) ... end
+function RadioMenuBuilder:build() ... end
+function RadioMenuBuilder:rebuild() ... end  -- clear + rebuild
+</code></pre>
+
+Isole la complexité de l'arbre DCS et facilite le test unitaire.
+
+</details>
+
+<hr />
+<h2 id="lot-13-discuss-standards-industrie-a-evaluer-et-decider">Lot 13 — DISCUSS: Standards industrie — à évaluer et décider</h2>
+<p><strong>Goal</strong>: Évaluer les standards industrie manquants et décider lesquels adopter. Chaque ticket est un point de discussion/décision avant implémentation éventuelle.
+<strong>Branch</strong>: <code>feature/disc-wave3</code> (PR #320 mergée)
+<strong>Statut</strong>: 🟢 DISC-001/002/003/004/005/006/007/009/010/011/012/013/015/017 implémentés — DISC-008/014/016/018 encore à décider</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Ticket</th>
+<th>Type</th>
+<th>Effort si adopté</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DISC-008</td>
+<td>Release automation complète — GitHub Actions workflow sur tag push (build + publish, zéro intervention manuelle)</td>
+<td>feat</td>
+<td>120 min</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>DISC-014</td>
+<td>Documentation versionnée — lier les docs à une release (GitHub Pages tags ou dossiers versionnés)</td>
+<td>feat</td>
+<td>90 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>DISC-016</td>
+<td>API deprecation warnings — système de warnings Lua quand des fonctions legacy sont appelées</td>
+<td>feat</td>
+<td>45 min</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>DISC-018</td>
+<td>Monorepo workspace Poetry — structurer <code>veaf-tools</code> + <code>veaf_build</code> comme un vrai workspace avec dépendances explicites</td>
+<td>chore</td>
+<td>60 min</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>DISC-019</td>
+<td>GitHub Pages — publier la documentation (<code>doc/</code>) sur <code>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/</code> via GitHub Actions (déclenchement sur merge PR vers <code>develop-v6</code> / <code>main</code>)</td>
+<td>feat</td>
+<td>60 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>DISC-001</td>
+<td>Pre-commit hooks (<code>pre-commit</code> framework) : ruff + stylua + luacheck + detect-secrets</td>
+<td>chore</td>
+<td>45 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>DISC-002</td>
+<td>Ajouter <code>luacheck</code> au CI (lint statique Lua — undefined globals, unused vars, shadowing)</td>
+<td>chore</td>
+<td>60 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>DISC-003</td>
+<td>Coverage reporting en CI (Codecov ou Coveralls) + badge README + seuil <code>--cov-fail-under</code></td>
+<td>chore</td>
+<td>30 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>DISC-004</td>
+<td><code>CONTRIBUTING.md</code> + PR template + issue templates (bug report / feature request)</td>
+<td>chore</td>
+<td>45 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>DISC-005</td>
+<td><code>SECURITY.md</code> — politique de disclosure des vulnérabilités</td>
+<td>chore</td>
+<td>15 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>DISC-006</td>
+<td><code>CODEOWNERS</code> — auto-assign reviewers par path (<code>src/scripts/</code> → Lua team, <code>src/python/</code> → Python team)</td>
+<td>chore</td>
+<td>10 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>DISC-007</td>
+<td>Dependabot ou Renovate — auto-update des dépendances Python + GitHub Actions</td>
+<td>chore</td>
+<td>20 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>DISC-009</td>
+<td><code>.editorconfig</code> — uniformité des settings IDE (indentation, EOL, trim trailing whitespace)</td>
+<td>chore</td>
+<td>10 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>DISC-010</td>
+<td>DevContainer / Docker — environnement dev reproductible (Python 3.13 + Lua 5.1 + outils)</td>
+<td>feat</td>
+<td>90 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>DISC-011</td>
+<td>Signed commits / tag signing — intégrité supply chain</td>
+<td>chore</td>
+<td>15 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>DISC-012</td>
+<td>Branch protection rules — require CI pass + review avant merge</td>
+<td>chore</td>
+<td>10 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>DISC-013</td>
+<td>Changelog automation (<code>git-cliff</code> ou <code>release-please</code> + conventional commits)</td>
+<td>feat</td>
+<td>60 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>DISC-015</td>
+<td>SBOM (Software Bill of Materials) — traçabilité des dépendances embarquées dans l'exe</td>
+<td>chore</td>
+<td>30 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>DISC-017</td>
+<td>Secret scanning — activer GitHub secret scanning ou intégrer <code>gitleaks</code> en CI</td>
+<td>chore</td>
+<td>15 min</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Effort total si tout adopté: ~830 min (~13h50)</strong>
+⚠️ Chaque ticket doit être discuté individuellement — certains seront adoptés, d'autres rejetés ou reportés.</p>
+<details>
+<summary>Points de discussion par ticket</summary>
+
+**DISC-001 — Pre-commit hooks**
+- **Pour** : Catch les erreurs avant le push, impossible d'oublier de formatter
+- **Contre** : Friction pour les contributeurs occasionnels, complexifie le setup
+- **Question** : Est-ce que les contributeurs sont suffisamment techniques pour installer `pre-commit` ? Ou suffit-il de compter sur la CI ?
+
+**DISC-002 — Luacheck**
+- **Pour** : Détecte des vrais bugs (undefined globals, unused vars, variable shadowing comme `local coalition = coalition`). StyLua ne vérifie que le formatage.
+- **Contre** : Configuration initiale complexe (beaucoup de globals DCS à déclarer), bruit potentiel
+- **Question** : Le `.luarc.json` remplit déjà partiellement ce rôle. Luacheck en CI apporte-t-il un gain suffisant ?
+- **Recommandation** : Oui, fort gain. La liste de globals est déjà dans `.luarc.json` — convertible en `.luacheckrc`.
+
+**DISC-003 — Coverage CI**
+- **Pour** : Visibilité, empêche les régressions, motive l'écriture de tests
+- **Contre** : Seuil bas (15%) est symbolique ; seuil haut inatteignable à court terme
+- **Question** : Quel seuil initial ? Monter graduellement (15% → 30% → 50%) ?
+- **Recommandation** : Commencer à 15%, monter de 5% par lot.
+
+**DISC-004 — CONTRIBUTING.md**
+- **Pour** : Standard OSS, onboarde les nouveaux contributeurs
+- **Contre** : Overhead de maintenance si peu de contributeurs externes
+- **Question** : Le projet a-t-il des contributeurs externes réguliers ou est-ce principalement l'équipe VEAF ?
+
+**DISC-005 — SECURITY.md**
+- **Pour** : GitHub affiche un avertissement si absent, standard pour tout projet public
+- **Contre** : Quasi-gratuit à créer (template GitHub)
+- **Recommandation** : Adopter (5 min de travail réel)
+
+**DISC-006 — CODEOWNERS**
+- **Pour** : Auto-assign les bons reviewers, protège les chemins critiques
+- **Contre** : Nécessite de définir les responsabilités formellement
+- **Question** : Qui sont les reviewers Lua vs Python ?
+
+**DISC-007 — Dependabot/Renovate**
+- **Pour** : Alerte sur les vulnérabilités, PR automatiques pour updates
+- **Contre** : Bruit (PRs fréquentes), risque de casser PyInstaller si pas de bornes
+- **Recommandation** : Adopter Dependabot avec `open-pull-requests-limit: 5` et grouping
+
+**DISC-008 — Release automation**
+- **Pour** : Zéro intervention manuelle → zéro risque d'erreur, reproductible
+- **Contre** : Le process actuel (CLI `veaf-build`) fonctionne et permet une pause pour éditer les release notes
+- **Question** : Veut-on garder la pause manuelle (release notes) ou passer en full-auto (changelog auto-généré) ?
+- **Recommandation** : Hybrid — tag push déclenche le build + upload, mais les release notes restent manuelles (pré-écrites dans CHANGELOG.md avant le tag)
+
+**DISC-009 — .editorconfig**
+- **Pour** : Fonctionne avec tous les IDE, pas de dépendance à VS Code settings
+- **Contre** : Quasi-gratuit, pas de raison de ne pas le faire
+- **Recommandation** : Adopter immédiatement (5 min)
+
+**DISC-010 — DevContainer**
+- **Pour** : Zéro-config pour les nouveaux développeurs, environnement identique pour tous
+- **Contre** : Docker requis, overhead pour dev habitués à leur propre env
+- **Question** : Les contributeurs sont-ils sous Windows (DCS = Windows only) ? Un devcontainer Linux est-il pertinent pour un projet DCS ?
+- **Recommandation** : Utile surtout pour la CI reproductible. En dev local, documenter le setup Windows suffit peut-être.
+
+**DISC-011 — Signed commits**
+- **Pour** : Intégrité supply chain (important pour un .exe distribué à la communauté)
+- **Contre** : Complexifie le workflow (GPG keys), freine les contributeurs occasionnels
+- **Recommandation** : Au minimum, signer les tags de release (pas tous les commits)
+
+**DISC-012 — Branch protection rules**
+- **Pour** : Empêche les push directs sur `develop-v6` et `main`, garantit que le CI passe avant tout merge. Standard pour tout projet collaboratif.
+- **Contre** : Peut bloquer des hotfixes urgents si le CI est cassé pour une raison externe
+- **Statut** : ✅ Implémenté — settings à appliquer dans GitHub Settings (action admin requise)
+
+**Settings à appliquer** sur `develop-v6` et `main` :
+
+*GitHub → Settings → Branches → Add branch protection rule*
+
+| Setting | Valeur recommandée |
+|---------|-------------------|
+| Require a pull request before merging | ✅ (1 approval required) |
+| Require status checks to pass | ✅ |
+| — Status checks : `Lua Unit Tests` | ✅ |
+| — Status checks : `StyLua Formatting` | ✅ |
+| — Status checks : `python-quality` | ✅ |
+| Require branches to be up to date | ✅ |
+| Do not allow bypassing the above settings | ❌ (laisser l'escape hatch admin) |
+| Restrict who can push to matching branches | Optionnel |
+
+**DISC-013 — Changelog automation**
+- **Pour** : Plus d'oublis, changelog toujours à jour
+- **Contre** : Impose conventional commits (`feat:`, `fix:`, `chore:`) — changement d'habitude
+- **Question** : L'équipe est-elle prête à adopter conventional commits ?
+
+**DISC-014 — Documentation versionnée**
+- **Pour** : Un utilisateur en v6.0.3 voit les docs correspondantes, pas les docs de develop
+- **Contre** : Complexité GitHub Pages, maintenance de branches docs
+- **Recommandation** : Reporter — pertinent quand il y aura des breaking changes entre versions
+
+**DISC-015 — SBOM**
+- **Pour** : Le projet distribue un `.exe` PyInstaller qui embarque des dizaines de bibliothèques tierces. Un SBOM (`cyclonedx-bom` ou `syft`) permet d'auditer les licences et de détecter des CVEs dans les dépendances embarquées. Standard dans la communauté open-source depuis le décret US 2021.
+- **Contre** : Peu d'utilisateurs VEAF ne vont pas auditer le SBOM. Overhead de génération et de publication.
+- **Recommandation** : Générer le SBOM en artifact CI sans le publier obligatoirement — coût quasi-nul, utilisable si besoin.
+
+**DISC-016 — Deprecation warnings Lua**
+- **Pour** : Migration douce quand des fonctions sont renommées/supprimées
+- **Contre** : Overhead (wrapper chaque fonction deprecated)
+- **Recommandation** : Utile surtout pour LUAR-001 (split veafSpawn) — implémenter quand le refactoring commence
+
+**DISC-017 — Secret scanning**
+- **Pour** : Détecte les API keys, tokens, mots de passe accidentellement commités. GitHub secret scanning est gratuit sur les repos publics et couvre des centaines de patterns (AWS, GCP, GitHub tokens, etc.). `gitleaks` en CI ajoute une couche pour les secrets maison.
+- **Contre** : Faux positifs possibles (ex : clés DCS dans les fichiers de mission). Configuration du `.gitleaksignore` nécessaire.
+- **Recommandation** : Activer GitHub secret scanning (zéro coût, zéro configuration). `gitleaks` en CI est optionnel — à voir si les faux positifs sont gérables.
+
+**DISC-018 — Monorepo workspace Poetry**
+- **Situation actuelle** : `veaf_build` est inclus comme sous-package dans `veaf-tools` via `packages = [{include = "veaf_build"}]`. Les deux partagent le même `pyproject.toml` et le même environnement virtuel, alors qu'ils ont des rôles distincts (outil mission vs toolchain de build/release).
+- **Ce que proposerait DISC-018** : Utiliser le support workspace de Poetry 2.x pour créer deux packages indépendants — `veaf-tools` (CLI mission) et `veaf-build` (toolchain) — avec leurs propres dépendances. `pyinstaller` quitterait le groupe `build` pour devenir une vraie dépendance de `veaf-build` uniquement.
+- **Pour** : Séparation des responsabilités, dépendances distinctes, versioning indépendant possible.
+- **Contre** : Refactoring non trivial des imports, Poetry workspace est une fonctionnalité récente (2.0+) dont la maturité reste à confirmer.
+- **Recommandation** : Reporter après stabilisation — le gain est réel mais le coût est élevé pour un projet sans contributeurs multiples sur les deux packages simultanément.
+
+**DISC-019 — GitHub Pages**
+- **Situation actuelle** : La documentation (`doc/`) existe uniquement dans le repo Git — pas de site web navigable, pas d'URL publique stable.
+- **Ce que proposerait DISC-019** : Publier automatiquement `doc/` sur GitHub Pages (`https://veaf.github.io/VEAF-Mission-Creation-Tools/`) via un workflow GitHub Actions déclenché sur push `develop-v6` et sur chaque tag. Utiliser [MkDocs](https://www.mkdocs.org/) (Material theme) ou simplement servir les Markdown via GitHub Pages natif. Lien DISC-014 (docs versionnées) — DISC-019 est le prérequis.
+- **Pour** : URL stable et partageable pour les utilisateurs, navigabilité entre les pages, moteur de recherche intégré (MkDocs Material), nul coût d'hébergement.
+- **Contre** : Nécessite de choisir et configurer un générateur de site statique. MkDocs ajoute une dépendance Python (groupe `docs`).
+- **Recommandation** : Adopter — c'est la norme pour les projets open-source. MkDocs Material est le choix le plus rapide à mettre en place.
+
+</details>
+
+<hr />
+<details>
+<summary>✅ Lots terminés récemment (archivés dans <a href="backlog-archive.md">backlog-archive.md</a> après 3 jours)</summary>
+
+## Lot RC — v6.1.0 RC bug fixes
+
+**Goal**: Fix bugs discovered during RC testing before the final release.
+**Branch**: `develop-v6` (direct commits — RC hotfixes)
+
+| # | Ticket | Type | Effort | Status |
+|---|--------|------|--------|--------|
+| RC-001 | Fix `.\published\veaf-tools.exe` → `.\veaf-tools.exe` in `doc/mission-maker/MIGRATION_GUIDE.md` | fix | 10 min | ✅ |
+| RC-002 | Bundle lupa in exe (`pyproject.toml` non-optional + `hiddenimports` in `.spec`) | fix | 20 min | ✅ |
+| RC-003 | Fix version comparison (`5.103.3 > 6.1.0-rc1`) — strip pre-release suffix in `_version_tuple` | fix | 15 min | ✅ |
+| RC-004 | Fix `No such command 'normalize'` — rewrite `src/build-scripts/build.cmd` with real command names | fix | 20 min | ✅ |
+| RC-005 | Sync `published/build-scripts/build.cmd` to match `src/build-scripts/build.cmd` | fix | 10 min | ✅ |
+| RC-006 | Fix wrong command names in `doc/MISSION_MAKER_GUIDE.md` and `doc/mission-maker/README.md` | fix | 20 min | ✅ |
+| RC-007 | Fix `string.format("%s", veaf.lp(...))` crash in `veaf.lua` (4 occurrences in `getAirbaseLife`, `_endMission`, `_checkForEndMission`, `endMissionAt`) | fix | 20 min | ✅ |
+| RC-008 | Fix `prepare` command distributing files from wrong root (`defaults/mission-folder/src/` → `defaults/mission-folder/`) | fix | 15 min | ✅ |
+| RC-009 | Fix `complete_src_folder_with_defaults` looking at `published/defaults/` instead of `published/src/defaults/` | fix | 20 min | ✅ |
+| RC-010 | Move default `mission.yaml` from `src/defaults/mission-folder/src/` to `src/defaults/mission-folder/` (root) so it lands at `<mission_folder>/mission.yaml` | fix | 10 min | ✅ |
+| RC-011 | Fix `veaf-modules-config.lua` not loaded in dynamic mode — add conditional `loadfile` in "Mission scripts loading - dynamic" trigger | fix | 20 min | ✅ |
+| RC-012 | `prepare` command: replace `typer.confirm` with `_ask_replace()` using `sys.stdin` (fix terminal blocking + add "A" yes-to-all option) | fix | 15 min | ✅ |
+| RC-013 | `veaf-tools-updater` `_install_defaults`: add `mission.yaml` copy (root of `mission-folder/`) — missing from first-install bootstrap | fix | 10 min | ✅ |
+| RC-014 | `prepare` command: replace `sys.stdin.readline()` with `msvcrt.getwch()` (single-char, no Enter required) — fix terminal blocking on Windows/ConPTY | fix | 15 min | ✅ |
+| RC-015 | `veaf.Logger`: `getEffectiveLevel()` retournait une string, les méthodes de log comparaient `self.level` (number figé) → `ForcedLogLevel` ignoré à l'exécution. Fix: `getEffectiveLevel()` retourne un number, toutes les méthodes utilisent `self:getEffectiveLevel()` | fix | 20 min | ✅ |
+| RC-016 | `veaf.lp()` inside `string.format()` crashes Lua 5.1 unconditionally — arguments are evaluated before the logger level guard runs. `veaf.lp()` returns a table; Lua 5.1 `string.format("%s", table)` does not call `__tostring`. Fix: replaced `veaf.lp()` with `veaf.p()` in all `string.format()` calls across 7 files (`veafCarrierOperations`, `veafCasMission`, `veafGroundAI`, `veafRemote`, `veafSanctuary`, `veafShortcuts`, `veafSpawn`) | fix | 30 min | ✅ |
+| RC-017 | `veaf.lp()` used with `..` concatenation crashes Lua 5.1 unconditionally — same root cause as RC-016. Lua 5.1 does not call `__tostring` on `..` operands, so `"text=" .. veaf.lp(x)` throws *"attempt to concatenate a table value"*. Fix: converted 11 call sites in 4 files (`veafCarrierOperations`, `veafMove`, `veafRadio`, `veafUnits`) from `"label=" .. veaf.lp(x)` to `"label=%s", veaf.lp(x)` | fix | 20 min | ✅ |
+| RC-018 | `veaf.getCountryForCoalition` returned nil for coalitions with no pre-placed units — `_initializeCountriesAndCoalitions` only read `mist.DBs.units` (pre-placed groups). Dynamic test missions have no RED pre-placed units → `countriesByCoalition["red"]` empty → nil passed to `mist.dynAdd` → *"Country not found: $1"* (MIST format placeholder for nil) → group not spawned → `Group.getByName():getController()` crashes. Fix: supplement with `country.id` + `coalition.getCountryCoalition()` DCS API (first attempt used `coalition.getCountries` which does not exist in DCS). Also fixed broken `_sortByImportance` comparator (returned nil instead of false). | fix | 35 min | ✅ |
+| RC-019 | Pipeline auto-detection in `veaf-tools build`: after the base build, auto-detect and run optional injection steps based on file presence (`src/presets.yaml`, `src/waypoints.yaml`, `src/aircraft-templates.yaml`, `src/missions.yaml`). Configurable via new `pipeline:` section in `mission.yaml`. `build.cmd` template simplified to 2 commands (updater + build). | feat | 45 min | ✅ |
+| RC-020 | `veaf-tools migrate-config` command: parses an existing `missionConfig.lua`, comments out `doFile()` calls for VEAF scripts (now injected by the builder), wraps bare `veafXxx.initialize()` calls in `if veafXxx then … end` guards, and outputs a `lua_modules:` YAML snippet showing which modules were found enabled. Implementation: `mission_builder/config_migrator.py` (`ConfigMigrator`, `MigrationResult`), exported from `mission_builder/__init__.py`, CLI command in `veaf-tools.py`. | feat | 40 min | ✅ |
+| RC-021 | `veaf-tools convert-v5` command: single-pass v5→v6 mission folder conversion. (1) Scans for `missionConfig.lua` and pipeline config files (`presets.yaml`, `waypoints.yaml`, `aircraft-templates.yaml`, `missions.yaml`). (2) Migrates `missionConfig.lua` in-place via `ConfigMigrator` (creates `.bak` backup). (3) **Automatically converts v5 pipeline config files** to v6 YAML: `radioSettings.lua` → `presets.yaml` (channels + warbird), `weatherAndTime/` → `weather-config.yaml` (all versions incl. `realweather`), `wp.lua` → `waypoints.yaml`, aircraft JSON → `aircraft-templates.yaml`. ICAO code prompted once if a realweather version is detected. `--no-convert-pipeline` flag skips auto-conversion. (4) Generates `mission.yaml` with `lua_modules:` and `pipeline:` sections. (5) Prints Rich scan table + actions summary, saves full Markdown report. Implementation: `mission_builder/v5_pipeline_converters.py` (4 converters), `mission_builder/v5_converter.py` (`V5Converter`, `ConversionReport`, `PipelineFile` with `converted` field), CLI in `veaf-tools.py`. | feat | 120 min | ✅ |
+
+**Estimated total: ~390 min**
+
+---
+
+## Lot 6 — BONUS: Logger filter + DCSUnits doc
+
+**Goal**: Quality-of-life improvements after the priority lots.
+**Branch**: `feature/bonus-logger-doc` → PR → `develop-v6`
+**Depends on**: Lot 4 (LUA-001), Lot 2 (TOOL-003)
+
+| # | Ticket | Type | Effort | Depends on | Status |
+|---|--------|------|--------|------------|--------|
+| LUA-006 | `--log-modules` option in `veaf-tools` to filter which modules log | feat | 90 min | LUA-001 | ✅ |
+| TOOL-004 | Parse `dcsUnits.lua` → dynamic markdown doc generated before publish | feat | 90 min | TOOL-003 | ✅ |
+| LUA-007 | Lazy log args (`veaf.lp`), single build, runtime log control (`global_log_level`) | feat | 120 min | LUA-006 | ✅ |
+
+**Raw total: 300 min → estimated (×1.15): ~345 min (~5h45)**
+
+<details>
+<summary>Ticket details</summary>
+
+**LUA-006 — Logger filter**
+`--log-modules spawn,radio,assets` option on `veaf-tools build` and `veaf-tools inject-*` commands. Translates to a section in the generated `missionconfig.lua` that disables logging (or forces `logLevel = "error"`) for all unlisted modules. Useful for debugging a mission without log noise.
+
+**LUA-007 — Lazy log args + single build + runtime log control**
+- `veaf.lp(value)`: lazy proxy so log arguments are only stringified if the log level is active.
+  Returns a metatable with `__tostring` → `veaf.p(value)`. Safe to use in `:trace()`/`:debug()` calls.
+- Migrate all 1233 `veaf.p(` → `veaf.lp(` calls across the Lua codebase (automated via `migrate_lazy_log.py`).
+- Remove build-time comment-out step (`--scripts-variant debug/trace/standard`) from `veaf_build/worker.py`.
+- Remove `_create_lua_variant_files()` and the three `veaf-scripts-*.lua` variant generation steps.
+- `veaf.BaseLogLevel = 3` (info) as default; replace `--scripts-variant` with `mission.yaml: global_log_level`.
+  Writes `veaf.ForcedLogLevel = "<level>"` in the generated `veaf-modules-config.lua`.
+
+</details>
+
+---
+
+## Lot 10 — YAML-CONFIG: mission.yaml source de vérité
+
+**Goal**: `mission.yaml` becomes the single source of truth for all mission configuration. Python generates `veaf-config.lua` at build time. `missionConfig.lua` → `mission-script.lua` (custom code only). `convert-v5` actively extracts all recognized patterns.
+**Branch**: `feature/yaml-config` → PR → `develop-v6`
+**Depends on**: Lot RC (builder infrastructure), Lot 4 (LUA-CONFIG)
+
+| # | Ticket | Type | Effort | Depends on | Status |
+|---|--------|------|--------|------------|--------|
+| YAML-001 | Rename `veaf-modules-config.lua` → `veaf-config.lua` and `missionConfig.lua` → `mission-script.lua` everywhere (no compat fallback) | chore | 40 min | — | ✅ |
+| YAML-002 | Core YAML schema + generator: `mission:`, `security:`, `settings:`, auto-`initialize()` with typed `init:` params per module | feat | 60 min | YAML-001 | ✅ |
+| YAML-003 | YAML schema + generator: `lua_modules.ASSETS.assets:` table + `lua_modules.NAMED_POINTS.custom_points:` | feat | 45 min | YAML-002 | ✅ |
+| YAML-004 | YAML schema + generator: `external_modules.skynet:` + `external_modules.ctld:` | feat | 35 min | YAML-002 | ✅ |
+| YAML-005 | YAML schema + generator: `qra:` list → `VeafQRA:new():set*():start()` builder chains | feat | 60 min | YAML-002 | ✅ |
+| YAML-006 | YAML schema + generator: `cap_missions:` + `combat_missions:` → `addCapMission()` + `VeafCombatMission` builder chains | feat | 90 min | YAML-002 | ✅ |
+| YAML-007 | Update `generate-config` command: produce exhaustive commented `mission.yaml` with all known options and defaults | feat | 45 min | YAML-002–006 | ✅ |
+| YAML-008 | Update default templates: `mission.yaml` (all new sections commented), `mission-script.lua` (custom-only stub), `test-tools-v6` fixtures | chore | 30 min | YAML-002–006 | ✅ |
+| YAML-009 | `convert-v5` — extract core config + Skynet: `MISSION_NAME`, `era`, `SecurityDisabled`, simple `initialize()` params, Skynet params | feat | 60 min | YAML-002, YAML-004 | ✅ |
+| YAML-010 | `convert-v5` — extract `veafAssets.Assets = {...}` Lua table → `lua_modules.ASSETS.assets:` YAML | feat | 45 min | YAML-003 | ✅ |
+| YAML-011 | `convert-v5` — extract `VeafQRA:new():...:start()` chains → `qra:` YAML entries | feat | 60 min | YAML-005 | ✅ |
+| YAML-012 | `convert-v5` — extract `addCapMission()` + `VeafCombatMission:new():...` chains → `cap_missions:` / `combat_missions:` YAML | feat | 75 min | YAML-006 | ✅ |
+| YAML-013 | Tests: `test_config_generator.py` (mission, security, auto-init, QRA, CombatMission, Assets) + `test_config_migrator.py` updates (new extraction patterns) | chore | 60 min | YAML-001–012 | ✅ |
+| YAML-014 | Docs: update `MISSION_MAKER_GUIDE.md`, `MIGRATION_GUIDE.md` for new YAML → `veaf-config.lua` + `mission-script.lua` workflow | chore | 30 min | YAML-001–012 | ✅ |
+
+**Raw total: 735 min → estimated (×1.15): ~845 min (~14h05)**
+
+<details>
+<summary>Ticket details</summary>
+
+**YAML-001 — File renames (no compat fallback)**
+- `veaf-modules-config.lua` → `veaf-config.lua`:
+  - `mission_builder_worker.py`: all path constants + trigrule strings + `write_lua_modules_config()` → `write_config_lua()`
+  - `mission_constants.py`: path tuple
+  - `veaf-tools.py`: `generate-config` command messages
+- `missionConfig.lua` → `mission-script.lua`:
+  - `src/defaults/mission-folder/src/scripts/missionConfig.lua` renamed
+  - `veafDynamicConfig.lua`: `"missionConfig.lua"` → `"mission-script.lua"`, remove fallback logic
+  - `v5_converter.py`: `MISSIONCONFIG_DEFAULT`, `MISSIONCONFIG_CANDIDATES`, output filename
+  - `config_migrator.py`: output filename
+  - `mission_builder_worker.py`: static trigrule `veaf_mission_config_map_key` reference
+  - `test-tools-v6/src/scripts/missionConfig.lua` renamed
+
+**YAML-002 — Core schema + generator**
+New `mission.yaml` sections:
+
+<pre><code class="language-yaml">mission:
+  name: &quot;My-Mission&quot;          # veaf.config.MISSION_NAME
+  export_path: null           # veaf.config.MISSION_EXPORT_PATH
+  era: MODERN                 # veaf.config.era  (WW2 | COLD_WAR | MODERN)
+security:
+  disabled: true              # veaf.SecurityDisabled
+  # password_hashes: [&quot;sha1&quot;]
+settings:                     # dict → veaf.config.KEY = value
+  DEFAULT_GROUND_SPEED_KPH: 25
+</code></pre>
+
+`lua_modules` gains a typed `init:` sub-section per known module (hardcoded mapping in generator):
+- `RADIO.init.help_menus: bool` → positional arg of `veafRadio.initialize(bool)`
+- `CARRIER.init.include_carrier_operations_radio: bool`
+- (all other modules: `initialize()` with no args when `init:` absent)
+
+Generator (`generate_config_lua()` in `lua_module_scanner.py`) updated to:
+1. Emit mission identity block
+2. Emit security block
+3. Emit `veaf.config.XXX = ...` from `settings:`
+4. For each module with `enable: true`: emit `veaf.setConfig()` calls then auto-`if veafXxx then veafXxx.initialize(...) end`
+5. Initialization order is fixed (recommended VEAF order, `veafInterpreter` always last)
+`mission_builder_worker.py`: `write_config_lua()` passes all new YAML sections to generator.
+
+**YAML-003 — Assets + NamedPoints**
+
+<pre><code class="language-yaml">lua_modules:
+  ASSETS:
+    enable: true
+    assets:
+      - sort: 1
+        name: &quot;CSG-74 Stennis&quot;
+        description: &quot;Stennis (CVN)&quot;
+        information: &quot;Tacan 10X\nICLS 10&quot;
+        linked: null     # optional
+        jtac: null       # optional (laser code int)
+        freq: null       # optional (float)
+        mod: null        # optional (&quot;am&quot; | &quot;fm&quot;)
+  NAMED_POINTS:
+    enable: true
+    custom_points:
+      - name: &quot;Battle Area Alpha&quot;
+        lat: &quot;41.123456&quot;
+        lon: &quot;44.987654&quot;
+</code></pre>
+
+Generator: emit `veafAssets.Assets = { {...}, ... }` before `veafAssets.initialize()`. Emit `local customPoints = { {name=..., point=coord.LLtoLO(...)} }` passed to `veafNamedPoints.initialize(customPoints)`.
+
+**YAML-004 — External modules (Skynet, CTLD)**
+
+<pre><code class="language-yaml">external_modules:
+  skynet:
+    enabled: false
+    include_red_in_radio: false
+    debug_red: false
+    include_blue_in_radio: false
+    debug_blue: false
+  ctld:
+    enabled: false
+    hover_pickup: true
+    enable_crates: true
+    # ... other ctld.xxx keys
+</code></pre>
+
+Generator: emit `if veafSkynet then veafSkynet.initialize(false, false, false, false) end`.
+For CTLD: emit `ctld.xxx = value` property assignments (not `ctld.initialize()` — the script loading stays in `mission-script.lua`). CTLD emitted only if `ctld.enabled: true`.
+
+**YAML-005 — QRA schema + generator**
+
+<pre><code class="language-yaml">qra:
+  silence_all: true             # VeafQRA.ToggleAllSilence(true)
+  definitions:
+    - name: QRA_Minevody
+      coalition: RED            # coalition.side.RED
+      enemy_coalitions: [BLUE]
+      trigger_zone: QRA_Minevody
+      zone_radius: null         # optional (metres)
+      delay_before_rearming: 10
+      delay_before_activating: 60
+      react_on_helicopters: true
+      airport_link: null        # optional (airbase name)
+      groups_by_enemy_count:
+        - enemy_count: 1
+          groups: [&quot;QRA_Minevody-1&quot;, &quot;QRA_Minevody-2&quot;]
+          random_pick: 1
+      simple_groups: []         # alternative to groups_by_enemy_count: flat :addGroup() calls
+</code></pre>
+
+Generator: emit `veafQraManager.initialize()`, optional `VeafQRA.ToggleAllSilence(bool)`, then for each definition a `VeafQRA:new()` builder chain ending in `:start()`. Coalition values mapped `RED` → `coalition.side.RED`.
+
+**YAML-006 — CombatMission schema + generator**
+
+<pre><code class="language-yaml">cap_missions:
+  - group_name: &quot;training-radar-tu22-FL300&quot;
+    menu_name: &quot;WEST - Tu22 FL300&quot;
+    briefing: &quot;Russian TU-22 patrols at FL300...&quot;
+    default: false
+    activated: true
+combat_missions:
+  - name: Intercept-Kraznodar-1
+    friendly_name: &quot;Intercept a transport / KRAZNODAR - MINVODY&quot;
+    secured: true
+    radio_menu_enabled: true
+    briefing: |
+      A Russian transport plane is taking off from Kraznodar...
+    elements:
+      - name: OnDemand-Intercept-Transport-Krasnodar-Mineral-Transport
+        groups: [&quot;OnDemand-Intercept-Transport-Krasnodar-Mineral-Transport&quot;]
+        scalable: false
+</code></pre>
+
+Generator: emit `veafCombatMission.initialize()`, then `addCapMission()` calls, then `AddMissionsWithSkillAndScale(VeafCombatMission:new():...:addElement(VeafCombatMissionElement:new():...):...)` chains. Multi-line briefings emitted as Lua long strings (`[[...]]`).
+
+**YAML-007 — generate-config command**
+`veaf-tools generate-config --mission <folder>`: produces a fully-commented `mission.yaml` at the mission folder root. Every known option listed with its type, default value, and a one-line comment. Sections: `mission:`, `security:`, `settings:`, `global_log_level:`, `lua_modules:` (all known modules with all `init:` params), `external_modules:`, `qra:` (example entry), `cap_missions:` / `combat_missions:` (example entries).
+
+**YAML-008 — Template updates**
+- `src/defaults/mission-folder/mission.yaml`: add all new sections with commented examples.
+- `src/defaults/mission-folder/src/scripts/mission-script.lua`: stripped to custom-code stub with commented examples for QRA, CombatMission, community script loading (e.g. CTLD.lua).
+- `test-tools-v6/mission.yaml`: updated to use new sections.
+- `test-tools-v6/src/scripts/mission-script.lua`: migrated from `missionConfig.lua`.
+
+**YAML-009 — convert-v5: core + Skynet extraction**
+`config_migrator.py` extended to extract from `missionConfig.lua`:
+- `veaf.config.MISSION_NAME = "..."` → `mission.name:`
+- `veaf.config.MISSION_EXPORT_PATH = ...` → `mission.export_path:`
+- `veaf.config.era = veaf.ERA.XXX` → `mission.era:`
+- `veaf.SecurityDisabled = true/false` → `security.disabled:`
+- `veafSecurity.password_L9["hash"] = true` → `security.password_hashes: [hash]`
+- `veaf.DEFAULT_GROUND_SPEED_KPH = N` → `settings.DEFAULT_GROUND_SPEED_KPH:`
+- `veafRadio.initialize(true/false)` → `lua_modules.RADIO.init.help_menus:`
+- `veafSkynet.initialize(a, b, c, d)` → `external_modules.skynet:` params
+`v5_converter.py`: emit these sections in the generated `mission.yaml`.
+
+**YAML-010 — convert-v5: Assets extraction**
+Regex + Lua table parser for `veafAssets.Assets = { {...}, {...} }`. Extract each table entry (sort, name, description, information, linked?, jtac?, freq?, mod?) into `lua_modules.ASSETS.assets:` YAML list. Multi-line `information` strings (with `\n`) handled correctly.
+
+**YAML-011 — convert-v5: QRA extraction**
+Parse `VeafQRA:new()` method chains:
+- Detect block pattern `VeafQRA:new()\n:setName(...)\n:...\n:start()`
+- Extract each `:setXxx(...)` call to the corresponding YAML field
+- Handle `setRandomGroupsToDeployByEnemyQuantity(count, {groups}, pick)` → `groups_by_enemy_count:` entry
+- Handle `VeafQRA.ToggleAllSilence(bool)` → top-level `qra.silence_all:`
+- Remaining unrecognized chained calls: warn + keep in `mission-script.lua`
+
+**YAML-012 — convert-v5: CombatMission extraction**
+- `veafCombatMission.addCapMission(g, m, b, def, act)` → `cap_missions:` entries
+- `VeafCombatMission:new():...:addElement(VeafCombatMissionElement:new():...):...` chains → `combat_missions:` entries
+- Long-string briefings `[[...]]` extracted to YAML multi-line `|` strings
+- `VeafCombatMissionElement` fields: `name`, `groups`, `scalable`, `spawned`
+
+**YAML-013 — Tests**
+New `test/python/test_config_generator.py`:
+- `test_mission_identity()`: `mission:` section → correct Lua output
+- `test_security_block()`: password hashes + `SecurityDisabled`
+- `test_auto_initialize_no_init_section()`: `enable: true` without `init:` → `initialize()` emitted
+- `test_radio_init_params()`: `RADIO.init.help_menus: true` → `veafRadio.initialize(true)`
+- `test_assets_table()`: assets list → correct Lua table literal
+- `test_qra_builder_chain()`: QRA definition → correct `VeafQRA:new():set*():start()` output
+- `test_combat_mission_briefing()`: multi-line briefing → `[[...]]` long string
+
+Extend `test_config_migrator.py` (or `test_v5_converter.py`) with cases for the new extraction patterns.
+
+**YAML-014 — Docs**
+`MISSION_MAKER_GUIDE.md`: update "Module configuration" section to describe YAML → `veaf-config.lua` flow, new sections (`mission:`, `security:`, `settings:`, `qra:`, etc.), and `mission-script.lua` role.
+`MIGRATION_GUIDE.md`: update convert-v5 section to reflect active extraction + renamed output files.
+
+</details>
+
+
+---
+
+## Lot 11 — I18N: Internationalisation (EN + FR)
+
+**Goal**: Auto-detect the user's language (OS locale or `--lang` flag) and deliver the full experience in that language: CLI output, generated file comments, and documentation. Ship EN and FR as first-class citizens.
+**Branch**: `feature/i18n` → PR → `develop-v6`
+**Depends on**: Lot 10 (generated-file comment strings stabilised)
+
+| # | Ticket | Type | Effort | Depends on | Status |
+|---|--------|------|--------|------------|--------|
+| I18N-001 | i18n infrastructure: OS locale auto-detection + `--lang` CLI override, translation catalog loader (`veaf_libs/i18n.py`), `t()` helper | feat | 60 min | — | ✅ |
+| I18N-002 | Translate all user-visible CLI messages (typer help strings, Rich output, logger messages) — EN catalog first, FR translation | feat | 120 min | I18N-001 | ✅ |
+| I18N-003 | Translate comments in generated files (`veaf-config.lua`, `mission.yaml` template, `mission-script.lua` stub, `generate-config` output) | feat | 60 min | I18N-001, Lot 10 | ✅ |
+| I18N-004 | Translate `MISSION_MAKER_GUIDE.md` → `doc/fr/MISSION_MAKER_GUIDE.md` (FR version maintained alongside EN) | chore | 90 min | — | ✅ |
+| I18N-005 | `convert-v5` report output in detected language (scan table headers, action descriptions, warning messages) | feat | 45 min | I18N-002 | ✅ |
+| I18N-006 | `mission.yaml` `language:` field → emit `veaf.config.language` in Lua; translate `generate-config` YAML template comments | feat | 45 min | I18N-001, I18N-003 | ✅ |
+| I18N-007 | Full bilingual doc structure: FR translations of all doc guides (`pilot/fr/GUIDE.md`, `developer/fr/GUIDE.md`, `mission-maker/fr/scripts/*.md`), bilingual README headers, `--lang --help` pre-parse fix | chore | 120 min | I18N-004 | ✅ |
+
+**Raw total: 540 min → estimated (×1.15): ~621 min (~10h21)**
+
+<details>
+<summary>Ticket details</summary>
+
+**I18N-001 — Infrastructure**
+`veaf_libs/i18n.py`:
+- At startup, detect language: read `--lang` CLI option (passed as a global typer callback) → fall back to `locale.getdefaultlocale()[0]` (e.g. `"fr_FR"` → `"fr"`) → fall back to `"en"`.
+- Load the matching catalog from `veaf_libs/locales/<lang>.json` (plain dict of `key → string`). Fall back to `en.json` if the requested locale has no catalog.
+- Expose `t(key: str, **kwargs) -> str`: looks up the key, formats with `kwargs` via `str.format_map`. Missing key returns the key itself (never crashes).
+- Ship `veaf_libs/locales/en.json` (authoritative) and `veaf_libs/locales/fr.json` (FR translation).
+- PyInstaller spec: include `veaf_libs/locales/` as data files.
+
+**I18N-002 — CLI messages**
+Convert all hard-coded user-visible strings in `veaf-tools.py`, `mission_builder/`, `weather_injector/`, `aircrafts_injector/`, `waypoints_injector/` etc. to `t("key")` calls. Strings that are internal log messages (debug/trace) stay as-is — only INFO/WARNING/ERROR messages visible in normal use are translated.
+Catalog keys follow the pattern `<module>.<context>.<id>`, e.g. `build.start`, `convert_v5.no_mission_yaml`, `weather.clearsky_applied`.
+
+**I18N-003 — Generated file comments**
+`lua_config_generator.py` and `generate-config` command currently emit English inline comments. Extract these strings into the catalog. At generation time, call `t(key)` to emit comments in the active language.
+Scope: section headers and field description comments in `veaf-config.lua`; every `# …` comment line in the `mission.yaml` template output.
+
+**I18N-004 — FR documentation**
+Create `doc/fr/MISSION_MAKER_GUIDE.md` as a full FR translation of `doc/MISSION_MAKER_GUIDE.md`. Maintain both files — a note at the top of each links to the other language. No automated sync: manual update on structural changes.
+
+**I18N-006 — mission.yaml `language:` field + Lua emit**
+Add `language: en|fr` (optional) to `mission.yaml`. `generate_config_lua()` emits `veaf.config.language = "fr"` when set so the Lua runtime can read it. Also translate every `#` comment line in the `generate_mission_yaml()` YAML template output using `t()`.
+
+</details>
+
+---
+
+## Lot 12 — QUALITY: Nettoyage, consolidation et qualité du code
+
+**Goal**: Résoudre les problèmes de qualité identifiés lors de la revue de code (mai 2026). Fixes ciblés, pas de changement structurel majeur.
+**Branch**: `feature/quality-cleanup` → PR #316 → `develop-v6` ✅ merged 2026-05-20
+**Depends on**: Lot 5 (release v6.1.0 terminée — ces fixes sont post-release)
+
+| # | Ticket | File(s) | Type | Effort | Status |
+|---|--------|---------|------|--------|--------|
+| QUAL-001 | Supprimer `package.json` — version unique via `pyproject.toml` + `importlib.metadata` | `package.json`, `veaf-tools.py`, `veaf-tools-updater.py`, `veaf_build/cli.py` | chore | 45 min | ✅ |
+| QUAL-002 | Supprimer les `VERSION` hardcodées dans `veaf-tools.py` et `veaf-tools-updater.py` — utiliser `importlib.metadata.version("veaf-tools")` | `veaf-tools.py`, `veaf-tools-updater.py` | fix | 20 min | ✅ |
+| QUAL-003 | Factoriser `resolve_path()` dans `veaf_libs/paths.py` (utilisé par tools + updater) | `veaf_libs/`, `veaf-tools.py`, `veaf-tools-updater.py` | chore | 30 min | ✅ |
+| QUAL-004 | Factoriser `resolve_mission_file()` helper (pattern glob dupliqué 6+ fois) | `veaf-tools.py`, `veaf_libs/` | chore | 30 min | ✅ |
+| QUAL-005 | Fix `miz_tools.py:195` — ne pas `os.replace` après exception dans le try/except | `mission_tools/miz_tools.py` | fix | 15 min | ✅ |
+| QUAL-006 | Fix `progress.py:19` — bug de précédence d'opérateur (parenthèses manquantes) | `veaf_libs/progress.py` | fix | 10 min | ✅ |
+| QUAL-007 | Supprimer fichier fantôme `veaf_libs/__init__,py` (virgule dans le nom) | `veaf_libs/` | fix | 5 min | ✅ |
+| QUAL-008 | Fix typo `WheatherInjectorREADME` → `WeatherInjectorREADME` | `weather_injector/__init__.py`, `veaf-tools.py` | fix | 5 min | ✅ |
+| QUAL-009 | Vérifier et supprimer la dépendance `Pillow` si inutilisée | `pyproject.toml` | chore | 15 min | ✅ |
+| QUAL-010 | Ajouter bornes supérieures sur les dépendances critiques (PyInstaller compat) | `pyproject.toml` | chore | 20 min | ✅ |
+| QUAL-011 | Découper `veaf-tools.py` (1541 lignes) en package `commands/` | `veaf-tools.py` → `veaf_tools/commands/*.py` | chore | 120 min | ✅ |
+| QUAL-012 | Créer `BaseWorker` ABC pour formaliser le pattern worker | `veaf_libs/base_worker.py` + workers | chore | 45 min | ✅ |
+| QUAL-013 | Remédiation mypy : retirer `ignore_errors` pour 5 premiers modules (veaf_libs.logger, mission_tools.mission_constants, mission_tools.miz_tools, veaf_libs.progress, presets_injector.presets_manager) | `pyproject.toml` + modules concernés | fix | 90 min | ✅ |
+| QUAL-014 | Lua: normaliser format `Id` (supprimer trailing `" - "`) dans tous les modules | `veafGroundAI.lua`, `veafAirWaves.lua`, `veafEventHandler.lua`, etc. | chore | 20 min | ✅ |
+| QUAL-015 | Lua: remettre `LogLevel` à `nil` dans `veafSpawn.lua` et `veafMarkers.lua` (actuellement "trace" en production) | `veafSpawn.lua`, `veafMarkers.lua` | fix | 5 min | ✅ |
+| QUAL-016 | Lua: ajouter `pcall` wrapping aux entry points critiques (scheduled callbacks, event handlers) | `veaf.lua`, `veafQraManager.lua`, `veafAirWaves.lua`, `veafGroundAI.lua` | fix | 45 min | ✅ |
+| QUAL-017 | Lua: factoriser `statusToString()` dupliqué en helper `veaf.enumToString(value, mapping)` | `veaf.lua`, `veafQraManager.lua`, `veafAirWaves.lua`, `veafGroundAI.lua` | chore | 20 min | ✅ |
+| QUAL-018 | Lua: remplacer `getRandomizableNumeric_norandom()` hardcodé par calcul algorithmique de la médiane | `veaf.lua` | fix | 30 min | ✅ |
+| QUAL-019 | Lua: nettoyer dead code (blocs commentés GoToWaypoint, StaticObject.getByName, etc.) | multiples fichiers | chore | 20 min | ✅ |
+| QUAL-020 | Lua: corriger variable shadowing (`local coalition = coalition` dans `veaf.lua:2571`) | `veaf.lua`, `veafSpawn.lua` | fix | 15 min | ✅ |
+| QUAL-021 | Python + Lua: ajouter tests unitaires pour `miz_tools.py` (read/write .miz) | `test/veaf-tools/` + nouveau test file | feat | 60 min | ✅ |
+| QUAL-022 | Lua: enrichir `dcs_mocks.lua` — supporter `Unit.getByName`/`Group.getByName` configurables pour débloquer les tests logiques | `test/lua/dcs_mocks.lua` | feat | 45 min | ✅ |
+| QUAL-023 | Lua: ajouter tests state-machine pour `VeafQRA` lifecycle (spawn/despawn/rearm cycle) | `test/lua/test_veafQraManager.lua` | feat | 60 min | ✅ |
+| QUAL-024 | Documentation: supprimer ou archiver `todo.md` | `todo.md` | chore | 5 min | ✅ |
+| QUAL-025 | Documentation: résoudre date `[6.0.2] — 2025-11-??` dans `CHANGELOG.md` | `CHANGELOG.md` | fix | 5 min | ✅ |
+| QUAL-026 | Documentation: vérifier/corriger lien vers `RELEASE_NOTES.md` dans `README.md` | `README.md` | fix | 10 min | ✅ |
+| QUAL-027 | Documentation: vérifier et corriger les liens `fr/scripts/` dans `doc/mission-maker/` | `doc/mission-maker/` | fix | 15 min | ✅ |
+
+**Raw total: 865 min → estimated (×1.15): ~995 min (~16h35)**
+
+<details>
+<summary>Ticket details</summary>
+
+**QUAL-001 — Supprimer package.json**
+`package.json` est un vestige du build system Node.js de la v5. En v6 Python-native, la source de vérité pour la version est `pyproject.toml`. Le seul consommateur est `veaf_build/cli.py:_resolve_version()` qui lit `package.json` comme fallback.
+- Supprimer `package.json`
+- Dans `veaf_build/cli.py`: remplacer `_resolve_version()` par lecture de `pyproject.toml` via `tomllib` (stdlib 3.11+) ou `importlib.metadata.version("veaf-tools")`
+- Dans `veaf-tools-updater.py`: `get_installed_version()` lit actuellement `package.json` du dossier mission — à remplacer par un fichier `veaf-version.json` déposé dans `published/` au build time
+
+**QUAL-002 — Supprimer VERSION hardcodées**
+- Remplacer `VERSION: str = "6.0.4"` par `VERSION = importlib.metadata.version("veaf-tools")` dans les deux entry-points
+- En mode PyInstaller (frozen), `importlib.metadata` fonctionne si le package est correctement bundlé — vérifier avec `veaf-tools.spec`
+- Fallback: lire `pyproject.toml` du répertoire racine via `tomllib`
+
+**QUAL-005 — Fix miz_tools.py os.replace after exception**
+Ligne 187-195 : le `os.replace(temp_file, final_path)` est hors du try/except, donc exécuté même si l'écriture a échoué. Déplacer dans le bloc `try` ou conditionner à un flag `success`.
+
+**QUAL-006 — Fix progress.py operator precedence**
+`if sys.stdout and not sys.stdout.encoding or ...` — le `not` a priorité sur `and`. Corriger avec des parenthèses explicites : `if sys.stdout and (not sys.stdout.encoding or ...)`.
+
+**QUAL-011 — Découper veaf-tools.py**
+Structure cible :
+
+<pre><code>src/python/veaf-tools/
+  veaf_tools/
+    __init__.py
+    main.py              ← app = typer.Typer()
+    commands/
+      build.py           ← @app.command() build
+      extract.py         ← @app.command() extract
+      convert.py         ← @app.command() convert-v5
+      inject_presets.py
+      inject_waypoints.py
+      inject_weather.py
+      inject_aircrafts.py
+      extract_aircrafts.py
+      extract_waypoints.py
+      generate_config.py
+      migrate_config.py
+      prepare.py
+</code></pre>
+
+L'entry-point `veaf-tools.py` importe `veaf_tools.main:app` et appelle `app()`.
+
+**QUAL-013 — Remédiation mypy (5 premiers modules)**
+Retirer `ignore_errors = true` pour les 5 modules les plus simples, fixer les erreurs de type. Objectif : réduire la dette de 18 → 13 modules ignorés comme premier pas. Prioriser les modules fondamentaux (`logger`, `mission_constants`, `miz_tools`).
+
+**QUAL-016 — pcall wrapping**
+Ajouter un helper `veaf.safeCall(fn, ...)` qui wrappe dans `pcall`, log l'erreur si échec, et retourne `nil`. L'utiliser dans :
+- `mist.scheduleFunction` callbacks (QRA check, AirWaves check, GroundAI check)
+- `veafEventHandler` dispatch (handler errors shouldn't crash DCS)
+- `veafMarkers` marker change handler
+
+**QUAL-022 — Enrichir dcs_mocks.lua**
+Ajouter à `dcs_mocks.lua` :
+- `dcs_mocks.addUnit(name, data)` → `Unit.getByName(name)` retourne un objet mocké
+- `dcs_mocks.addGroup(name, data)` → `Group.getByName(name)` retourne un objet mocké avec `:getUnits()`, `:getController()`
+- Mocker `:isExist()`, `:getLife()`, `:getPoint()`, `:inAir()`
+Cela débloque les tests unitaires des state machines (QRA, AirWaves).
+
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "dev", "provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
