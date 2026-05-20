@@ -2301,6 +2301,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Publishing a Release">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automated (recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-local-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual (local fallback)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -3010,6 +3038,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Publishing a Release">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automated (recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-local-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual (local fallback)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -3452,10 +3508,25 @@ poetry run veaf-build build --version 6.0.5
 3. Builds <code>veaf-tools.exe</code> and <code>veaf-tools-updater.exe</code> via PyInstaller
 4. Creates <code>published.zip</code> with all artifacts + SHA256 checksum</p>
 <h3 id="publishing-a-release">Publishing a Release</h3>
-<pre><code class="language-powershell"># Requires GITHUB_TOKEN environment variable
+<h4 id="automated-recommended">Automated (recommended)</h4>
+<p>Push a versioned tag — GitHub Actions handles everything:</p>
+<pre><code class="language-bash">git tag published-v6.0.6
+git push origin published-v6.0.6
+</code></pre>
+<p>The <code>release</code> CI workflow will:
+1. Generate release notes from conventional commits (git-cliff)
+2. Build <code>veaf-tools.exe</code>, <code>veaf-tools-updater.exe</code>, and <code>published.zip</code>
+3. Create the GitHub Release and upload all assets
+4. Move the <code>published-latest</code> floating tag</p>
+<p>Release notes are auto-generated from commit messages. You can edit them on GitHub afterwards.</p>
+<h4 id="manual-local-fallback">Manual (local fallback)</h4>
+<pre><code class="language-powershell"># Build first
+poetry run veaf-build build --version 6.0.5
+
+# Then publish (interactive — prompts for RELEASE_NOTES.md)
+# Requires GITHUB_TOKEN environment variable
 poetry run veaf-build publish --version 6.0.5
 </code></pre>
-<p>This creates a Git tag, a GitHub Release, and uploads <code>published.zip</code> with the SHA256 file.</p>
 <h3 id="security-model">Security Model</h3>
 <pre><code>veaf-build computes SHA256 of published.zip
     ↓
@@ -3527,27 +3598,18 @@ Luacheck is enforced by the <code>Luacheck</code> CI job.</p>
 <td><code>python-quality</code></td>
 <td>ruff lint + format, mypy types, pytest</td>
 </tr>
+<tr>
+<td><code>Release</code></td>
+<td>Triggered on <code>published-v*</code> tag push — builds and publishes to GitHub</td>
+</tr>
 </tbody>
 </table>
 <p>All CI jobs must be green before a PR can be merged.</p>
 <h3 id="releasing-a-new-version">Releasing a new version</h3>
-<p>Release tags <strong>must be GPG-signed</strong> to guarantee supply-chain integrity (the tag drives the exe build and GitHub Release).</p>
-<pre><code class="language-bash"># 1. Configure Git to sign all tags by default (one-time setup)
-git config --global tag.gpgSign true
-git config --global user.signingKey &lt;YOUR_GPG_KEY_ID&gt;
-
-# 2. Create a signed tag
-git tag -s v6.1.0 -m &quot;Release v6.1.0&quot;
-
-# 3. Push the tag
-git push origin v6.1.0
+<p>Push a <code>published-v*</code> tag — the <code>Release</code> CI workflow does everything automatically:</p>
+<pre><code class="language-bash">git tag published-v6.1.0
+git push origin published-v6.1.0
 </code></pre>
-<p>To verify a tag signature:</p>
-<pre><code class="language-bash">git tag -v v6.1.0
-</code></pre>
-<blockquote>
-<p>If you don't have a GPG key yet, see <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key">GitHub's guide</a>.</p>
-</blockquote>
 <hr />
 <h2 id="contributing">Contributing</h2>
 <h3 id="git-flow">Git Flow</h3>
