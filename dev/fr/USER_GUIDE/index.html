@@ -1,0 +1,3237 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tools and Lua scripts for dynamic DCS World missions">
+      
+      
+      
+        <link rel="canonical" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/USER_GUIDE/">
+      
+      
+        <link rel="prev" href="../LUA_API_REFERENCE/">
+      
+      
+        <link rel="next" href="../ROADMAP/">
+      
+      
+        
+          <link rel="alternate" href="../../USER_GUIDE/" hreflang="en">
+        
+          <link rel="alternate" href="./" hreflang="fr">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Guide utilisateur - VEAF Mission Creation Tools</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#veaf-mission-creation-tools-user-guide" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../" title="VEAF Mission Creation Tools" class="md-header__button md-logo" aria-label="VEAF Mission Creation Tools" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VEAF Mission Creation Tools
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Guide utilisateur
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Sélectionner la langue">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../USER_GUIDE/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="fr" class="md-select__link">
+              Français
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/VEAF/VEAF-Mission-Creation-Tools" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    VEAF/VEAF-Mission-Creation-Tools
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Accueil
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../pilot/" class="md-tabs__link">
+          
+  
+  
+  Guide Pilote
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../mission-maker/" class="md-tabs__link">
+          
+  
+  
+  Créateur de Mission
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../developer/" class="md-tabs__link">
+          
+  
+  
+  Développeur
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../TOOLS_REFERENCE/" class="md-tabs__link">
+          
+  
+  
+  Références
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="VEAF Mission Creation Tools" class="md-nav__button md-logo" aria-label="VEAF Mission Creation Tools" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VEAF Mission Creation Tools
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/VEAF/VEAF-Mission-Creation-Tools" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    VEAF/VEAF-Mission-Creation-Tools
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide Pilote
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guide Pilote
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aperçu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pilot/GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Créateur de Mission
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Créateur de Mission
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aperçu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/MIGRATION_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide de Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Scripts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aperçu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafAirWaves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafAirWaves
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafAirbases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafAirbases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafAssets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafAssets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafCarrierOperations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafCarrierOperations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafCasMission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafCasMission
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafCombatZone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafCombatZone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafGrass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafGrass
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafHoundElintHelper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafHoundElintHelper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafMissileGuardian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafMissileGuardian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafMove/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafMove
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafNamedPoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafNamedPoints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafQraManager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafQraManager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafSanctuary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafSanctuary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafSecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafSecurity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafSkynetIadsHelper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafSkynetIadsHelper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafSpawn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafSpawn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafTransportMission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafTransportMission
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mission-maker/scripts/veafWeather/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafWeather
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Développeur
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Développeur
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aperçu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developer/GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Références
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Références
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TOOLS_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Référence des outils
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LUA_API_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Référence de l'API Lua
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide utilisateur
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide utilisateur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Table of Contents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Table of Contents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-players" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Players
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-mission-makers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Mission Makers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ROADMAP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feuille de route
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Table of Contents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Table of Contents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-players" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Players
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-mission-makers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Mission Makers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="veaf-mission-creation-tools-user-guide">VEAF Mission Creation Tools - User Guide</h1>
+<p><strong>Version:</strong> 6.0.5
+<strong>Date:</strong> December 16, 2025
+<strong>Project:</strong> VEAF (Virtual European Air Force)</p>
+<hr />
+<h2 id="table-of-contents">📋 Table of Contents</h2>
+<h3 id="for-players">For Players</h3>
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#getting-started-with-veaf">Getting Started with VEAF</a></li>
+<li><a href="#f10-radio-menu">F10 Radio Menu</a></li>
+<li><a href="#marker-commands">Marker Commands</a></li>
+<li><a href="#main-features">Main Features</a></li>
+<li><a href="#mission-guide">Mission Guide</a></li>
+<li><a href="#resources-and-support">Resources and Support</a></li>
+</ol>
+<h3 id="for-mission-makers">For Mission Makers</h3>
+<ol>
+<li><a href="#mission-maker-guide">Mission Maker Guide</a></li>
+<li><a href="#mission-setup">Mission Setup</a></li>
+<li><a href="#build-tools">Build Tools</a></li>
+<li><a href="#advanced-customization">Advanced Customization</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ol>
+<hr />
+<h1 id="for-players_1">For Players</h1>
+<h2 id="introduction">Introduction</h2>
+<h3 id="what-is-veaf">What is VEAF?</h3>
+<p>VEAF Mission Creation Tools is a script framework for DCS World that makes missions <strong>dynamic and interactive</strong>. Instead of playing a static mission created in the editor, you can:</p>
+<ul>
+<li>🎯 <strong>Spawn enemy units</strong> on demand</li>
+<li>✈️ <strong>Create combat missions</strong> (air-to-air and air-to-ground)</li>
+<li>🎮 <strong>Interact</strong> with the environment via radio menu (F10)</li>
+<li>🗺️ <strong>Use map markers</strong> on the F10 map to issue commands</li>
+<li>🚁 <strong>Manage resources</strong> (tankers, AWACS, carriers)</li>
+<li>🎲 <strong>Generate procedural content</strong> for infinite replayability</li>
+</ul>
+<h3 id="key-features">Key Features</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dynamic Spawning</strong></td>
+<td>Create enemies, convoys, CAP flights anytime</td>
+</tr>
+<tr>
+<td><strong>CAS Missions</strong></td>
+<td>Generate CAS combat zones with variable difficulty</td>
+</tr>
+<tr>
+<td><strong>Managed Assets</strong></td>
+<td>Control tankers, AWACS and carriers via F10</td>
+</tr>
+<tr>
+<td><strong>Dynamic Weather</strong></td>
+<td>Inject real-world weather into your missions</td>
+</tr>
+<tr>
+<td><strong>Radio Menu</strong></td>
+<td>Complete interface via F10 menu</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>Permission system for multiplayer servers</td>
+</tr>
+<tr>
+<td><strong>Transport</strong></td>
+<td>Transport missions with CTLD (cargo/troops)</td>
+</tr>
+<tr>
+<td><strong>Combat Zones</strong></td>
+<td>Predefined zones activatable on demand</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="getting-started-with-veaf">Getting Started with VEAF</h2>
+<h3 id="recognizing-a-veaf-mission">Recognizing a VEAF Mission</h3>
+<p>When you load a VEAF mission, you'll see:</p>
+<ol>
+<li><strong>Startup messages</strong> indicating loaded VEAF modules</li>
+<li><strong>F10 "VEAF" menu</strong> with multiple submenus</li>
+<li><strong>Map markers</strong> on F10 map with information (tankers, zones, etc.)</li>
+</ol>
+<h3 id="first-flight">First Flight</h3>
+<p><strong>Startup checklist:</strong></p>
+<ol>
+<li>✅ Start your aircraft normally</li>
+<li>✅ Press <strong>F10</strong> to open radio menu</li>
+<li>✅ Navigate to <strong>F10 → VEAF</strong> to see options</li>
+<li>✅ Press <strong>F10 → F1</strong> to close menu and continue</li>
+</ol>
+<p><strong>Tip:</strong> Explore submenus to discover what's available in this mission.</p>
+<hr />
+<h2 id="f10-radio-menu">F10 Radio Menu</h2>
+<h3 id="veaf-menu-structure">VEAF Menu Structure</h3>
+<pre><code>F10 - Radio Menu
+├── VEAF (main menu)
+│   ├── Assets (tankers, AWACS, carriers)
+│   ├── Missions (activatable missions)
+│   ├── CAS Mission (CAS generator)
+│   ├── Spawn (if enabled)
+│   ├── Weather (weather)
+│   └── Help (help)
+</code></pre>
+<h3 id="navigation">Navigation</h3>
+<ul>
+<li><strong>F10</strong>: Opens radio menu</li>
+<li><strong>F1-F9</strong>: Selects an option</li>
+<li><strong>F10 or Esc</strong>: Closes menu</li>
+</ul>
+<h3 id="common-submenus">Common Submenus</h3>
+<h4 id="assets">🛢️ Assets</h4>
+<p>Manages airborne resources:</p>
+<ul>
+<li><strong>Tankers</strong>:</li>
+<li>Info: Position, TACAN, radio frequency</li>
+<li>
+<p>Respawn: Respawn tanker if destroyed</p>
+</li>
+<li>
+<p><strong>AWACS</strong>:</p>
+</li>
+<li>Info: Position, radio frequency</li>
+<li>
+<p>Respawn: Respawn AWACS</p>
+</li>
+<li>
+<p><strong>Carriers</strong> (aircraft carriers):</p>
+</li>
+<li>Info: Position, heading, BRC, TACAN, ICLS</li>
+<li>Start Recovery: Turn carrier into wind</li>
+<li>Stop Recovery: Resume normal navigation</li>
+</ul>
+<p><strong>Usage example:</strong></p>
+<pre><code>F10 → VEAF → Assets → Tankers → Texaco → Info
+Result: Displays &quot;Texaco-1 | KC-135 | TACAN 61X | 251.0 MHz AM | Position N42°15' E041°30'&quot;
+</code></pre>
+<h4 id="missions">🎯 Missions</h4>
+<p>Activates missions predefined by the mission maker:</p>
+<ul>
+<li><strong>List</strong>: See all available missions</li>
+<li><strong>Activate</strong>: Start a mission</li>
+<li><strong>Deactivate</strong>: Stop an active mission</li>
+<li><strong>Info</strong>: Details about a mission (objectives, status)</li>
+</ul>
+<p>Missions can include:
+- Air-to-air combat (CAP, Intercept)
+- Ground strikes (Strike, SEAD)
+- CAS (Close Air Support)
+- Transport (Cargo, Troops)</p>
+<h4 id="cas-mission">🎲 CAS Mission</h4>
+<p>CAS training mission generator:</p>
+<ul>
+<li><strong>Generate</strong>: Creates a new target zone</li>
+<li><strong>Smoke</strong>: Marks zone with smoke</li>
+<li><strong>Flare</strong>: Marks zone with flares</li>
+<li><strong>Skip</strong>: Skip to next target</li>
+<li><strong>Info</strong>: Current target information</li>
+<li><strong>Cleanup</strong>: Cleans up CAS mission</li>
+</ul>
+<p><strong>Difficulty options:</strong>
+- <strong>Size</strong> (0-5): Number of units
+- <strong>Defense</strong> (0-5): AA defense level
+- <strong>Armor</strong> (0-5): Armor level</p>
+<h4 id="weather">🌤️ Weather</h4>
+<p>If enabled, allows you to:
+- Check weather conditions
+- Modify weather (mission maker)</p>
+<hr />
+<h2 id="marker-commands">Marker Commands</h2>
+<h3 id="principle">Principle</h3>
+<p>On some missions, you can <strong>place F10 markers</strong> on the map with <strong>text commands</strong> to interact with the mission.</p>
+<h3 id="how-to">How To</h3>
+<ol>
+<li><strong>Open F10 map</strong></li>
+<li><strong>Right-click</strong> on map → "Add marker"</li>
+<li><strong>Type a command</strong> in marker text</li>
+<li><strong>Validate</strong> - command executes and marker disappears</li>
+</ol>
+<h3 id="basic-commands">Basic Commands</h3>
+<h4 id="individual-unit-spawning-_spawn-unit">Individual Unit Spawning: <code>_spawn unit</code></h4>
+<p><strong>Syntax:</strong> <code>_spawn unit, name [TYPE], [OPTIONS]</code></p>
+<p><strong>Examples:</strong></p>
+<pre><code>_spawn unit, name F-16C, group 2
+→ Spawns 2 F-16Cs at marker position
+
+_spawn unit, name SA-6
+→ Spawns an SA-6 battery
+
+_spawn unit, name M1 Abrams, group 4, hdg 270
+→ Spawns 4 M1 Abrams tanks facing 270°
+
+_spawn unit, name MiG-29S, alt 5000, hdg 090, speed 450
+→ Spawns MiG-29S at 5000ft, heading 090°
+</code></pre>
+<p><strong>Common options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name [TYPE]</code></td>
+<td>DCS unit type (required)</td>
+<td><code>name F-16C</code></td>
+</tr>
+<tr>
+<td><code>group [N]</code></td>
+<td>Number of units</td>
+<td><code>group 4</code></td>
+</tr>
+<tr>
+<td><code>hdg [DEGREES]</code></td>
+<td>Heading in degrees</td>
+<td><code>hdg 270</code></td>
+</tr>
+<tr>
+<td><code>alt [FEET]</code></td>
+<td>Altitude in feet</td>
+<td><code>alt 15000</code></td>
+</tr>
+<tr>
+<td><code>speed [KNOTS]</code></td>
+<td>Speed in knots</td>
+<td><code>speed 450</code></td>
+</tr>
+<tr>
+<td><code>country [NAME]</code></td>
+<td>Country</td>
+<td><code>country USA</code></td>
+</tr>
+<tr>
+<td><code>side [blue/red]</code></td>
+<td>Coalition</td>
+<td><code>side red</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> <code>_spawn unit</code> creates DCS units directly. To spawn <strong>predefined groups</strong> from the <code>spawnables.yaml</code> file, use <code>_spawn group</code> (see below).</p>
+<h4 id="predefined-group-spawning-_spawn-group">Predefined Group Spawning: <code>_spawn group</code></h4>
+<p><strong>Syntax:</strong> <code>_spawn group, name [GROUP_NAME], [OPTIONS]</code></p>
+<p><strong>Examples:</strong></p>
+<pre><code>_spawn group, name CAP-2
+→ Spawns CAP-2 group defined in spawnables.yaml
+
+_spawn group, name ARMOR-PLATOON, hdg 270
+→ Spawns armor platoon facing 270°
+
+_spawn group, name RED-SAM-SITE
+→ Spawns predefined SAM site
+</code></pre>
+<p><strong>Description:</strong> Groups must be defined in the mission's <code>spawnables.yaml</code> file. This command allows reusing predefined unit compositions created by the mission maker.</p>
+<h4 id="cap-patrol-_spawn-cap">CAP Patrol: <code>_spawn cap</code></h4>
+<p><strong>Syntax:</strong> <code>_spawn cap, name [AIRCRAFT], [OPTIONS]</code></p>
+<p><strong>Examples:</strong></p>
+<pre><code>_spawn cap, name F-15C, alt 25000, hdg 090, speed 450, capradius 20000
+→ Spawns F-15C CAP patrol at 25000ft with 20km orbit
+
+_spawn cap, name Su-27, group 2, alt 30000, capradius 25000
+→ Spawns 2 Su-27s on CAP at 30000ft
+</code></pre>
+<p><strong>Specific options:</strong>
+- <code>capradius [METERS]</code>: CAP orbit radius
+- <code>distance [METERS]</code>: Orbit distance from marker</p>
+<h4 id="afac-airborne-controller-_spawn-afac">AFAC (Airborne Controller): <code>_spawn afac</code></h4>
+<p><strong>Syntax:</strong> <code>_spawn afac, name [AIRCRAFT], [OPTIONS]</code></p>
+<p><strong>Examples:</strong></p>
+<pre><code>_spawn afac, name A-10C, alt 15000, speed 250, freq 133.0, mod AM, code 1688
+→ Spawns A-10C AFAC with lasing code 1688 on 133.0 AM
+
+_spawn afac, name L-39ZA, freq 135.0, code 1584, immortal
+→ Spawns invulnerable L-39 AFAC
+</code></pre>
+<p><strong>Specific options:</strong>
+- <code>code [XXXX]</code>: Laser code (e.g., 1688)
+- <code>freq [MHZ]</code>: Radio frequency
+- <code>mod [AM/FM]</code>: Radio modulation
+- <code>immortal</code>: Makes AFAC invulnerable</p>
+<h4 id="convoy-spawning-_spawn-convoy">Convoy Spawning: <code>_spawn convoy</code></h4>
+<p><strong>Syntax:</strong> <code>_spawn convoy, [OPTIONS], dest [MARKER]</code></p>
+<p><strong>Example:</strong></p>
+<pre><code>Marker 1 (start position):
+_spawn convoy, name Convoy1, dest marker2, speed 50, defense 2
+
+Marker 2 (destination):
+(just an empty marker as destination point)
+
+→ Spawns a convoy moving from marker 1 to marker 2 at 50 km/h
+</code></pre>
+<p><strong>Convoy options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dest [MARKER]</code></td>
+<td>Destination (marker number or name)</td>
+</tr>
+<tr>
+<td><code>speed [KMH]</code></td>
+<td>Speed in km/h</td>
+</tr>
+<tr>
+<td><code>patrol</code></td>
+<td>Return to start after arrival</td>
+</tr>
+<tr>
+<td><code>offroad</code></td>
+<td>Allow off-road movement</td>
+</tr>
+<tr>
+<td><code>defense [0-5]</code></td>
+<td>AA defense level</td>
+</tr>
+<tr>
+<td><code>armor [0-5]</code></td>
+<td>Armor level</td>
+</tr>
+<tr>
+<td><code>size [0-5]</code></td>
+<td>Convoy size</td>
+</tr>
+</tbody>
+</table>
+<h4 id="cas-mission-_cas">CAS Mission: <code>_cas</code></h4>
+<p><strong>Syntax:</strong> <code>_cas, [OPTIONS]</code></p>
+<p><strong>Example:</strong></p>
+<pre><code>_cas, size 3, defense 2, armor 3
+→ Generates medium CAS zone with moderate defense and armor
+</code></pre>
+<p><strong>Options:</strong>
+- <code>size [0-5]</code>: Force size (0=small, 5=huge)
+- <code>defense [0-5]</code>: AA defense (0=none, 5=heavy SAM)
+- <code>armor [0-5]</code>: Armor (0=infantry, 5=heavy tanks)
+- <code>side [blue/red]</code>: Coalition</p>
+<h4 id="effects-smoke-explosions-illumination">Effects: Smoke, Explosions, Illumination</h4>
+<p><strong>Smoke:</strong></p>
+<pre><code>_spawn smoke, color red
+→ Red smoke at position
+
+_spawn smoke, color green, shells 5
+→ 5 green smoke grenades
+</code></pre>
+<p><strong>Available colors:</strong> <code>red</code>, <code>green</code>, <code>blue</code>, <code>white</code>, <code>orange</code></p>
+<p><strong>Explosions:</strong></p>
+<pre><code>_spawn bomb, power 500, shells 3
+→ 3x 500kg explosions
+
+_spawn bomb, power 1000, radius 100
+→ 1000kg explosion dispersed over 100m
+</code></pre>
+<p><strong>Illumination:</strong></p>
+<pre><code>_spawn flare, power 1000000, shells 5, heading 90, distance 500
+→ 5 illumination flares spaced 500m on heading 090°
+</code></pre>
+<h4 id="destruction-_destroy">Destruction: <code>_destroy</code></h4>
+<p><strong>Syntax:</strong> <code>_destroy, [OPTIONS]</code></p>
+<p><strong>Examples:</strong></p>
+<pre><code>_destroy, radius 500
+→ Destroys all units within 500m radius
+
+_destroy, name Tank-1
+→ Destroys unit named &quot;Tank-1&quot;
+</code></pre>
+<h4 id="teleportation-_teleport">Teleportation: <code>_teleport</code></h4>
+<p><strong>Syntax:</strong> <code>_teleport, name [GROUP_NAME]</code></p>
+<p><strong>Example:</strong></p>
+<pre><code>_teleport, name Viper Flight
+→ Teleports group &quot;Viper Flight&quot; to marker position
+</code></pre>
+<h3 id="named-markers">Named Markers</h3>
+<p>You can <strong>name your markers</strong> to reference them:</p>
+<pre><code>Marker &quot;Zone Alpha&quot;:
+(zone position)
+
+Command marker:
+_spawn convoy, dest &quot;Zone Alpha&quot;, speed 40
+→ Convoy moves to marker named &quot;Zone Alpha&quot;
+</code></pre>
+<hr />
+<h2 id="main-features">Main Features</h2>
+<h3 id="air-refueling">🛢️ Air Refueling</h3>
+<p><strong>Finding a Tanker:</strong></p>
+<ol>
+<li>F10 → VEAF → Assets → Tankers → [NAME] → Info</li>
+<li>Note the <strong>TACAN</strong> and <strong>radio frequency</strong></li>
+<li>Contact tanker on its frequency (SRS if enabled)</li>
+</ol>
+<p><strong>Typical Tanker Information:</strong>
+- <strong>Position:</strong> Displayed in coordinates
+- <strong>TACAN:</strong> Ex: 61X (1088 MHz)
+- <strong>Radio:</strong> Ex: 251.0 MHz AM
+- <strong>Type:</strong> KC-135, KC-130, S-3B, etc.</p>
+<p><strong>Tips:</strong>
+- Tankers typically fly in orbit
+- Typical altitude: 20,000 - 25,000 ft
+- Approach from behind and below</p>
+<h3 id="awacs">📡 AWACS</h3>
+<p><strong>Usage:</strong></p>
+<ol>
+<li>F10 → VEAF → Assets → AWACS → [NAME] → Info</li>
+<li>Contact AWACS on its frequency</li>
+<li>Request vectors to threats</li>
+</ol>
+<p><strong>AWACS Information:</strong>
+- <strong>Callsign:</strong> Ex: Magic, Overlord
+- <strong>Frequency:</strong> Ex: 133.0 MHz AM
+- <strong>Position:</strong> Patrol zone</p>
+<h3 id="carrier-operations">🚢 Carrier Operations</h3>
+<p><strong>Carrier Recovery:</strong></p>
+<ol>
+<li><strong>10-15 minutes before recovery:</strong></li>
+<li>
+<p>F10 → VEAF → Assets → Carriers → [NAME] → Start Recovery</p>
+</li>
+<li>
+<p><strong>Displayed information:</strong></p>
+</li>
+<li>BRC (Base Recovery Course): Carrier heading</li>
+<li>Relative wind (should be ~30 kts into wind)</li>
+<li>TACAN: Ex: 73X</li>
+<li>ICLS: Ex: 13</li>
+<li>
+<p>ATC frequency: Ex: 127.5 MHz AM</p>
+</li>
+<li>
+<p><strong>After recovery:</strong></p>
+</li>
+<li>F10 → VEAF → Assets → Carriers → [NAME] → Stop Recovery</li>
+</ol>
+<p><strong>Tips:</strong>
+- Carrier automatically turns into wind
+- Use TACAN for navigation
+- ICLS for approach (F/A-18C)
+- Marshal on 127.5 MHz typically</p>
+<h3 id="combat-missions">🎯 Combat Missions</h3>
+<p><strong>Activating a Mission:</strong></p>
+<ol>
+<li>F10 → VEAF → Missions → List</li>
+<li>Read available mission descriptions</li>
+<li>F10 → VEAF → Missions → [MISSION NAME] → Activate</li>
+<li>Read displayed briefing</li>
+<li>F10 → VEAF → Missions → [MISSION NAME] → Info (for status)</li>
+</ol>
+<p><strong>Typical Mission Example:</strong></p>
+<p><strong>"Strike Alpha - Destroy Armor Column"</strong>
+- <strong>Briefing:</strong> "Enemy armor advancing on friendly position at Grid XY1234. Destroy all tanks. Expect heavy AAA defense."
+- <strong>Objectives:</strong>
+  1. Destroy all enemy tanks (0/8)
+  2. RTB safely
+- <strong>Status:</strong> In progress / Completed / Failed</p>
+<p><strong>Deactivating a Mission:</strong></p>
+<p>F10 → VEAF → Missions → [MISSION NAME] → Deactivate</p>
+<h3 id="cas-training">🎲 CAS Training</h3>
+<p><strong>Typical Scenario:</strong></p>
+<ol>
+<li><strong>Target generation:</strong></li>
+<li>F10 → VEAF → CAS Mission → Generate</li>
+<li>
+<p>Choose difficulty (or leave random)</p>
+</li>
+<li>
+<p><strong>Zone marking:</strong></p>
+</li>
+<li>F10 → VEAF → CAS Mission → Smoke</li>
+<li>OR F10 → VEAF → CAS Mission → Flare</li>
+<li>
+<p><em>Cooldown: 3 minutes between marks</em></p>
+</li>
+<li>
+<p><strong>Information:</strong></p>
+</li>
+<li>F10 → VEAF → CAS Mission → Info</li>
+<li>
+<p>Displays: position, composition, status</p>
+</li>
+<li>
+<p><strong>Engagement:</strong></p>
+</li>
+<li>Attack marked targets</li>
+<li>
+<p>Units may disperse when attacked</p>
+</li>
+<li>
+<p><strong>Next target:</strong></p>
+</li>
+<li>If too difficult: F10 → CAS Mission → Skip</li>
+<li>
+<p>OR destroy all units to auto-advance</p>
+</li>
+<li>
+<p><strong>Cleanup:</strong></p>
+</li>
+<li>F10 → VEAF → CAS Mission → Cleanup (removes all units)</li>
+</ol>
+<p><strong>Difficulty Levels:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Size</th>
+<th>Defense</th>
+<th>Armor</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Very small</td>
+<td>None</td>
+<td>Infantry</td>
+<td>Perfect beginner</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Small</td>
+<td>Light</td>
+<td>Light vehicles</td>
+<td>Easy</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Medium</td>
+<td>Moderate</td>
+<td>APCs</td>
+<td>Intermediate</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Medium-Large</td>
+<td>Medium AA</td>
+<td>IFVs + light tanks</td>
+<td>Advanced</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Large</td>
+<td>Heavy AA</td>
+<td>Medium tanks</td>
+<td>Difficult</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Huge</td>
+<td>SAM</td>
+<td>Heavy tanks</td>
+<td>Expert</td>
+</tr>
+</tbody>
+</table>
+<h3 id="transport-and-logistics-ctld">🚁 Transport and Logistics (CTLD)</h3>
+<p>If CTLD is enabled in mission:</p>
+<p><strong>Loading Cargo:</strong></p>
+<ol>
+<li>Land near loading zone (FARP, base)</li>
+<li>F10 → CTLD → Load Cargo</li>
+<li>Choose cargo type</li>
+<li>Take off to destination</li>
+</ol>
+<p><strong>Unloading:</strong></p>
+<ol>
+<li>Hover over delivery zone</li>
+<li>F10 → CTLD → Unload Cargo</li>
+<li>Cargo is paradropped or delivered</li>
+</ol>
+<p><strong>Cargo Types:</strong>
+- <strong>Troops</strong>: Troops (can capture zones)
+- <strong>Vehicles</strong>: Vehicles
+- <strong>Crates</strong>: Crates (ammo, fuel)
+- <strong>FOB</strong>: Forward Operating Base</p>
+<h3 id="radio-communication-srs">📻 Radio Communication (SRS)</h3>
+<p>If <strong>Simple Radio Standalone (SRS)</strong> is installed:</p>
+<p><strong>Features:</strong>
+- Realistic VOIP communication
+- Tankers respond to calls
+- AWACS gives vectors
+- ATC for carriers
+- Automatic message transmission</p>
+<p><strong>Setup:</strong>
+1. Launch SRS before DCS
+2. Radio frequencies are auto-synced
+3. Use your in-game radio to communicate</p>
+<h3 id="security-and-permissions">🔐 Security and Permissions</h3>
+<p>On <strong>multiplayer servers</strong>, some commands may be <strong>restricted</strong>:</p>
+<p><strong>Public Commands:</strong>
+- Asset info
+- Activating predefined missions
+- Smoke/flare marking</p>
+<p><strong>Restricted Commands (require password):</strong>
+- Unit spawning
+- Weather modification
+- Teleportation
+- Destruction</p>
+<p><strong>Usage:</strong></p>
+<pre><code>_spawn unit, name F-16C, password [PASSWORD]
+</code></pre>
+<p>Password is set by mission maker or server admin.</p>
+<hr />
+<h2 id="mission-guide">Mission Guide</h2>
+<h3 id="veaf-mission-types">VEAF Mission Types</h3>
+<h4 id="sandbox-missions">🔵 "Sandbox" Missions</h4>
+<p><strong>Characteristics:</strong>
+- No predefined objectives
+- Free unit spawning via markers
+- Perfect for training
+- Create your own scenario</p>
+<p><strong>Typical Usage:</strong>
+1. Take off
+2. Place markers to spawn enemies
+3. Engage as desired
+4. Create new scenarios at will</p>
+<h4 id="objective-based-missions">🎯 Objective-Based Missions</h4>
+<p><strong>Characteristics:</strong>
+- Predefined objectives
+- Tracked progression
+- Victory/defeat conditions
+- Detailed briefings</p>
+<p><strong>Usage:</strong>
+1. Read startup briefing
+2. Activate missions via F10
+3. Track progress via Info
+4. Complete objectives</p>
+<h4 id="dynamic-missions">🌐 Dynamic Missions</h4>
+<p><strong>Characteristics:</strong>
+- Activatable combat zones
+- Procedurally generated enemies
+- Infinite replayability
+- Variable difficulty</p>
+<p><strong>Usage:</strong>
+1. Choose a combat zone
+2. Activate zone via F10
+3. Enemies spawn dynamically
+4. Deactivate to cleanup</p>
+<h3 id="tips-by-aircraft-type">Tips by Aircraft Type</h3>
+<h4 id="fighter-aircraft-air-to-air">✈️ Fighter Aircraft (Air-to-Air)</h4>
+<p><strong>F-16C, F/A-18C, F-15C:</strong></p>
+<p><strong>Recommended Missions:</strong>
+- CAP (Combat Air Patrol)
+- Intercept
+- Escort</p>
+<p><strong>VEAF Usage:</strong></p>
+<pre><code>Spawn enemy aircraft:
+_spawn cap, name Su-27, group 2, alt 25000, hdg 180, speed 450, capradius 25000
+→ Generates enemy patrol
+
+F10 → VEAF → Missions → CAP Alpha → Activate
+→ Activates predefined intercept mission
+</code></pre>
+<p><strong>Tips:</strong>
+- Use AWACS for vectors
+- Refuel before engaging
+- Spawn enemy CAP at distance for realistic simulation</p>
+<h4 id="attack-aircraft-air-to-ground">💣 Attack Aircraft (Air-to-Ground)</h4>
+<p><strong>A-10C, F/A-18C, F-16C:</strong></p>
+<p><strong>Recommended Missions:</strong>
+- CAS
+- Strike
+- SEAD</p>
+<p><strong>VEAF Usage:</strong></p>
+<pre><code>Generate CAS zone:
+F10 → VEAF → CAS Mission → Generate → Difficulty 3
+
+OR place marker:
+_cas, size 3, defense 2, armor 3
+
+Mark zone:
+F10 → VEAF → CAS Mission → Smoke
+</code></pre>
+<p><strong>Tips:</strong>
+- Start with low difficulty (0-2)
+- Request smoke to locate
+- Watch for AA defenses (level 3+)</p>
+<h4 id="helicopters">🚁 Helicopters</h4>
+<p><strong>AH-64D, Ka-50, Mi-24P:</strong></p>
+<p><strong>Recommended Missions:</strong>
+- Close CAS
+- Transport (Mi-8)
+- Anti-tank</p>
+<p><strong>VEAF Usage:</strong></p>
+<pre><code>Spawn helo targets:
+_spawn unit, name BTR-80, group 5, spacing 50
+→ Dispersed APCs, perfect for helo engagement
+
+_cas, size 2, defense 1, armor 2
+→ CAS adapted for helos (limited AA defense)
+</code></pre>
+<p><strong>Tips:</strong>
+- Stay at difficulty 0-2 (light AA defense)
+- Use terrain masking
+- Engage at max range from AA guns</p>
+<h4 id="transport">🛩️ Transport</h4>
+<p><strong>C-130, Mi-8, UH-1H:</strong></p>
+<p><strong>Recommended Missions:</strong>
+- Troop/cargo transport
+- Resupply
+- CASEVAC</p>
+<p><strong>VEAF Usage:</strong></p>
+<pre><code>Spawn destination FARP:
+_spawn farp, name FARP Alpha, side blue
+
+Activate CTLD:
+F10 → CTLD → Load Troops
+(near base)
+
+Deliver:
+F10 → CTLD → Deploy Troops
+(above FARP Alpha)
+</code></pre>
+<hr />
+<h2 id="resources-and-support">Resources and Support</h2>
+<h3 id="documentation">📖 Documentation</h3>
+<ul>
+<li><strong>VEAF Website:</strong> https://www.veaf.org</li>
+<li><strong>Full Documentation:</strong> https://veaf.github.io/documentation/</li>
+<li><strong>GitHub:</strong> https://github.com/VEAF/VEAF-Mission-Creation-Tools</li>
+</ul>
+<h3 id="community">💬 Community</h3>
+<ul>
+<li><strong>VEAF Discord:</strong> https://www.veaf.org/discord</li>
+<li>
+<h1 id="support-channel-for-help">support channel for help</h1>
+</li>
+<li>
+<h1 id="missions-channel-to-share-creations">missions channel to share creations</h1>
+</li>
+<li>
+<p>French and international community</p>
+</li>
+<li>
+<p><strong>Forum:</strong> https://www.veaf.org/forum</p>
+</li>
+</ul>
+<h3 id="tutorials">🎓 Tutorials</h3>
+<p><strong>On Discord/YouTube:</strong>
+- Basic tutorial videos
+- Mission-specific guides
+- Demonstration streams</p>
+<h3 id="player-faq">❓ Player FAQ</h3>
+<p><strong>Q: How do I know if a mission uses VEAF?</strong>
+A: Check F10 menu - if there's a "VEAF" menu, it's a VEAF mission.</p>
+<p><strong>Q: Why don't my markers work?</strong>
+A:
+- Check command syntax
+- On servers, you may need a password
+- Some missions disable spawn markers</p>
+<p><strong>Q: How do I know which aircraft types to spawn?</strong>
+A: Use standard DCS names: "F-16C", "Su-27", "MiG-29S", etc.</p>
+<p><strong>Q: Spawned units disappear?</strong>
+A: Normal if you get too far. Stay within 40-50 NM radius.</p>
+<p><strong>Q: How to reset a CAS mission?</strong>
+A: F10 → VEAF → CAS Mission → Cleanup, then Generate again.</p>
+<p><strong>Q: Can I spawn allies?</strong>
+A: Yes, use <code>side blue</code> in your spawn command.</p>
+<hr />
+<h1 id="for-mission-makers_1">For Mission Makers</h1>
+<h2 id="mission-maker-guide">Mission Maker Guide</h2>
+<h3 id="what-is-a-veaf-mission-maker">🎯 What is a VEAF Mission Maker?</h3>
+<p>As a <strong>DCS mission creator</strong>, VEAF allows you to:</p>
+<ul>
+<li>✅ <strong>Reduce creation time</strong> by 80%</li>
+<li>✅ <strong>Create replayable missions</strong> infinitely</li>
+<li>✅ <strong>Automate</strong> spawning, weather, assets</li>
+<li>✅ <strong>Customize</strong> mission behavior</li>
+<li>✅ <strong>Manage</strong> multiplayer servers easily</li>
+<li>✅ <strong>Integrate</strong> community systems (CTLD, CSAR, Skynet IADS)</li>
+</ul>
+<h3 id="veaf-philosophy">VEAF Philosophy</h3>
+<p><strong>Static Missions vs VEAF:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Static Mission</th>
+<th>VEAF Mission</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Creation</strong></td>
+<td>Place each unit manually</td>
+<td>Define spawn rules</td>
+</tr>
+<tr>
+<td><strong>Replayability</strong></td>
+<td>Always identical</td>
+<td>Different each time</td>
+</tr>
+<tr>
+<td><strong>Complexity</strong></td>
+<td>Simple but limited</td>
+<td>Rich and flexible</td>
+</tr>
+<tr>
+<td><strong>.miz Size</strong></td>
+<td>Heavy (many units)</td>
+<td>Light (scripts)</td>
+</tr>
+<tr>
+<td><strong>Maintenance</strong></td>
+<td>Difficult (re-edit)</td>
+<td>Easy (config files)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>VEAF Approach:</strong>
+1. <strong>Define</strong> zones, assets, rules
+2. <strong>Configure</strong> via simple YAML files
+3. <strong>Let</strong> players generate content dynamically</p>
+<hr />
+<h2 id="mission-setup">Mission Setup</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<p><strong>Required Software:</strong>
+- ✅ DCS World (stable or open beta)
+- ✅ DCS Mission Editor
+- ✅ Text editor (VS Code recommended)
+- ✅ VEAF Mission Creation Tools (latest version)</p>
+<p><strong>Download:</strong>
+- <strong>GitHub Releases:</strong> https://github.com/VEAF/VEAF-Mission-Creation-Tools/releases
+- Download <code>published.zip</code>
+- Extract to working folder</p>
+<h3 id="veaf-mission-structure">VEAF Mission Structure</h3>
+<pre><code>MyMission/
+├── src/                          # Source folder
+│   ├── mission/                  # DCS mission
+│   │   └── mission.lua           # Main mission script
+│   ├── scripts/                  # Custom scripts
+│   │   ├── missionConfig.lua     # Mission configuration
+│   │   └── veafDynamicConfig.lua # Dynamic config
+│   ├── presets.yaml              # Radio presets
+│   ├── spawnables.yaml           # Spawnable groups
+│   ├── waypoints.yaml            # Navigation points
+│   └── versions.yaml             # Component versions
+└── MyMission.miz                 # Compiled mission file
+</code></pre>
+<h3 id="step-1-create-base-mission">Step 1: Create Base Mission</h3>
+<p><strong>In DCS Editor:</strong></p>
+<ol>
+<li><strong>Create new mission</strong></li>
+<li>Choose theater (Caucasus, Persian Gulf, Syria, etc.)</li>
+<li>Set base weather</li>
+<li>
+<p>Place player aircraft (client slots)</p>
+</li>
+<li>
+<p><strong>Add Base Assets</strong> (optional but recommended)</p>
+</li>
+<li>Tankers: Place KC-135, KC-130 in orbit</li>
+<li>AWACS: E-3A, E-2D in orbit</li>
+<li>
+<p>Carriers: CVN-73, CVN-74 navigating</p>
+</li>
+<li>
+<p><strong>Define Trigger Zones</strong> (for VEAF)</p>
+</li>
+<li>Spawn zones</li>
+<li>Combat zones</li>
+<li>CAS zones</li>
+<li>
+<p>Security zones</p>
+</li>
+<li>
+<p><strong>Save</strong> mission: <code>MyMissionBase.miz</code></p>
+</li>
+</ol>
+<h3 id="step-2-prepare-veaf-structure">Step 2: Prepare VEAF Structure</h3>
+<p><strong>Create source folder:</strong></p>
+<ol>
+<li>
+<p><strong>Create</strong> folder <code>MyMission/src/</code></p>
+</li>
+<li>
+<p><strong>Extract</strong> <code>.miz</code> file:</p>
+</li>
+<li>A <code>.miz</code> file is a ZIP</li>
+<li>Rename <code>.miz</code> → <code>.zip</code></li>
+<li>
+<p>Extract to <code>src/mission/</code></p>
+</li>
+<li>
+<p><strong>Copy</strong> default config files from VEAF:
+   <code>VEAF-Mission-Creation-Tools/src/defaults/mission-folder/
+   → Copy all to MyMission/src/</code></p>
+</li>
+</ol>
+<h3 id="step-3-basic-configuration">Step 3: Basic Configuration</h3>
+<h4 id="file-missionconfiglua">File <code>missionConfig.lua</code></h4>
+<p><strong>Location:</strong> <code>src/scripts/missionConfig.lua</code></p>
+<p><strong>Configuration example:</strong></p>
+<pre><code class="language-lua">-------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Mission Configuration: Strike Training
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Mission name
+veaf.config.MISSION_NAME = &quot;Strike Training - Caucasus&quot;
+
+-- Player coalition (default)
+veaf.config.DEFAULT_COALITION = coalition.side.BLUE
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- VEAF Modules to Load
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Core (always required)
+veaf.config.LOAD_VEAF_CORE = true
+veaf.config.LOAD_VEAF_MARKERS = true
+veaf.config.LOAD_VEAF_EVENT_HANDLER = true
+
+-- Spawn
+veaf.config.LOAD_VEAF_SPAWN = true  -- Enable spawn via markers
+veaf.config.VEAF_SPAWN_ALLOW_PUBLIC = false  -- Requires password
+
+-- Missions
+veaf.config.LOAD_VEAF_COMBAT_MISSION = true  -- Predefined missions
+veaf.config.LOAD_VEAF_CAS_MISSION = true     -- CAS generator
+
+-- Assets
+veaf.config.LOAD_VEAF_ASSETS = true          -- Tanker/AWACS management
+
+-- Carrier
+veaf.config.LOAD_VEAF_CARRIER_OPERATIONS = true  -- If carrier present
+
+-- Transport
+veaf.config.LOAD_CTLD = true                 -- CTLD for transport
+
+-- Weather
+veaf.config.LOAD_VEAF_WEATHER = false        -- No dynamic weather
+
+-- Security
+veaf.config.LOAD_VEAF_SECURITY = true
+veaf.config.VEAF_SECURITY_PASSWORD = &quot;strike2024&quot;  -- Spawn password
+
+-- Misc
+veaf.config.LOAD_VEAF_RADIO = true           -- Radio menus
+veaf.config.LOAD_VEAF_SHORTCUTS = true       -- Command shortcuts
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Assets Configuration
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Tankers
+veafAssets.Assets = {
+    -- Tanker Texaco (Blue)
+    {
+        name = &quot;Texaco-1&quot;,
+        description = &quot;KC-135 Tanker&quot;,
+        information = &quot;TACAN 61X | 251.0 MHz AM&quot;,
+        disposable = false,  -- Cannot be destroyed
+        linked = {}          -- Linked groups (respawn together)
+    },
+
+    -- Tanker Shell (Blue)
+    {
+        name = &quot;Shell-1&quot;,
+        description = &quot;KC-130 Tanker&quot;,
+        information = &quot;TACAN 62X | 252.0 MHz AM&quot;,
+        disposable = false
+    },
+
+    -- AWACS
+    {
+        name = &quot;Magic-1&quot;,
+        description = &quot;E-3A AWACS&quot;,
+        information = &quot;133.0 MHz AM&quot;,
+        disposable = false
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Combat Zones Configuration
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Combat zone activatable via F10
+local combatZone1 = veafCombatZone:new()
+combatZone1:setName(&quot;Batumi Sector&quot;)
+combatZone1:setDescription(&quot;Enemy forces attacking Batumi&quot;)
+combatZone1:setBriefing(&quot;Destroy enemy ground forces advancing on Batumi airbase&quot;)
+combatZone1:setZone(&quot;COMBAT_ZONE_BATUMI&quot;)  -- DCS trigger zone name
+combatZone1:setCoalition(coalition.side.RED)
+combatZone1:setCountry(country.id.RUSSIA)
+
+-- Add zone
+veafCombatZone.AddZone(combatZone1)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Missions Configuration
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- CAP Mission
+local missionCAP1 = veafCombatMission:new()
+missionCAP1:setName(&quot;CAP Alpha&quot;)
+missionCAP1:setDescription(&quot;Eliminate enemy CAP&quot;)
+missionCAP1:setBriefing(&quot;Enemy fighters patrolling north of Batumi. Destroy all hostile aircraft.&quot;)
+missionCAP1:setSpawnZone(&quot;CAP_SPAWN_ZONE&quot;)  -- DCS zone
+missionCAP1:setRadioMenuEnabled(true)        -- Visible in F10
+missionCAP1:setSecured(false)                -- No password required
+
+-- Objective: Destroy enemies
+local objective1 = VeafCombatMissionObjective:new()
+objective1:setName(&quot;Destroy Enemy CAP&quot;)
+objective1:setDescription(&quot;All enemy fighters destroyed&quot;)
+
+missionCAP1:addObjective(objective1)
+veafCombatMission.AddMission(missionCAP1)
+
+-- Generate variants (difficulty)
+veafCombatMission.AddMissionsWithSkillAndScale(
+    missionCAP1,
+    false,  -- Don't include original
+    {&quot;Average&quot;, &quot;Good&quot;, &quot;High&quot;},      -- Skill levels
+    {0.5, 1.0, 1.5}                   -- Scale factors
+)
+-- Result: 9 missions (3 skills × 3 scales)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Initialization
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Everything will be initialized automatically by VEAF
+</code></pre>
+<h4 id="file-presetsyaml">File <code>presets.yaml</code></h4>
+<p><strong>Location:</strong> <code>src/presets.yaml</code></p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-yaml">radios_collection:
+  # Presets for Blue coalition
+  blue_radios:
+    # UHF Radio (30-399 MHz)
+    radio_uhf_30:
+      title: UHF
+      type: uhf
+      channels:
+        01:
+          name: Guard/UHF
+          frequency: 243.0
+          modulation: AM
+        02:
+          name: Texaco
+          frequency: 251.0
+          modulation: AM
+        03:
+          name: Shell
+          frequency: 252.0
+          modulation: AM
+        04:
+          name: Magic AWACS
+          frequency: 133.0
+          modulation: AM
+        05:
+          name: Batumi Tower
+          frequency: 131.0
+          modulation: AM
+        # ... up to 20 channels
+
+    # VHF Radio (30-87 MHz)
+    radio_vhf_30:
+      title: VHF
+      type: vhf_am
+      channels:
+        01:
+          name: Guard/VHF
+          frequency: 121.5
+          modulation: AM
+        02:
+          name: Tac 1
+          frequency: 135.0
+          modulation: AM
+        # ...
+
+  # Presets for Red coalition (optional)
+  red_radios:
+    radio_uhf_30:
+      title: UHF
+      type: uhf
+      channels:
+        01:
+          name: Guard
+          frequency: 243.0
+          modulation: AM
+        # ...
+</code></pre>
+<p><strong>Inject into mission:</strong></p>
+<pre><code class="language-bash"># Command line
+veaf-tools.exe inject-presets src/presets.yaml src/mission/mission.lua
+
+# Or via automatic build (see Build section)
+</code></pre>
+<h3 id="step-4-advanced-configuration">Step 4: Advanced Configuration</h3>
+<h4 id="security-zones">Security Zones</h4>
+<p><strong>In <code>missionConfig.lua</code>:</strong></p>
+<pre><code class="language-lua">-- Sanctuaries (zones where units cannot be attacked)
+veafSanctuary.AddZone(
+    &quot;SAFE_ZONE_KUTAISI&quot;,  -- DCS trigger zone name
+    true,                 -- Protects Blue
+    false                 -- Doesn't protect Red
+)
+
+-- Protected zone around Kutaisi airfield
+</code></pre>
+<h4 id="community-systems">Community Systems</h4>
+<p><strong>CTLD (Transport Helicopters):</strong></p>
+<pre><code class="language-lua">-- In missionConfig.lua
+veaf.config.LOAD_CTLD = true
+
+-- CTLD configuration
+ctld.hoverPickup = true              -- Pickup in hover
+ctld.enableCrates = true             -- Enable crates
+ctld.slingLoad = true                -- Sling loading (compatible helos)
+ctld.enableSmokeDrop = true          -- Marking smoke
+
+-- Pickup zones
+ctld.logisticUnits = {
+    &quot;FARP Alpha&quot;,     -- FARP group name in mission
+    &quot;FARP Bravo&quot;
+}
+
+-- Deployment zones
+ctld.deployableFOBs = {
+    &quot;FOB Zone 1&quot;,     -- Zones where FOB can be deployed
+    &quot;FOB Zone 2&quot;
+}
+</code></pre>
+<hr />
+<h2 id="build-tools">Build Tools</h2>
+<h3 id="veaf-tools-cli">veaf-tools CLI</h3>
+<p><strong>veaf-tools</strong> is the command-line tool to automate mission creation.</p>
+<h4 id="installation">Installation</h4>
+<ol>
+<li><strong>Download</strong> <code>published.zip</code> from GitHub Releases</li>
+<li><strong>Extract</strong> <code>veaf-tools.exe</code> to your working folder</li>
+<li><strong>Test</strong>:</li>
+</ol>
+<pre><code class="language-bash">veaf-tools.exe --version
+# Result: veaf-tools version 6.0.4
+</code></pre>
+<h4 id="command-prepare-mission">Command: Prepare Mission</h4>
+<p><strong>Create base structure:</strong></p>
+<pre><code class="language-bash">veaf-tools.exe prepare &quot;D:\DCS\Missions\MyMission&quot;
+</code></pre>
+<p><strong>Result:</strong></p>
+<pre><code>✓ Folder created: MyMission/src/
+✓ Folder created: MyMission/src/mission/
+✓ Folder created: MyMission/src/scripts/
+✓ Config files copied
+✓ presets.yaml created
+✓ spawnables.yaml created
+✓ waypoints.yaml created
+✓ versions.yaml created
+</code></pre>
+<h4 id="command-inject-radio-presets">Command: Inject Radio Presets</h4>
+<p><strong>Inject <code>presets.yaml</code> into mission:</strong></p>
+<pre><code class="language-bash">veaf-tools.exe inject-presets &quot;MyMission\src\presets.yaml&quot; &quot;MyMission\src\mission\mission.lua&quot;
+</code></pre>
+<p><strong>Result:</strong>
+- Radio frequencies automatically configured in all player aircraft
+- Channel 1 = frequency 1, Channel 2 = frequency 2, etc.</p>
+<h4 id="command-build-complete-mission">Command: Build Complete Mission</h4>
+<p><strong>Assemble all elements and create .miz:</strong></p>
+<pre><code class="language-bash">veaf-tools.exe build-mission &quot;MyMission\src&quot; &quot;MyMission\MyMission.miz&quot;
+</code></pre>
+<p><strong>Automatic steps:</strong>
+1. ✅ Load <code>src/mission/</code>
+2. ✅ Inject VEAF scripts
+3. ✅ Apply <code>missionConfig.lua</code>
+4. ✅ Inject radio presets
+5. ✅ Inject waypoints
+6. ✅ Compile to <code>.miz</code></p>
+<p><strong>Result:</strong></p>
+<pre><code>✓ Mission compiled: MyMission.miz (12.5 MB)
+✓ Ready for DCS World
+</code></pre>
+<h3 id="automated-build-script">Automated Build Script</h3>
+<p><strong>Create <code>build.bat</code> file:</strong></p>
+<pre><code class="language-batch">@echo off
+echo ========================================
+echo Build VEAF Mission: Strike Training
+echo ========================================
+
+set MISSION_DIR=D:\DCS\Missions\StrikeTraining
+set VEAF_TOOLS=D:\VEAF\veaf-tools.exe
+
+echo.
+echo [1/3] Injecting radio presets...
+%VEAF_TOOLS% inject-presets &quot;%MISSION_DIR%\src\presets.yaml&quot; &quot;%MISSION_DIR%\src\mission\mission.lua&quot;
+
+echo.
+echo [2/3] Injecting waypoints...
+%VEAF_TOOLS% inject-waypoints &quot;%MISSION_DIR%\src\waypoints.yaml&quot; &quot;%MISSION_DIR%\src\mission\mission.lua&quot;
+
+echo.
+echo [3/3] Building final mission...
+%VEAF_TOOLS% build-mission &quot;%MISSION_DIR%\src&quot; &quot;%MISSION_DIR%\StrikeTraining.miz&quot;
+
+echo.
+echo ========================================
+echo Build complete!
+echo ========================================
+echo File: %MISSION_DIR%\StrikeTraining.miz
+pause
+</code></pre>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-bash">build.bat
+</code></pre>
+<hr />
+<h2 id="advanced-customization">Advanced Customization</h2>
+<h3 id="creating-complex-missions">Creating Complex Missions</h3>
+<p>See the French version for detailed examples of:
+- Multi-objective missions
+- Timed missions
+- Custom event handling
+- Dynamic zones
+- Procedural mission generation</p>
+<hr />
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-problems">Common Problems</h3>
+<h4 id="mission-wont-load">Mission won't load</h4>
+<p><strong>Symptoms:</strong>
+- Black screen on loading
+- Return to main menu
+- Error message</p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>Check DCS logs:</strong></li>
+<li><code>Saved Games/DCS/Logs/dcs.log</code></li>
+<li>
+<p>Search for "error" or "VEAF"</p>
+</li>
+<li>
+<p><strong>Check Lua syntax:</strong>
+   ```lua
+   -- Common error: missing comma
+   local bad = {
+       name = "Test"
+       description = "Test"  -- ERROR: missing comma on previous line
+   }</p>
+</li>
+</ol>
+<p>-- Correct:
+   local good = {
+       name = "Test",        -- Comma
+       description = "Test"
+   }
+   ```</p>
+<ol>
+<li><strong>Check zone names:</strong></li>
+<li>Trigger zone names are case-sensitive</li>
+<li>
+<p>Verify they exist in DCS mission</p>
+</li>
+<li>
+<p><strong>VEAF version:</strong></p>
+</li>
+<li>Use latest version</li>
+<li>Check DCS compatibility (stable vs open beta)</li>
+</ol>
+<h4 id="markers-dont-work">Markers don't work</h4>
+<p><strong>Symptoms:</strong>
+- Marker placed but nothing happens
+- No error message</p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li>
+<p><strong>Verify module is loaded:</strong>
+   <code>lua
+   veaf.config.LOAD_VEAF_SPAWN = true
+   veaf.config.LOAD_VEAF_MARKERS = true</code></p>
+</li>
+<li>
+<p><strong>Check command syntax:</strong>
+   <code>Correct: _spawn unit, name F-16C, group 2
+   Incorrect: _spawn, name F-16C, group 2  (missing "unit" keyword)
+   Incorrect: spawn unit, name F-16C, group 2  (missing "_")</code></p>
+</li>
+<li>
+<p><strong>Check security:</strong>
+   ```lua
+   -- If spawn secured
+   veaf.config.VEAF_SPAWN_ALLOW_PUBLIC = false</p>
+</li>
+</ol>
+<p>-- Player must use:
+   _spawn unit, name F-16C, password YOUR_PASSWORD
+   ```</p>
+<h3 id="debug-and-logging">Debug and Logging</h3>
+<h4 id="enable-detailed-logs">Enable Detailed Logs</h4>
+<p><strong>In <code>missionConfig.lua</code>:</strong></p>
+<pre><code class="language-lua">-- Enable trace logging for all modules
+veaf.loggers.setBaseLevel(&quot;trace&quot;)
+
+-- Or for specific module
+veafSpawn.LogLevel = &quot;trace&quot;
+veafCombatMission.LogLevel = &quot;debug&quot;
+</code></pre>
+<p><strong>Logs available in:</strong>
+- <code>Saved Games/DCS/Logs/dcs.log</code></p>
+<h3 id="support-and-community">Support and Community</h3>
+<p><strong>Getting Help:</strong></p>
+<ol>
+<li><strong>VEAF Discord:</strong> https://www.veaf.org/discord</li>
+<li>
+<h1 id="support-mission-makers-channel">support-mission-makers channel</h1>
+</li>
+<li>
+<p>Quick community response</p>
+</li>
+<li>
+<p><strong>GitHub Issues:</strong> https://github.com/VEAF/VEAF-Mission-Creation-Tools/issues</p>
+</li>
+<li>
+<p>For bugs and feature requests</p>
+</li>
+<li>
+<p><strong>VEAF Forum:</strong> https://www.veaf.org/forum</p>
+</li>
+<li>In-depth discussions</li>
+<li>Mission sharing</li>
+</ol>
+<p><strong>Providing Information:</strong></p>
+<p>When requesting help, include:
+- VEAF version (in logs)
+- DCS version (stable/open beta)
+- <code>missionConfig.lua</code> file
+- <code>dcs.log</code> logs (relevant part)
+- Detailed problem description
+- Steps to reproduce</p>
+<hr />
+<h2 id="additional-resources">Additional Resources</h2>
+<h3 id="mission-templates">Mission Templates</h3>
+<p><strong>Available on GitHub:</strong>
+- Basic CAS mission
+- Multi-zone CAP mission
+- CTLD transport mission
+- Complete dynamic mission</p>
+<p><strong>Link:</strong> https://github.com/VEAF/VEAF-Mission-Creation-Tools/tree/master/examples</p>
+<h3 id="documentation_1">Documentation</h3>
+<ul>
+<li><strong><a href="../developer/GUIDE/">developer/GUIDE.md</a></strong> - Complete technical manual, build workflow and system architecture</li>
+<li><strong><a href="../LUA_API_REFERENCE/">LUA_API_REFERENCE.md</a></strong> - Complete Lua API reference</li>
+<li><strong><a href="../TOOLS_REFERENCE/">TOOLS_REFERENCE.md</a></strong> - CLI tools reference</li>
+<li><strong><a href="../TESTING/">TESTING.md</a></strong> - Testing infrastructure</li>
+</ul>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<h3 id="for-players_2">For Players</h3>
+<p>VEAF transforms your DCS experience by giving you <strong>control</strong> over the mission. Instead of experiencing a static scenario, you <strong>create your own story</strong> every flight.</p>
+<p><strong>Start simply:</strong>
+1. ✅ Learn the F10 menu
+2. ✅ Experiment with CAS missions
+3. ✅ Discover marker commands
+4. ✅ Create your own scenarios</p>
+<h3 id="for-mission-makers_2">For Mission Makers</h3>
+<p>VEAF is a <strong>force multiplier</strong> for mission creation:
+- ⏱️ <strong>Save time</strong>: No need to manually place 200 units
+- 🎲 <strong>Create variety</strong>: Replayable procedural missions
+- 🛠️ <strong>Automate</strong>: Scripts, weather, radios, everything is managed
+- 🌐 <strong>Share</strong>: Missions easy to maintain and distribute</p>
+<p><strong>Your Journey:</strong>
+1. ✅ Start with simple mission (CAS trainer)
+2. ✅ Add assets (tankers, AWACS)
+3. ✅ Create missions with objectives
+4. ✅ Explore advanced scripting
+5. ✅ Share with community!</p>
+<hr />
+<p><strong>Happy flying and creating! 🚀</strong></p>
+<hr />
+<h2 id="credits">Credits</h2>
+<p><strong>VEAF Project</strong>
+- Website: https://www.veaf.org
+- GitHub: https://github.com/VEAF/VEAF-Mission-Creation-Tools
+- Discord: https://www.veaf.org/discord</p>
+<p><strong>Lead Developers</strong>
+- Zip (davidp57)
+- And the entire VEAF community</p>
+<p><strong>Contributors</strong>
+- Thanks to all testers and contributors!</p>
+<p><strong>Integrated Community Systems</strong>
+- CTLD - Ciribob
+- CSAR - Ciribob
+- Skynet IADS - Walder
+- MIST - Grimes</p>
+<hr />
+<p><strong>Documentation Version:</strong> 1.0
+<strong>Last Updated:</strong> December 16, 2025
+<strong>For VEAF Mission Creation Tools:</strong> v6.0.5</p>
+<p><strong>License:</strong> ISC - Free to use and modify</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": {"default": "dev", "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
