@@ -2659,12 +2659,12 @@
 ┌──────────────────────────────────────────────────────────┐
 │  RUNTIME (Lua, dans DCS World)                           │
 │                                                          │
-│  veaf-scripts.lua  ────── les 32 modules concaténés     │
+│  veaf-scripts.lua  ────── les 34 modules concaténés     │
 │  missionconfig.lua ────── config spécifique à la mission │
 └──────────────────────────────────────────────────────────┘
 </code></pre>
 <ul>
-<li><strong>Runtime</strong> (<code>src/scripts/veaf/</code>) — 32 modules Lua chargés dans les missions DCS</li>
+<li><strong>Runtime</strong> (<code>src/scripts/veaf/</code>) — 34 modules Lua chargés dans les missions DCS</li>
 <li><strong>Design-time</strong> (<code>src/python/veaf-tools/</code>) — outils CLI Python pour la manipulation des fichiers <code>.miz</code></li>
 </ul>
 <hr />
@@ -2673,7 +2673,7 @@
 ├── veaf_build/                   # CLI veaf-build (orchestrateur build &amp; publication)
 ├── build-and-release.py          # Shim de rétrocompatibilité (utiliser veaf-build à la place)
 ├── src/
-│   ├── scripts/veaf/             # Modules Lua runtime (32 fichiers)
+│   ├── scripts/veaf/             # Modules Lua runtime (34 fichiers)
 │   └── python/veaf-tools/        # Code source Python CLI
 │       ├── veaf-tools.py         # Point d'entrée
 │       ├── veaf_libs/            # Utilitaires partagés (logger, progress, miz)
@@ -2989,7 +2989,7 @@ docs(api): documenter les helpers tanker de veafMove
 <hr />
 <h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
 <ul>
-<li><a href="../../LUA_API_REFERENCE/">Référence API Lua</a> — API publique complète des 32 modules</li>
+<li><a href="../../LUA_API_REFERENCE/">Référence API Lua</a> — API publique complète des 34 modules</li>
 <li><a href="../../TESTING/">Guide de tests</a> — détails de l'infrastructure de test</li>
 <li><a href="../../TOOLS_REFERENCE/">Référence des outils</a> — CLI <code>veaf-tools.exe</code></li>
 <li><a href="../../ROADMAP/">Feuille de route</a> — travaux planifiés</li>

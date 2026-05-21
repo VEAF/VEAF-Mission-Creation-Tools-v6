@@ -2659,12 +2659,12 @@
 ┌──────────────────────────────────────────────────────────┐
 │  RUNTIME (Lua, inside DCS World)                         │
 │                                                          │
-│  veaf-scripts.lua  ────── all 32 modules concatenated   │
+│  veaf-scripts.lua  ────── all 34 modules concatenated   │
 │  missionconfig.lua ────── mission-specific config        │
 └──────────────────────────────────────────────────────────┘
 </code></pre>
 <ul>
-<li><strong>Runtime</strong> (<code>src/scripts/veaf/</code>) — 32 Lua modules loaded inside DCS missions</li>
+<li><strong>Runtime</strong> (<code>src/scripts/veaf/</code>) — 34 Lua modules loaded inside DCS missions</li>
 <li><strong>Design-time</strong> (<code>src/python/veaf-tools/</code>) — Python CLI tools for <code>.miz</code> file manipulation</li>
 </ul>
 <hr />
@@ -2673,7 +2673,7 @@
 ├── veaf_build/                   # veaf-build CLI (build &amp; publish orchestrator)
 ├── build-and-release.py          # Backward-compat shim (use veaf-build instead)
 ├── src/
-│   ├── scripts/veaf/             # Lua runtime modules (32 files)
+│   ├── scripts/veaf/             # Lua runtime modules (34 files)
 │   └── python/veaf-tools/        # Python CLI source
 │       ├── veaf-tools.py         # Entry point
 │       ├── veaf_libs/            # Shared utilities (logger, progress, miz)
@@ -2988,7 +2988,7 @@ docs(api): document veafMove tanker helpers
 <hr />
 <h2 id="further-reading">Further Reading</h2>
 <ul>
-<li><a href="../../LUA_API_REFERENCE/">Lua API Reference</a> — full public API for all 32 modules</li>
+<li><a href="../../LUA_API_REFERENCE/">Lua API Reference</a> — full public API for all 34 modules</li>
 <li><a href="../../TESTING/">Testing Guide</a> — test infrastructure details</li>
 <li><a href="../../TOOLS_REFERENCE/">Tools Reference</a> — <code>veaf-tools.exe</code> CLI</li>
 <li><a href="../../ROADMAP/">Roadmap</a> — planned work</li>
