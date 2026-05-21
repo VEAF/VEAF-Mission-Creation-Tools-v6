@@ -902,6 +902,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#zone-lifecycle-state-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zone lifecycle (state machine)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#see-also" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1823,6 +1834,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#zone-lifecycle-state-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zone lifecycle (state machine)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#see-also" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1854,7 +1876,7 @@
 
 
 <h1 id="veafairwaves-wave-based-air-attacks">veafAirWaves — Wave-Based Air Attacks</h1>
-<p><strong>Module ID:</strong> <code>AIRWAVES</code> | <strong>Version:</strong> 1.7.x | <strong>File:</strong> <code>veafAirWaves.lua</code></p>
+<p><strong>Module ID:</strong> <code>AIRWAVES</code> | <strong>Version:</strong> 1.8.x | <strong>File:</strong> <code>veafAirWaves.lua</code></p>
 <hr />
 <h2 id="purpose">Purpose</h2>
 <p>Defines zones that spawn recurring waves of AI aircraft. When the required number of human players enters the zone, the first wave is launched. As each wave is destroyed, the next wave spawns (with optional delays). Supports player-count scaling, reset on player death, and custom radio messages.</p>
@@ -1988,6 +2010,66 @@ AirWaveZone:new()
   end)
   :initialize()
 </code></pre>
+<hr />
+<h2 id="zone-lifecycle-state-machine">Zone lifecycle (state machine)</h2>
+<p>Each <code>AirWaveZone</code> progresses through a set of named states. Understanding them helps when reading logs or writing callbacks.</p>
+<pre><code>STOP ──start()──► READY
+                    │  player(s) enter zone
+                    ▼
+         WAITING_FOR_MORE_HUMANS
+                    │  activation delay elapsed
+                    ▼
+              ┌── NEXTWAVE ──┐
+              │               │
+         last wave        more waves
+              │               │
+              ▼               ▼
+            OVER    WAITING_FOR_NEXTWAVE
+                            │  inter-wave delay elapsed
+                            ▼
+                          ACTIVE
+                            │  wave destroyed
+                            └──► NEXTWAVE  (loops until OVER)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>STOP</code></td>
+<td>Zone inactive — <code>stop()</code> was called or the zone has never been started.</td>
+</tr>
+<tr>
+<td><code>READY</code></td>
+<td>Zone started, watching for players to enter.</td>
+</tr>
+<tr>
+<td><code>WAITING_FOR_MORE_HUMANS</code></td>
+<td>At least one player is in the zone; the activation timer is running.</td>
+</tr>
+<tr>
+<td><code>NEXTWAVE</code></td>
+<td>Transient routing state: immediately decides between <code>OVER</code> and <code>WAITING_FOR_NEXTWAVE</code>.</td>
+</tr>
+<tr>
+<td><code>WAITING_FOR_NEXTWAVE</code></td>
+<td>Wave slot available; the inter-wave delay is counting down.</td>
+</tr>
+<tr>
+<td><code>ACTIVE</code></td>
+<td>Current wave is spawned and alive.</td>
+</tr>
+<tr>
+<td><code>OVER</code></td>
+<td>All waves have been destroyed — the zone is finished.</td>
+</tr>
+</tbody>
+</table>
+<p><code>NEXTWAVE</code> is a transient state that the zone crosses in a single <code>check()</code> cycle: it never lingers there. Callbacks such as <code>setOnWaveDestroyed</code> fire on the <code>ACTIVE → NEXTWAVE</code> exit, and <code>setOnCompleted</code> fires on the <code>NEXTWAVE → OVER</code> entry.</p>
 <hr />
 <h2 id="see-also">See Also</h2>
 <ul>

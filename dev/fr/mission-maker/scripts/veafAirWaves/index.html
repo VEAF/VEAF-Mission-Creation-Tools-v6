@@ -902,6 +902,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cycle-de-vie-de-la-zone-machine-detats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cycle de vie de la zone (machine d'états)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#voir-aussi" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1823,6 +1834,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cycle-de-vie-de-la-zone-machine-detats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cycle de vie de la zone (machine d'états)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#voir-aussi" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1854,7 +1876,7 @@
 
 
 <h1 id="veafairwaves-attaques-aeriennes-par-vagues">veafAirWaves — Attaques aériennes par vagues</h1>
-<p><strong>Module ID:</strong> <code>AIRWAVES</code> | <strong>Version:</strong> 1.7.x | <strong>Fichier:</strong> <code>veafAirWaves.lua</code></p>
+<p><strong>Module ID:</strong> <code>AIRWAVES</code> | <strong>Version:</strong> 1.8.x | <strong>Fichier:</strong> <code>veafAirWaves.lua</code></p>
 <hr />
 <h2 id="objectif">Objectif</h2>
 <p>Définit des zones qui font apparaître des vagues récurrentes d'aéronefs IA. Quand le nombre requis de joueurs humains entre dans la zone, la première vague est lancée. À chaque vague détruite, la suivante apparaît (avec des délais optionnels). Supporte la mise à l'échelle selon le nombre de joueurs, la réinitialisation à la mort d'un joueur et des messages radio personnalisés.</p>
@@ -1988,6 +2010,66 @@ AirWaveZone:new()
   end)
   :initialize()
 </code></pre>
+<hr />
+<h2 id="cycle-de-vie-de-la-zone-machine-detats">Cycle de vie de la zone (machine d'états)</h2>
+<p>Chaque <code>AirWaveZone</code> progresse à travers un ensemble d'états nommés. Les connaître aide à lire les logs ou à écrire des callbacks.</p>
+<pre><code>STOP ──start()──► READY
+                    │  joueur(s) entrent dans la zone
+                    ▼
+         WAITING_FOR_MORE_HUMANS
+                    │  délai d'activation écoulé
+                    ▼
+              ┌── NEXTWAVE ──┐
+              │               │
+         dernière vague   autres vagues
+              │               │
+              ▼               ▼
+            OVER    WAITING_FOR_NEXTWAVE
+                            │  délai entre vagues écoulé
+                            ▼
+                          ACTIVE
+                            │  vague détruite
+                            └──► NEXTWAVE  (boucle jusqu'à OVER)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>État</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>STOP</code></td>
+<td>Zone inactive — <code>stop()</code> a été appelé ou la zone n'a jamais démarré.</td>
+</tr>
+<tr>
+<td><code>READY</code></td>
+<td>Zone démarrée, en attente de joueurs.</td>
+</tr>
+<tr>
+<td><code>WAITING_FOR_MORE_HUMANS</code></td>
+<td>Au moins un joueur est dans la zone ; le minuteur d'activation tourne.</td>
+</tr>
+<tr>
+<td><code>NEXTWAVE</code></td>
+<td>État de routage transitoire : décide immédiatement entre <code>OVER</code> et <code>WAITING_FOR_NEXTWAVE</code>.</td>
+</tr>
+<tr>
+<td><code>WAITING_FOR_NEXTWAVE</code></td>
+<td>Prochain slot de vague disponible ; le délai entre vagues décompte.</td>
+</tr>
+<tr>
+<td><code>ACTIVE</code></td>
+<td>La vague courante est spawnée et vivante.</td>
+</tr>
+<tr>
+<td><code>OVER</code></td>
+<td>Toutes les vagues ont été détruites — la zone est terminée.</td>
+</tr>
+</tbody>
+</table>
+<p><code>NEXTWAVE</code> est un état transitoire que la zone traverse en un seul cycle de <code>check()</code> : elle n'y reste jamais. Les callbacks comme <code>setOnWaveDestroyed</code> se déclenchent à la sortie de <code>ACTIVE → NEXTWAVE</code>, et <code>setOnCompleted</code> à l'entrée de <code>NEXTWAVE → OVER</code>.</p>
 <hr />
 <h2 id="voir-aussi">Voir aussi</h2>
 <ul>
