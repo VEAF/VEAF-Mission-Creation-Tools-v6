@@ -2577,26 +2577,42 @@
 <h2 id="menu-radio-f10">Menu radio F10</h2>
 <p>Toutes les fonctionnalités VEAF sont accessibles via <strong>F10 → Autre → VEAF</strong>.</p>
 <h3 id="structure-typique-du-menu">Structure typique du menu</h3>
-<pre><code>F10 → Autre → VEAF
-├── Ressources
-│   ├── Ravitailleurs
-│   │   └── [Nom du ravitailleur] → Infos / Réapparition
-│   ├── AWACS
-│   │   └── [Nom de l'AWACS] → Infos / Réapparition
-│   └── Porte-avions
-│       └── [Nom du porte-avions] → Infos / Commencer récupération / Arrêter récupération
-├── Mission CAS
-│   ├── Générer
-│   ├── Fumée
-│   ├── Fusée éclairante
-│   ├── Passer
-│   ├── Infos
-│   └── Nettoyer
-├── Zones de combat
-│   └── [Nom de la zone] → Activer / Désactiver / Infos / Fumée / Fusée éclairante
-├── Missions
-│   └── [Nom de la mission] → Activer / Désactiver / Infos
-└── Aide
+<pre><code class="language-mermaid">mindmap
+  root((F10 → Autre → VEAF))
+    Ressources
+      Ravitailleurs
+        [Nom du ravitailleur]
+          Infos
+          Réapparition
+      AWACS
+        [Nom de l'AWACS]
+          Infos
+          Réapparition
+      Porte-avions
+        [Nom du porte-avions]
+          Infos
+          Commencer récupération
+          Arrêter récupération
+    Mission CAS
+      Générer
+      Fumée
+      Fusée éclairante
+      Passer
+      Infos
+      Nettoyer
+    Zones de combat
+      [Nom de la zone]
+        Activer
+        Désactiver
+        Infos
+        Fumée
+        Fusée éclairante
+    Missions
+      [Nom de la mission]
+        Activer
+        Désactiver
+        Infos
+    Aide
 </code></pre>
 <p>La structure exacte dépend de ce que le créateur de mission a activé.</p>
 <hr />

@@ -2646,22 +2646,18 @@
 <hr />
 <h2 id="architecture-overview">Architecture Overview</h2>
 <p>The project has two completely separate layers:</p>
-<pre><code>┌──────────────────────────────────────────────────────────┐
-│  DESIGN-TIME (Python)                                    │
-│                                                          │
-│  veaf-tools.exe  ──────────────── .miz manipulation      │
-│  veaf-tools-updater.exe ──────── release management      │
-│  veaf-build  (poetry run veaf-build) ─ build pipeline         │
-└──────────────────────────────────────────────────────────┘
-                        ↓ produces
-                  published.zip
-                        ↓ consumed by
-┌──────────────────────────────────────────────────────────┐
-│  RUNTIME (Lua, inside DCS World)                         │
-│                                                          │
-│  veaf-scripts.lua  ────── all 34 modules concatenated   │
-│  missionconfig.lua ────── mission-specific config        │
-└──────────────────────────────────────────────────────────┘
+<pre><code class="language-mermaid">flowchart TD
+    subgraph DT[&quot;DESIGN-TIME — Python&quot;]
+        tools[&quot;veaf-tools.exe&lt;br/&gt;— .miz manipulation&quot;]
+        updater[&quot;veaf-tools-updater.exe&lt;br/&gt;— release management&quot;]
+        build[&quot;veaf-build&lt;br/&gt;— build pipeline&quot;]
+    end
+    DT --&gt;|produces| zip([&quot;published.zip&quot;])
+    zip --&gt;|consumed by| RT
+    subgraph RT[&quot;RUNTIME — Lua inside DCS World&quot;]
+        scripts[&quot;veaf-scripts.lua&lt;br/&gt;— all 34 modules concatenated&quot;]
+        config[&quot;missionconfig.lua&lt;br/&gt;— mission-specific config&quot;]
+    end
 </code></pre>
 <ul>
 <li><strong>Runtime</strong> (<code>src/scripts/veaf/</code>) — 34 Lua modules loaded inside DCS missions</li>
