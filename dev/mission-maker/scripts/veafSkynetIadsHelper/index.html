@@ -1866,28 +1866,28 @@
 </ul>
 <hr />
 <h2 id="enable">Enable</h2>
-<pre><code class="language-lua">-- Load Skynet first (in your DO SCRIPT FILE triggers or missionconfig.lua)
--- Then:
-veafSkynetIadsHelper.initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Load Skynet first (in your DO SCRIPT FILE triggers or missionconfig.lua)</span>
+<span class="c1">-- Then:</span>
+<span class="nv">veafSkynetIadsHelper</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="registration">Registration</h2>
 <p>VEAF groups can be registered with Skynet via naming conventions or explicit calls:</p>
-<pre><code class="language-lua">-- Register a SAM site by DCS group name
-veafSkynetIadsHelper.addSamSiteByGroupName(&quot;SA-6 Battery Alpha&quot;, iads)
+<div class="highlight"><pre><span></span><code><span class="c1">-- Register a SAM site by DCS group name</span>
+<span class="nv">veafSkynetIadsHelper</span><span class="p">.</span><span class="nf">addSamSiteByGroupName</span><span class="p">(</span><span class="s2">&quot;SA-6 Battery Alpha&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">iads</span><span class="p">)</span>
 
--- Register an EWR by group name
-veafSkynetIadsHelper.addEwrByGroupName(&quot;EWR P-18 North&quot;, iads)
+<span class="c1">-- Register an EWR by group name</span>
+<span class="nv">veafSkynetIadsHelper</span><span class="p">.</span><span class="nf">addEwrByGroupName</span><span class="p">(</span><span class="s2">&quot;EWR P-18 North&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">iads</span><span class="p">)</span>
 
--- Register all groups matching a prefix
-veafSkynetIadsHelper.addAllGroupsMatchingPrefix(&quot;SAM-&quot;, iads)
-</code></pre>
+<span class="c1">-- Register all groups matching a prefix</span>
+<span class="nv">veafSkynetIadsHelper</span><span class="p">.</span><span class="nf">addAllGroupsMatchingPrefix</span><span class="p">(</span><span class="s2">&quot;SAM-&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">iads</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="automatic-registration-on-spawn">Automatic Registration on Spawn</h2>
 <p>When <code>veafSpawn</code> creates new SAM or EWR units, <code>veafSkynetIadsHelper</code> can automatically register them:</p>
-<pre><code class="language-lua">-- Enable auto-registration for dynamically spawned units
-veafSkynetIadsHelper.autoRegisterSpawnedUnits = true
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Enable auto-registration for dynamically spawned units</span>
+<span class="nv">veafSkynetIadsHelper</span><span class="p">.</span><span class="py">autoRegisterSpawnedUnits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div>
 <hr />
 <h2 id="notes">Notes</h2>
 <ul>

@@ -1888,15 +1888,15 @@
 </ul>
 <hr />
 <h2 id="enable">Enable</h2>
-<pre><code class="language-lua">veafCarrierOperations.initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafCarrierOperations</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <p>Then register each carrier:</p>
-<pre><code class="language-lua">veafCarrierOperations.addCarrier({
-  name        = &quot;Mother&quot;,
-  description = &quot;CVN-73 Theodore Roosevelt&quot;,
-  groupName   = &quot;CVN-73&quot;,
-})
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafCarrierOperations</span><span class="p">.</span><span class="nf">addCarrier</span><span class="p">({</span>
+<span class="w">  </span><span class="nv">name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Mother&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;CVN-73 Theodore Roosevelt&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">groupName</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;CVN-73&quot;</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div>
 <p>Or let <code>veafAssets</code> handle registration automatically when a carrier asset has <code>carrier = true</code>.</p>
 <hr />
 <h2 id="key-configuration-constants">Key Configuration Constants</h2>
@@ -1974,21 +1974,21 @@
 </ul>
 <hr />
 <h2 id="example-configuration">Example Configuration</h2>
-<pre><code class="language-lua">-- In missionconfig.lua
-veafCarrierOperations.initialize()
+<div class="highlight"><pre><span></span><code><span class="c1">-- In missionconfig.lua</span>
+<span class="nv">veafCarrierOperations</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
 
--- Carriers are registered via veafAssets:
-veafAssets.Assets = {
-  {
-    name        = &quot;Mother&quot;,
-    description = &quot;CVN-73 Theodore Roosevelt&quot;,
-    groupName   = &quot;CVN-73&quot;,
-    information = true,
-    carrier     = true,
-  },
-}
-veafAssets.initialize()
-</code></pre>
+<span class="c1">-- Carriers are registered via veafAssets:</span>
+<span class="nv">veafAssets</span><span class="p">.</span><span class="py">Assets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Mother&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;CVN-73 Theodore Roosevelt&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">groupName</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;CVN-73&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">carrier</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">}</span>
+<span class="nv">veafAssets</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="see-also">See Also</h2>
 <ul>

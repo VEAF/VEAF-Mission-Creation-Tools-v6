@@ -2048,14 +2048,12 @@ Chaque ticket est indépendant mais risqué — à traiter un par un avec tests 
 **LUAR-002 — FSM AirWaveZone**
 `AirWaveZone` gère 7+ états (`READY`, `WAITING_FOR_HUMANS`, `ACTIVE`, `WAITING_FOR_NEXTWAVE`, `CLEANUP`, `DONE`, `PAUSED`) via des variables booléennes et des `if/elseif` chaînés dans `check()`.
 Refactorer en FSM explicite :
-
-<pre><code class="language-lua">AirWaveZone.FSM = {
-  READY = { enter = AirWaveZone._onEnterReady, transitions = { WAITING_FOR_HUMANS = AirWaveZone._canWaitForHumans } },
-  ACTIVE = { enter = AirWaveZone._onEnterActive, transitions = { WAITING_FOR_NEXTWAVE = AirWaveZone._waveEnded } },
-  ...
-}
-</code></pre>
-
+<div class="highlight"><pre><span></span><code><span class="nv">AirWaveZone</span><span class="p">.</span><span class="py">FSM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">READY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">enter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">AirWaveZone</span><span class="p">.</span><span class="py">_onEnterReady</span><span class="p">,</span><span class="w"> </span><span class="nv">transitions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">WAITING_FOR_HUMANS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">AirWaveZone</span><span class="p">.</span><span class="py">_canWaitForHumans</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nv">ACTIVE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">enter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">AirWaveZone</span><span class="p">.</span><span class="py">_onEnterActive</span><span class="p">,</span><span class="w"> </span><span class="nv">transitions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">WAITING_FOR_NEXTWAVE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">AirWaveZone</span><span class="p">.</span><span class="py">_waveEnded</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
 Bénéfice : `check()` devient une boucle sur `FSM[self.state].transitions`, pas de if imbriqués, états clairement documentés.
 
 **LUAR-003 — Split VeafQRA**
@@ -2071,15 +2069,13 @@ Proposition :
 
 **LUAR-004 — RadioMenuBuilder**
 `veafRadio.lua` construit les menus DCS missionCommands via des appels `missionCommands.addSubMenu` / `addCommand` entrelacés avec la logique de rebuild. Créer `RadioMenuBuilder` :
-
-<pre><code class="language-lua">local RadioMenuBuilder = {}
-function RadioMenuBuilder:new(root) ... end
-function RadioMenuBuilder:addMenu(label, parent) ... end
-function RadioMenuBuilder:addCommand(label, parent, fn, args) ... end
-function RadioMenuBuilder:build() ... end
-function RadioMenuBuilder:rebuild() ... end  -- clear + rebuild
-</code></pre>
-
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">RadioMenuBuilder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">RadioMenuBuilder</span><span class="p">:</span><span class="nf">new</span><span class="p">(</span><span class="nv">root</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="kr">end</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">RadioMenuBuilder</span><span class="p">:</span><span class="nf">addMenu</span><span class="p">(</span><span class="nv">label</span><span class="p">,</span><span class="w"> </span><span class="nv">parent</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="kr">end</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">RadioMenuBuilder</span><span class="p">:</span><span class="nf">addCommand</span><span class="p">(</span><span class="nv">label</span><span class="p">,</span><span class="w"> </span><span class="nv">parent</span><span class="p">,</span><span class="w"> </span><span class="nv">fn</span><span class="p">,</span><span class="w"> </span><span class="nv">args</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="kr">end</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">RadioMenuBuilder</span><span class="p">:</span><span class="nf">build</span><span class="p">()</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="kr">end</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">RadioMenuBuilder</span><span class="p">:</span><span class="nf">rebuild</span><span class="p">()</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="kr">end</span><span class="w">  </span><span class="c1">-- clear + rebuild</span>
+</code></pre></div>
 Isole la complexité de l'arbre DCS et facilite le test unitaire.
 
 </details>
@@ -2151,55 +2147,47 @@ Chaque ticket est indépendant — ordre recommandé : ARCH-001 → ARCH-002 →
 **ARCH-001 — Registre veafInterpreter**
 Actuellement `veafInterpreter.execute()` contient 8 `if/elseif` hardcodés dans l'ordre : veafShortcuts → veafSpawn → veafNamedPoints → veafCasMission → veafSecurity → veafMove → veafRadio → veafRemote. Chaque ajout de module nécessite de modifier ce fichier.
 Proposition :
-
-<pre><code class="language-lua">veafInterpreter.moduleRegistry = {}  -- ordered list
-function veafInterpreter.registerModule(fn)
-  table.insert(veafInterpreter.moduleRegistry, fn)
-end
--- dans execute() :
-for _, fn in ipairs(veafInterpreter.moduleRegistry) do
-  if fn(position, command, coalition, spawnedGroups, route) then return true end
-end
-</code></pre>
-
+<div class="highlight"><pre><span></span><code><span class="nv">veafInterpreter</span><span class="p">.</span><span class="py">moduleRegistry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span><span class="w">  </span><span class="c1">-- ordered list</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">veafInterpreter</span><span class="p">.</span><span class="nf">registerModule</span><span class="p">(</span><span class="nv">fn</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">veafInterpreter</span><span class="p">.</span><span class="py">moduleRegistry</span><span class="p">,</span><span class="w"> </span><span class="nv">fn</span><span class="p">)</span>
+<span class="kr">end</span>
+<span class="c1">-- dans execute() :</span>
+<span class="kr">for</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">fn</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">veafInterpreter</span><span class="p">.</span><span class="py">moduleRegistry</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="nf">fn</span><span class="p">(</span><span class="nv">position</span><span class="p">,</span><span class="w"> </span><span class="nv">command</span><span class="p">,</span><span class="w"> </span><span class="nv">coalition</span><span class="p">,</span><span class="w"> </span><span class="nv">spawnedGroups</span><span class="p">,</span><span class="w"> </span><span class="nv">route</span><span class="p">)</span><span class="w"> </span><span class="kr">then</span><span class="w"> </span><span class="kr">return</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="kr">end</span>
+<span class="kr">end</span>
+</code></pre></div>
 Chaque module appelle `veafInterpreter.registerModule(...)` depuis son `initialize()`. L'ordre d'enregistrement reproduit l'ordre actuel.
 
 **ARCH-002 — Registre veafRemote**
 Actuellement `veafRemote.executeCommandFromRemote()` switche sur des chaînes `"air"`, `"point"`, `"atis"`, etc. Ajouter un module nécessite de modifier `veafRemote.lua`.
 Proposition :
-
-<pre><code class="language-lua">function veafRemote.registerRemoteModule(name, fn)
-  veafRemote.remoteModuleRegistry[name:lower()] = fn
-end
--- dans executeCommandFromRemote() :
-local handler = veafRemote.remoteModuleRegistry[_module]
-if handler then _status, _retval = pcall(handler, _parameters) end
-</code></pre>
-
+<div class="highlight"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">veafRemote</span><span class="p">.</span><span class="nf">registerRemoteModule</span><span class="p">(</span><span class="nv">name</span><span class="p">,</span><span class="w"> </span><span class="nv">fn</span><span class="p">)</span>
+<span class="w">  </span><span class="nv">veafRemote</span><span class="p">.</span><span class="py">remoteModuleRegistry</span><span class="p">[</span><span class="nv">name</span><span class="p">:</span><span class="nf">lower</span><span class="p">()]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">fn</span>
+<span class="kr">end</span>
+<span class="c1">-- dans executeCommandFromRemote() :</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veafRemote</span><span class="p">.</span><span class="py">remoteModuleRegistry</span><span class="p">[</span><span class="nv">_module</span><span class="p">]</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">handler</span><span class="w"> </span><span class="kr">then</span><span class="w"> </span><span class="nv">_status</span><span class="p">,</span><span class="w"> </span><span class="nv">_retval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">pcall</span><span class="p">(</span><span class="nv">handler</span><span class="p">,</span><span class="w"> </span><span class="nv">_parameters</span><span class="p">)</span><span class="w"> </span><span class="kr">end</span>
+</code></pre></div>
 
 **ARCH-003 — Helper onEventMarkChange**
 Les 8 `onEventMarkChange` sont quasi-identiques :
-
-<pre><code class="language-lua">function module.onEventMarkChange(eventPos, event)
-  local invertedCoalition = event.coalition == 1 and 2 or 1
-  if module.executeCommand(eventPos, event.text, invertedCoalition, event.idx) then
-    trigger.action.removeMark(event.idx)
-  end
-end
-</code></pre>
-
+<div class="highlight"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">module</span><span class="p">.</span><span class="nf">onEventMarkChange</span><span class="p">(</span><span class="nv">eventPos</span><span class="p">,</span><span class="w"> </span><span class="nv">event</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">local</span><span class="w"> </span><span class="nv">invertedCoalition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">event</span><span class="p">.</span><span class="py">coalition</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="nv">module</span><span class="p">.</span><span class="nf">executeCommand</span><span class="p">(</span><span class="nv">eventPos</span><span class="p">,</span><span class="w"> </span><span class="nv">event</span><span class="p">.</span><span class="py">text</span><span class="p">,</span><span class="w"> </span><span class="nv">invertedCoalition</span><span class="p">,</span><span class="w"> </span><span class="nv">event</span><span class="p">.</span><span class="py">idx</span><span class="p">)</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="nv">trigger</span><span class="p">.</span><span class="py">action</span><span class="p">.</span><span class="nf">removeMark</span><span class="p">(</span><span class="nv">event</span><span class="p">.</span><span class="py">idx</span><span class="p">)</span>
+<span class="w">  </span><span class="kr">end</span>
+<span class="kr">end</span>
+</code></pre></div>
 Proposition dans `veafMarkers.lua` :
-
-<pre><code class="language-lua">function veafMarkers.makeMarkHandler(executeFn)
-  return function(eventPos, event)
-    local inv = event.coalition == 1 and 2 or 1
-    if executeFn(eventPos, event.text, inv, event.idx) then
-      trigger.action.removeMark(event.idx)
-    end
-  end
-end
-</code></pre>
-
+<div class="highlight"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">veafMarkers</span><span class="p">.</span><span class="nf">makeMarkHandler</span><span class="p">(</span><span class="nv">executeFn</span><span class="p">)</span>
+<span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">eventPos</span><span class="p">,</span><span class="w"> </span><span class="nv">event</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">inv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">event</span><span class="p">.</span><span class="py">coalition</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nf">executeFn</span><span class="p">(</span><span class="nv">eventPos</span><span class="p">,</span><span class="w"> </span><span class="nv">event</span><span class="p">.</span><span class="py">text</span><span class="p">,</span><span class="w"> </span><span class="nv">inv</span><span class="p">,</span><span class="w"> </span><span class="nv">event</span><span class="p">.</span><span class="py">idx</span><span class="p">)</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">      </span><span class="nv">trigger</span><span class="p">.</span><span class="py">action</span><span class="p">.</span><span class="nf">removeMark</span><span class="p">(</span><span class="nv">event</span><span class="p">.</span><span class="py">idx</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">  </span><span class="kr">end</span>
+<span class="kr">end</span>
+</code></pre></div>
 Note : certains modules ont des variantes légères (pas d'invertedCoalition, signature différente) — à analyser module par module.
 
 **ARCH-004 — veafSpawnParser.lua**
@@ -2209,22 +2197,20 @@ Note : certains modules ont des variantes légères (pas d'invertedCoalition, si
 **ARCH-005 — Système de handlers dans executeCommand**
 `veafSpawnCore.executeCommand` contient un if/elseif de ~400 lignes avec 20+ branches. Chaque branche appartient logiquement à un sous-module.
 Proposition :
-
-<pre><code class="language-lua">veafSpawn.commandHandlers = {}  -- { [optionKey] = fn }
-function veafSpawn.registerCommandHandler(key, fn)
-  veafSpawn.commandHandlers[key] = fn
-end
--- dans executeCommand(), remplace le if/elseif :
-for key, fn in pairs(veafSpawn.commandHandlers) do
-  if options[key] then
-    local g, done = fn(eventPos, options, coalition, markId, bypassSecurity)
-    if g then spawnedGroup = g end
-    if done then routeDone = done end
-    break
-  end
-end
-</code></pre>
-
+<div class="highlight"><pre><span></span><code><span class="nv">veafSpawn</span><span class="p">.</span><span class="py">commandHandlers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span><span class="w">  </span><span class="c1">-- { [optionKey] = fn }</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">veafSpawn</span><span class="p">.</span><span class="nf">registerCommandHandler</span><span class="p">(</span><span class="nv">key</span><span class="p">,</span><span class="w"> </span><span class="nv">fn</span><span class="p">)</span>
+<span class="w">  </span><span class="nv">veafSpawn</span><span class="p">.</span><span class="py">commandHandlers</span><span class="p">[</span><span class="nv">key</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">fn</span>
+<span class="kr">end</span>
+<span class="c1">-- dans executeCommand(), remplace le if/elseif :</span>
+<span class="kr">for</span><span class="w"> </span><span class="nv">key</span><span class="p">,</span><span class="w"> </span><span class="nv">fn</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">pairs</span><span class="p">(</span><span class="nv">veafSpawn</span><span class="p">.</span><span class="py">commandHandlers</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="nv">options</span><span class="p">[</span><span class="nv">key</span><span class="p">]</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">g</span><span class="p">,</span><span class="w"> </span><span class="nv">done</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fn</span><span class="p">(</span><span class="nv">eventPos</span><span class="p">,</span><span class="w"> </span><span class="nv">options</span><span class="p">,</span><span class="w"> </span><span class="nv">coalition</span><span class="p">,</span><span class="w"> </span><span class="nv">markId</span><span class="p">,</span><span class="w"> </span><span class="nv">bypassSecurity</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">g</span><span class="w"> </span><span class="kr">then</span><span class="w"> </span><span class="nv">spawnedGroup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">g</span><span class="w"> </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">done</span><span class="w"> </span><span class="kr">then</span><span class="w"> </span><span class="nv">routeDone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">done</span><span class="w"> </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">break</span>
+<span class="w">  </span><span class="kr">end</span>
+<span class="kr">end</span>
+</code></pre></div>
 Chaque sous-module enregistre ses handlers à la fin de son fichier : Ground (farp/fob/group/infantry/armor/aiDefense/transport/combat/convoy), Aircraft (unit/afac/cap), Effects (cargo/logistic/destroy/teleport/bomb/smoke/flare/signal), Core (drawing/missionMaster).
 
 </details>
@@ -2611,18 +2597,16 @@ Chaque sous-module enregistre ses handlers à la fin de son fichier : Ground (fa
 
 **YAML-002 — Core schema + generator**
 New `mission.yaml` sections:
-
-<pre><code class="language-yaml">mission:
-  name: &quot;My-Mission&quot;          # veaf.config.MISSION_NAME
-  export_path: null           # veaf.config.MISSION_EXPORT_PATH
-  era: MODERN                 # veaf.config.era  (WW2 | COLD_WAR | MODERN)
-security:
-  disabled: true              # veaf.SecurityDisabled
-  # password_hashes: [&quot;sha1&quot;]
-settings:                     # dict → veaf.config.KEY = value
-  DEFAULT_GROUND_SPEED_KPH: 25
-</code></pre>
-
+<div class="highlight"><pre><span></span><code><span class="nt">mission</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My-Mission&quot;</span><span class="w">          </span><span class="c1"># veaf.config.MISSION_NAME</span>
+<span class="w">  </span><span class="nt">export_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">           </span><span class="c1"># veaf.config.MISSION_EXPORT_PATH</span>
+<span class="w">  </span><span class="nt">era</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODERN</span><span class="w">                 </span><span class="c1"># veaf.config.era  (WW2 | COLD_WAR | MODERN)</span>
+<span class="nt">security</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">disabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">              </span><span class="c1"># veaf.SecurityDisabled</span>
+<span class="w">  </span><span class="c1"># password_hashes: [&quot;sha1&quot;]</span>
+<span class="nt">settings</span><span class="p">:</span><span class="w">                     </span><span class="c1"># dict → veaf.config.KEY = value</span>
+<span class="w">  </span><span class="nt">DEFAULT_GROUND_SPEED_KPH</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25</span>
+</code></pre></div>
 `lua_modules` gains a typed `init:` sub-section per known module (hardcoded mapping in generator):
 - `RADIO.init.help_menus: bool` → positional arg of `veafRadio.initialize(bool)`
 - `CARRIER.init.include_carrier_operations_radio: bool`
@@ -2637,92 +2621,84 @@ Generator (`generate_config_lua()` in `lua_module_scanner.py`) updated to:
 `mission_builder_worker.py`: `write_config_lua()` passes all new YAML sections to generator.
 
 **YAML-003 — Assets + NamedPoints**
-
-<pre><code class="language-yaml">lua_modules:
-  ASSETS:
-    enable: true
-    assets:
-      - sort: 1
-        name: &quot;CSG-74 Stennis&quot;
-        description: &quot;Stennis (CVN)&quot;
-        information: &quot;Tacan 10X\nICLS 10&quot;
-        linked: null     # optional
-        jtac: null       # optional (laser code int)
-        freq: null       # optional (float)
-        mod: null        # optional (&quot;am&quot; | &quot;fm&quot;)
-  NAMED_POINTS:
-    enable: true
-    custom_points:
-      - name: &quot;Battle Area Alpha&quot;
-        lat: &quot;41.123456&quot;
-        lon: &quot;44.987654&quot;
-</code></pre>
-
+<div class="highlight"><pre><span></span><code><span class="nt">lua_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ASSETS</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">assets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">sort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CSG-74</span><span class="nv"> </span><span class="s">Stennis&quot;</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Stennis</span><span class="nv"> </span><span class="s">(CVN)&quot;</span>
+<span class="w">        </span><span class="nt">information</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Tacan</span><span class="nv"> </span><span class="s">10X\nICLS</span><span class="nv"> </span><span class="s">10&quot;</span>
+<span class="w">        </span><span class="nt">linked</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">     </span><span class="c1"># optional</span>
+<span class="w">        </span><span class="nt">jtac</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">       </span><span class="c1"># optional (laser code int)</span>
+<span class="w">        </span><span class="nt">freq</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">       </span><span class="c1"># optional (float)</span>
+<span class="w">        </span><span class="nt">mod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">        </span><span class="c1"># optional (&quot;am&quot; | &quot;fm&quot;)</span>
+<span class="w">  </span><span class="nt">NAMED_POINTS</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">custom_points</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Battle</span><span class="nv"> </span><span class="s">Area</span><span class="nv"> </span><span class="s">Alpha&quot;</span>
+<span class="w">        </span><span class="nt">lat</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;41.123456&quot;</span>
+<span class="w">        </span><span class="nt">lon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;44.987654&quot;</span>
+</code></pre></div>
 Generator: emit `veafAssets.Assets = { {...}, ... }` before `veafAssets.initialize()`. Emit `local customPoints = { {name=..., point=coord.LLtoLO(...)} }` passed to `veafNamedPoints.initialize(customPoints)`.
 
 **YAML-004 — External modules (Skynet, CTLD)**
-
-<pre><code class="language-yaml">external_modules:
-  skynet:
-    enabled: false
-    include_red_in_radio: false
-    debug_red: false
-    include_blue_in_radio: false
-    debug_blue: false
-  ctld:
-    enabled: false
-    hover_pickup: true
-    enable_crates: true
-    # ... other ctld.xxx keys
-</code></pre>
-
+<div class="highlight"><pre><span></span><code><span class="nt">external_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">skynet</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">include_red_in_radio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">debug_red</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">include_blue_in_radio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">debug_blue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">ctld</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">hover_pickup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">enable_crates</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="c1"># ... other ctld.xxx keys</span>
+</code></pre></div>
 Generator: emit `if veafSkynet then veafSkynet.initialize(false, false, false, false) end`.
 For CTLD: emit `ctld.xxx = value` property assignments (not `ctld.initialize()` — the script loading stays in `mission-script.lua`). CTLD emitted only if `ctld.enabled: true`.
 
 **YAML-005 — QRA schema + generator**
-
-<pre><code class="language-yaml">qra:
-  silence_all: true             # VeafQRA.ToggleAllSilence(true)
-  definitions:
-    - name: QRA_Minevody
-      coalition: RED            # coalition.side.RED
-      enemy_coalitions: [BLUE]
-      trigger_zone: QRA_Minevody
-      zone_radius: null         # optional (metres)
-      delay_before_rearming: 10
-      delay_before_activating: 60
-      react_on_helicopters: true
-      airport_link: null        # optional (airbase name)
-      groups_by_enemy_count:
-        - enemy_count: 1
-          groups: [&quot;QRA_Minevody-1&quot;, &quot;QRA_Minevody-2&quot;]
-          random_pick: 1
-      simple_groups: []         # alternative to groups_by_enemy_count: flat :addGroup() calls
-</code></pre>
-
+<div class="highlight"><pre><span></span><code><span class="nt">qra</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">silence_all</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">             </span><span class="c1"># VeafQRA.ToggleAllSilence(true)</span>
+<span class="w">  </span><span class="nt">definitions</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QRA_Minevody</span>
+<span class="w">      </span><span class="nt">coalition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RED</span><span class="w">            </span><span class="c1"># coalition.side.RED</span>
+<span class="w">      </span><span class="nt">enemy_coalitions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">BLUE</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">trigger_zone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QRA_Minevody</span>
+<span class="w">      </span><span class="nt">zone_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">         </span><span class="c1"># optional (metres)</span>
+<span class="w">      </span><span class="nt">delay_before_rearming</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">      </span><span class="nt">delay_before_activating</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span>
+<span class="w">      </span><span class="nt">react_on_helicopters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">airport_link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">        </span><span class="c1"># optional (airbase name)</span>
+<span class="w">      </span><span class="nt">groups_by_enemy_count</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">enemy_count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">          </span><span class="nt">groups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;QRA_Minevody-1&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;QRA_Minevody-2&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">random_pick</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">simple_groups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w">         </span><span class="c1"># alternative to groups_by_enemy_count: flat :addGroup() calls</span>
+</code></pre></div>
 Generator: emit `veafQraManager.initialize()`, optional `VeafQRA.ToggleAllSilence(bool)`, then for each definition a `VeafQRA:new()` builder chain ending in `:start()`. Coalition values mapped `RED` → `coalition.side.RED`.
 
 **YAML-006 — CombatMission schema + generator**
-
-<pre><code class="language-yaml">cap_missions:
-  - group_name: &quot;training-radar-tu22-FL300&quot;
-    menu_name: &quot;WEST - Tu22 FL300&quot;
-    briefing: &quot;Russian TU-22 patrols at FL300...&quot;
-    default: false
-    activated: true
-combat_missions:
-  - name: Intercept-Kraznodar-1
-    friendly_name: &quot;Intercept a transport / KRAZNODAR - MINVODY&quot;
-    secured: true
-    radio_menu_enabled: true
-    briefing: |
-      A Russian transport plane is taking off from Kraznodar...
-    elements:
-      - name: OnDemand-Intercept-Transport-Krasnodar-Mineral-Transport
-        groups: [&quot;OnDemand-Intercept-Transport-Krasnodar-Mineral-Transport&quot;]
-        scalable: false
-</code></pre>
-
+<div class="highlight"><pre><span></span><code><span class="nt">cap_missions</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;training-radar-tu22-FL300&quot;</span>
+<span class="w">    </span><span class="nt">menu_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;WEST</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Tu22</span><span class="nv"> </span><span class="s">FL300&quot;</span>
+<span class="w">    </span><span class="nt">briefing</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Russian</span><span class="nv"> </span><span class="s">TU-22</span><span class="nv"> </span><span class="s">patrols</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">FL300...&quot;</span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">activated</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">combat_missions</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Intercept-Kraznodar-1</span>
+<span class="w">    </span><span class="nt">friendly_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Intercept</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">transport</span><span class="nv"> </span><span class="s">/</span><span class="nv"> </span><span class="s">KRAZNODAR</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">MINVODY&quot;</span>
+<span class="w">    </span><span class="nt">secured</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">radio_menu_enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">briefing</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">A Russian transport plane is taking off from Kraznodar...</span>
+<span class="w">    </span><span class="nt">elements</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OnDemand-Intercept-Transport-Krasnodar-Mineral-Transport</span>
+<span class="w">        </span><span class="nt">groups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;OnDemand-Intercept-Transport-Krasnodar-Mineral-Transport&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">scalable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
 Generator: emit `veafCombatMission.initialize()`, then `addCapMission()` calls, then `AddMissionsWithSkillAndScale(VeafCombatMission:new():...:addElement(VeafCombatMissionElement:new():...):...)` chains. Multi-line briefings emitted as Lua long strings (`[[...]]`).
 
 **YAML-007 — generate-config command**
@@ -2891,8 +2867,7 @@ Ligne 187-195 : le `os.replace(temp_file, final_path)` est hors du try/except, d
 
 **QUAL-011 — Découper veaf-tools.py**
 Structure cible :
-
-<pre><code>src/python/veaf-tools/
+<div class="highlight"><pre><span></span><code>src/python/veaf-tools/
   veaf_tools/
     __init__.py
     main.py              ← app = typer.Typer()
@@ -2909,8 +2884,7 @@ Structure cible :
       generate_config.py
       migrate_config.py
       prepare.py
-</code></pre>
-
+</code></pre></div>
 L'entry-point `veaf-tools.py` importe `veaf_tools.main:app` et appelle `app()`.
 
 **QUAL-013 — Remédiation mypy (5 premiers modules)**

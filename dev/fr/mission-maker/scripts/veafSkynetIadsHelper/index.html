@@ -1866,28 +1866,28 @@
 </ul>
 <hr />
 <h2 id="activation">Activation</h2>
-<pre><code class="language-lua">-- Charger Skynet en premier (dans vos triggers DO SCRIPT FILE ou missionconfig.lua)
--- Puis :
-veafSkynetIadsHelper.initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Charger Skynet en premier (dans vos triggers DO SCRIPT FILE ou missionconfig.lua)</span>
+<span class="c1">-- Puis :</span>
+<span class="nv">veafSkynetIadsHelper</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="enregistrement">Enregistrement</h2>
 <p>Les groupes VEAF peuvent être enregistrés dans Skynet via des conventions de nommage ou des appels explicites :</p>
-<pre><code class="language-lua">-- Enregistrer un site SAM par nom de groupe DCS
-veafSkynetIadsHelper.addSamSiteByGroupName(&quot;SA-6 Battery Alpha&quot;, iads)
+<div class="highlight"><pre><span></span><code><span class="c1">-- Enregistrer un site SAM par nom de groupe DCS</span>
+<span class="nv">veafSkynetIadsHelper</span><span class="p">.</span><span class="nf">addSamSiteByGroupName</span><span class="p">(</span><span class="s2">&quot;SA-6 Battery Alpha&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">iads</span><span class="p">)</span>
 
--- Enregistrer un EWR par nom de groupe
-veafSkynetIadsHelper.addEwrByGroupName(&quot;EWR P-18 North&quot;, iads)
+<span class="c1">-- Enregistrer un EWR par nom de groupe</span>
+<span class="nv">veafSkynetIadsHelper</span><span class="p">.</span><span class="nf">addEwrByGroupName</span><span class="p">(</span><span class="s2">&quot;EWR P-18 North&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">iads</span><span class="p">)</span>
 
--- Enregistrer tous les groupes correspondant à un préfixe
-veafSkynetIadsHelper.addAllGroupsMatchingPrefix(&quot;SAM-&quot;, iads)
-</code></pre>
+<span class="c1">-- Enregistrer tous les groupes correspondant à un préfixe</span>
+<span class="nv">veafSkynetIadsHelper</span><span class="p">.</span><span class="nf">addAllGroupsMatchingPrefix</span><span class="p">(</span><span class="s2">&quot;SAM-&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">iads</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="enregistrement-automatique-lors-du-spawn">Enregistrement automatique lors du spawn</h2>
 <p>Quand <code>veafSpawn</code> crée de nouvelles unités SAM ou EWR, <code>veafSkynetIadsHelper</code> peut les enregistrer automatiquement :</p>
-<pre><code class="language-lua">-- Activer l'enregistrement automatique pour les unités spawned dynamiquement
-veafSkynetIadsHelper.autoRegisterSpawnedUnits = true
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Activer l&#39;enregistrement automatique pour les unités spawned dynamiquement</span>
+<span class="nv">veafSkynetIadsHelper</span><span class="p">.</span><span class="py">autoRegisterSpawnedUnits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div>
 <hr />
 <h2 id="notes">Notes</h2>
 <ul>

@@ -3280,16 +3280,16 @@
 <ol>
 <li>
 <p><strong>Copy the example configuration:</strong>
-   <code>bash
-   copy veaf-tools-config.example.yaml veaf-tools-config.yaml</code></p>
+   <div class="highlight"><pre><span></span><code>copy<span class="w"> </span>veaf-tools-config.example.yaml<span class="w"> </span>veaf-tools-config.yaml
+</code></pre></div></p>
 </li>
 <li>
 <p><strong>Edit <code>veaf-tools-config.yaml</code>:</strong>
-   <code>yaml
-   github:
-     token: "ghp_your_actual_token_here"
-     owner: "VEAF"
-     repo: "VEAF-Mission-Creation-Tools"</code></p>
+   <div class="highlight"><pre><span></span><code><span class="nt">github</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ghp_your_actual_token_here&quot;</span>
+<span class="w">  </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VEAF&quot;</span>
+<span class="w">  </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VEAF-Mission-Creation-Tools&quot;</span>
+</code></pre></div></p>
 </li>
 <li>
 <p><strong>Keep it secure:</strong></p>
@@ -3308,8 +3308,8 @@
 <h2 id="for-end-users-updating">For End Users - Updating</h2>
 <h3 id="basic-update-recommended">Basic Update (Recommended)</h3>
 <p>To update your VEAF Tools to the latest version:</p>
-<pre><code class="language-bash">veaf-tools-updater.exe
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe
+</code></pre></div>
 <p>This will:
 1. ✅ Check what version is currently installed
 2. ✅ Fetch the latest version from GitHub (<code>published-latest</code> tag)
@@ -3321,33 +3321,33 @@
 <p><strong>Result:</strong> Your tools are updated with integrity verification</p>
 <h3 id="update-to-specific-version">Update to Specific Version</h3>
 <p>If you need a previous version or want to be explicit:</p>
-<pre><code class="language-bash">veaf-tools-updater.exe --tag published-v6.0.0
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>--tag<span class="w"> </span>published-v6.0.0
+</code></pre></div>
 <p>Available version tags appear on GitHub:
 - <code>published-v6.0.1</code> - Version 6.0.1
 - <code>published-v6.0.0</code> - Version 6.0.0
 - <code>published-latest</code> - Always the current version (default)</p>
 <h3 id="force-update-skip-version-check">Force Update (Skip Version Check)</h3>
 <p>To reinstall the same version or force update:</p>
-<pre><code class="language-bash">veaf-tools-updater.exe --force
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>--force
+</code></pre></div>
 <p>This skips the "is it newer?" check and installs anyway. Useful for:
 - Repairing a corrupted installation
 - Reinstalling after manual modifications
 - Testing specific versions</p>
 <h3 id="update-with-github-token-better-rate-limits">Update with GitHub Token (Better Rate Limits)</h3>
 <p>If you hit GitHub API rate limits (unlikely), you can provide a Personal Access Token:</p>
-<p><strong>Option 1: Using configuration file (recommended)</strong></p>
-<pre><code class="language-yaml"># In veaf-tools-config.yaml
-github:
-  token: &quot;ghp_xxxxxxxxxxxx&quot;
-</code></pre>
-<p>Then run:</p>
-<pre><code class="language-bash">veaf-tools-updater.exe
-</code></pre>
-<p><strong>Option 2: Command line (if no config file)</strong></p>
-<pre><code class="language-bash">veaf-tools-updater.exe --token ghp_xxxxxxxxxxxx
-</code></pre>
+<p><strong>Option 1: Using configuration file (recommended)</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># In veaf-tools-config.yaml</span>
+<span class="nt">github</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ghp_xxxxxxxxxxxx&quot;</span>
+</code></pre></div></p>
+<p>Then run:
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe
+</code></pre></div></p>
+<p><strong>Option 2: Command line (if no config file)</strong>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>--token<span class="w"> </span>ghp_xxxxxxxxxxxx
+</code></pre></div></p>
 <p>Benefits:
 - Increases API rate limit: 60 → 5000 requests/hour
 - Recommended for automated scripts
@@ -3358,8 +3358,8 @@ github:
 3. Select scope: <code>repo</code> (full control)
 4. Copy the token (you won't see it again!)</p>
 <h3 id="skip-checksum-verification-not-recommended">Skip Checksum Verification (Not Recommended)</h3>
-<pre><code class="language-bash">veaf-tools-updater.exe --no-verify-checksum
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>--no-verify-checksum
+</code></pre></div>
 <p>⚠️ <strong>Not recommended</strong> - Checksums protect against:
 - Network corruption
 - File tampering
@@ -3367,23 +3367,23 @@ github:
 <p>Only use if absolutely necessary.</p>
 <h3 id="verbose-output-debugging">Verbose Output (Debugging)</h3>
 <p>For detailed troubleshooting:</p>
-<pre><code class="language-bash">veaf-tools-updater.exe --verbose
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>--verbose
+</code></pre></div>
 <p>Shows:
 - Detailed operation steps
 - API responses
 - Debug information
 - Full error context</p>
 <h3 id="all-options-combined">All Options Combined</h3>
-<pre><code class="language-bash">veaf-tools-updater.exe \
-  --tag published-v6.0.1 \
-  --token ghp_xxxxxxxxxxxx \
-  --verbose \
-  --force
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tag<span class="w"> </span>published-v6.0.1<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--token<span class="w"> </span>ghp_xxxxxxxxxxxx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--verbose<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--force
+</code></pre></div>
 <h3 id="getting-help">Getting Help</h3>
-<pre><code class="language-bash">veaf-tools-updater.exe --help
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>--help
+</code></pre></div>
 <p>Shows all available options and their descriptions.</p>
 <hr />
 <h2 id="for-administrators-publishing">For Administrators - Publishing</h2>
@@ -3391,15 +3391,15 @@ github:
 <p>Before publishing, you need:</p>
 <ol>
 <li><strong>Configuration file with GitHub token:</strong>
-   <code>bash
-   copy veaf-tools-config.example.yaml veaf-tools-config.yaml</code></li>
+   <div class="highlight"><pre><span></span><code>copy<span class="w"> </span>veaf-tools-config.example.yaml<span class="w"> </span>veaf-tools-config.yaml
+</code></pre></div></li>
 </ol>
 <p>Edit <code>veaf-tools-config.yaml</code> and add your token:
-   <code>yaml
-   github:
-     token: "ghp_your_actual_token_here"
-     owner: "VEAF"
-     repo: "VEAF-Mission-Creation-Tools"</code></p>
+   <div class="highlight"><pre><span></span><code><span class="nt">github</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ghp_your_actual_token_here&quot;</span>
+<span class="w">  </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VEAF&quot;</span>
+<span class="w">  </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VEAF-Mission-Creation-Tools&quot;</span>
+</code></pre></div></p>
 <p><strong>Get a token:</strong>
    - Go to https://github.com/settings/tokens
    - Click "Generate new token (classic)"
@@ -3409,33 +3409,34 @@ github:
 <ol>
 <li>
 <p><strong>Compiled tools</strong> in a <code>published/</code> directory:
-   <code>published/
-   ├── veaf-tools-updater.exe      (compiled executable)
-   ├── package.json                (with "version" field)
-   ├── build-scripts/
-   │   ├── buildDemoMission.cmd
-   │   ├── buildHelicopterTrainingMission.cmd
-   │   ├── buildTRADMission.cmd
-   │   ├── buildOTMission.cmd
-   │   └── ... other scripts ...
-   └── ... other files ...</code></p>
+   <div class="highlight"><pre><span></span><code>published/
+├── veaf-tools-updater.exe      (compiled executable)
+├── package.json                (with &quot;version&quot; field)
+├── build-scripts/
+│   ├── buildDemoMission.cmd
+│   ├── buildHelicopterTrainingMission.cmd
+│   ├── buildTRADMission.cmd
+│   ├── buildOTMission.cmd
+│   └── ... other scripts ...
+└── ... other files ...
+</code></pre></div></p>
 </li>
 <li>
 <p><strong>Create a ZIP archive:</strong>
-   <code>bash
-   # Create published.zip from the published/ directory
-   # Tools: 7-Zip, WinRAR, or any zip utility
-   # Result: published.zip containing the structure above</code></p>
+   <div class="highlight"><pre><span></span><code><span class="c1"># Create published.zip from the published/ directory</span>
+<span class="c1"># Tools: 7-Zip, WinRAR, or any zip utility</span>
+<span class="c1"># Result: published.zip containing the structure above</span>
+</code></pre></div></p>
 </li>
 </ol>
 <h3 id="basic-publish">Basic Publish</h3>
 <p>To publish a new release:</p>
-<p><strong>With configuration file (recommended):</strong></p>
-<pre><code class="language-bash">veaf-tools-updater.exe publish 6.0.1 ./published.zip
-</code></pre>
-<p><strong>Without configuration file:</strong></p>
-<pre><code class="language-bash">veaf-tools-updater.exe publish 6.0.1 ./published.zip --token ghp_xxxxxxxxxxxx
-</code></pre>
+<p><strong>With configuration file (recommended):</strong>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip
+</code></pre></div></p>
+<p><strong>Without configuration file:</strong>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span>--token<span class="w"> </span>ghp_xxxxxxxxxxxx
+</code></pre></div></p>
 <p><strong>Arguments:</strong>
 - <code>6.0.1</code> - Version number
 - <code>./published.zip</code> - Path to your zip file
@@ -3450,56 +3451,56 @@ github:
 7. ✅ Pushes everything to GitHub</p>
 <p><strong>Result:</strong> Users can now update with <code>veaf-tools-updater update</code></p>
 <h3 id="add-release-notes">Add Release Notes</h3>
-<pre><code class="language-bash">veaf-tools-updater.exe publish 6.0.1 ./published.zip \
-  --release-notes &quot;Bug fixes: #123, #124. New features: Mission Editor improvements&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--release-notes<span class="w"> </span><span class="s2">&quot;Bug fixes: #123, #124. New features: Mission Editor improvements&quot;</span>
+</code></pre></div>
 <p>Release notes appear on GitHub and help users understand what changed.</p>
 <h3 id="create-as-draft-unpublished">Create as Draft (Unpublished)</h3>
-<pre><code class="language-bash">veaf-tools-updater.exe publish 6.0.1 ./published.zip --draft
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span>--draft
+</code></pre></div>
 <p>Draft releases:
 - Not visible to regular users
 - Can only be updated by you
 - Useful for testing before official release
 - Visible in GitHub release list with "Draft" label</p>
 <h3 id="mark-as-pre-release">Mark as Pre-Release</h3>
-<pre><code class="language-bash">veaf-tools-updater.exe publish 6.0.1 ./published.zip --prerelease
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span>--prerelease
+</code></pre></div>
 <p>Pre-releases:
 - Visible to users but marked as pre-release
 - Good for beta/testing versions
 - Users won't automatically update to it
 - Useful for <code>6.0.1-beta</code>, <code>6.1.0-rc1</code>, etc.</p>
 <h3 id="skip-tag-creation">Skip Tag Creation</h3>
-<pre><code class="language-bash">veaf-tools-updater.exe publish 6.0.1 ./published.zip --skip-tag
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span>--skip-tag
+</code></pre></div>
 <p>Use when:
 - You've already created the Git tag manually
 - Publishing to an existing tag
 - Debugging release process</p>
 <h3 id="verbose-output">Verbose Output</h3>
-<pre><code class="language-bash">veaf-tools-updater.exe publish 6.0.1 ./published.zip --verbose
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span>--verbose
+</code></pre></div>
 <p>Shows detailed debug information for troubleshooting.</p>
 <h3 id="all-options-combined_1">All Options Combined</h3>
-<pre><code class="language-bash">veaf-tools-updater.exe publish 6.0.1 ./published.zip \
-  --release-notes &quot;Version 6.0.1 - Bug fixes and improvements&quot; \
-  --verbose
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--release-notes<span class="w"> </span><span class="s2">&quot;Version 6.0.1 - Bug fixes and improvements&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--verbose
+</code></pre></div>
 <h3 id="getting-help_1">Getting Help</h3>
-<pre><code class="language-bash">veaf-tools-updater.exe publish --help
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span>--help
+</code></pre></div>
 <p>Shows all available options.</p>
 <hr />
 <h2 id="step-by-step-publishing-a-release">Step-by-Step: Publishing a Release</h2>
 <h3 id="1-compile-your-code">1. Compile Your Code</h3>
-<pre><code class="language-powershell">./compile.cmd
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">./</span><span class="n">compile</span><span class="p">.</span><span class="n">cmd</span>
+</code></pre></div>
 <p>Creates:
 - <code>./build/</code> - Lua scripts
 - <code>./published/</code> - Compiled tools</p>
 <h3 id="2-verify-directory-structure">2. Verify Directory Structure</h3>
-<pre><code>published/
+<div class="highlight"><pre><span></span><code>published/
 ├── veaf-tools-updater.exe
 ├── package.json              # Check: has &quot;version&quot; field
 ├── build-scripts/
@@ -3509,34 +3510,34 @@ github:
 │   ├── buildOTMission.cmd
 │   └── ... more scripts ...
 └── ... other files ...
-</code></pre>
+</code></pre></div>
 <h3 id="3-update-version-in-packagejson">3. Update Version in package.json</h3>
-<pre><code class="language-json">{
-  &quot;version&quot;: &quot;6.0.1&quot;,
-  &quot;name&quot;: &quot;veaf-tools&quot;,
-  ...
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6.0.1&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;veaf-tools&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="err">...</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Make sure version field is present and correct.</p>
 <h3 id="4-create-publishedzip">4. Create published.zip</h3>
-<p>Use any zip tool (7-Zip, WinRAR, Windows Explorer):</p>
-<pre><code class="language-bash"># Result: published.zip containing the entire published/ directory
-</code></pre>
+<p>Use any zip tool (7-Zip, WinRAR, Windows Explorer):
+<div class="highlight"><pre><span></span><code><span class="c1"># Result: published.zip containing the entire published/ directory</span>
+</code></pre></div></p>
 <h3 id="5-setup-configuration-first-time-only">5. Setup Configuration (First Time Only)</h3>
-<p>Create and configure <code>veaf-tools-config.yaml</code>:</p>
-<pre><code class="language-bash">copy veaf-tools-config.example.yaml veaf-tools-config.yaml
-</code></pre>
-<p>Edit it with your GitHub token:</p>
-<pre><code class="language-yaml">github:
-  token: &quot;ghp_your_actual_token_here&quot;
-  owner: &quot;VEAF&quot;
-  repo: &quot;VEAF-Mission-Creation-Tools&quot;
-</code></pre>
+<p>Create and configure <code>veaf-tools-config.yaml</code>:
+<div class="highlight"><pre><span></span><code>copy<span class="w"> </span>veaf-tools-config.example.yaml<span class="w"> </span>veaf-tools-config.yaml
+</code></pre></div></p>
+<p>Edit it with your GitHub token:
+<div class="highlight"><pre><span></span><code><span class="nt">github</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ghp_your_actual_token_here&quot;</span>
+<span class="w">  </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VEAF&quot;</span>
+<span class="w">  </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VEAF-Mission-Creation-Tools&quot;</span>
+</code></pre></div></p>
 <p>⚠️ <strong>Important:</strong> Never commit <code>veaf-tools-config.yaml</code> to git!</p>
 <h3 id="6-publish-to-github">6. Publish to GitHub</h3>
-<pre><code class="language-bash">veaf-tools-updater.exe publish 6.0.1 ./published.zip \
-  --release-notes &quot;Version 6.0.1 - [your release notes]&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--release-notes<span class="w"> </span><span class="s2">&quot;Version 6.0.1 - [your release notes]&quot;</span>
+</code></pre></div>
 <h3 id="6-verify-on-github">6. Verify on GitHub</h3>
 <p>Visit: https://github.com/VEAF/VEAF-Mission-Creation-Tools/releases</p>
 <p>Check:
@@ -3545,19 +3546,19 @@ github:
 - ✅ Git tag created: <code>published-v6.0.1</code>
 - ✅ Latest tag moved: <code>published-latest</code></p>
 <h3 id="7-announce-to-users">7. Announce to Users</h3>
-<p>Tell users they can update:</p>
-<pre><code class="language-bash">veaf-tools-updater.exe
-</code></pre>
+<p>Tell users they can update:
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe
+</code></pre></div></p>
 <hr />
 <h2 id="system-architecture">System Architecture</h2>
 <h3 id="versioning-system">Versioning System</h3>
 <p>The system uses <strong>Git tags</strong> to manage versions:</p>
-<pre><code>Git Repository
+<div class="highlight"><pre><span></span><code>Git Repository
 ├── published-v6.0.1   ──► GitHub Release with assets
 ├── published-v6.0.0   ──► GitHub Release with assets
 ├── published-v5.9.9   ──► GitHub Release with assets
 └── published-latest   ──► Points to current version (movable)
-</code></pre>
+</code></pre></div>
 <p><strong>Benefits:</strong>
 - ✅ Clear version history in Git
 - ✅ Easy to revert to any previous version
@@ -3565,7 +3566,7 @@ github:
 - ✅ Immutable version snapshots</p>
 <h3 id="integrity-verification">Integrity Verification</h3>
 <p>Each release includes checksum verification:</p>
-<pre><code>User downloads:
+<div class="highlight"><pre><span></span><code>User downloads:
   published.zip              (compiled tools)
   published-metadata.json    (contains SHA256)
 
@@ -3574,24 +3575,24 @@ Update process:
   2. Compare with published-metadata.json
   3. If match ✓ → Install
   4. If mismatch ✗ → Error (abort, try again)
-</code></pre>
+</code></pre></div>
 <p><strong>Protected against:</strong>
 - Network corruption
 - Incomplete downloads
 - File tampering</p>
 <h3 id="version-comparison">Version Comparison</h3>
 <p>The system correctly compares semantic versions:</p>
-<pre><code>Installed: 6.0.0
+<div class="highlight"><pre><span></span><code>Installed: 6.0.0
 Available: 6.0.1
 Result:    6.0.1 &gt; 6.0.0 → Update available ✓
 
 (Old systems would do string comparison and fail)
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="file-structure">File Structure</h2>
 <h3 id="what-users-have">What Users Have</h3>
 <p>After updating, users have:</p>
-<pre><code>Current Directory:
+<div class="highlight"><pre><span></span><code>Current Directory:
 ├── veaf-tools-updater.exe            (executable)
 ├── buildDemoMission.cmd              (script)
 ├── buildHelicopterTrainingMission.cmd (script)
@@ -3607,10 +3608,10 @@ Mission Folder (specified in update):
     │   ├── buildDemoMission.cmd
     │   └── ... scripts ...
     └── ... other files ...
-</code></pre>
+</code></pre></div>
 <h3 id="what-github-shows">What GitHub Shows</h3>
 <p>After publishing:</p>
-<pre><code>Release: published-v6.0.1
+<div class="highlight"><pre><span></span><code>Release: published-v6.0.1
 ├── Asset: published.zip              (compiled tools)
 ├── Asset: published-metadata.json    (checksums)
 └── Release notes
@@ -3619,163 +3620,163 @@ Git Tags:
 ├── published-v6.0.1 ──► commit abc123def...
 ├── published-latest ──► commit abc123def... (same)
 └── published-v6.0.0 ──► commit xyz789uvw...
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="problem-tag-not-found-on-github">Problem: "Tag not found on GitHub"</h3>
 <p><strong>Cause:</strong> Git tag was created locally but not pushed to GitHub</p>
-<p><strong>Solution:</strong></p>
-<pre><code class="language-bash"># Check if tag exists locally
-git tag -l published-v6.0.1
+<p><strong>Solution:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check if tag exists locally</span>
+git<span class="w"> </span>tag<span class="w"> </span>-l<span class="w"> </span>published-v6.0.1
 
-# If it exists, push it
-git push origin refs/tags/published-v6.0.1
+<span class="c1"># If it exists, push it</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>refs/tags/published-v6.0.1
 
-# If it doesn't exist, create it
-git tag -a published-v6.0.1 -m &quot;Release 6.0.1&quot;
-git push origin refs/tags/published-v6.0.1
-</code></pre>
+<span class="c1"># If it doesn&#39;t exist, create it</span>
+git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>published-v6.0.1<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Release 6.0.1&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>refs/tags/published-v6.0.1
+</code></pre></div></p>
 <h3 id="problem-checksum-mismatch-when-updating">Problem: "Checksum mismatch" When Updating</h3>
 <p><strong>Cause:</strong> File corruption during download (rare) or network issue</p>
-<p><strong>Solution:</strong></p>
-<pre><code class="language-bash"># Try again (usually fixes it)
+<p><strong>Solution:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Try again (usually fixes it)</span>
 veaf-tools-updater.exe
 
-# If persists, check GitHub release:
-# https://github.com/VEAF/VEAF-Mission-Creation-Tools/releases
-</code></pre>
+<span class="c1"># If persists, check GitHub release:</span>
+<span class="c1"># https://github.com/VEAF/VEAF-Mission-Creation-Tools/releases</span>
+</code></pre></div></p>
 <h3 id="problem-github-rate-limit-exceeded">Problem: "GitHub rate limit exceeded"</h3>
 <p><strong>Cause:</strong> Too many API calls in short time</p>
-<p><strong>Solution:</strong></p>
-<pre><code class="language-bash"># Option 1: Wait 1 hour (rate limit resets)
+<p><strong>Solution:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Option 1: Wait 1 hour (rate limit resets)</span>
 
-# Option 2: Use Personal Access Token (better limits)
-veaf-tools-updater.exe --token ghp_xxxxxxxxxxxx
+<span class="c1"># Option 2: Use Personal Access Token (better limits)</span>
+veaf-tools-updater.exe<span class="w"> </span>--token<span class="w"> </span>ghp_xxxxxxxxxxxx
 
-# Get token from: https://github.com/settings/tokens
-# Scope: repo (full control)
-</code></pre>
+<span class="c1"># Get token from: https://github.com/settings/tokens</span>
+<span class="c1"># Scope: repo (full control)</span>
+</code></pre></div></p>
 <h3 id="problem-permission-denied-when-installing">Problem: "Permission denied" When Installing</h3>
 <p><strong>Cause:</strong> Can't write to mission folder or current directory</p>
-<p><strong>Solution:</strong></p>
-<pre><code class="language-bash"># Run as Administrator (Windows)
-# Or specify a different directory as a positional argument:
-veaf-tools-updater.exe &quot;C:\alternative\path&quot;
-</code></pre>
+<p><strong>Solution:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run as Administrator (Windows)</span>
+<span class="c1"># Or specify a different directory as a positional argument:</span>
+veaf-tools-updater.exe<span class="w"> </span><span class="s2">&quot;C:\alternative\path&quot;</span>
+</code></pre></div></p>
 <h3 id="problem-file-not-found-when-publishing">Problem: File Not Found When Publishing</h3>
 <p><strong>Cause:</strong> published.zip doesn't exist or path is wrong</p>
-<p><strong>Solution:</strong></p>
-<pre><code class="language-bash"># Verify file exists
-dir published.zip
+<p><strong>Solution:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Verify file exists</span>
+dir<span class="w"> </span>published.zip
 
-# Use correct absolute path
-veaf-tools-updater.exe publish 6.0.1 &quot;C:\full\path\to\published.zip&quot; --token ghp_xxx
+<span class="c1"># Use correct absolute path</span>
+veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span><span class="s2">&quot;C:\full\path\to\published.zip&quot;</span><span class="w"> </span>--token<span class="w"> </span>ghp_xxx
 
-# Create zip if missing
-# (select published/ folder, right-click → Send to → Compressed (zipped))
-</code></pre>
+<span class="c1"># Create zip if missing</span>
+<span class="c1"># (select published/ folder, right-click → Send to → Compressed (zipped))</span>
+</code></pre></div></p>
 <h3 id="problem-failed-to-create-github-release">Problem: "Failed to create GitHub release"</h3>
 <p><strong>Cause:</strong> Usually token issues or network problem</p>
-<p><strong>Solution:</strong></p>
-<pre><code class="language-bash"># Check token:
-# 1. Verify veaf-tools-config.yaml exists and has correct token
-# 2. Go to https://github.com/settings/tokens
-# 3. Verify scope includes &quot;repo&quot;
-# 4. Create new token if old one expired
-# 5. Token must have write permissions
+<p><strong>Solution:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check token:</span>
+<span class="c1"># 1. Verify veaf-tools-config.yaml exists and has correct token</span>
+<span class="c1"># 2. Go to https://github.com/settings/tokens</span>
+<span class="c1"># 3. Verify scope includes &quot;repo&quot;</span>
+<span class="c1"># 4. Create new token if old one expired</span>
+<span class="c1"># 5. Token must have write permissions</span>
 
-# Update your config file and try again
-veaf-tools-updater.exe publish 6.0.1 ./published.zip --verbose
-</code></pre>
+<span class="c1"># Update your config file and try again</span>
+veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span>--verbose
+</code></pre></div></p>
 <h3 id="problem-not-a-git-repository">Problem: "Not a git repository"</h3>
 <p><strong>Cause:</strong> Running from wrong directory or .git folder missing</p>
-<p><strong>Solution:</strong></p>
-<pre><code class="language-bash"># Publish command runs from repo root (has .git/)
-cd D:\dev\_VEAF\VEAF-Mission-Creation-Tools
+<p><strong>Solution:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Publish command runs from repo root (has .git/)</span>
+<span class="nb">cd</span><span class="w"> </span>D:<span class="se">\d</span>ev<span class="se">\_</span>VEAF<span class="se">\V</span>EAF-Mission-Creation-Tools
 
-# Then run publish
-veaf-tools-updater.exe publish 6.0.1 ./published.zip --token ghp_xxx
+<span class="c1"># Then run publish</span>
+veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span>--token<span class="w"> </span>ghp_xxx
 
-# Or specify repo path
-veaf-tools-updater.exe publish 6.0.1 ./published.zip \
-  --token ghp_xxx \
-  --repo-path &quot;D:\dev\_VEAF\VEAF-Mission-Creation-Tools&quot;
-</code></pre>
+<span class="c1"># Or specify repo path</span>
+veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--token<span class="w"> </span>ghp_xxx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--repo-path<span class="w"> </span><span class="s2">&quot;D:\dev\_VEAF\VEAF-Mission-Creation-Tools&quot;</span>
+</code></pre></div></p>
 <h3 id="problem-no-release-found-for-tag">Problem: "No release found for tag"</h3>
 <p><strong>Cause:</strong> Version tag exists but GitHub Release hasn't been created for it</p>
-<p><strong>Solution:</strong></p>
-<pre><code class="language-bash"># The publish command should create the release automatically
+<p><strong>Solution:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># The publish command should create the release automatically</span>
 
-# If it didn't:
-# 1. Visit https://github.com/VEAF/VEAF-Mission-Creation-Tools/releases
-# 2. Find the tag in &quot;Releases&quot; list
-# 3. Click &quot;Edit&quot; and re-publish
+<span class="c1"># If it didn&#39;t:</span>
+<span class="c1"># 1. Visit https://github.com/VEAF/VEAF-Mission-Creation-Tools/releases</span>
+<span class="c1"># 2. Find the tag in &quot;Releases&quot; list</span>
+<span class="c1"># 3. Click &quot;Edit&quot; and re-publish</span>
 
-# Or use publish again (it will detect existing tag)
-veaf-tools-updater.exe publish 6.0.1 ./published.zip --token ghp_xxx
-</code></pre>
+<span class="c1"># Or use publish again (it will detect existing tag)</span>
+veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span>--token<span class="w"> </span>ghp_xxx
+</code></pre></div></p>
 <h3 id="getting-more-help">Getting More Help</h3>
 <p>For detailed debug info:</p>
-<pre><code class="language-bash"># Show verbose output
-veaf-tools-updater.exe --verbose
+<div class="highlight"><pre><span></span><code><span class="c1"># Show verbose output</span>
+veaf-tools-updater.exe<span class="w"> </span>--verbose
 
-# Or for publish
-veaf-tools-updater.exe publish 6.0.1 ./published.zip --token ghp_xxx --verbose
-</code></pre>
+<span class="c1"># Or for publish</span>
+veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span>--token<span class="w"> </span>ghp_xxx<span class="w"> </span>--verbose
+</code></pre></div>
 <p>Check the <code>veaf-tools.log</code> file in current directory for detailed logs.</p>
 <hr />
 <h2 id="command-reference">Command Reference</h2>
 <h3 id="update-command">Update Command</h3>
-<pre><code class="language-bash">veaf-tools-updater.exe [MISSION_FOLDER] [OPTIONS]
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span><span class="o">[</span>MISSION_FOLDER<span class="o">]</span><span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 
 Arguments:
-  MISSION_FOLDER                 Mission folder path (default: current directory)
+<span class="w">  </span>MISSION_FOLDER<span class="w">                 </span>Mission<span class="w"> </span>folder<span class="w"> </span>path<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>current<span class="w"> </span>directory<span class="o">)</span>
 
 Options:
-  --tag TEXT                     Version tag to fetch (default: published-latest)
-  --token TEXT                   GitHub token (optional, overrides config file)
-  --force                        Ignore version check, install anyway
-  --no-verify-checksum           Skip checksum verification (not recommended)
-  --verbose                      Show detailed debug output
-  --pause                        Wait for user input before exiting
-  --help                         Show help message
-</code></pre>
+<span class="w">  </span>--tag<span class="w"> </span>TEXT<span class="w">                     </span>Version<span class="w"> </span>tag<span class="w"> </span>to<span class="w"> </span>fetch<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>published-latest<span class="o">)</span>
+<span class="w">  </span>--token<span class="w"> </span>TEXT<span class="w">                   </span>GitHub<span class="w"> </span>token<span class="w"> </span><span class="o">(</span>optional,<span class="w"> </span>overrides<span class="w"> </span>config<span class="w"> </span>file<span class="o">)</span>
+<span class="w">  </span>--force<span class="w">                        </span>Ignore<span class="w"> </span>version<span class="w"> </span>check,<span class="w"> </span>install<span class="w"> </span>anyway
+<span class="w">  </span>--no-verify-checksum<span class="w">           </span>Skip<span class="w"> </span>checksum<span class="w"> </span>verification<span class="w"> </span><span class="o">(</span>not<span class="w"> </span>recommended<span class="o">)</span>
+<span class="w">  </span>--verbose<span class="w">                      </span>Show<span class="w"> </span>detailed<span class="w"> </span>debug<span class="w"> </span>output
+<span class="w">  </span>--pause<span class="w">                        </span>Wait<span class="w"> </span><span class="k">for</span><span class="w"> </span>user<span class="w"> </span>input<span class="w"> </span>before<span class="w"> </span>exiting
+<span class="w">  </span>--help<span class="w">                         </span>Show<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message
+</code></pre></div>
 <p><strong>Note:</strong> Settings from <code>veaf-tools-config.yaml</code> are used automatically. Command-line options override config file values.</p>
-<p><strong>Examples:</strong></p>
-<pre><code class="language-bash">veaf-tools-updater.exe
-veaf-tools-updater.exe --tag published-v6.0.0
-veaf-tools-updater.exe --token ghp_xxx --verbose
-veaf-tools-updater.exe --force
-</code></pre>
+<p><strong>Examples:</strong>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe
+veaf-tools-updater.exe<span class="w"> </span>--tag<span class="w"> </span>published-v6.0.0
+veaf-tools-updater.exe<span class="w"> </span>--token<span class="w"> </span>ghp_xxx<span class="w"> </span>--verbose
+veaf-tools-updater.exe<span class="w"> </span>--force
+</code></pre></div></p>
 <h3 id="publish-command">Publish Command</h3>
-<pre><code class="language-bash">veaf-tools-updater.exe publish VERSION ZIP_FILE [OPTIONS]
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span>VERSION<span class="w"> </span>ZIP_FILE<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 
 Required:
-  VERSION                        Version number (6.0.1 or v6.0.1)
-  ZIP_FILE                       Path to published.zip
+<span class="w">  </span>VERSION<span class="w">                        </span>Version<span class="w"> </span>number<span class="w"> </span><span class="o">(</span><span class="m">6</span>.0.1<span class="w"> </span>or<span class="w"> </span>v6.0.1<span class="o">)</span>
+<span class="w">  </span>ZIP_FILE<span class="w">                       </span>Path<span class="w"> </span>to<span class="w"> </span>published.zip
 
 Options:
-  --token TEXT                   GitHub token (optional, overrides config file)
-  --repo-path TEXT               Repository path (default: current directory)
-  --release-notes TEXT           Release notes/changelog
-  --draft                        Create as draft (not visible to users)
-  --prerelease                   Mark as pre-release
-  --skip-tag                     Skip Git tag creation
-  --verbose                      Show detailed debug output
-  --pause                        Wait for user input before exiting
-  --help                         Show help message
-</code></pre>
+<span class="w">  </span>--token<span class="w"> </span>TEXT<span class="w">                   </span>GitHub<span class="w"> </span>token<span class="w"> </span><span class="o">(</span>optional,<span class="w"> </span>overrides<span class="w"> </span>config<span class="w"> </span>file<span class="o">)</span>
+<span class="w">  </span>--repo-path<span class="w"> </span>TEXT<span class="w">               </span>Repository<span class="w"> </span>path<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>current<span class="w"> </span>directory<span class="o">)</span>
+<span class="w">  </span>--release-notes<span class="w"> </span>TEXT<span class="w">           </span>Release<span class="w"> </span>notes/changelog
+<span class="w">  </span>--draft<span class="w">                        </span>Create<span class="w"> </span>as<span class="w"> </span>draft<span class="w"> </span><span class="o">(</span>not<span class="w"> </span>visible<span class="w"> </span>to<span class="w"> </span>users<span class="o">)</span>
+<span class="w">  </span>--prerelease<span class="w">                   </span>Mark<span class="w"> </span>as<span class="w"> </span>pre-release
+<span class="w">  </span>--skip-tag<span class="w">                     </span>Skip<span class="w"> </span>Git<span class="w"> </span>tag<span class="w"> </span>creation
+<span class="w">  </span>--verbose<span class="w">                      </span>Show<span class="w"> </span>detailed<span class="w"> </span>debug<span class="w"> </span>output
+<span class="w">  </span>--pause<span class="w">                        </span>Wait<span class="w"> </span><span class="k">for</span><span class="w"> </span>user<span class="w"> </span>input<span class="w"> </span>before<span class="w"> </span>exiting
+<span class="w">  </span>--help<span class="w">                         </span>Show<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message
+</code></pre></div>
 <p><strong>Note:</strong> Token and other settings from <code>veaf-tools-config.yaml</code> are used automatically. Command-line options override config file values.</p>
-<p><strong>Examples:</strong></p>
-<pre><code class="language-bash"># With config file (recommended)
-veaf-tools-updater.exe publish 6.0.1 ./published.zip
-veaf-tools-updater.exe publish 6.0.1 ./published.zip --release-notes &quot;Version 6.0.1 - Bug fixes&quot;
-veaf-tools-updater.exe publish 6.0.1 ./published.zip --draft
+<p><strong>Examples:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># With config file (recommended)</span>
+veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip
+veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span>--release-notes<span class="w"> </span><span class="s2">&quot;Version 6.0.1 - Bug fixes&quot;</span>
+veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span>--draft
 
-# Without config file (token required)
-veaf-tools-updater.exe publish 6.0.1 ./published.zip --token ghp_xxx
-veaf-tools-updater.exe publish 6.0.1 ./published.zip --token ghp_xxx --release-notes &quot;...&quot;
-</code></pre>
+<span class="c1"># Without config file (token required)</span>
+veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span>--token<span class="w"> </span>ghp_xxx
+veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span>--token<span class="w"> </span>ghp_xxx<span class="w"> </span>--release-notes<span class="w"> </span><span class="s2">&quot;...&quot;</span>
+</code></pre></div></p>
 <hr />
 <h2 id="best-practices">Best Practices</h2>
 <h3 id="for-end-users">For End Users</h3>

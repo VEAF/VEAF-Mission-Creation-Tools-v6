@@ -1979,29 +1979,29 @@
 </ul>
 <hr />
 <h2 id="activation">Activation</h2>
-<pre><code class="language-lua">veafMove.initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafMove</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="commandes-de-marqueur-cote-joueur">Commandes de marqueur (côté joueur)</h2>
 <h3 id="deplacer-un-groupe">Déplacer un groupe</h3>
-<pre><code>_move unit, name [NOM_GROUPE]
-</code></pre>
+<div class="highlight"><pre><span></span><code>_move unit, name [NOM_GROUPE]
+</code></pre></div>
 <p>Déplace le groupe nommé vers la position du marqueur. Les unités terrestres traceront un itinéraire vers la destination ; les aéronefs voleront directement.</p>
 <h3 id="teleporter-un-groupe">Téléporter un groupe</h3>
-<pre><code>_teleport, name [NOM_GROUPE]
-</code></pre>
+<div class="highlight"><pre><span></span><code>_teleport, name [NOM_GROUPE]
+</code></pre></div>
 <p>Déplace instantanément le groupe vers la position du marqueur. Utile pour les tests.</p>
 <hr />
 <h2 id="gestion-des-ravitailleurs-api-createur-de-mission">Gestion des ravitailleurs (API créateur de mission)</h2>
 <h3 id="modifier-lorbite-du-ravitailleur">Modifier l'orbite du ravitailleur</h3>
 <p><code>veafMove.changeTanker(groupName, point, altitude, speed)</code> — déplace le waypoint d'orbite du ravitailleur vers une nouvelle position.</p>
-<pre><code class="language-lua">-- Déplacer Texaco vers une nouvelle position d'orbite
-veafMove.changeTanker(&quot;KC-135 Texaco&quot;, { x=1000, y=7000, z=2000 }, 7000, 430)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Déplacer Texaco vers une nouvelle position d&#39;orbite</span>
+<span class="nv">veafMove</span><span class="p">.</span><span class="nf">changeTanker</span><span class="p">(</span><span class="s2">&quot;KC-135 Texaco&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">x</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="o">=</span><span class="mi">7000</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="o">=</span><span class="mi">2000</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="mi">7000</span><span class="p">,</span><span class="w"> </span><span class="mi">430</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="deplacer-le-ravitailleur-sur-une-nouvelle-route">Déplacer le ravitailleur sur une nouvelle route</h3>
 <p><code>veafMove.moveTanker(groupName, startPoint, endPoint, altitude, speed)</code> — définit une nouvelle route d'orbite en circuit.</p>
-<pre><code class="language-lua">veafMove.moveTanker(&quot;KC-135 Texaco&quot;, startPoint, endPoint, 7000, 430)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafMove</span><span class="p">.</span><span class="nf">moveTanker</span><span class="p">(</span><span class="s2">&quot;KC-135 Texaco&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">startPoint</span><span class="p">,</span><span class="w"> </span><span class="nv">endPoint</span><span class="p">,</span><span class="w"> </span><span class="mi">7000</span><span class="p">,</span><span class="w"> </span><span class="mi">430</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="constantes-cles">Constantes clés</h2>
 <table>

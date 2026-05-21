@@ -2360,28 +2360,28 @@
 <h2 id="installation-and-updates">Installation and Updates</h2>
 <h3 id="first-installation">First Installation</h3>
 <p>Download <code>veaf-tools-updater.exe</code> from the <a href="https://github.com/VEAF/VEAF-Mission-Creation-Tools/releases/tag/published-latest">latest GitHub release</a> and place it in your mission project folder, then run:</p>
-<pre><code class="language-powershell">.\veaf-tools-updater.exe
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools-updater</span><span class="p">.</span><span class="n">exe</span>
+</code></pre></div>
 <p>This downloads <code>published.zip</code>, verifies the SHA256 checksum, and extracts all scripts and tools into your mission folder.</p>
 <h3 id="updating">Updating</h3>
 <p>Run the same command whenever a new release is available:</p>
-<pre><code class="language-powershell">.\veaf-tools-updater.exe
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools-updater</span><span class="p">.</span><span class="n">exe</span>
+</code></pre></div>
 <p>Only updates if the remote version is newer. To force a reinstall:</p>
-<pre><code class="language-powershell">.\veaf-tools-updater.exe --force
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools-updater</span><span class="p">.</span><span class="n">exe</span> <span class="p">-</span><span class="n">-force</span>
+</code></pre></div>
 <p>To pin to a specific version:</p>
-<pre><code class="language-powershell">.\veaf-tools-updater.exe --tag published-v6.0.5
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools-updater</span><span class="p">.</span><span class="n">exe</span> <span class="p">-</span><span class="n">-tag</span> <span class="n">published-v6</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">5</span>
+</code></pre></div>
 <p>Full CLI reference: <a href="../../TOOLS_REFERENCE/">Tools Reference</a></p>
 <hr />
 <h2 id="creating-a-new-mission">Creating a New Mission</h2>
 <h3 id="recommended-fork-the-demo-mission">Recommended: Fork the Demo Mission</h3>
 <p>The fastest way to start is to fork <a href="https://github.com/VEAF/VEAF-Demo-Mission">VEAF-Demo-Mission</a>, which already has the correct folder structure, a working script loader trigger, sample configurations, and build scripts.</p>
-<pre><code class="language-powershell">git clone https://github.com/VEAF/VEAF-Demo-Mission.git my-mission
-cd my-mission
-.\veaf-tools-updater.exe
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">VEAF</span><span class="p">/</span><span class="n">VEAF-Demo-Mission</span><span class="p">.</span><span class="n">git</span> <span class="n">my-mission</span>
+<span class="nb">cd </span><span class="n">my-mission</span>
+<span class="p">.\</span><span class="n">veaf-tools-updater</span><span class="p">.</span><span class="n">exe</span>
+</code></pre></div>
 <h3 id="from-scratch">From Scratch</h3>
 <ol>
 <li>Create a folder for your mission project (this is your Git repository)</li>
@@ -2391,7 +2391,7 @@ cd my-mission
 <li>Create a <code>missionconfig.lua</code> for your module configuration</li>
 </ol>
 <p>Recommended project layout:</p>
-<pre><code>MyMission/
+<div class="highlight"><pre><span></span><code>MyMission/
 ├── src/
 │   ├── mission.miz               # Source .miz (unbuilt)
 │   ├── scripts/
@@ -2404,7 +2404,7 @@ cd my-mission
 ├── veaf-tools.exe                # CLI tool (auto-installed)
 ├── veaf-tools-updater.exe
 └── build.cmd                     # Your build script
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="loading-scripts-in-dcs">Loading Scripts in DCS</h2>
 <p>VEAF scripts are loaded via a <code>DO SCRIPT FILE</code> trigger in the DCS Mission Editor.</p>
@@ -2418,61 +2418,61 @@ cd my-mission
 </ol>
 <h3 id="advanced-inline-loader">Advanced: Inline Loader</h3>
 <p>For full control over the loading order, use a <code>DO SCRIPT</code> action with inline Lua:</p>
-<pre><code class="language-lua">local basePath = lfs.writedir() .. &quot;Missions\\MyMission\\&quot;
-dofile(basePath .. &quot;veaf-scripts.lua&quot;)
-dofile(basePath .. &quot;scripts\\missionconfig.lua&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">basePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">lfs</span><span class="p">.</span><span class="nf">writedir</span><span class="p">()</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;Missions</span><span class="se">\\</span><span class="s2">MyMission</span><span class="se">\\</span><span class="s2">&quot;</span>
+<span class="nb">dofile</span><span class="p">(</span><span class="nv">basePath</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;veaf-scripts.lua&quot;</span><span class="p">)</span>
+<span class="nb">dofile</span><span class="p">(</span><span class="nv">basePath</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;scripts</span><span class="se">\\</span><span class="s2">missionconfig.lua&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p><code>veaf-scripts.lua</code> contains all VEAF modules concatenated in dependency order. Your <code>missionconfig.lua</code> is loaded after, allowing you to configure and initialize modules.</p>
 <hr />
 <h2 id="configuring-modules">Configuring Modules</h2>
 <p>Each VEAF module exposes configuration constants you can set before calling <code>initialize()</code>. Your <code>missionconfig.lua</code> is where you do this.</p>
 <h3 id="minimal-configuration">Minimal Configuration</h3>
-<pre><code class="language-lua">-- Enable markers and basic spawn
-veafMarkers.initialize()
-veafSpawn.initialize()
-veafRadio.initialize()
-veafRadio.refreshRadioMenu()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Enable markers and basic spawn</span>
+<span class="nv">veafMarkers</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="nv">veafSpawn</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">refreshRadioMenu</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="full-configuration-example">Full Configuration Example</h3>
-<pre><code class="language-lua">-- Security: restrict spawn commands to authenticated users
-veafSecurity.initialize()
+<div class="highlight"><pre><span></span><code><span class="c1">-- Security: restrict spawn commands to authenticated users</span>
+<span class="nv">veafSecurity</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
 
--- Named points: pre-defined positions
-veafNamedPoints.initialize()
+<span class="c1">-- Named points: pre-defined positions</span>
+<span class="nv">veafNamedPoints</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
 
--- Markers: intercept F10 map marker text
-veafMarkers.initialize()
+<span class="c1">-- Markers: intercept F10 map marker text</span>
+<span class="nv">veafMarkers</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
 
--- Spawn: allow players to spawn units via markers
-veafSpawn.initialize()
+<span class="c1">-- Spawn: allow players to spawn units via markers</span>
+<span class="nv">veafSpawn</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
 
--- CAS Mission: training CAS generator
-veafCasMission.initialize()
-veafCasMission.start()
+<span class="c1">-- CAS Mission: training CAS generator</span>
+<span class="nv">veafCasMission</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="nv">veafCasMission</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
 
--- Assets: tankers, AWACS, carriers
-veafAssets.Assets = {
-  {
-    name = &quot;Texaco&quot;,
-    description = &quot;Texaco (KC-135)&quot;,
-    groupName = &quot;KC-135 Texaco&quot;,
-    information = true,
-    disposable = false,
-  },
-  {
-    name = &quot;Overlord&quot;,
-    description = &quot;Overlord (E-3A)&quot;,
-    groupName = &quot;E-3A Overlord&quot;,
-    information = true,
-    disposable = false,
-  },
-}
-veafAssets.initialize()
+<span class="c1">-- Assets: tankers, AWACS, carriers</span>
+<span class="nv">veafAssets</span><span class="p">.</span><span class="py">Assets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Texaco&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Texaco (KC-135)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">groupName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;KC-135 Texaco&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">disposable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Overlord&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Overlord (E-3A)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">groupName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;E-3A Overlord&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">disposable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">}</span>
+<span class="nv">veafAssets</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
 
--- Radio menu
-veafRadio.initialize()
-veafRadio.refreshRadioMenu()
-</code></pre>
+<span class="c1">-- Radio menu</span>
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">refreshRadioMenu</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="security-levels">Security Levels</h3>
 <table>
 <thead>
@@ -2501,8 +2501,8 @@ veafRadio.refreshRadioMenu()
 </tbody>
 </table>
 <p>Set passwords (SHA-1 hashes) in <code>missionconfig.lua</code>:</p>
-<pre><code class="language-lua">veafSecurity.password_L9[sha1(&quot;yourpassword&quot;)] = true
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafSecurity</span><span class="p">.</span><span class="py">password_L9</span><span class="p">[</span><span class="nf">sha1</span><span class="p">(</span><span class="s2">&quot;yourpassword&quot;</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div>
 <hr />
 <h2 id="design-time-tools">Design-Time Tools</h2>
 <p><code>veaf-tools.exe</code> manipulates <code>.miz</code> files at build time — before loading them in DCS.</p>
@@ -2551,24 +2551,24 @@ veafRadio.refreshRadioMenu()
 <p>Full reference: <a href="../../TOOLS_REFERENCE/">Tools Reference</a></p>
 <hr />
 <h2 id="typical-build-workflow">Typical Build Workflow</h2>
-<pre><code class="language-batch">@echo off
-set MISSION_NAME=mission
+<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">echo</span> off
+<span class="k">set</span> <span class="nv">MISSION_NAME</span><span class="p">=</span>mission
 
-REM 1. Build the mission (reads src\mission\ + src\scripts\ → mission_YYYYMMDD.miz)
-veaf-tools.exe build %MISSION_NAME% .
+<span class="c1">REM 1. Build the mission (reads src\mission\ + src\scripts\ → mission_YYYYMMDD.miz)</span>
+veaf-tools.exe build <span class="nv">%MISSION_NAME%</span> .
 
-REM 2. Inject radio presets from YAML config (optional)
-REM veaf-tools.exe inject-presets %MISSION_NAME% --presets-file src\presets.yaml
+<span class="c1">REM 2. Inject radio presets from YAML config (optional)</span>
+<span class="c1">REM veaf-tools.exe inject-presets %MISSION_NAME% --presets-file src\presets.yaml</span>
 
-REM 3. Inject bullseye and nav waypoints (optional)
-REM veaf-tools.exe inject-waypoints %MISSION_NAME% --waypoints-file src\waypoints.yaml
+<span class="c1">REM 3. Inject bullseye and nav waypoints (optional)</span>
+<span class="c1">REM veaf-tools.exe inject-waypoints %MISSION_NAME% --waypoints-file src\waypoints.yaml</span>
 
-REM 4. Inject weather variants (optional)
-REM veaf-tools.exe inject-weather %MISSION_NAME% --config-file src\missions.yaml
-</code></pre>
+<span class="c1">REM 4. Inject weather variants (optional)</span>
+<span class="c1">REM veaf-tools.exe inject-weather %MISSION_NAME% --config-file src\missions.yaml</span>
+</code></pre></div>
 <p>Commit the contents of <code>src\mission\</code> to Git — not the <code>.miz</code> itself. Use <code>extract</code> once to bootstrap the folder from an existing mission:</p>
-<pre><code class="language-batch">veaf-tools.exe extract my-mission.miz src
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools.exe extract my-mission.miz src
+</code></pre></div>
 <hr />
 <h2 id="scripts-reference">Scripts Reference</h2>
 <p>All VEAF Lua modules are available once <code>veaf-scripts.lua</code> is loaded. See <a href="../scripts/">scripts/README.md</a> for the complete list with configuration guides.</p>
@@ -2606,34 +2606,34 @@ REM veaf-tools.exe inject-weather %MISSION_NAME% --config-file src\missions.yaml
 <hr />
 <h2 id="configuration-examples">Configuration Examples</h2>
 <h3 id="qra-zone">QRA Zone</h3>
-<pre><code class="language-lua">local northQra = VeafQRA:new()
-  :setName(&quot;QRA-North&quot;)
-  :setZone(&quot;ZONE-QRA-NORTH&quot;)
-  :setCoalition(coalition.side.RED)
-  :setGroups({ &quot;MiG-29 QRA&quot; })
-  :setRearmTime(600)
-  :initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">northQra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">VeafQRA</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;QRA-North&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setZone</span><span class="p">(</span><span class="s2">&quot;ZONE-QRA-NORTH&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setCoalition</span><span class="p">(</span><span class="nv">coalition</span><span class="p">.</span><span class="py">side</span><span class="p">.</span><span class="py">RED</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setGroups</span><span class="p">({</span><span class="w"> </span><span class="s2">&quot;MiG-29 QRA&quot;</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setRearmTime</span><span class="p">(</span><span class="mi">600</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="combat-zone">Combat Zone</h3>
-<pre><code class="language-lua">local strikeZone = VeafCombatZone:new()
-  :setName(&quot;Strike Alpha&quot;)
-  :setZoneName(&quot;ZONE-STRIKE-ALPHA&quot;)
-  :setDescription(&quot;Armoured column advancing on Senaki&quot;)
-  :addElement(VeafCombatZoneElement:new():setGroupName(&quot;STRIKE-ALPHA-ARMOR&quot;))
-  :addElement(VeafCombatZoneElement:new():setGroupName(&quot;STRIKE-ALPHA-AAA&quot;))
-  :setBriefing(&quot;Destroy all armoured vehicles. Expect AAA.&quot;)
-  :initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">strikeZone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">VeafCombatZone</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Strike Alpha&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setZoneName</span><span class="p">(</span><span class="s2">&quot;ZONE-STRIKE-ALPHA&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setDescription</span><span class="p">(</span><span class="s2">&quot;Armoured column advancing on Senaki&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">addElement</span><span class="p">(</span><span class="nv">VeafCombatZoneElement</span><span class="p">:</span><span class="nf">new</span><span class="p">():</span><span class="nf">setGroupName</span><span class="p">(</span><span class="s2">&quot;STRIKE-ALPHA-ARMOR&quot;</span><span class="p">))</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">addElement</span><span class="p">(</span><span class="nv">VeafCombatZoneElement</span><span class="p">:</span><span class="nf">new</span><span class="p">():</span><span class="nf">setGroupName</span><span class="p">(</span><span class="s2">&quot;STRIKE-ALPHA-AAA&quot;</span><span class="p">))</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setBriefing</span><span class="p">(</span><span class="s2">&quot;Destroy all armoured vehicles. Expect AAA.&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="air-waves-zone">Air Waves Zone</h3>
-<pre><code class="language-lua">local defenseZone = AirWaveZone:new()
-  :setName(&quot;AW-Defense&quot;)
-  :setZoneName(&quot;ZONE-DEFENSE&quot;)
-  :setDescription(&quot;Intercept zone&quot;)
-  :addWave({ &quot;MiG-23 Wave 1&quot;, &quot;MiG-23 Wave 1b&quot; })
-  :addWave({ &quot;MiG-29 Wave 2&quot; })
-  :setMinimumPlayersForWave(1)
-  :initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">defenseZone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">AirWaveZone</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;AW-Defense&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setZoneName</span><span class="p">(</span><span class="s2">&quot;ZONE-DEFENSE&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setDescription</span><span class="p">(</span><span class="s2">&quot;Intercept zone&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">addWave</span><span class="p">({</span><span class="w"> </span><span class="s2">&quot;MiG-23 Wave 1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;MiG-23 Wave 1b&quot;</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">addWave</span><span class="p">({</span><span class="w"> </span><span class="s2">&quot;MiG-29 Wave 2&quot;</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setMinimumPlayersForWave</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="resources">Resources</h2>
 <ul>

@@ -2646,32 +2646,31 @@
 <hr />
 <h2 id="vue-densemble-de-larchitecture">Vue d'ensemble de l'architecture</h2>
 <p>Le projet comporte deux couches complètement séparées :</p>
-<pre><code class="language-mermaid">flowchart TD
-    subgraph DT[&quot;DESIGN-TIME — Python&quot;]
-        tools[&quot;veaf-tools.exe&lt;br/&gt;— manipulation des .miz&quot;]
-        updater[&quot;veaf-tools-updater.exe&lt;br/&gt;— gestion des versions&quot;]
-        build[&quot;veaf-build&lt;br/&gt;— pipeline de build&quot;]
+<pre class="mermaid"><code>flowchart TD
+    subgraph DT["DESIGN-TIME — Python"]
+        tools["veaf-tools.exe&lt;br/&gt;— manipulation des .miz"]
+        updater["veaf-tools-updater.exe&lt;br/&gt;— gestion des versions"]
+        build["veaf-build&lt;br/&gt;— pipeline de build"]
     end
-    DT --&gt;|produit| zip([&quot;published.zip&quot;])
+    DT --&gt;|produit| zip(["published.zip"])
     zip --&gt;|consommé par| RT
-    subgraph RT[&quot;RUNTIME — Lua dans DCS World&quot;]
-        scripts[&quot;veaf-scripts.lua&lt;br/&gt;— les 34 modules concaténés&quot;]
-        config[&quot;missionconfig.lua&lt;br/&gt;— config spécifique à la mission&quot;]
-    end
-</code></pre>
+    subgraph RT["RUNTIME — Lua dans DCS World"]
+        scripts["veaf-scripts.lua&lt;br/&gt;— les 34 modules concaténés"]
+        config["missionconfig.lua&lt;br/&gt;— config spécifique à la mission"]
+    end</code></pre>
 <ul>
 <li><strong>Runtime</strong> (<code>src/scripts/veaf/</code>) — 34 modules Lua chargés dans les missions DCS</li>
 <li><strong>Design-time</strong> (<code>src/python/veaf-tools/</code>) — outils CLI Python pour la manipulation des fichiers <code>.miz</code></li>
 </ul>
 <hr />
 <h2 id="structure-du-depot">Structure du dépôt</h2>
-<pre><code>VEAF-Mission-Creation-Tools/
+<div class="highlight"><pre><span></span><code>VEAF-Mission-Creation-Tools/
 ├── veaf_build/                   # CLI veaf-build (orchestrateur build &amp; publication)
 ├── build-and-release.py          # Shim de rétrocompatibilité (utiliser veaf-build à la place)
 ├── src/
 │   ├── scripts/veaf/             # Modules Lua runtime (34 fichiers)
 │   └── python/veaf-tools/        # Code source Python CLI
-│       ├── veaf-tools.py         # Point d'entrée
+│       ├── veaf-tools.py         # Point d&#39;entrée
 │       ├── veaf_libs/            # Utilitaires partagés (logger, progress, miz)
 │       ├── mission_tools/        # Lecture/écriture .miz
 │       └── *_injector/           # Un dossier par commande CLI
@@ -2684,7 +2683,7 @@
 ├── openspec/                     # Gestion des changements (workflow OpenSpec)
 └── .github/
     └── workflows/                # CI/CD GitHub Actions
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="environnement-de-developpement">Environnement de développement</h2>
 <p>Deux options de setup sont disponibles. Le DevContainer est recommandé pour les nouveaux contributeurs : il garantit un environnement identique à la CI.</p>
@@ -2713,14 +2712,14 @@
 <li>StyLua 2.4.0 — pour le formatage Lua (installé dans <code>~/.local/bin/stylua.exe</code>)</li>
 </ul>
 <h3 id="installation">Installation</h3>
-<pre><code class="language-powershell"># Cloner
-git clone https://github.com/VEAF/VEAF-Mission-Creation-Tools.git
-cd VEAF-Mission-Creation-Tools
+<div class="highlight"><pre><span></span><code><span class="c"># Cloner</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">VEAF</span><span class="p">/</span><span class="n">VEAF-Mission-Creation-Tools</span><span class="p">.</span><span class="n">git</span>
+<span class="nb">cd </span><span class="n">VEAF-Mission-Creation-Tools</span>
 
-# Installer les dépendances (Poetry gère son propre environnement virtuel)
-poetry install              # quality gate + veaf-tools
-poetry install --with build # ajouter PyInstaller (nécessaire pour compiler les .exe)
-</code></pre>
+<span class="c"># Installer les dépendances (Poetry gère son propre environnement virtuel)</span>
+<span class="n">poetry</span> <span class="n">install</span>              <span class="c"># quality gate + veaf-tools</span>
+<span class="n">poetry</span> <span class="n">install</span> <span class="p">-</span><span class="n">-with</span> <span class="n">build</span> <span class="c"># ajouter PyInstaller (nécessaire pour compiler les .exe)</span>
+</code></pre></div>
 <blockquote>
 <p>Utiliser <code>poetry run &lt;cmd&gt;</code> pour exécuter n'importe quelle commande Python dans l'environnement Poetry,
 ou <code>poetry shell</code> pour ouvrir une session interactive.</p>
@@ -2764,22 +2763,22 @@ ou <code>poetry shell</code> pour ouvrir une session interactive.</p>
 <h2 id="scripts-lua-runtime">Scripts Lua runtime</h2>
 <h3 id="structure-des-modules">Structure des modules</h3>
 <p>Chaque module Lua suit ce modèle :</p>
-<pre><code class="language-lua">moduleName = {}
+<div class="highlight"><pre><span></span><code><span class="nv">moduleName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 
-moduleName.Id = &quot;MODULE_ID&quot;
-moduleName.Version = &quot;1.x.y&quot;
--- moduleName.LogLevel = &quot;trace&quot;  -- décommenter pour augmenter la verbosité
+<span class="nv">moduleName</span><span class="p">.</span><span class="py">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;MODULE_ID&quot;</span>
+<span class="nv">moduleName</span><span class="p">.</span><span class="py">Version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.x.y&quot;</span>
+<span class="c1">-- moduleName.LogLevel = &quot;trace&quot;  -- décommenter pour augmenter la verbosité</span>
 
-veaf.loggers.new(moduleName.Id, moduleName.LogLevel)
+<span class="nv">veaf</span><span class="p">.</span><span class="py">loggers</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">moduleName</span><span class="p">.</span><span class="py">Id</span><span class="p">,</span><span class="w"> </span><span class="nv">moduleName</span><span class="p">.</span><span class="py">LogLevel</span><span class="p">)</span>
 
-function moduleName.initialize()
-  -- s'enregistrer auprès des marqueurs, radio, gestionnaire d'événements
-end
+<span class="kr">function</span><span class="w"> </span><span class="nc">moduleName</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="w">  </span><span class="c1">-- s&#39;enregistrer auprès des marqueurs, radio, gestionnaire d&#39;événements</span>
+<span class="kr">end</span>
 
-function moduleName.start()
-  -- démarrer les watchdogs, tâches planifiées
-end
-</code></pre>
+<span class="kr">function</span><span class="w"> </span><span class="nc">moduleName</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+<span class="w">  </span><span class="c1">-- démarrer les watchdogs, tâches planifiées</span>
+<span class="kr">end</span>
+</code></pre></div>
 <h3 id="ordre-de-chargement">Ordre de chargement</h3>
 <ol>
 <li><code>veaf.lua</code> — doit être en premier</li>
@@ -2788,52 +2787,52 @@ end
 <li>Tous les autres modules (dans n'importe quel ordre)</li>
 </ol>
 <h3 id="journalisation">Journalisation</h3>
-<pre><code class="language-lua">veaf.loggers.get(moduleName.Id):info(&quot;Message&quot;)
-veaf.loggers.get(moduleName.Id):debug(&quot;Debug: %s&quot;, variable)
-veaf.loggers.get(moduleName.Id):trace(&quot;Trace: %s&quot;, veaf.lp(table))
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veaf</span><span class="p">.</span><span class="py">loggers</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nv">moduleName</span><span class="p">.</span><span class="py">Id</span><span class="p">):</span><span class="nf">info</span><span class="p">(</span><span class="s2">&quot;Message&quot;</span><span class="p">)</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">loggers</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nv">moduleName</span><span class="p">.</span><span class="py">Id</span><span class="p">):</span><span class="nf">debug</span><span class="p">(</span><span class="s2">&quot;Debug: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">variable</span><span class="p">)</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">loggers</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nv">moduleName</span><span class="p">.</span><span class="py">Id</span><span class="p">):</span><span class="nf">trace</span><span class="p">(</span><span class="s2">&quot;Trace: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">veaf</span><span class="p">.</span><span class="nf">lp</span><span class="p">(</span><span class="nv">table</span><span class="p">))</span>
+</code></pre></div>
 <p>Niveaux de log : <code>error</code> (1) → <code>warning</code> (2) → <code>info</code> (3) → <code>debug</code> (4) → <code>trace</code> (5). Par défaut : <code>info</code> (3).</p>
 <p>Pour les arguments coûteux à évaluer, utiliser <code>veaf.lp()</code> (proxy lazy — stringifié uniquement si le niveau est actif).</p>
 <p>Pour augmenter la verbosité pour une mission au <strong>moment du build</strong> (global, intégré dans le <code>.miz</code>), ajouter <code>global_log_level</code> dans <code>mission.yaml</code> :</p>
-<pre><code class="language-yaml">global_log_level: debug
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">global_log_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debug</span>
+</code></pre></div>
 <p>Pour le contrôle <strong>par module au moment du build</strong>, utiliser la section <code>lua_modules</code> :</p>
-<pre><code class="language-yaml">lua_modules:
-  SPAWN:
-    logLevel: debug
-  RADIO:
-    logLevel: trace
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">lua_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">SPAWN</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debug</span>
+<span class="w">  </span><span class="nt">RADIO</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trace</span>
+</code></pre></div>
 <p>Cela génère des appels <code>veaf.setConfig("MODULE_ID", "logLevel", "...")</code> dans <code>veaf-modules-config.lua</code>. Ou utiliser <code>--log-modules SPAWN,RADIO</code> sur la CLI pour réduire au silence tout le reste.</p>
 <p>Pour le contrôle <strong>par module au runtime</strong> (sans rebuild), utiliser <code>missionconfig.lua</code> directement :</p>
-<pre><code class="language-lua">veaf.loggers.get(&quot;SPAWN&quot;):setLevel(&quot;debug&quot;, true)  -- force=true contourne le cap BaseLogLevel
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veaf</span><span class="p">.</span><span class="py">loggers</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">&quot;SPAWN&quot;</span><span class="p">):</span><span class="nf">setLevel</span><span class="p">(</span><span class="s2">&quot;debug&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w">  </span><span class="c1">-- force=true contourne le cap BaseLogLevel</span>
+</code></pre></div>
 <h3 id="acces-mistdbs">Accès mist.DBs</h3>
 <p>Ne pas accéder à <code>mist.DBs.*</code> directement. Utiliser l'interface <code>veaf.mist</code> :</p>
-<pre><code class="language-lua">local unitData  = veaf.mist.getUnitData(unitName)
-local groupData = veaf.mist.getGroupData(groupName)
-local isHuman   = veaf.mist.isHumanUnit(unitName)
-local allUnits  = veaf.mist.getAllUnitData()
-local groupById = veaf.mist.getGroupById(groupId)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">unitData</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">veaf</span><span class="p">.</span><span class="py">mist</span><span class="p">.</span><span class="nf">getUnitData</span><span class="p">(</span><span class="nv">unitName</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">groupData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veaf</span><span class="p">.</span><span class="py">mist</span><span class="p">.</span><span class="nf">getGroupData</span><span class="p">(</span><span class="nv">groupName</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">isHuman</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">veaf</span><span class="p">.</span><span class="py">mist</span><span class="p">.</span><span class="nf">isHumanUnit</span><span class="p">(</span><span class="nv">unitName</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">allUnits</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">veaf</span><span class="p">.</span><span class="py">mist</span><span class="p">.</span><span class="nf">getAllUnitData</span><span class="p">()</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">groupById</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veaf</span><span class="p">.</span><span class="py">mist</span><span class="p">.</span><span class="nf">getGroupById</span><span class="p">(</span><span class="nv">groupId</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="outils-python">Outils Python</h2>
 <h3 id="architecture-cli">Architecture CLI</h3>
 <p>Chaque sous-commande de <code>veaf-tools.exe</code> est implémentée comme un package <code>*_injector/</code> :</p>
-<pre><code>weather_injector/
-├── weather_worker.py    # Point d'entrée (méthode run())
+<div class="highlight"><pre><span></span><code>weather_injector/
+├── weather_worker.py    # Point d&#39;entrée (méthode run())
 ├── weather_manager.py   # Logique de transformation des données
 ├── models.py            # Définitions des dataclasses
-└── weather_README.py    # Chaînes d'aide/documentation
-</code></pre>
+└── weather_README.py    # Chaînes d&#39;aide/documentation
+</code></pre></div>
 <h3 id="pattern-de-journalisation">Pattern de journalisation</h3>
-<pre><code class="language-python">from veaf_libs.logger import logger, console
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">veaf_libs.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span><span class="p">,</span> <span class="n">console</span>
 
-logger.info(&quot;Traitement de la mission...&quot;)
-logger.debug(&quot;Informations détaillées&quot;)
-logger.warning(&quot;Attention&quot;)
-logger.error(&quot;Échec&quot;, raise_exception=True)
-</code></pre>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Traitement de la mission...&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Informations détaillées&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Attention&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Échec&quot;</span><span class="p">,</span> <span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="ajouter-un-nouvel-outil">Ajouter un nouvel outil</h3>
 <ol>
 <li>Créer <code>src/python/veaf-tools/new_feature_injector/</code></li>
@@ -2844,9 +2843,9 @@ logger.error(&quot;Échec&quot;, raise_exception=True)
 <hr />
 <h2 id="build-et-publication">Build et publication</h2>
 <h3 id="build-local">Build local</h3>
-<pre><code class="language-powershell"># Build (compile Lua + construit les .exe)
-poetry run veaf-build build --version 6.0.5
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c"># Build (compile Lua + construit les .exe)</span>
+<span class="n">poetry</span> <span class="n">run</span> <span class="n">veaf-build</span> <span class="n">build</span> <span class="p">-</span><span class="n">-version</span> <span class="n">6</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">5</span>
+</code></pre></div>
 <p>Ce que cela fait :
 1. Valide les prérequis (Git, Python, PyInstaller)
 2. Concatène les modules Lua → <code>published/veaf-scripts.lua</code>
@@ -2855,9 +2854,9 @@ poetry run veaf-build build --version 6.0.5
 <h3 id="publier-une-version">Publier une version</h3>
 <h4 id="automatise-recommande">Automatisé (recommandé)</h4>
 <p>Pousser un tag versionné — GitHub Actions fait tout :</p>
-<pre><code class="language-bash">git tag published-v6.0.6
-git push origin published-v6.0.6
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>tag<span class="w"> </span>published-v6.0.6
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>published-v6.0.6
+</code></pre></div>
 <p>Le workflow CI <code>release</code> va :
 1. Générer les notes de release depuis les commits conventionnels (git-cliff)
 2. Construire <code>veaf-tools.exe</code>, <code>veaf-tools-updater.exe</code> et <code>published.zip</code>
@@ -2865,15 +2864,15 @@ git push origin published-v6.0.6
 4. Déplacer le tag flottant <code>published-latest</code></p>
 <p>Les notes de release sont auto-générées depuis les messages de commit. Elles sont éditables sur GitHub après la release.</p>
 <h4 id="manuel-mode-de-secours">Manuel (mode de secours)</h4>
-<pre><code class="language-powershell"># Build d'abord
-poetry run veaf-build build --version 6.0.5
+<div class="highlight"><pre><span></span><code><span class="c"># Build d&#39;abord</span>
+<span class="n">poetry</span> <span class="n">run</span> <span class="n">veaf-build</span> <span class="n">build</span> <span class="p">-</span><span class="n">-version</span> <span class="n">6</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">5</span>
 
-# Puis publication (interactif — demande RELEASE_NOTES.md)
-# Nécessite la variable d'environnement GITHUB_TOKEN
-poetry run veaf-build publish --version 6.0.5
-</code></pre>
+<span class="c"># Puis publication (interactif — demande RELEASE_NOTES.md)</span>
+<span class="c"># Nécessite la variable d&#39;environnement GITHUB_TOKEN</span>
+<span class="n">poetry</span> <span class="n">run</span> <span class="n">veaf-build</span> <span class="n">publish</span> <span class="p">-</span><span class="n">-version</span> <span class="n">6</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">5</span>
+</code></pre></div>
 <h3 id="modele-de-securite">Modèle de sécurité</h3>
-<pre><code>veaf-build calcule le SHA256 de published.zip
+<div class="highlight"><pre><span></span><code>veaf-build calcule le SHA256 de published.zip
     ↓
 SHA256 stocké avec le ZIP dans la GitHub Release
     ↓
@@ -2882,20 +2881,20 @@ veaf-tools-updater.exe télécharge les deux fichiers
 Somme de contrôle vérifiée avant extraction
     ↓
 ✅ Intégrité garantie
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="tests">Tests</h2>
 <h3 id="lancer-tous-les-tests">Lancer tous les tests</h3>
-<pre><code class="language-powershell">.\test\lua\run_tests.ps1
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">run_tests</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div>
 <p>Code de sortie <code>0</code> = tous passent, <code>1</code> = échecs.</p>
 <h3 id="execution-filtree">Exécution filtrée</h3>
-<pre><code class="language-powershell">.\test\lua\run_tests.ps1 -Filter spawn
-.\test\lua\run_tests.ps1 -Filter combat
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">run_tests</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Filter</span> <span class="n">spawn</span>
+<span class="p">.\</span><span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">run_tests</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Filter</span> <span class="n">combat</span>
+</code></pre></div>
 <h3 id="suite-unique">Suite unique</h3>
-<pre><code class="language-powershell">lua test\lua\test_veafSpawn.lua
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">lua</span> <span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">test_veafSpawn</span><span class="p">.</span><span class="n">lua</span>
+</code></pre></div>
 <h3 id="infrastructure">Infrastructure</h3>
 <ul>
 <li><strong>Framework :</strong> <a href="https://github.com/bluebird75/luaunit">luaunit</a> (intégré dans <code>test/lua/luaunit.lua</code>)</li>
@@ -2907,15 +2906,15 @@ Somme de contrôle vérifiée avant extraction
 <hr />
 <h2 id="portes-de-qualite">Portes de qualité</h2>
 <h3 id="avant-chaque-commit-sur-des-fichiers-lua">Avant chaque commit sur des fichiers Lua</h3>
-<pre><code class="language-powershell"># Vérifier le formatage (équivalent CI)
-~/.local/bin/stylua.exe --check src/scripts/veaf/
+<div class="highlight"><pre><span></span><code><span class="c"># Vérifier le formatage (équivalent CI)</span>
+<span class="p">~/.</span><span class="n">local</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">stylua</span><span class="p">.</span><span class="n">exe</span> <span class="p">-</span><span class="n">-check</span> <span class="n">src</span><span class="p">/</span><span class="n">scripts</span><span class="p">/</span><span class="n">veaf</span><span class="p">/</span>
 
-# Corriger automatiquement
-~/.local/bin/stylua.exe src/scripts/veaf/
+<span class="c"># Corriger automatiquement</span>
+<span class="p">~/.</span><span class="n">local</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">stylua</span><span class="p">.</span><span class="n">exe</span> <span class="n">src</span><span class="p">/</span><span class="n">scripts</span><span class="p">/</span><span class="n">veaf</span><span class="p">/</span>
 
-# Analyse statique
-luacheck src/scripts/veaf/ --config .luacheckrc
-</code></pre>
+<span class="c"># Analyse statique</span>
+<span class="n">luacheck</span> <span class="n">src</span><span class="p">/</span><span class="n">scripts</span><span class="p">/</span><span class="n">veaf</span><span class="p">/</span> <span class="p">-</span><span class="n">-config</span> <span class="p">.</span><span class="n">luacheckrc</span>
+</code></pre></div>
 <p>Version StyLua : <strong>2.4.0</strong> (imposée par le job CI <code>StyLua Formatting</code>).
 Luacheck est imposé par le job CI <code>Luacheck</code>.</p>
 <h3 id="jobs-ci">Jobs CI</h3>
@@ -2953,9 +2952,9 @@ Luacheck est imposé par le job CI <code>Luacheck</code>.</p>
 <hr />
 <h3 id="publier-une-nouvelle-version">Publier une nouvelle version</h3>
 <p>Pousser un tag <code>published-v*</code> — le workflow CI <code>Release</code> fait tout automatiquement :</p>
-<pre><code class="language-bash">git tag published-v6.1.0
-git push origin published-v6.1.0
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>tag<span class="w"> </span>published-v6.1.0
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>published-v6.1.0
+</code></pre></div>
 <hr />
 <h2 id="contribuer">Contribuer</h2>
 <h3 id="git-flow">Git Flow</h3>
@@ -2966,13 +2965,13 @@ git push origin published-v6.1.0
 <li><strong>Versions :</strong> <code>release/vX.Y.Z</code> depuis <code>develop-v6</code>, PR → <code>master</code></li>
 </ul>
 <h3 id="convention-de-commit">Convention de commit</h3>
-<pre><code>type(scope): courte description
+<div class="highlight"><pre><span></span><code>type(scope): courte description
 
 feat(spawn): ajouter le mode patrouille convoy
 fix(qra): vérifier unit:isExist() avant unit:inAir()
 chore(deps): mettre à jour luaunit à 3.4
 docs(api): documenter les helpers tanker de veafMove
-</code></pre>
+</code></pre></div>
 <p>Types : <code>feat</code>, <code>fix</code>, <code>chore</code>, <code>docs</code>, <code>test</code>, <code>refactor</code>, <code>style</code>.</p>
 <h3 id="checklist-pull-request">Checklist Pull Request</h3>
 <ul>

@@ -1946,15 +1946,15 @@
 <hr />
 <h2 id="loading-and-initialisation-pattern">Loading and Initialisation Pattern</h2>
 <p>Every module follows the same pattern:</p>
-<pre><code class="language-lua">-- Optional: override defaults before initialising
-veafModuleName.SomeConstant = value
+<div class="highlight"><pre><span></span><code><span class="c1">-- Optional: override defaults before initialising</span>
+<span class="nv">veafModuleName</span><span class="p">.</span><span class="py">SomeConstant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">value</span>
 
--- Required: initialise the module
-veafModuleName.initialize()
+<span class="c1">-- Required: initialise the module</span>
+<span class="nv">veafModuleName</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
 
--- Some modules also require a start() call
-veafModuleName.start()
-</code></pre>
+<span class="c1">-- Some modules also require a start() call</span>
+<span class="nv">veafModuleName</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre></div>
 <p>Modules that are not <code>initialize()</code>d consume no resources and create no radio menus.</p>
 <hr />
 <h2 id="core-modules">Core Modules</h2>
@@ -2008,10 +2008,10 @@ veafModuleName.start()
 </tbody>
 </table>
 <p>Minimal initialisation:</p>
-<pre><code class="language-lua">veafMarkers.initialize()
-veafRadio.initialize()
-veafRadio.refreshRadioMenu()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafMarkers</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">refreshRadioMenu</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="spawning-and-movement">Spawning and Movement</h2>
 <table>

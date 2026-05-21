@@ -2121,8 +2121,8 @@
 </ul>
 <hr />
 <h2 id="activation">Activation</h2>
-<pre><code class="language-lua">veafSpawn.initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafSpawn</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <p>À appeler après tous les autres modules dont veafSpawn dépend.</p>
 <hr />
 <h2 id="constantes-de-configuration-cles">Constantes de configuration clés</h2>
@@ -2180,72 +2180,72 @@
 <hr />
 <h2 id="commandes-de-marqueur-cote-joueur">Commandes de marqueur (côté joueur)</h2>
 <h3 id="faire-apparaitre-une-unite">Faire apparaître une unité</h3>
-<pre><code>_spawn unit, name [DCS_TYPE]
+<div class="highlight"><pre><span></span><code>_spawn unit, name [DCS_TYPE]
 _spawn unit, name F-16C, group 2, hdg 180, alt 20000
 _spawn unit, name T-80, group 4, hdg 270, spacing 50
-</code></pre>
+</code></pre></div>
 <p>Options : <code>name</code>, <code>group</code>, <code>hdg</code>, <code>alt</code>, <code>speed</code>, <code>side</code>, <code>country</code>, <code>skill</code>, <code>spacing</code>, <code>immortal</code>.</p>
 <h3 id="faire-apparaitre-un-groupe-predefini">Faire apparaître un groupe prédéfini</h3>
-<pre><code>_spawn group, name [NOM_GROUPE]
-</code></pre>
+<div class="highlight"><pre><span></span><code>_spawn group, name [NOM_GROUPE]
+</code></pre></div>
 <p>Le groupe doit être défini dans <code>spawnables.yaml</code>.</p>
 <h3 id="faire-apparaitre-une-patrouille-cap">Faire apparaître une patrouille CAP</h3>
-<pre><code>_spawn cap, name Su-27, alt 25000, capradius 20000
-</code></pre>
+<div class="highlight"><pre><span></span><code>_spawn cap, name Su-27, alt 25000, capradius 20000
+</code></pre></div>
 <p>Options : <code>name</code>, <code>alt</code>, <code>hdg</code>, <code>speed</code>, <code>group</code>, <code>capradius</code>, <code>distance</code>.</p>
 <h3 id="faire-apparaitre-un-afacjtac">Faire apparaître un AFAC/JTAC</h3>
-<pre><code>_spawn afac, name A-10C, freq 133.0, mod AM, code 1688, alt 15000
-</code></pre>
+<div class="highlight"><pre><span></span><code>_spawn afac, name A-10C, freq 133.0, mod AM, code 1688, alt 15000
+</code></pre></div>
 <p>Options : <code>name</code>, <code>freq</code>, <code>mod</code>, <code>code</code>, <code>alt</code>, <code>speed</code>, <code>immortal</code>.</p>
 <h3 id="faire-apparaitre-un-convoi">Faire apparaître un convoi</h3>
 <p>Placer deux marqueurs : un avec la commande (départ), un comme destination.</p>
-<pre><code>_spawn convoy, dest [NOM_MARQUEUR_DEST], speed 50, defense 2, armor 2, size 3
-</code></pre>
+<div class="highlight"><pre><span></span><code>_spawn convoy, dest [NOM_MARQUEUR_DEST], speed 50, defense 2, armor 2, size 3
+</code></pre></div>
 <p>Options : <code>dest</code>, <code>speed</code>, <code>defense [0-5]</code>, <code>armor [0-5]</code>, <code>size [0-5]</code>, <code>patrol</code>, <code>offroad</code>.</p>
 <h3 id="faire-apparaitre-de-la-fumee">Faire apparaître de la fumée</h3>
-<pre><code>_spawn smoke, color red
+<div class="highlight"><pre><span></span><code>_spawn smoke, color red
 _spawn smoke, color green, shells 5
-</code></pre>
+</code></pre></div>
 <p>Couleurs : <code>red</code>, <code>green</code>, <code>blue</code>, <code>white</code>, <code>orange</code>.</p>
 <h3 id="faire-apparaitre-des-fusees-eclairantes">Faire apparaître des fusées éclairantes</h3>
-<pre><code>_spawn flare, power 1000000, shells 5, heading 90, distance 500
-</code></pre>
+<div class="highlight"><pre><span></span><code>_spawn flare, power 1000000, shells 5, heading 90, distance 500
+</code></pre></div>
 <h3 id="faire-apparaitre-des-explosions">Faire apparaître des explosions</h3>
-<pre><code>_spawn bomb, power 500, shells 3
-</code></pre>
+<div class="highlight"><pre><span></span><code>_spawn bomb, power 500, shells 3
+</code></pre></div>
 <h3 id="faire-apparaitre-un-farp">Faire apparaître un FARP</h3>
-<pre><code>_spawn farp, name &quot;FARP Alpha&quot;, side blue
-</code></pre>
+<div class="highlight"><pre><span></span><code>_spawn farp, name &quot;FARP Alpha&quot;, side blue
+</code></pre></div>
 <h3 id="detruire-des-unites">Détruire des unités</h3>
-<pre><code>_destroy, radius 500
+<div class="highlight"><pre><span></span><code>_destroy, radius 500
 _destroy, name Tank-1
-</code></pre>
+</code></pre></div>
 <h3 id="teleporter-un-groupe">Téléporter un groupe</h3>
-<pre><code>_teleport, name &quot;Viper Flight&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>_teleport, name &quot;Viper Flight&quot;
+</code></pre></div>
 <hr />
 <h2 id="groupes-spawnables-spawnablesyaml">Groupes spawnables (spawnables.yaml)</h2>
 <p>Définir des modèles de groupes réutilisables que les joueurs peuvent faire apparaître avec <code>_spawn group</code> :</p>
-<pre><code class="language-yaml">groups:
-  - name: &quot;RED-CAP&quot;
-    description: &quot;CAP rouge (2 × MiG-29S)&quot;
-    coalition: red
-    country: Russia
-    units:
-      - type: MiG-29S
-        skill: High
-      - type: MiG-29S
-        skill: High
+<div class="highlight"><pre><span></span><code><span class="nt">groups</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;RED-CAP&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CAP</span><span class="nv"> </span><span class="s">rouge</span><span class="nv"> </span><span class="s">(2</span><span class="nv"> </span><span class="s">×</span><span class="nv"> </span><span class="s">MiG-29S)&quot;</span>
+<span class="w">    </span><span class="nt">coalition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">red</span>
+<span class="w">    </span><span class="nt">country</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Russia</span>
+<span class="w">    </span><span class="nt">units</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MiG-29S</span>
+<span class="w">        </span><span class="nt">skill</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">High</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MiG-29S</span>
+<span class="w">        </span><span class="nt">skill</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">High</span>
 
-  - name: &quot;ARMOR-PLATOON&quot;
-    description: &quot;Peloton blindé (4 × T-80)&quot;
-    coalition: red
-    country: Russia
-    units:
-      - type: T-80
-        count: 4
-        skill: Average
-</code></pre>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ARMOR-PLATOON&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Peloton</span><span class="nv"> </span><span class="s">blindé</span><span class="nv"> </span><span class="s">(4</span><span class="nv"> </span><span class="s">×</span><span class="nv"> </span><span class="s">T-80)&quot;</span>
+<span class="w">    </span><span class="nt">coalition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">red</span>
+<span class="w">    </span><span class="nt">country</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Russia</span>
+<span class="w">    </span><span class="nt">units</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">T-80</span>
+<span class="w">        </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">        </span><span class="nt">skill</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Average</span>
+</code></pre></div>
 <hr />
 <h2 id="voir-aussi">Voir aussi</h2>
 <ul>

@@ -1900,34 +1900,34 @@
 </ul>
 <hr />
 <h2 id="activation">Activation</h2>
-<pre><code class="language-lua">veafWeather.initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafWeather</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="injection-de-meteo-au-moment-du-build">Injection de météo au moment du build</h2>
 <p>La météo est injectée au moment du build (avant le chargement de la mission) avec <code>veaf-tools.exe</code> :</p>
-<pre><code class="language-powershell">veaf-tools.exe weather-inject --mission mission.miz --config weather.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">weather-inject</span> <span class="p">-</span><span class="n">-mission</span> <span class="n">mission</span><span class="p">.</span><span class="n">miz</span> <span class="p">-</span><span class="n">-config</span> <span class="n">weather</span><span class="p">.</span><span class="n">yaml</span>
+</code></pre></div>
 <h3 id="exemple-weatheryaml">Exemple weather.yaml</h3>
-<pre><code class="language-yaml">weather:
-  source: metar          # &quot;metar&quot; (temps réel) ou &quot;manual&quot;
-  icao: UGSS             # Code ICAO de l'aéroport pour le METAR (Senaki)
-  # override manuel (utilisé quand source: manual)
-  wind:
-    speed: 10            # nœuds
-    direction: 270       # degrés
-  visibility: 8000       # mètres
-  clouds:
-    base: 2500           # pieds
-    density: 5           # 0-10
-  temperature: 18        # °C
-  qnh: 1013              # hPa
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">weather</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metar</span><span class="w">          </span><span class="c1"># &quot;metar&quot; (temps réel) ou &quot;manual&quot;</span>
+<span class="w">  </span><span class="nt">icao</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UGSS</span><span class="w">             </span><span class="c1"># Code ICAO de l&#39;aéroport pour le METAR (Senaki)</span>
+<span class="w">  </span><span class="c1"># override manuel (utilisé quand source: manual)</span>
+<span class="w">  </span><span class="nt">wind</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">speed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w">            </span><span class="c1"># nœuds</span>
+<span class="w">    </span><span class="nt">direction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">270</span><span class="w">       </span><span class="c1"># degrés</span>
+<span class="w">  </span><span class="nt">visibility</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span><span class="w">       </span><span class="c1"># mètres</span>
+<span class="w">  </span><span class="nt">clouds</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">base</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2500</span><span class="w">           </span><span class="c1"># pieds</span>
+<span class="w">    </span><span class="nt">density</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w">           </span><span class="c1"># 0-10</span>
+<span class="w">  </span><span class="nt">temperature</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">18</span><span class="w">        </span><span class="c1"># °C</span>
+<span class="w">  </span><span class="nt">qnh</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1013</span><span class="w">              </span><span class="c1"># hPa</span>
+</code></pre></div>
 <hr />
 <h2 id="rapport-meteo-au-runtime">Rapport météo au runtime</h2>
 <p>Obtenir un rapport météo pour une position :</p>
-<pre><code class="language-lua">local report = veaf.weatherReport(position, altitude, withLASTE)
-veaf.outTextForUnit(unitName, report, 30)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veaf</span><span class="p">.</span><span class="nf">weatherReport</span><span class="p">(</span><span class="nv">position</span><span class="p">,</span><span class="w"> </span><span class="nv">altitude</span><span class="p">,</span><span class="w"> </span><span class="nv">withLASTE</span><span class="p">)</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="nf">outTextForUnit</span><span class="p">(</span><span class="nv">unitName</span><span class="p">,</span><span class="w"> </span><span class="nv">report</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="menu-radio-f10">Menu radio F10</h2>
 <p>Si activé, fournit un sous-menu <strong>Météo</strong> où les joueurs peuvent demander des rapports météo locaux.</p>

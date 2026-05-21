@@ -2577,7 +2577,7 @@
 <h2 id="f10-radio-menu">F10 Radio Menu</h2>
 <p>All VEAF features are accessible via <strong>F10 → Other → VEAF</strong>.</p>
 <h3 id="typical-menu-structure">Typical Menu Structure</h3>
-<pre><code class="language-mermaid">mindmap
+<pre class="mermaid"><code>mindmap
   root((F10 → Other → VEAF))
     Assets
       Tankers
@@ -2612,8 +2612,7 @@
         Activate
         Deactivate
         Info
-    Help
-</code></pre>
+    Help</code></pre>
 <p>The exact structure depends on what the mission maker has enabled.</p>
 <hr />
 <h2 id="marker-commands">Marker Commands</h2>
@@ -2623,11 +2622,11 @@
 </blockquote>
 <h3 id="spawn-commands">Spawn Commands</h3>
 <h4 id="spawn-a-unit-_spawn-unit">Spawn a unit: <code>_spawn unit</code></h4>
-<pre><code>_spawn unit, name F-16C
+<div class="highlight"><pre><span></span><code>_spawn unit, name F-16C
 _spawn unit, name T-80, group 4, hdg 270
 _spawn unit, name MiG-29S, alt 20000, speed 500, hdg 090
 _spawn unit, name SA-6
-</code></pre>
+</code></pre></div>
 <p>Common options:</p>
 <table>
 <thead>
@@ -2676,55 +2675,55 @@ _spawn unit, name SA-6
 </tbody>
 </table>
 <h4 id="spawn-a-predefined-group-_spawn-group">Spawn a predefined group: <code>_spawn group</code></h4>
-<pre><code>_spawn group, name CAP-2
+<div class="highlight"><pre><span></span><code>_spawn group, name CAP-2
 _spawn group, name RED-SAM-SITE, hdg 180
-</code></pre>
+</code></pre></div>
 <p>Groups must be defined in the mission's <code>spawnables.yaml</code> file by the mission maker.</p>
 <h4 id="spawn-a-cap-patrol-_spawn-cap">Spawn a CAP patrol: <code>_spawn cap</code></h4>
-<pre><code>_spawn cap, name Su-27, alt 25000, capradius 20000
+<div class="highlight"><pre><span></span><code>_spawn cap, name Su-27, alt 25000, capradius 20000
 _spawn cap, name F-15C, group 2, alt 30000, capradius 25000
-</code></pre>
+</code></pre></div>
 <p>Additional options: <code>capradius [M]</code> (orbit radius in metres), <code>distance [M]</code>.</p>
 <h4 id="spawn-a-convoy-_spawn-convoy">Spawn a convoy: <code>_spawn convoy</code></h4>
 <p>Place two markers: one at the start position (with the command), one at the destination.</p>
-<pre><code>Marker at start:
+<div class="highlight"><pre><span></span><code>Marker at start:
 _spawn convoy, dest [DESTINATION_MARKER_NAME], speed 50, defense 2, armor 2
 
 Marker at destination:
 (empty or just a name)
-</code></pre>
+</code></pre></div>
 <p>Options: <code>dest [NAME]</code>, <code>speed [KMH]</code>, <code>defense [0-5]</code>, <code>armor [0-5]</code>, <code>size [0-5]</code>, <code>patrol</code>, <code>offroad</code>.</p>
 <h4 id="spawn-an-afacjtac-_spawn-afac">Spawn an AFAC/JTAC: <code>_spawn afac</code></h4>
-<pre><code>_spawn afac, name A-10C, alt 15000, freq 133.0, mod AM, code 1688
+<div class="highlight"><pre><span></span><code>_spawn afac, name A-10C, alt 15000, freq 133.0, mod AM, code 1688
 _spawn afac, name L-39ZA, freq 135.0, code 1584, immortal
-</code></pre>
+</code></pre></div>
 <h4 id="spawn-smoke-_spawn-smoke">Spawn smoke: <code>_spawn smoke</code></h4>
-<pre><code>_spawn smoke, color red
+<div class="highlight"><pre><span></span><code>_spawn smoke, color red
 _spawn smoke, color green, shells 5
-</code></pre>
+</code></pre></div>
 <p>Available colors: <code>red</code>, <code>green</code>, <code>blue</code>, <code>white</code>, <code>orange</code>.</p>
 <h4 id="spawn-illumination-flares-_spawn-flare">Spawn illumination flares: <code>_spawn flare</code></h4>
-<pre><code>_spawn flare, power 1000000, shells 5
-</code></pre>
+<div class="highlight"><pre><span></span><code>_spawn flare, power 1000000, shells 5
+</code></pre></div>
 <h4 id="spawn-explosions-_spawn-bomb">Spawn explosions: <code>_spawn bomb</code></h4>
-<pre><code>_spawn bomb, power 500, shells 3
-</code></pre>
+<div class="highlight"><pre><span></span><code>_spawn bomb, power 500, shells 3
+</code></pre></div>
 <h3 id="cas-command">CAS Command</h3>
-<pre><code>_cas
+<div class="highlight"><pre><span></span><code>_cas
 _cas, size 3, defense 2, armor 3
-</code></pre>
+</code></pre></div>
 <p>Options: <code>size [0-5]</code>, <code>defense [0-5]</code>, <code>armor [0-5]</code>, <code>side [blue/red]</code>.</p>
 <h3 id="teleport-command">Teleport Command</h3>
-<pre><code>_teleport, name Viper Flight
-</code></pre>
+<div class="highlight"><pre><span></span><code>_teleport, name Viper Flight
+</code></pre></div>
 <p>Teleports the named group to the marker position.</p>
 <h3 id="destroy-command">Destroy Command</h3>
-<pre><code>_destroy, radius 500
+<div class="highlight"><pre><span></span><code>_destroy, radius 500
 _destroy, name Tank-1
-</code></pre>
+</code></pre></div>
 <h3 id="security-authentication">Security Authentication</h3>
-<pre><code>_auth [PASSWORD]
-</code></pre>
+<div class="highlight"><pre><span></span><code>_auth [PASSWORD]
+</code></pre></div>
 <p>Grants temporary elevated permissions. Required on some servers before using advanced spawn commands.</p>
 <hr />
 <h2 id="assets">Assets</h2>
@@ -2902,8 +2901,8 @@ _destroy, name Tank-1
 </tbody>
 </table>
 <p>To authenticate as admin:</p>
-<pre><code>_auth [PASSWORD]
-</code></pre>
+<div class="highlight"><pre><span></span><code>_auth [PASSWORD]
+</code></pre></div>
 <p>After authentication you have elevated rights for the configured duration (default: 10 minutes). The password is set by the mission maker or server admin.</p>
 <hr />
 <h2 id="tips-by-aircraft-role">Tips by Aircraft Role</h2>

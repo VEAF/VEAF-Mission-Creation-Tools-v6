@@ -2199,17 +2199,17 @@
 <hr />
 <h2 id="running-tests">Running Tests</h2>
 <h3 id="all-tests">All Tests</h3>
-<pre><code class="language-powershell">.\test\lua\run_tests.ps1
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">run_tests</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div>
 <p>Exit code <code>0</code> if all suites pass, <code>1</code> if any fail.</p>
 <h3 id="filtered-run">Filtered Run</h3>
-<pre><code class="language-powershell"># Run suites whose filename matches a substring
-.\test\lua\run_tests.ps1 -Filter spawn
-.\test\lua\run_tests.ps1 -Filter combat
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c"># Run suites whose filename matches a substring</span>
+<span class="p">.\</span><span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">run_tests</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Filter</span> <span class="n">spawn</span>
+<span class="p">.\</span><span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">run_tests</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Filter</span> <span class="n">combat</span>
+</code></pre></div>
 <h3 id="single-file">Single File</h3>
-<pre><code class="language-powershell">lua test\lua\test_veafSpawn.lua
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">lua</span> <span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">test_veafSpawn</span><span class="p">.</span><span class="n">lua</span>
+</code></pre></div>
 <h3 id="requirements">Requirements</h3>
 <ul>
 <li>Lua 5.1 on PATH, or installed at <code>c:\program files (x86)\lua\5.1\lua.exe</code></li>
@@ -2218,13 +2218,13 @@
 <hr />
 <h2 id="infrastructure">Infrastructure</h2>
 <h3 id="file-layout">File Layout</h3>
-<pre><code>test/lua/
+<div class="highlight"><pre><span></span><code>test/lua/
 ├── luaunit.lua         # Test framework (bundled)
 ├── dcs_mocks.lua       # DCS API stubs
 ├── veaf_loader.lua     # Module loader for src/scripts/veaf/
 ├── run_tests.ps1       # Test runner (PowerShell)
 └── test_*.lua          # One file per module (31 files)
-</code></pre>
+</code></pre></div>
 <h3 id="dcs_mockslua">dcs_mocks.lua</h3>
 <p>Provides minimal stubs for the DCS global API so modules can be <code>require</code>d without a running DCS instance. Stubbed namespaces include:</p>
 <ul>
@@ -2238,17 +2238,17 @@
 <p>If a new module fails to load because a DCS API call is missing, add the stub to <code>dcs_mocks.lua</code>.</p>
 <h3 id="veaf_loaderlua">veaf_loader.lua</h3>
 <p>Patches <code>package.path</code> so that <code>require("veaf")</code>, <code>require("veafSpawn")</code>, etc. resolve to <code>src/scripts/veaf/</code>. Each test file starts with:</p>
-<pre><code class="language-lua">dofile(&quot;test/lua/dcs_mocks.lua&quot;)
-dofile(&quot;test/lua/veaf_loader.lua&quot;)
-local luaunit = require(&quot;luaunit&quot;)
--- load the module under test:
-require(&quot;veafSpawn&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">dofile</span><span class="p">(</span><span class="s2">&quot;test/lua/dcs_mocks.lua&quot;</span><span class="p">)</span>
+<span class="nb">dofile</span><span class="p">(</span><span class="s2">&quot;test/lua/veaf_loader.lua&quot;</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">luaunit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="s2">&quot;luaunit&quot;</span><span class="p">)</span>
+<span class="c1">-- load the module under test:</span>
+<span class="nb">require</span><span class="p">(</span><span class="s2">&quot;veafSpawn&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="luaunit">luaunit</h3>
 <p>Standard luaunit API applies. Notable: <code>assertNoError</code> does not exist in this version; use <code>pcall</code> instead:</p>
-<pre><code class="language-lua">local ok, err = pcall(function() veafSpawn.someFunction() end)
-luaunit.assertIsTrue(ok, err)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">ok</span><span class="p">,</span><span class="w"> </span><span class="nv">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">pcall</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span><span class="w"> </span><span class="nv">veafSpawn</span><span class="p">.</span><span class="nf">someFunction</span><span class="p">()</span><span class="w"> </span><span class="kr">end</span><span class="p">)</span>
+<span class="nv">luaunit</span><span class="p">.</span><span class="nf">assertIsTrue</span><span class="p">(</span><span class="nv">ok</span><span class="p">,</span><span class="w"> </span><span class="nv">err</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="test-suite">Test Suite</h2>
 <table>
@@ -2467,33 +2467,33 @@ luaunit.assertIsTrue(ok, err)
 <hr />
 <h2 id="writing-tests">Writing Tests</h2>
 <h3 id="minimal-template">Minimal Template</h3>
-<pre><code class="language-lua">-- test_veafMyModule.lua
-package.path = package.path .. &quot;;test/lua/?.lua;src/scripts/veaf/?.lua&quot;
-dofile(&quot;test/lua/dcs_mocks.lua&quot;)
-dofile(&quot;test/lua/veaf_loader.lua&quot;)
-local luaunit = require(&quot;luaunit&quot;)
-require(&quot;veafMyModule&quot;)
+<div class="highlight"><pre><span></span><code><span class="c1">-- test_veafMyModule.lua</span>
+<span class="nb">package.path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">package.path</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;;test/lua/?.lua;src/scripts/veaf/?.lua&quot;</span>
+<span class="nb">dofile</span><span class="p">(</span><span class="s2">&quot;test/lua/dcs_mocks.lua&quot;</span><span class="p">)</span>
+<span class="nb">dofile</span><span class="p">(</span><span class="s2">&quot;test/lua/veaf_loader.lua&quot;</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">luaunit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="s2">&quot;luaunit&quot;</span><span class="p">)</span>
+<span class="nb">require</span><span class="p">(</span><span class="s2">&quot;veafMyModule&quot;</span><span class="p">)</span>
 
-TestVeafMyModuleConstants = {}
+<span class="nv">TestVeafMyModuleConstants</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 
-function TestVeafMyModuleConstants:test_Id()
-  luaunit.assertEquals(veafMyModule.Id, &quot;MYMODULE&quot;)
-end
+<span class="kr">function</span><span class="w"> </span><span class="nc">TestVeafMyModuleConstants</span><span class="p">:</span><span class="nf">test_Id</span><span class="p">()</span>
+<span class="w">  </span><span class="nv">luaunit</span><span class="p">.</span><span class="nf">assertEquals</span><span class="p">(</span><span class="nv">veafMyModule</span><span class="p">.</span><span class="py">Id</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;MYMODULE&quot;</span><span class="p">)</span>
+<span class="kr">end</span>
 
-function TestVeafMyModuleConstants:test_Version()
-  luaunit.assertNotNil(veafMyModule.Version)
-end
+<span class="kr">function</span><span class="w"> </span><span class="nc">TestVeafMyModuleConstants</span><span class="p">:</span><span class="nf">test_Version</span><span class="p">()</span>
+<span class="w">  </span><span class="nv">luaunit</span><span class="p">.</span><span class="nf">assertNotNil</span><span class="p">(</span><span class="nv">veafMyModule</span><span class="p">.</span><span class="py">Version</span><span class="p">)</span>
+<span class="kr">end</span>
 
-TestVeafMyModuleLogic = {}
+<span class="nv">TestVeafMyModuleLogic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 
-function TestVeafMyModuleLogic:test_someFunction()
-  local result = veafMyModule.someFunction(&quot;input&quot;)
-  luaunit.assertEquals(result, &quot;expected&quot;)
-end
+<span class="kr">function</span><span class="w"> </span><span class="nc">TestVeafMyModuleLogic</span><span class="p">:</span><span class="nf">test_someFunction</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">local</span><span class="w"> </span><span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veafMyModule</span><span class="p">.</span><span class="nf">someFunction</span><span class="p">(</span><span class="s2">&quot;input&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nv">luaunit</span><span class="p">.</span><span class="nf">assertEquals</span><span class="p">(</span><span class="nv">result</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;expected&quot;</span><span class="p">)</span>
+<span class="kr">end</span>
 
--- Entry point
-os.exit(luaunit.LuaUnit.run())
-</code></pre>
+<span class="c1">-- Entry point</span>
+<span class="nb">os.exit</span><span class="p">(</span><span class="nv">luaunit</span><span class="p">.</span><span class="py">LuaUnit</span><span class="p">.</span><span class="nf">run</span><span class="p">())</span>
+</code></pre></div>
 <h3 id="conventions">Conventions</h3>
 <ul>
 <li>One file per module: <code>test_veaf&lt;ModuleName&gt;.lua</code></li>
@@ -2504,10 +2504,10 @@ os.exit(luaunit.LuaUnit.run())
 </ul>
 <h3 id="adding-dcs-api-stubs">Adding DCS API Stubs</h3>
 <p>If your test fails with a "nil value" or "attempt to call a nil value" on a DCS function, add the stub to <code>dcs_mocks.lua</code>:</p>
-<pre><code class="language-lua">-- In dcs_mocks.lua:
-trigger.action.myNewFunction = function(...) end
-trigger.myNewConstant = 42
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">-- In dcs_mocks.lua:</span>
+<span class="nv">trigger</span><span class="p">.</span><span class="py">action</span><span class="p">.</span><span class="py">myNewFunction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(...)</span><span class="w"> </span><span class="kr">end</span>
+<span class="nv">trigger</span><span class="p">.</span><span class="py">myNewConstant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span>
+</code></pre></div>
 <hr />
 <h2 id="cicd-pipeline">CI/CD Pipeline</h2>
 <p>The GitHub Actions workflow (<code>.github/workflows/lua-ci.yml</code>) runs on every push and pull request:</p>
@@ -2523,21 +2523,21 @@ trigger.myNewConstant = 42
 3. Check <code>src/scripts/veaf/</code> against <code>.stylua.toml</code>
 4. Fail if any file is not formatted</p>
 <h3 id="running-stylua-locally">Running StyLua Locally</h3>
-<pre><code class="language-powershell"># Check only (no writes)
-stylua --check src/scripts/veaf/
+<div class="highlight"><pre><span></span><code><span class="c"># Check only (no writes)</span>
+<span class="n">stylua</span> <span class="p">-</span><span class="n">-check</span> <span class="n">src</span><span class="p">/</span><span class="n">scripts</span><span class="p">/</span><span class="n">veaf</span><span class="p">/</span>
 
-# Auto-format
-stylua src/scripts/veaf/
-</code></pre>
+<span class="c"># Auto-format</span>
+<span class="n">stylua</span> <span class="n">src</span><span class="p">/</span><span class="n">scripts</span><span class="p">/</span><span class="n">veaf</span><span class="p">/</span>
+</code></pre></div>
 <p>StyLua configuration (<code>.stylua.toml</code>):</p>
-<pre><code class="language-toml">column_width = 140
-line_endings = &quot;Windows&quot;
-indent_type = &quot;Spaces&quot;
-indent_width = 2
-quote_style = &quot;AutoPreferDouble&quot;
-call_parentheses = &quot;Always&quot;
-collapse_simple_statement = &quot;Never&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">column_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">140</span>
+<span class="n">line_endings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Windows&quot;</span>
+<span class="n">indent_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Spaces&quot;</span>
+<span class="n">indent_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+<span class="n">quote_style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;AutoPreferDouble&quot;</span>
+<span class="n">call_parentheses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Always&quot;</span>
+<span class="n">collapse_simple_statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Never&quot;</span>
+</code></pre></div>
 
 
 

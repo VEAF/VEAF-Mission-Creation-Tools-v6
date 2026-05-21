@@ -1979,29 +1979,29 @@
 </ul>
 <hr />
 <h2 id="enable">Enable</h2>
-<pre><code class="language-lua">veafMove.initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafMove</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="marker-commands-player-facing">Marker Commands (Player-Facing)</h2>
 <h3 id="move-a-group">Move a group</h3>
-<pre><code>_move unit, name [GROUP_NAME]
-</code></pre>
+<div class="highlight"><pre><span></span><code>_move unit, name [GROUP_NAME]
+</code></pre></div>
 <p>Moves the named group to the marker position. Ground units will path to the destination; aircraft will fly directly.</p>
 <h3 id="teleport-a-group">Teleport a group</h3>
-<pre><code>_teleport, name [GROUP_NAME]
-</code></pre>
+<div class="highlight"><pre><span></span><code>_teleport, name [GROUP_NAME]
+</code></pre></div>
 <p>Instantly moves the group to the marker position. Useful for testing.</p>
 <hr />
 <h2 id="tanker-management-mission-maker-api">Tanker Management (Mission Maker API)</h2>
 <h3 id="change-tanker-orbit">Change tanker orbit</h3>
 <p><code>veafMove.changeTanker(groupName, point, altitude, speed)</code> — moves the tanker's orbit waypoint to a new position.</p>
-<pre><code class="language-lua">-- Move Texaco to a new orbit position
-veafMove.changeTanker(&quot;KC-135 Texaco&quot;, { x=1000, y=7000, z=2000 }, 7000, 430)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Move Texaco to a new orbit position</span>
+<span class="nv">veafMove</span><span class="p">.</span><span class="nf">changeTanker</span><span class="p">(</span><span class="s2">&quot;KC-135 Texaco&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">x</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="o">=</span><span class="mi">7000</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="o">=</span><span class="mi">2000</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="mi">7000</span><span class="p">,</span><span class="w"> </span><span class="mi">430</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="move-tanker-along-new-route">Move tanker along new route</h3>
 <p><code>veafMove.moveTanker(groupName, startPoint, endPoint, altitude, speed)</code> — sets a new race-track orbit route.</p>
-<pre><code class="language-lua">veafMove.moveTanker(&quot;KC-135 Texaco&quot;, startPoint, endPoint, 7000, 430)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafMove</span><span class="p">.</span><span class="nf">moveTanker</span><span class="p">(</span><span class="s2">&quot;KC-135 Texaco&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">startPoint</span><span class="p">,</span><span class="w"> </span><span class="nv">endPoint</span><span class="p">,</span><span class="w"> </span><span class="mi">7000</span><span class="p">,</span><span class="w"> </span><span class="mi">430</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="key-constants">Key Constants</h2>
 <table>

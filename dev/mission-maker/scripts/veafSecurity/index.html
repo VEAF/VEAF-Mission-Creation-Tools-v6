@@ -1904,8 +1904,8 @@
 <p>Provides a password-based permission system for VEAF marker commands and radio menu actions. Restricts sensitive commands (spawning, teleporting, destroying) to authorised players. Three permission levels with SHA-1 hashed passwords.</p>
 <hr />
 <h2 id="enable">Enable</h2>
-<pre><code class="language-lua">veafSecurity.initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafSecurity</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <p>Call before other modules so that security checks are active when they initialise.</p>
 <hr />
 <h2 id="permission-levels">Permission Levels</h2>
@@ -1939,16 +1939,16 @@
 <hr />
 <h2 id="setting-passwords">Setting Passwords</h2>
 <p>Passwords are stored as SHA-1 hashes for security. Use the built-in <code>sha1</code> function:</p>
-<pre><code class="language-lua">-- In missionconfig.lua (after veafSecurity is loaded)
+<div class="highlight"><pre><span></span><code><span class="c1">-- In missionconfig.lua (after veafSecurity is loaded)</span>
 
--- Clear default passwords and set your own
-veafSecurity.password_L1 = {}
-veafSecurity.password_L9 = {}
+<span class="c1">-- Clear default passwords and set your own</span>
+<span class="nv">veafSecurity</span><span class="p">.</span><span class="py">password_L1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="nv">veafSecurity</span><span class="p">.</span><span class="py">password_L9</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 
--- Add hashed passwords (multiple passwords supported per level)
-veafSecurity.password_L1[sha1.hex(&quot;myL1password&quot;)] = true
-veafSecurity.password_L9[sha1.hex(&quot;myAdminPassword&quot;)] = true
-</code></pre>
+<span class="c1">-- Add hashed passwords (multiple passwords supported per level)</span>
+<span class="nv">veafSecurity</span><span class="p">.</span><span class="py">password_L1</span><span class="p">[</span><span class="nv">sha1</span><span class="p">.</span><span class="nf">hex</span><span class="p">(</span><span class="s2">&quot;myL1password&quot;</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="nv">veafSecurity</span><span class="p">.</span><span class="py">password_L9</span><span class="p">[</span><span class="nv">sha1</span><span class="p">.</span><span class="nf">hex</span><span class="p">(</span><span class="s2">&quot;myAdminPassword&quot;</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div>
 <blockquote>
 <p>Do not commit plain-text passwords in your mission files. Use hashes only.</p>
 </blockquote>
@@ -1993,21 +1993,21 @@ veafSecurity.password_L9[sha1.hex(&quot;myAdminPassword&quot;)] = true
 <hr />
 <h2 id="player-authentication">Player Authentication</h2>
 <p>Players authenticate via a map marker command:</p>
-<pre><code>_auth [PASSWORD]
-</code></pre>
+<div class="highlight"><pre><span></span><code>_auth [PASSWORD]
+</code></pre></div>
 <p>On success: access is granted for <code>authDuration</code> minutes. No message is displayed to other players.</p>
 <hr />
 <h2 id="disabling-security-development-solo">Disabling Security (Development / Solo)</h2>
 <p>For testing or solo missions where security is not needed:</p>
-<pre><code class="language-lua">veaf.SecurityDisabled = true
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veaf</span><span class="p">.</span><span class="py">SecurityDisabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div>
 <p>This bypasses all security checks globally.</p>
 <hr />
 <h2 id="module-level-security">Module-Level Security</h2>
 <p>Each module can set the default security requirement for its commands. Example for spawn:</p>
-<pre><code class="language-lua">-- Require L1 (pilots) for all spawn commands
-veafSpawn.defaultSecurity = veafSecurity.LEVEL_L1
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Require L1 (pilots) for all spawn commands</span>
+<span class="nv">veafSpawn</span><span class="p">.</span><span class="py">defaultSecurity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veafSecurity</span><span class="p">.</span><span class="py">LEVEL_L1</span>
+</code></pre></div>
 <hr />
 <h2 id="see-also">See Also</h2>
 <ul>

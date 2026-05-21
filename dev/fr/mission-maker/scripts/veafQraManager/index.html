@@ -1889,13 +1889,13 @@
 <hr />
 <h2 id="activation">Activation</h2>
 <p>Pas d'appel global <code>initialize()</code>. Chaque zone QRA est créée et initialisée individuellement :</p>
-<pre><code class="language-lua">local myQra = VeafQRA:new()
-  :setName(&quot;QRA-North&quot;)
-  :setZone(&quot;ZONE-QRA-NORTH&quot;)
-  :setCoalition(coalition.side.RED)
-  :setGroups({ &quot;MiG-29 QRA&quot; })
-  :initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">myQra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">VeafQRA</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;QRA-North&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setZone</span><span class="p">(</span><span class="s2">&quot;ZONE-QRA-NORTH&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setCoalition</span><span class="p">(</span><span class="nv">coalition</span><span class="p">.</span><span class="py">side</span><span class="p">.</span><span class="py">RED</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setGroups</span><span class="p">({</span><span class="w"> </span><span class="s2">&quot;MiG-29 QRA&quot;</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="methodes-du-builder-veafqra">Méthodes du builder VeafQRA</h2>
 <table>
@@ -1962,10 +1962,10 @@
 </table>
 <hr />
 <h2 id="machine-a-etats-qra">Machine à états QRA</h2>
-<pre><code>PRÊTE ──(intrus entre)──&gt; ACTIVE ──(QRA détruite)──&gt; MORTE
+<div class="highlight"><pre><span></span><code>PRÊTE ──(intrus entre)──&gt; ACTIVE ──(QRA détruite)──&gt; MORTE
   ^                                                       |
   └──────(tous les intrus partis + délai de réarmement)──┘
-</code></pre>
+</code></pre></div>
 <p>États supplémentaires : <code>WILLREARM</code>, <code>OUT</code> (plus de groupes), <code>NOAIRBASE</code> (base aérienne détruite), <code>STOP</code> (désactivée manuellement).</p>
 <hr />
 <h2 id="constantes-de-configuration">Constantes de configuration</h2>
@@ -2002,25 +2002,25 @@
 </table>
 <hr />
 <h2 id="exemple-plusieurs-zones-qra">Exemple : plusieurs zones QRA</h2>
-<pre><code class="language-lua">-- Zone nord défendue par des MiG-29, liée à la base de Beslan
-VeafQRA:new()
-  :setName(&quot;QRA-NORTH&quot;)
-  :setZone(&quot;ZONE-NORTH-DEFENSE&quot;)
-  :setCoalition(coalition.side.RED)
-  :setGroups({ &quot;MiG-29S QRA North-1&quot;, &quot;MiG-29S QRA North-2&quot; })
-  :setAirbase(&quot;Beslan&quot;)
-  :setRearmTime(600)
-  :initialize()
+<div class="highlight"><pre><span></span><code><span class="c1">-- Zone nord défendue par des MiG-29, liée à la base de Beslan</span>
+<span class="nv">VeafQRA</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;QRA-NORTH&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setZone</span><span class="p">(</span><span class="s2">&quot;ZONE-NORTH-DEFENSE&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setCoalition</span><span class="p">(</span><span class="nv">coalition</span><span class="p">.</span><span class="py">side</span><span class="p">.</span><span class="py">RED</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setGroups</span><span class="p">({</span><span class="w"> </span><span class="s2">&quot;MiG-29S QRA North-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;MiG-29S QRA North-2&quot;</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setAirbase</span><span class="p">(</span><span class="s2">&quot;Beslan&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setRearmTime</span><span class="p">(</span><span class="mi">600</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
 
--- Zone sud, toujours active, silencieuse
-VeafQRA:new()
-  :setName(&quot;QRA-SOUTH&quot;)
-  :setZone(&quot;ZONE-SOUTH-DEFENSE&quot;)
-  :setCoalition(coalition.side.RED)
-  :setGroups({ &quot;Su-27 QRA South&quot; })
-  :setSilent(true)
-  :initialize()
-</code></pre>
+<span class="c1">-- Zone sud, toujours active, silencieuse</span>
+<span class="nv">VeafQRA</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;QRA-SOUTH&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setZone</span><span class="p">(</span><span class="s2">&quot;ZONE-SOUTH-DEFENSE&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setCoalition</span><span class="p">(</span><span class="nv">coalition</span><span class="p">.</span><span class="py">side</span><span class="p">.</span><span class="py">RED</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setGroups</span><span class="p">({</span><span class="w"> </span><span class="s2">&quot;Su-27 QRA South&quot;</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setSilent</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="voir-aussi">Voir aussi</h2>
 <ul>

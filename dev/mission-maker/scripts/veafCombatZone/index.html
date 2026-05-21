@@ -1945,8 +1945,8 @@
 </ul>
 <hr />
 <h2 id="enable">Enable</h2>
-<pre><code class="language-lua">veafCombatZone.initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafCombatZone</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <p>Individual zones are created and initialised separately (see below).</p>
 <hr />
 <h2 id="key-module-constants">Key Module Constants</h2>
@@ -1988,22 +1988,22 @@
 </table>
 <hr />
 <h2 id="defining-a-zone">Defining a Zone</h2>
-<pre><code class="language-lua">local strikeZone = VeafCombatZone:new()
-  :setName(&quot;Strike Alpha&quot;)                   -- internal name
-  :setZoneName(&quot;ZONE-STRIKE-ALPHA&quot;)          -- DCS trigger zone name
-  :setDescription(&quot;Armoured column — Senaki&quot;)
-  :setBriefing(&quot;Destroy all vehicles. Expect AAA and MANPADS.&quot;)
-  :addElement(
-    VeafCombatZoneElement:new()
-      :setGroupName(&quot;STRIKE-ALPHA-ARMOR&quot;)    -- DCS group to spawn
-      :setSpawnRadius(100)
-  )
-  :addElement(
-    VeafCombatZoneElement:new()
-      :setGroupName(&quot;STRIKE-ALPHA-AAA&quot;)
-  )
-  :initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">strikeZone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">VeafCombatZone</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Strike Alpha&quot;</span><span class="p">)</span><span class="w">                   </span><span class="c1">-- internal name</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setZoneName</span><span class="p">(</span><span class="s2">&quot;ZONE-STRIKE-ALPHA&quot;</span><span class="p">)</span><span class="w">          </span><span class="c1">-- DCS trigger zone name</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setDescription</span><span class="p">(</span><span class="s2">&quot;Armoured column — Senaki&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setBriefing</span><span class="p">(</span><span class="s2">&quot;Destroy all vehicles. Expect AAA and MANPADS.&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">addElement</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">VeafCombatZoneElement</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">      </span><span class="p">:</span><span class="nf">setGroupName</span><span class="p">(</span><span class="s2">&quot;STRIKE-ALPHA-ARMOR&quot;</span><span class="p">)</span><span class="w">    </span><span class="c1">-- DCS group to spawn</span>
+<span class="w">      </span><span class="p">:</span><span class="nf">setSpawnRadius</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">addElement</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">VeafCombatZoneElement</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">      </span><span class="p">:</span><span class="nf">setGroupName</span><span class="p">(</span><span class="s2">&quot;STRIKE-ALPHA-AAA&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="veafcombatzone-builder-methods">VeafCombatZone Builder Methods</h3>
 <table>
 <thead>
@@ -2094,13 +2094,13 @@
 <hr />
 <h2 id="operations-grouped-zones">Operations (Grouped Zones)</h2>
 <p>Multiple zones can be grouped into an <strong>Operation</strong> that completes when all child zones are done:</p>
-<pre><code class="language-lua">VeafCombatOperation:new()
-  :setName(&quot;Operation Thunder&quot;)
-  :addZone(&quot;Strike Alpha&quot;)
-  :addZone(&quot;Strike Bravo&quot;)
-  :setBriefing(&quot;Destroy both armour columns before they reach Senaki.&quot;)
-  :initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">VeafCombatOperation</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Operation Thunder&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">addZone</span><span class="p">(</span><span class="s2">&quot;Strike Alpha&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">addZone</span><span class="p">(</span><span class="s2">&quot;Strike Bravo&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setBriefing</span><span class="p">(</span><span class="s2">&quot;Destroy both armour columns before they reach Senaki.&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="see-also">See Also</h2>
 <ul>

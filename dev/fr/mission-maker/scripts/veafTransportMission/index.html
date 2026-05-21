@@ -1889,8 +1889,8 @@
 </ul>
 <hr />
 <h2 id="activation">Activation</h2>
-<pre><code class="language-lua">veafTransportMission.initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafTransportMission</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="concepts-cles">Concepts clés</h2>
 <ul>
@@ -1901,17 +1901,17 @@
 </ul>
 <hr />
 <h2 id="exemple-de-configuration">Exemple de configuration</h2>
-<pre><code class="language-lua">-- Mission de transport de troupes simple
-local transportMission = VeafTransportMission:new()
-  :setName(&quot;Evac-Alpha&quot;)
-  :setDescription(&quot;Évacuer les troupes de la base avancée Alpha&quot;)
-  :setPickupZoneName(&quot;ZONE-PICKUP-ALPHA&quot;)
-  :setDeliveryZoneName(&quot;ZONE-DELIVERY-BASE&quot;)
-  :setCargoType(&quot;Troops&quot;)
-  :setCargoCount(8)
-  :setBriefing(&quot;8 soldats sont bloqués à la base Alpha. Extrayez-les vers Senaki.&quot;)
-  :initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Mission de transport de troupes simple</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">transportMission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">VeafTransportMission</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Evac-Alpha&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setDescription</span><span class="p">(</span><span class="s2">&quot;Évacuer les troupes de la base avancée Alpha&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setPickupZoneName</span><span class="p">(</span><span class="s2">&quot;ZONE-PICKUP-ALPHA&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setDeliveryZoneName</span><span class="p">(</span><span class="s2">&quot;ZONE-DELIVERY-BASE&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setCargoType</span><span class="p">(</span><span class="s2">&quot;Troops&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setCargoCount</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setBriefing</span><span class="p">(</span><span class="s2">&quot;8 soldats sont bloqués à la base Alpha. Extrayez-les vers Senaki.&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="methodes-du-builder">Méthodes du builder</h2>
 <table>

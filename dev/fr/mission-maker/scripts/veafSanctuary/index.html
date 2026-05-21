@@ -1843,16 +1843,16 @@
 </ul>
 <hr />
 <h2 id="activation">Activation</h2>
-<pre><code class="language-lua">veafSanctuary.initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafSanctuary</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <p>Puis définir les zones :</p>
-<pre><code class="language-lua">VeafSanctuary:new()
-  :setName(&quot;Carrier Zone&quot;)
-  :setZoneName(&quot;ZONE-CARRIER-PROTECTION&quot;)
-  :setCoalition(coalition.side.RED)  -- détruire les unités rouges qui entrent
-  :setMessage(&quot;Aéronef hostile éliminé dans la zone de défense du porte-avions&quot;)
-  :initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">VeafSanctuary</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Carrier Zone&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setZoneName</span><span class="p">(</span><span class="s2">&quot;ZONE-CARRIER-PROTECTION&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setCoalition</span><span class="p">(</span><span class="nv">coalition</span><span class="p">.</span><span class="py">side</span><span class="p">.</span><span class="py">RED</span><span class="p">)</span><span class="w">  </span><span class="c1">-- détruire les unités rouges qui entrent</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setMessage</span><span class="p">(</span><span class="s2">&quot;Aéronef hostile éliminé dans la zone de défense du porte-avions&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="methodes-du-builder">Méthodes du builder</h2>
 <table>

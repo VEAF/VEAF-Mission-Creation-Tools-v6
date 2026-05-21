@@ -1902,15 +1902,15 @@
 <hr />
 <h2 id="modele-de-chargement-et-dinitialisation">Modèle de chargement et d'initialisation</h2>
 <p>Chaque module suit le même modèle :</p>
-<pre><code class="language-lua">-- Optionnel : surcharger les valeurs par défaut avant l'initialisation
-veafModuleName.SomeConstant = value
+<div class="highlight"><pre><span></span><code><span class="c1">-- Optionnel : surcharger les valeurs par défaut avant l&#39;initialisation</span>
+<span class="nv">veafModuleName</span><span class="p">.</span><span class="py">SomeConstant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">value</span>
 
--- Requis : initialiser le module
-veafModuleName.initialize()
+<span class="c1">-- Requis : initialiser le module</span>
+<span class="nv">veafModuleName</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
 
--- Certains modules nécessitent aussi un appel à start()
-veafModuleName.start()
-</code></pre>
+<span class="c1">-- Certains modules nécessitent aussi un appel à start()</span>
+<span class="nv">veafModuleName</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre></div>
 <p>Les modules qui ne sont pas initialisés (<code>initialize()</code>) ne consomment aucune ressource et ne créent aucun menu radio.</p>
 <hr />
 <h2 id="modules-de-base">Modules de base</h2>
@@ -1964,10 +1964,10 @@ veafModuleName.start()
 </tbody>
 </table>
 <p>Initialisation minimale :</p>
-<pre><code class="language-lua">veafMarkers.initialize()
-veafRadio.initialize()
-veafRadio.refreshRadioMenu()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafMarkers</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">refreshRadioMenu</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="spawn-et-deplacement">Spawn et déplacement</h2>
 <table>

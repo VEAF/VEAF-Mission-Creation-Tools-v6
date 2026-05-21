@@ -1888,15 +1888,15 @@
 </ul>
 <hr />
 <h2 id="activation">Activation</h2>
-<pre><code class="language-lua">veafCarrierOperations.initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafCarrierOperations</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <p>Puis enregistrer chaque porte-avions :</p>
-<pre><code class="language-lua">veafCarrierOperations.addCarrier({
-  name        = &quot;Mother&quot;,
-  description = &quot;CVN-73 Theodore Roosevelt&quot;,
-  groupName   = &quot;CVN-73&quot;,
-})
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafCarrierOperations</span><span class="p">.</span><span class="nf">addCarrier</span><span class="p">({</span>
+<span class="w">  </span><span class="nv">name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Mother&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;CVN-73 Theodore Roosevelt&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">groupName</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;CVN-73&quot;</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div>
 <p>Ou laisser <code>veafAssets</code> gérer l'enregistrement automatiquement quand une ressource porte-avions a <code>carrier = true</code>.</p>
 <hr />
 <h2 id="constantes-de-configuration-cles">Constantes de configuration clés</h2>
@@ -1974,21 +1974,21 @@
 </ul>
 <hr />
 <h2 id="exemple-de-configuration">Exemple de configuration</h2>
-<pre><code class="language-lua">-- Dans missionconfig.lua
-veafCarrierOperations.initialize()
+<div class="highlight"><pre><span></span><code><span class="c1">-- Dans missionconfig.lua</span>
+<span class="nv">veafCarrierOperations</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
 
--- Les porte-avions sont enregistrés via veafAssets :
-veafAssets.Assets = {
-  {
-    name        = &quot;Mother&quot;,
-    description = &quot;CVN-73 Theodore Roosevelt&quot;,
-    groupName   = &quot;CVN-73&quot;,
-    information = true,
-    carrier     = true,
-  },
-}
-veafAssets.initialize()
-</code></pre>
+<span class="c1">-- Les porte-avions sont enregistrés via veafAssets :</span>
+<span class="nv">veafAssets</span><span class="p">.</span><span class="py">Assets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Mother&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;CVN-73 Theodore Roosevelt&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">groupName</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;CVN-73&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">carrier</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">}</span>
+<span class="nv">veafAssets</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="voir-aussi">Voir aussi</h2>
 <ul>

@@ -1875,7 +1875,7 @@
 <hr />
 <h2 id="f10-radio-menu">F10 Radio Menu</h2>
 <h3 id="veaf-menu-structure">VEAF Menu Structure</h3>
-<pre><code class="language-mermaid">mindmap
+<pre class="mermaid"><code>mindmap
   root((F10 Radio Menu))
     VEAF
       Assets
@@ -1887,8 +1887,7 @@
       Spawn
         if enabled
       Weather
-      Help
-</code></pre>
+      Help</code></pre>
 <h3 id="navigation">Navigation</h3>
 <ul>
 <li><strong>F10</strong>: Opens radio menu</li>
@@ -1918,10 +1917,10 @@
 <li>Start Recovery: Turn carrier into wind</li>
 <li>Stop Recovery: Resume normal navigation</li>
 </ul>
-<p><strong>Usage example:</strong></p>
-<pre><code>F10 → VEAF → Assets → Tankers → Texaco → Info
-Result: Displays &quot;Texaco-1 | KC-135 | TACAN 61X | 251.0 MHz AM | Position N42°15' E041°30'&quot;
-</code></pre>
+<p><strong>Usage example:</strong>
+<div class="highlight"><pre><span></span><code>F10 → VEAF → Assets → Tankers → Texaco → Info
+Result: Displays &quot;Texaco-1 | KC-135 | TACAN 61X | 251.0 MHz AM | Position N42°15&#39; E041°30&#39;&quot;
+</code></pre></div></p>
 <h4 id="missions">🎯 Missions</h4>
 <p>Activates missions predefined by the mission maker:</p>
 <ul>
@@ -1968,7 +1967,7 @@ Result: Displays &quot;Texaco-1 | KC-135 | TACAN 61X | 251.0 MHz AM | Position N
 <h4 id="individual-unit-spawning-_spawn-unit">Individual Unit Spawning: <code>_spawn unit</code></h4>
 <p><strong>Syntax:</strong> <code>_spawn unit, name [TYPE], [OPTIONS]</code></p>
 <p><strong>Examples:</strong></p>
-<pre><code>_spawn unit, name F-16C, group 2
+<div class="highlight"><pre><span></span><code>_spawn unit, name F-16C, group 2
 → Spawns 2 F-16Cs at marker position
 
 _spawn unit, name SA-6
@@ -1979,7 +1978,7 @@ _spawn unit, name M1 Abrams, group 4, hdg 270
 
 _spawn unit, name MiG-29S, alt 5000, hdg 090, speed 450
 → Spawns MiG-29S at 5000ft, heading 090°
-</code></pre>
+</code></pre></div>
 <p><strong>Common options:</strong></p>
 <table>
 <thead>
@@ -2031,7 +2030,7 @@ _spawn unit, name MiG-29S, alt 5000, hdg 090, speed 450
 <h4 id="predefined-group-spawning-_spawn-group">Predefined Group Spawning: <code>_spawn group</code></h4>
 <p><strong>Syntax:</strong> <code>_spawn group, name [GROUP_NAME], [OPTIONS]</code></p>
 <p><strong>Examples:</strong></p>
-<pre><code>_spawn group, name CAP-2
+<div class="highlight"><pre><span></span><code>_spawn group, name CAP-2
 → Spawns CAP-2 group defined in spawnables.yaml
 
 _spawn group, name ARMOR-PLATOON, hdg 270
@@ -2039,29 +2038,29 @@ _spawn group, name ARMOR-PLATOON, hdg 270
 
 _spawn group, name RED-SAM-SITE
 → Spawns predefined SAM site
-</code></pre>
+</code></pre></div>
 <p><strong>Description:</strong> Groups must be defined in the mission's <code>spawnables.yaml</code> file. This command allows reusing predefined unit compositions created by the mission maker.</p>
 <h4 id="cap-patrol-_spawn-cap">CAP Patrol: <code>_spawn cap</code></h4>
 <p><strong>Syntax:</strong> <code>_spawn cap, name [AIRCRAFT], [OPTIONS]</code></p>
 <p><strong>Examples:</strong></p>
-<pre><code>_spawn cap, name F-15C, alt 25000, hdg 090, speed 450, capradius 20000
+<div class="highlight"><pre><span></span><code>_spawn cap, name F-15C, alt 25000, hdg 090, speed 450, capradius 20000
 → Spawns F-15C CAP patrol at 25000ft with 20km orbit
 
 _spawn cap, name Su-27, group 2, alt 30000, capradius 25000
 → Spawns 2 Su-27s on CAP at 30000ft
-</code></pre>
+</code></pre></div>
 <p><strong>Specific options:</strong>
 - <code>capradius [METERS]</code>: CAP orbit radius
 - <code>distance [METERS]</code>: Orbit distance from marker</p>
 <h4 id="afac-airborne-controller-_spawn-afac">AFAC (Airborne Controller): <code>_spawn afac</code></h4>
 <p><strong>Syntax:</strong> <code>_spawn afac, name [AIRCRAFT], [OPTIONS]</code></p>
 <p><strong>Examples:</strong></p>
-<pre><code>_spawn afac, name A-10C, alt 15000, speed 250, freq 133.0, mod AM, code 1688
+<div class="highlight"><pre><span></span><code>_spawn afac, name A-10C, alt 15000, speed 250, freq 133.0, mod AM, code 1688
 → Spawns A-10C AFAC with lasing code 1688 on 133.0 AM
 
 _spawn afac, name L-39ZA, freq 135.0, code 1584, immortal
 → Spawns invulnerable L-39 AFAC
-</code></pre>
+</code></pre></div>
 <p><strong>Specific options:</strong>
 - <code>code [XXXX]</code>: Laser code (e.g., 1688)
 - <code>freq [MHZ]</code>: Radio frequency
@@ -2069,15 +2068,15 @@ _spawn afac, name L-39ZA, freq 135.0, code 1584, immortal
 - <code>immortal</code>: Makes AFAC invulnerable</p>
 <h4 id="convoy-spawning-_spawn-convoy">Convoy Spawning: <code>_spawn convoy</code></h4>
 <p><strong>Syntax:</strong> <code>_spawn convoy, [OPTIONS], dest [MARKER]</code></p>
-<p><strong>Example:</strong></p>
-<pre><code>Marker 1 (start position):
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code>Marker 1 (start position):
 _spawn convoy, name Convoy1, dest marker2, speed 50, defense 2
 
 Marker 2 (destination):
 (just an empty marker as destination point)
 
 → Spawns a convoy moving from marker 1 to marker 2 at 50 km/h
-</code></pre>
+</code></pre></div></p>
 <p><strong>Convoy options:</strong></p>
 <table>
 <thead>
@@ -2119,59 +2118,59 @@ Marker 2 (destination):
 </table>
 <h4 id="cas-mission-_cas">CAS Mission: <code>_cas</code></h4>
 <p><strong>Syntax:</strong> <code>_cas, [OPTIONS]</code></p>
-<p><strong>Example:</strong></p>
-<pre><code>_cas, size 3, defense 2, armor 3
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code>_cas, size 3, defense 2, armor 3
 → Generates medium CAS zone with moderate defense and armor
-</code></pre>
+</code></pre></div></p>
 <p><strong>Options:</strong>
 - <code>size [0-5]</code>: Force size (0=small, 5=huge)
 - <code>defense [0-5]</code>: AA defense (0=none, 5=heavy SAM)
 - <code>armor [0-5]</code>: Armor (0=infantry, 5=heavy tanks)
 - <code>side [blue/red]</code>: Coalition</p>
 <h4 id="effects-smoke-explosions-illumination">Effects: Smoke, Explosions, Illumination</h4>
-<p><strong>Smoke:</strong></p>
-<pre><code>_spawn smoke, color red
+<p><strong>Smoke:</strong>
+<div class="highlight"><pre><span></span><code>_spawn smoke, color red
 → Red smoke at position
 
 _spawn smoke, color green, shells 5
 → 5 green smoke grenades
-</code></pre>
+</code></pre></div></p>
 <p><strong>Available colors:</strong> <code>red</code>, <code>green</code>, <code>blue</code>, <code>white</code>, <code>orange</code></p>
-<p><strong>Explosions:</strong></p>
-<pre><code>_spawn bomb, power 500, shells 3
+<p><strong>Explosions:</strong>
+<div class="highlight"><pre><span></span><code>_spawn bomb, power 500, shells 3
 → 3x 500kg explosions
 
 _spawn bomb, power 1000, radius 100
 → 1000kg explosion dispersed over 100m
-</code></pre>
-<p><strong>Illumination:</strong></p>
-<pre><code>_spawn flare, power 1000000, shells 5, heading 90, distance 500
+</code></pre></div></p>
+<p><strong>Illumination:</strong>
+<div class="highlight"><pre><span></span><code>_spawn flare, power 1000000, shells 5, heading 90, distance 500
 → 5 illumination flares spaced 500m on heading 090°
-</code></pre>
+</code></pre></div></p>
 <h4 id="destruction-_destroy">Destruction: <code>_destroy</code></h4>
 <p><strong>Syntax:</strong> <code>_destroy, [OPTIONS]</code></p>
-<p><strong>Examples:</strong></p>
-<pre><code>_destroy, radius 500
+<p><strong>Examples:</strong>
+<div class="highlight"><pre><span></span><code>_destroy, radius 500
 → Destroys all units within 500m radius
 
 _destroy, name Tank-1
 → Destroys unit named &quot;Tank-1&quot;
-</code></pre>
+</code></pre></div></p>
 <h4 id="teleportation-_teleport">Teleportation: <code>_teleport</code></h4>
 <p><strong>Syntax:</strong> <code>_teleport, name [GROUP_NAME]</code></p>
-<p><strong>Example:</strong></p>
-<pre><code>_teleport, name Viper Flight
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code>_teleport, name Viper Flight
 → Teleports group &quot;Viper Flight&quot; to marker position
-</code></pre>
+</code></pre></div></p>
 <h3 id="named-markers">Named Markers</h3>
 <p>You can <strong>name your markers</strong> to reference them:</p>
-<pre><code>Marker &quot;Zone Alpha&quot;:
+<div class="highlight"><pre><span></span><code>Marker &quot;Zone Alpha&quot;:
 (zone position)
 
 Command marker:
 _spawn convoy, dest &quot;Zone Alpha&quot;, speed 40
 → Convoy moves to marker named &quot;Zone Alpha&quot;
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="main-features">Main Features</h2>
 <h3 id="air-refueling">🛢️ Air Refueling</h3>
@@ -2387,9 +2386,9 @@ _spawn convoy, dest &quot;Zone Alpha&quot;, speed 40
 - Weather modification
 - Teleportation
 - Destruction</p>
-<p><strong>Usage:</strong></p>
-<pre><code>_spawn unit, name F-16C, password [PASSWORD]
-</code></pre>
+<p><strong>Usage:</strong>
+<div class="highlight"><pre><span></span><code>_spawn unit, name F-16C, password [PASSWORD]
+</code></pre></div></p>
 <p>Password is set by mission maker or server admin.</p>
 <hr />
 <h2 id="mission-guide">Mission Guide</h2>
@@ -2434,14 +2433,14 @@ _spawn convoy, dest &quot;Zone Alpha&quot;, speed 40
 - CAP (Combat Air Patrol)
 - Intercept
 - Escort</p>
-<p><strong>VEAF Usage:</strong></p>
-<pre><code>Spawn enemy aircraft:
+<p><strong>VEAF Usage:</strong>
+<div class="highlight"><pre><span></span><code>Spawn enemy aircraft:
 _spawn cap, name Su-27, group 2, alt 25000, hdg 180, speed 450, capradius 25000
 → Generates enemy patrol
 
 F10 → VEAF → Missions → CAP Alpha → Activate
 → Activates predefined intercept mission
-</code></pre>
+</code></pre></div></p>
 <p><strong>Tips:</strong>
 - Use AWACS for vectors
 - Refuel before engaging
@@ -2452,8 +2451,8 @@ F10 → VEAF → Missions → CAP Alpha → Activate
 - CAS
 - Strike
 - SEAD</p>
-<p><strong>VEAF Usage:</strong></p>
-<pre><code>Generate CAS zone:
+<p><strong>VEAF Usage:</strong>
+<div class="highlight"><pre><span></span><code>Generate CAS zone:
 F10 → VEAF → CAS Mission → Generate → Difficulty 3
 
 OR place marker:
@@ -2461,7 +2460,7 @@ _cas, size 3, defense 2, armor 3
 
 Mark zone:
 F10 → VEAF → CAS Mission → Smoke
-</code></pre>
+</code></pre></div></p>
 <p><strong>Tips:</strong>
 - Start with low difficulty (0-2)
 - Request smoke to locate
@@ -2472,14 +2471,14 @@ F10 → VEAF → CAS Mission → Smoke
 - Close CAS
 - Transport (Mi-8)
 - Anti-tank</p>
-<p><strong>VEAF Usage:</strong></p>
-<pre><code>Spawn helo targets:
+<p><strong>VEAF Usage:</strong>
+<div class="highlight"><pre><span></span><code>Spawn helo targets:
 _spawn unit, name BTR-80, group 5, spacing 50
 → Dispersed APCs, perfect for helo engagement
 
 _cas, size 2, defense 1, armor 2
 → CAS adapted for helos (limited AA defense)
-</code></pre>
+</code></pre></div></p>
 <p><strong>Tips:</strong>
 - Stay at difficulty 0-2 (light AA defense)
 - Use terrain masking
@@ -2490,8 +2489,8 @@ _cas, size 2, defense 1, armor 2
 - Troop/cargo transport
 - Resupply
 - CASEVAC</p>
-<p><strong>VEAF Usage:</strong></p>
-<pre><code>Spawn destination FARP:
+<p><strong>VEAF Usage:</strong>
+<div class="highlight"><pre><span></span><code>Spawn destination FARP:
 _spawn farp, name FARP Alpha, side blue
 
 Activate CTLD:
@@ -2501,7 +2500,7 @@ F10 → CTLD → Load Troops
 Deliver:
 F10 → CTLD → Deploy Troops
 (above FARP Alpha)
-</code></pre>
+</code></pre></div></p>
 <hr />
 <h2 id="resources-and-support">Resources and Support</h2>
 <h3 id="documentation">📖 Documentation</h3>
@@ -2615,7 +2614,7 @@ A: Yes, use <code>side blue</code> in your spawn command.</p>
 - Download <code>published.zip</code>
 - Extract to working folder</p>
 <h3 id="veaf-mission-structure">VEAF Mission Structure</h3>
-<pre><code>MyMission/
+<div class="highlight"><pre><span></span><code>MyMission/
 ├── src/                          # Source folder
 │   ├── mission/                  # DCS mission
 │   │   └── mission.lua           # Main mission script
@@ -2627,7 +2626,7 @@ A: Yes, use <code>side blue</code> in your spawn command.</p>
 │   ├── waypoints.yaml            # Navigation points
 │   └── versions.yaml             # Component versions
 └── MyMission.miz                 # Compiled mission file
-</code></pre>
+</code></pre></div>
 <h3 id="step-1-create-base-mission">Step 1: Create Base Mission</h3>
 <p><strong>In DCS Editor:</strong></p>
 <ol>
@@ -2674,246 +2673,247 @@ A: Yes, use <code>side blue</code> in your spawn command.</p>
 </li>
 <li>
 <p><strong>Copy</strong> default config files from VEAF:
-   <code>VEAF-Mission-Creation-Tools/src/defaults/mission-folder/
-   → Copy all to MyMission/src/</code></p>
+   <div class="highlight"><pre><span></span><code>VEAF-Mission-Creation-Tools/src/defaults/mission-folder/
+→ Copy all to MyMission/src/
+</code></pre></div></p>
 </li>
 </ol>
 <h3 id="step-3-basic-configuration">Step 3: Basic Configuration</h3>
 <h4 id="file-missionconfiglua">File <code>missionConfig.lua</code></h4>
 <p><strong>Location:</strong> <code>src/scripts/missionConfig.lua</code></p>
 <p><strong>Configuration example:</strong></p>
-<pre><code class="language-lua">-------------------------------------------------------------------------------------------------------------------------------------------------------------
--- Mission Configuration: Strike Training
--------------------------------------------------------------------------------------------------------------------------------------------------------------
+<div class="highlight"><pre><span></span><code><span class="c1">-------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1">-- Mission Configuration: Strike Training</span>
+<span class="c1">-------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
 
--- Mission name
-veaf.config.MISSION_NAME = &quot;Strike Training - Caucasus&quot;
+<span class="c1">-- Mission name</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">MISSION_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Strike Training - Caucasus&quot;</span>
 
--- Player coalition (default)
-veaf.config.DEFAULT_COALITION = coalition.side.BLUE
+<span class="c1">-- Player coalition (default)</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">DEFAULT_COALITION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">coalition</span><span class="p">.</span><span class="py">side</span><span class="p">.</span><span class="py">BLUE</span>
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------
--- VEAF Modules to Load
--------------------------------------------------------------------------------------------------------------------------------------------------------------
+<span class="c1">-------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1">-- VEAF Modules to Load</span>
+<span class="c1">-------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
 
--- Core (always required)
-veaf.config.LOAD_VEAF_CORE = true
-veaf.config.LOAD_VEAF_MARKERS = true
-veaf.config.LOAD_VEAF_EVENT_HANDLER = true
+<span class="c1">-- Core (always required)</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">LOAD_VEAF_CORE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">LOAD_VEAF_MARKERS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">LOAD_VEAF_EVENT_HANDLER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 
--- Spawn
-veaf.config.LOAD_VEAF_SPAWN = true  -- Enable spawn via markers
-veaf.config.VEAF_SPAWN_ALLOW_PUBLIC = false  -- Requires password
+<span class="c1">-- Spawn</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">LOAD_VEAF_SPAWN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c1">-- Enable spawn via markers</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">VEAF_SPAWN_ALLOW_PUBLIC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span><span class="c1">-- Requires password</span>
 
--- Missions
-veaf.config.LOAD_VEAF_COMBAT_MISSION = true  -- Predefined missions
-veaf.config.LOAD_VEAF_CAS_MISSION = true     -- CAS generator
+<span class="c1">-- Missions</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">LOAD_VEAF_COMBAT_MISSION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c1">-- Predefined missions</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">LOAD_VEAF_CAS_MISSION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">     </span><span class="c1">-- CAS generator</span>
 
--- Assets
-veaf.config.LOAD_VEAF_ASSETS = true          -- Tanker/AWACS management
+<span class="c1">-- Assets</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">LOAD_VEAF_ASSETS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">          </span><span class="c1">-- Tanker/AWACS management</span>
 
--- Carrier
-veaf.config.LOAD_VEAF_CARRIER_OPERATIONS = true  -- If carrier present
+<span class="c1">-- Carrier</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">LOAD_VEAF_CARRIER_OPERATIONS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c1">-- If carrier present</span>
 
--- Transport
-veaf.config.LOAD_CTLD = true                 -- CTLD for transport
+<span class="c1">-- Transport</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">LOAD_CTLD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">                 </span><span class="c1">-- CTLD for transport</span>
 
--- Weather
-veaf.config.LOAD_VEAF_WEATHER = false        -- No dynamic weather
+<span class="c1">-- Weather</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">LOAD_VEAF_WEATHER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">        </span><span class="c1">-- No dynamic weather</span>
 
--- Security
-veaf.config.LOAD_VEAF_SECURITY = true
-veaf.config.VEAF_SECURITY_PASSWORD = &quot;strike2024&quot;  -- Spawn password
+<span class="c1">-- Security</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">LOAD_VEAF_SECURITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">VEAF_SECURITY_PASSWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;strike2024&quot;</span><span class="w">  </span><span class="c1">-- Spawn password</span>
 
--- Misc
-veaf.config.LOAD_VEAF_RADIO = true           -- Radio menus
-veaf.config.LOAD_VEAF_SHORTCUTS = true       -- Command shortcuts
+<span class="c1">-- Misc</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">LOAD_VEAF_RADIO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">           </span><span class="c1">-- Radio menus</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">LOAD_VEAF_SHORTCUTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">       </span><span class="c1">-- Command shortcuts</span>
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------
--- Assets Configuration
--------------------------------------------------------------------------------------------------------------------------------------------------------------
+<span class="c1">-------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1">-- Assets Configuration</span>
+<span class="c1">-------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
 
--- Tankers
-veafAssets.Assets = {
-    -- Tanker Texaco (Blue)
-    {
-        name = &quot;Texaco-1&quot;,
-        description = &quot;KC-135 Tanker&quot;,
-        information = &quot;TACAN 61X | 251.0 MHz AM&quot;,
-        disposable = false,  -- Cannot be destroyed
-        linked = {}          -- Linked groups (respawn together)
-    },
+<span class="c1">-- Tankers</span>
+<span class="nv">veafAssets</span><span class="p">.</span><span class="py">Assets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">-- Tanker Texaco (Blue)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Texaco-1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;KC-135 Tanker&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;TACAN 61X | 251.0 MHz AM&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">disposable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">  </span><span class="c1">-- Cannot be destroyed</span>
+<span class="w">        </span><span class="nv">linked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span><span class="w">          </span><span class="c1">-- Linked groups (respawn together)</span>
+<span class="w">    </span><span class="p">},</span>
 
-    -- Tanker Shell (Blue)
-    {
-        name = &quot;Shell-1&quot;,
-        description = &quot;KC-130 Tanker&quot;,
-        information = &quot;TACAN 62X | 252.0 MHz AM&quot;,
-        disposable = false
-    },
+<span class="w">    </span><span class="c1">-- Tanker Shell (Blue)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Shell-1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;KC-130 Tanker&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;TACAN 62X | 252.0 MHz AM&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">disposable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">},</span>
 
-    -- AWACS
-    {
-        name = &quot;Magic-1&quot;,
-        description = &quot;E-3A AWACS&quot;,
-        information = &quot;133.0 MHz AM&quot;,
-        disposable = false
-    }
-}
+<span class="w">    </span><span class="c1">-- AWACS</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Magic-1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;E-3A AWACS&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;133.0 MHz AM&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">disposable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------
--- Combat Zones Configuration
--------------------------------------------------------------------------------------------------------------------------------------------------------------
+<span class="c1">-------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1">-- Combat Zones Configuration</span>
+<span class="c1">-------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
 
--- Combat zone activatable via F10
-local combatZone1 = veafCombatZone:new()
-combatZone1:setName(&quot;Batumi Sector&quot;)
-combatZone1:setDescription(&quot;Enemy forces attacking Batumi&quot;)
-combatZone1:setBriefing(&quot;Destroy enemy ground forces advancing on Batumi airbase&quot;)
-combatZone1:setZone(&quot;COMBAT_ZONE_BATUMI&quot;)  -- DCS trigger zone name
-combatZone1:setCoalition(coalition.side.RED)
-combatZone1:setCountry(country.id.RUSSIA)
+<span class="c1">-- Combat zone activatable via F10</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">combatZone1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veafCombatZone</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="nv">combatZone1</span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Batumi Sector&quot;</span><span class="p">)</span>
+<span class="nv">combatZone1</span><span class="p">:</span><span class="nf">setDescription</span><span class="p">(</span><span class="s2">&quot;Enemy forces attacking Batumi&quot;</span><span class="p">)</span>
+<span class="nv">combatZone1</span><span class="p">:</span><span class="nf">setBriefing</span><span class="p">(</span><span class="s2">&quot;Destroy enemy ground forces advancing on Batumi airbase&quot;</span><span class="p">)</span>
+<span class="nv">combatZone1</span><span class="p">:</span><span class="nf">setZone</span><span class="p">(</span><span class="s2">&quot;COMBAT_ZONE_BATUMI&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">-- DCS trigger zone name</span>
+<span class="nv">combatZone1</span><span class="p">:</span><span class="nf">setCoalition</span><span class="p">(</span><span class="nv">coalition</span><span class="p">.</span><span class="py">side</span><span class="p">.</span><span class="py">RED</span><span class="p">)</span>
+<span class="nv">combatZone1</span><span class="p">:</span><span class="nf">setCountry</span><span class="p">(</span><span class="nv">country</span><span class="p">.</span><span class="py">id</span><span class="p">.</span><span class="py">RUSSIA</span><span class="p">)</span>
 
--- Add zone
-veafCombatZone.AddZone(combatZone1)
+<span class="c1">-- Add zone</span>
+<span class="nv">veafCombatZone</span><span class="p">.</span><span class="nf">AddZone</span><span class="p">(</span><span class="nv">combatZone1</span><span class="p">)</span>
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------
--- Missions Configuration
--------------------------------------------------------------------------------------------------------------------------------------------------------------
+<span class="c1">-------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1">-- Missions Configuration</span>
+<span class="c1">-------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
 
--- CAP Mission
-local missionCAP1 = veafCombatMission:new()
-missionCAP1:setName(&quot;CAP Alpha&quot;)
-missionCAP1:setDescription(&quot;Eliminate enemy CAP&quot;)
-missionCAP1:setBriefing(&quot;Enemy fighters patrolling north of Batumi. Destroy all hostile aircraft.&quot;)
-missionCAP1:setSpawnZone(&quot;CAP_SPAWN_ZONE&quot;)  -- DCS zone
-missionCAP1:setRadioMenuEnabled(true)        -- Visible in F10
-missionCAP1:setSecured(false)                -- No password required
+<span class="c1">-- CAP Mission</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">missionCAP1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veafCombatMission</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="nv">missionCAP1</span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;CAP Alpha&quot;</span><span class="p">)</span>
+<span class="nv">missionCAP1</span><span class="p">:</span><span class="nf">setDescription</span><span class="p">(</span><span class="s2">&quot;Eliminate enemy CAP&quot;</span><span class="p">)</span>
+<span class="nv">missionCAP1</span><span class="p">:</span><span class="nf">setBriefing</span><span class="p">(</span><span class="s2">&quot;Enemy fighters patrolling north of Batumi. Destroy all hostile aircraft.&quot;</span><span class="p">)</span>
+<span class="nv">missionCAP1</span><span class="p">:</span><span class="nf">setSpawnZone</span><span class="p">(</span><span class="s2">&quot;CAP_SPAWN_ZONE&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">-- DCS zone</span>
+<span class="nv">missionCAP1</span><span class="p">:</span><span class="nf">setRadioMenuEnabled</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w">        </span><span class="c1">-- Visible in F10</span>
+<span class="nv">missionCAP1</span><span class="p">:</span><span class="nf">setSecured</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w">                </span><span class="c1">-- No password required</span>
 
--- Objective: Destroy enemies
-local objective1 = VeafCombatMissionObjective:new()
-objective1:setName(&quot;Destroy Enemy CAP&quot;)
-objective1:setDescription(&quot;All enemy fighters destroyed&quot;)
+<span class="c1">-- Objective: Destroy enemies</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">objective1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">VeafCombatMissionObjective</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="nv">objective1</span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Destroy Enemy CAP&quot;</span><span class="p">)</span>
+<span class="nv">objective1</span><span class="p">:</span><span class="nf">setDescription</span><span class="p">(</span><span class="s2">&quot;All enemy fighters destroyed&quot;</span><span class="p">)</span>
 
-missionCAP1:addObjective(objective1)
-veafCombatMission.AddMission(missionCAP1)
+<span class="nv">missionCAP1</span><span class="p">:</span><span class="nf">addObjective</span><span class="p">(</span><span class="nv">objective1</span><span class="p">)</span>
+<span class="nv">veafCombatMission</span><span class="p">.</span><span class="nf">AddMission</span><span class="p">(</span><span class="nv">missionCAP1</span><span class="p">)</span>
 
--- Generate variants (difficulty)
-veafCombatMission.AddMissionsWithSkillAndScale(
-    missionCAP1,
-    false,  -- Don't include original
-    {&quot;Average&quot;, &quot;Good&quot;, &quot;High&quot;},      -- Skill levels
-    {0.5, 1.0, 1.5}                   -- Scale factors
-)
--- Result: 9 missions (3 skills × 3 scales)
+<span class="c1">-- Generate variants (difficulty)</span>
+<span class="nv">veafCombatMission</span><span class="p">.</span><span class="nf">AddMissionsWithSkillAndScale</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">missionCAP1</span><span class="p">,</span>
+<span class="w">    </span><span class="kc">false</span><span class="p">,</span><span class="w">  </span><span class="c1">-- Don&#39;t include original</span>
+<span class="w">    </span><span class="p">{</span><span class="s2">&quot;Average&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Good&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;High&quot;</span><span class="p">},</span><span class="w">      </span><span class="c1">-- Skill levels</span>
+<span class="w">    </span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">}</span><span class="w">                   </span><span class="c1">-- Scale factors</span>
+<span class="p">)</span>
+<span class="c1">-- Result: 9 missions (3 skills × 3 scales)</span>
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------
--- Initialization
--------------------------------------------------------------------------------------------------------------------------------------------------------------
+<span class="c1">-------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1">-- Initialization</span>
+<span class="c1">-------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
 
--- Everything will be initialized automatically by VEAF
-</code></pre>
+<span class="c1">-- Everything will be initialized automatically by VEAF</span>
+</code></pre></div>
 <h4 id="file-presetsyaml">File <code>presets.yaml</code></h4>
 <p><strong>Location:</strong> <code>src/presets.yaml</code></p>
 <p><strong>Example:</strong></p>
-<pre><code class="language-yaml">radios_collection:
-  # Presets for Blue coalition
-  blue_radios:
-    # UHF Radio (30-399 MHz)
-    radio_uhf_30:
-      title: UHF
-      type: uhf
-      channels:
-        01:
-          name: Guard/UHF
-          frequency: 243.0
-          modulation: AM
-        02:
-          name: Texaco
-          frequency: 251.0
-          modulation: AM
-        03:
-          name: Shell
-          frequency: 252.0
-          modulation: AM
-        04:
-          name: Magic AWACS
-          frequency: 133.0
-          modulation: AM
-        05:
-          name: Batumi Tower
-          frequency: 131.0
-          modulation: AM
-        # ... up to 20 channels
+<div class="highlight"><pre><span></span><code><span class="nt">radios_collection</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Presets for Blue coalition</span>
+<span class="w">  </span><span class="nt">blue_radios</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># UHF Radio (30-399 MHz)</span>
+<span class="w">    </span><span class="nt">radio_uhf_30</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UHF</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uhf</span>
+<span class="w">      </span><span class="nt">channels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">01</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Guard/UHF</span>
+<span class="w">          </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">243.0</span>
+<span class="w">          </span><span class="nt">modulation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AM</span>
+<span class="w">        </span><span class="nt">02</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Texaco</span>
+<span class="w">          </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">251.0</span>
+<span class="w">          </span><span class="nt">modulation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AM</span>
+<span class="w">        </span><span class="nt">03</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Shell</span>
+<span class="w">          </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">252.0</span>
+<span class="w">          </span><span class="nt">modulation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AM</span>
+<span class="w">        </span><span class="nt">04</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Magic AWACS</span>
+<span class="w">          </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">133.0</span>
+<span class="w">          </span><span class="nt">modulation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AM</span>
+<span class="w">        </span><span class="nt">05</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Batumi Tower</span>
+<span class="w">          </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">131.0</span>
+<span class="w">          </span><span class="nt">modulation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AM</span>
+<span class="w">        </span><span class="c1"># ... up to 20 channels</span>
 
-    # VHF Radio (30-87 MHz)
-    radio_vhf_30:
-      title: VHF
-      type: vhf_am
-      channels:
-        01:
-          name: Guard/VHF
-          frequency: 121.5
-          modulation: AM
-        02:
-          name: Tac 1
-          frequency: 135.0
-          modulation: AM
-        # ...
+<span class="w">    </span><span class="c1"># VHF Radio (30-87 MHz)</span>
+<span class="w">    </span><span class="nt">radio_vhf_30</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VHF</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vhf_am</span>
+<span class="w">      </span><span class="nt">channels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">01</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Guard/VHF</span>
+<span class="w">          </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">121.5</span>
+<span class="w">          </span><span class="nt">modulation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AM</span>
+<span class="w">        </span><span class="nt">02</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tac 1</span>
+<span class="w">          </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">135.0</span>
+<span class="w">          </span><span class="nt">modulation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AM</span>
+<span class="w">        </span><span class="c1"># ...</span>
 
-  # Presets for Red coalition (optional)
-  red_radios:
-    radio_uhf_30:
-      title: UHF
-      type: uhf
-      channels:
-        01:
-          name: Guard
-          frequency: 243.0
-          modulation: AM
-        # ...
-</code></pre>
+<span class="w">  </span><span class="c1"># Presets for Red coalition (optional)</span>
+<span class="w">  </span><span class="nt">red_radios</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">radio_uhf_30</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UHF</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uhf</span>
+<span class="w">      </span><span class="nt">channels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">01</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Guard</span>
+<span class="w">          </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">243.0</span>
+<span class="w">          </span><span class="nt">modulation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AM</span>
+<span class="w">        </span><span class="c1"># ...</span>
+</code></pre></div>
 <p><strong>Inject into mission:</strong></p>
-<pre><code class="language-bash"># Command line
-veaf-tools.exe inject-presets src/presets.yaml src/mission/mission.lua
+<div class="highlight"><pre><span></span><code><span class="c1"># Command line</span>
+veaf-tools.exe<span class="w"> </span>inject-presets<span class="w"> </span>src/presets.yaml<span class="w"> </span>src/mission/mission.lua
 
-# Or via automatic build (see Build section)
-</code></pre>
+<span class="c1"># Or via automatic build (see Build section)</span>
+</code></pre></div>
 <h3 id="step-4-advanced-configuration">Step 4: Advanced Configuration</h3>
 <h4 id="security-zones">Security Zones</h4>
 <p><strong>In <code>missionConfig.lua</code>:</strong></p>
-<pre><code class="language-lua">-- Sanctuaries (zones where units cannot be attacked)
-veafSanctuary.AddZone(
-    &quot;SAFE_ZONE_KUTAISI&quot;,  -- DCS trigger zone name
-    true,                 -- Protects Blue
-    false                 -- Doesn't protect Red
-)
+<div class="highlight"><pre><span></span><code><span class="c1">-- Sanctuaries (zones where units cannot be attacked)</span>
+<span class="nv">veafSanctuary</span><span class="p">.</span><span class="nf">AddZone</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;SAFE_ZONE_KUTAISI&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">-- DCS trigger zone name</span>
+<span class="w">    </span><span class="kc">true</span><span class="p">,</span><span class="w">                 </span><span class="c1">-- Protects Blue</span>
+<span class="w">    </span><span class="kc">false</span><span class="w">                 </span><span class="c1">-- Doesn&#39;t protect Red</span>
+<span class="p">)</span>
 
--- Protected zone around Kutaisi airfield
-</code></pre>
+<span class="c1">-- Protected zone around Kutaisi airfield</span>
+</code></pre></div>
 <h4 id="community-systems">Community Systems</h4>
 <p><strong>CTLD (Transport Helicopters):</strong></p>
-<pre><code class="language-lua">-- In missionConfig.lua
-veaf.config.LOAD_CTLD = true
+<div class="highlight"><pre><span></span><code><span class="c1">-- In missionConfig.lua</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">LOAD_CTLD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 
--- CTLD configuration
-ctld.hoverPickup = true              -- Pickup in hover
-ctld.enableCrates = true             -- Enable crates
-ctld.slingLoad = true                -- Sling loading (compatible helos)
-ctld.enableSmokeDrop = true          -- Marking smoke
+<span class="c1">-- CTLD configuration</span>
+<span class="nv">ctld</span><span class="p">.</span><span class="py">hoverPickup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">              </span><span class="c1">-- Pickup in hover</span>
+<span class="nv">ctld</span><span class="p">.</span><span class="py">enableCrates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">             </span><span class="c1">-- Enable crates</span>
+<span class="nv">ctld</span><span class="p">.</span><span class="py">slingLoad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">                </span><span class="c1">-- Sling loading (compatible helos)</span>
+<span class="nv">ctld</span><span class="p">.</span><span class="py">enableSmokeDrop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">          </span><span class="c1">-- Marking smoke</span>
 
--- Pickup zones
-ctld.logisticUnits = {
-    &quot;FARP Alpha&quot;,     -- FARP group name in mission
-    &quot;FARP Bravo&quot;
-}
+<span class="c1">-- Pickup zones</span>
+<span class="nv">ctld</span><span class="p">.</span><span class="py">logisticUnits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;FARP Alpha&quot;</span><span class="p">,</span><span class="w">     </span><span class="c1">-- FARP group name in mission</span>
+<span class="w">    </span><span class="s2">&quot;FARP Bravo&quot;</span>
+<span class="p">}</span>
 
--- Deployment zones
-ctld.deployableFOBs = {
-    &quot;FOB Zone 1&quot;,     -- Zones where FOB can be deployed
-    &quot;FOB Zone 2&quot;
-}
-</code></pre>
+<span class="c1">-- Deployment zones</span>
+<span class="nv">ctld</span><span class="p">.</span><span class="py">deployableFOBs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;FOB Zone 1&quot;</span><span class="p">,</span><span class="w">     </span><span class="c1">-- Zones where FOB can be deployed</span>
+<span class="w">    </span><span class="s2">&quot;FOB Zone 2&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="build-tools">Build Tools</h2>
 <h3 id="veaf-tools-cli">veaf-tools CLI</h3>
@@ -2924,15 +2924,15 @@ ctld.deployableFOBs = {
 <li><strong>Extract</strong> <code>veaf-tools.exe</code> to your working folder</li>
 <li><strong>Test</strong>:</li>
 </ol>
-<pre><code class="language-bash">veaf-tools.exe --version
-# Result: veaf-tools version 6.0.4
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools.exe<span class="w"> </span>--version
+<span class="c1"># Result: veaf-tools version 6.0.4</span>
+</code></pre></div>
 <h4 id="command-prepare-mission">Command: Prepare Mission</h4>
 <p><strong>Create base structure:</strong></p>
-<pre><code class="language-bash">veaf-tools.exe prepare &quot;D:\DCS\Missions\MyMission&quot;
-</code></pre>
-<p><strong>Result:</strong></p>
-<pre><code>✓ Folder created: MyMission/src/
+<div class="highlight"><pre><span></span><code>veaf-tools.exe<span class="w"> </span>prepare<span class="w"> </span><span class="s2">&quot;D:\DCS\Missions\MyMission&quot;</span>
+</code></pre></div>
+<p><strong>Result:</strong>
+<div class="highlight"><pre><span></span><code>✓ Folder created: MyMission/src/
 ✓ Folder created: MyMission/src/mission/
 ✓ Folder created: MyMission/src/scripts/
 ✓ Config files copied
@@ -2940,18 +2940,18 @@ ctld.deployableFOBs = {
 ✓ spawnables.yaml created
 ✓ waypoints.yaml created
 ✓ versions.yaml created
-</code></pre>
+</code></pre></div></p>
 <h4 id="command-inject-radio-presets">Command: Inject Radio Presets</h4>
 <p><strong>Inject <code>presets.yaml</code> into mission:</strong></p>
-<pre><code class="language-bash">veaf-tools.exe inject-presets &quot;MyMission\src\presets.yaml&quot; &quot;MyMission\src\mission\mission.lua&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools.exe<span class="w"> </span>inject-presets<span class="w"> </span><span class="s2">&quot;MyMission\src\presets.yaml&quot;</span><span class="w"> </span><span class="s2">&quot;MyMission\src\mission\mission.lua&quot;</span>
+</code></pre></div>
 <p><strong>Result:</strong>
 - Radio frequencies automatically configured in all player aircraft
 - Channel 1 = frequency 1, Channel 2 = frequency 2, etc.</p>
 <h4 id="command-build-complete-mission">Command: Build Complete Mission</h4>
 <p><strong>Assemble all elements and create .miz:</strong></p>
-<pre><code class="language-bash">veaf-tools.exe build-mission &quot;MyMission\src&quot; &quot;MyMission\MyMission.miz&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools.exe<span class="w"> </span>build-mission<span class="w"> </span><span class="s2">&quot;MyMission\src&quot;</span><span class="w"> </span><span class="s2">&quot;MyMission\MyMission.miz&quot;</span>
+</code></pre></div>
 <p><strong>Automatic steps:</strong>
 1. ✅ Load <code>src/mission/</code>
 2. ✅ Inject VEAF scripts
@@ -2959,42 +2959,42 @@ ctld.deployableFOBs = {
 4. ✅ Inject radio presets
 5. ✅ Inject waypoints
 6. ✅ Compile to <code>.miz</code></p>
-<p><strong>Result:</strong></p>
-<pre><code>✓ Mission compiled: MyMission.miz (12.5 MB)
+<p><strong>Result:</strong>
+<div class="highlight"><pre><span></span><code>✓ Mission compiled: MyMission.miz (12.5 MB)
 ✓ Ready for DCS World
-</code></pre>
+</code></pre></div></p>
 <h3 id="automated-build-script">Automated Build Script</h3>
 <p><strong>Create <code>build.bat</code> file:</strong></p>
-<pre><code class="language-batch">@echo off
-echo ========================================
-echo Build VEAF Mission: Strike Training
-echo ========================================
+<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">echo</span> off
+<span class="k">echo</span> ========================================
+<span class="k">echo</span> Build VEAF Mission: Strike Training
+<span class="k">echo</span> ========================================
 
-set MISSION_DIR=D:\DCS\Missions\StrikeTraining
-set VEAF_TOOLS=D:\VEAF\veaf-tools.exe
+<span class="k">set</span> <span class="nv">MISSION_DIR</span><span class="p">=</span>D:\DCS\Missions\StrikeTraining
+<span class="k">set</span> <span class="nv">VEAF_TOOLS</span><span class="p">=</span>D:\VEAF\veaf-tools.exe
 
-echo.
-echo [1/3] Injecting radio presets...
-%VEAF_TOOLS% inject-presets &quot;%MISSION_DIR%\src\presets.yaml&quot; &quot;%MISSION_DIR%\src\mission\mission.lua&quot;
+<span class="k">echo</span>.
+<span class="k">echo</span> [1/3] Injecting radio presets...
+<span class="nv">%VEAF_TOOLS%</span> inject-presets <span class="s2">&quot;</span><span class="nv">%MISSION_DIR%</span><span class="s2">\src\presets.yaml&quot;</span> <span class="s2">&quot;</span><span class="nv">%MISSION_DIR%</span><span class="s2">\src\mission\mission.lua&quot;</span>
 
-echo.
-echo [2/3] Injecting waypoints...
-%VEAF_TOOLS% inject-waypoints &quot;%MISSION_DIR%\src\waypoints.yaml&quot; &quot;%MISSION_DIR%\src\mission\mission.lua&quot;
+<span class="k">echo</span>.
+<span class="k">echo</span> [2/3] Injecting waypoints...
+<span class="nv">%VEAF_TOOLS%</span> inject-waypoints <span class="s2">&quot;</span><span class="nv">%MISSION_DIR%</span><span class="s2">\src\waypoints.yaml&quot;</span> <span class="s2">&quot;</span><span class="nv">%MISSION_DIR%</span><span class="s2">\src\mission\mission.lua&quot;</span>
 
-echo.
-echo [3/3] Building final mission...
-%VEAF_TOOLS% build-mission &quot;%MISSION_DIR%\src&quot; &quot;%MISSION_DIR%\StrikeTraining.miz&quot;
+<span class="k">echo</span>.
+<span class="k">echo</span> [3/3] Building final mission...
+<span class="nv">%VEAF_TOOLS%</span> build-mission <span class="s2">&quot;</span><span class="nv">%MISSION_DIR%</span><span class="s2">\src&quot;</span> <span class="s2">&quot;</span><span class="nv">%MISSION_DIR%</span><span class="s2">\StrikeTraining.miz&quot;</span>
 
-echo.
-echo ========================================
-echo Build complete!
-echo ========================================
-echo File: %MISSION_DIR%\StrikeTraining.miz
-pause
-</code></pre>
-<p><strong>Usage:</strong></p>
-<pre><code class="language-bash">build.bat
-</code></pre>
+<span class="k">echo</span>.
+<span class="k">echo</span> ========================================
+<span class="k">echo</span> Build complete!
+<span class="k">echo</span> ========================================
+<span class="k">echo</span> File: <span class="nv">%MISSION_DIR%</span>\StrikeTraining.miz
+<span class="k">pause</span>
+</code></pre></div>
+<p><strong>Usage:</strong>
+<div class="highlight"><pre><span></span><code>build.bat
+</code></pre></div></p>
 <hr />
 <h2 id="advanced-customization">Advanced Customization</h2>
 <h3 id="creating-complex-missions">Creating Complex Missions</h3>
@@ -3021,22 +3021,22 @@ pause
 </li>
 <li>
 <p><strong>Check Lua syntax:</strong>
-   ```lua
-   -- Common error: missing comma
-   local bad = {
-       name = "Test"
-       description = "Test"  -- ERROR: missing comma on previous line
-   }</p>
+   <div class="highlight"><pre><span></span><code><span class="c1">-- Common error: missing comma</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">bad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Test&quot;</span>
+<span class="w">    </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Test&quot;</span><span class="w">  </span><span class="c1">-- ERROR: missing comma on previous line</span>
+<span class="p">}</span>
+
+<span class="c1">-- Correct:</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">good</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Test&quot;</span><span class="p">,</span><span class="w">        </span><span class="c1">-- Comma</span>
+<span class="w">    </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Test&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
 </li>
-</ol>
-<p>-- Correct:
-   local good = {
-       name = "Test",        -- Comma
-       description = "Test"
-   }
-   ```</p>
-<ol>
-<li><strong>Check zone names:</strong></li>
+<li>
+<p><strong>Check zone names:</strong></p>
+</li>
 <li>Trigger zone names are case-sensitive</li>
 <li>
 <p>Verify they exist in DCS mission</p>
@@ -3055,36 +3055,37 @@ pause
 <ol>
 <li>
 <p><strong>Verify module is loaded:</strong>
-   <code>lua
-   veaf.config.LOAD_VEAF_SPAWN = true
-   veaf.config.LOAD_VEAF_MARKERS = true</code></p>
+   <div class="highlight"><pre><span></span><code><span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">LOAD_VEAF_SPAWN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">LOAD_VEAF_MARKERS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div></p>
 </li>
 <li>
 <p><strong>Check command syntax:</strong>
-   <code>Correct: _spawn unit, name F-16C, group 2
-   Incorrect: _spawn, name F-16C, group 2  (missing "unit" keyword)
-   Incorrect: spawn unit, name F-16C, group 2  (missing "_")</code></p>
+   <div class="highlight"><pre><span></span><code>Correct: _spawn unit, name F-16C, group 2
+Incorrect: _spawn, name F-16C, group 2  (missing &quot;unit&quot; keyword)
+Incorrect: spawn unit, name F-16C, group 2  (missing &quot;_&quot;)
+</code></pre></div></p>
 </li>
 <li>
 <p><strong>Check security:</strong>
-   ```lua
-   -- If spawn secured
-   veaf.config.VEAF_SPAWN_ALLOW_PUBLIC = false</p>
+   <div class="highlight"><pre><span></span><code><span class="c1">-- If spawn secured</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">VEAF_SPAWN_ALLOW_PUBLIC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+
+<span class="c1">-- Player must use:</span>
+<span class="nv">_spawn</span><span class="w"> </span><span class="nv">unit</span><span class="p">,</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="nv">F</span><span class="o">-</span><span class="mi">16</span><span class="nv">C</span><span class="p">,</span><span class="w"> </span><span class="nv">password</span><span class="w"> </span><span class="nv">YOUR_PASSWORD</span>
+</code></pre></div></p>
 </li>
 </ol>
-<p>-- Player must use:
-   _spawn unit, name F-16C, password YOUR_PASSWORD
-   ```</p>
 <h3 id="debug-and-logging">Debug and Logging</h3>
 <h4 id="enable-detailed-logs">Enable Detailed Logs</h4>
 <p><strong>In <code>missionConfig.lua</code>:</strong></p>
-<pre><code class="language-lua">-- Enable trace logging for all modules
-veaf.loggers.setBaseLevel(&quot;trace&quot;)
+<div class="highlight"><pre><span></span><code><span class="c1">-- Enable trace logging for all modules</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">loggers</span><span class="p">.</span><span class="nf">setBaseLevel</span><span class="p">(</span><span class="s2">&quot;trace&quot;</span><span class="p">)</span>
 
--- Or for specific module
-veafSpawn.LogLevel = &quot;trace&quot;
-veafCombatMission.LogLevel = &quot;debug&quot;
-</code></pre>
+<span class="c1">-- Or for specific module</span>
+<span class="nv">veafSpawn</span><span class="p">.</span><span class="py">LogLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;trace&quot;</span>
+<span class="nv">veafCombatMission</span><span class="p">.</span><span class="py">LogLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;debug&quot;</span>
+</code></pre></div>
 <p><strong>Logs available in:</strong>
 - <code>Saved Games/DCS/Logs/dcs.log</code></p>
 <h3 id="support-and-community">Support and Community</h3>

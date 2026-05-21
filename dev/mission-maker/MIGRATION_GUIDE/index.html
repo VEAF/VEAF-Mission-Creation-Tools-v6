@@ -2528,8 +2528,8 @@
 <li>Install <code>veaf-tools-updater.exe</code> — download from the <a href="https://github.com/VEAF/VEAF-Mission-Creation-Tools/releases/tag/published-latest">latest GitHub release</a></li>
 <li>Run the updater once to install <code>veaf-tools.exe</code> and all VEAF scripts:</li>
 </ol>
-<pre><code class="language-powershell">.\veaf-tools-updater.exe
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools-updater</span><span class="p">.</span><span class="n">exe</span>
+</code></pre></div>
 <ol>
 <li>Have your original <code>.miz</code> file on hand</li>
 </ol>
@@ -2620,20 +2620,20 @@
 <h3 id="step-by-step-migration">Step-by-step Migration</h3>
 <h4 id="1-create-the-mission-folder">1. Create the mission folder</h4>
 <p>Create an empty folder for your mission project:</p>
-<pre><code class="language-powershell">mkdir my-mission
-cd my-mission
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">mkdir</span> <span class="n">my-mission</span>
+<span class="nb">cd </span><span class="n">my-mission</span>
+</code></pre></div>
 <h4 id="2-install-veaf-v6">2. Install VEAF v6</h4>
 <p>Copy <code>veaf-tools-updater.exe</code> into the folder and run:</p>
-<pre><code class="language-powershell">.\veaf-tools-updater.exe
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools-updater</span><span class="p">.</span><span class="n">exe</span>
+</code></pre></div>
 <p>This creates the <code>published/</code> directory with all scripts and tools.</p>
 <h4 id="3-extract-the-v5-mission">3. Extract the v5 mission</h4>
 <p>Use <code>veaf-tools.exe</code> to unpack the <code>.miz</code> into the folder structure:</p>
-<pre><code class="language-powershell">.\veaf-tools.exe extract &quot;C:\path\to\your-mission-v5.miz&quot; .
-</code></pre>
-<p>This creates:</p>
-<pre><code>my-mission/
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">extract</span> <span class="s2">&quot;C:\path\to\your-mission-v5.miz&quot;</span> <span class="p">.</span>
+</code></pre></div>
+<p>This creates:
+<div class="highlight"><pre><span></span><code>my-mission/
 ├── src/
 │   ├── mission/          ← raw DCS mission data
 │   │   ├── mission       ← main Lua dictionary
@@ -2643,11 +2643,11 @@ cd my-mission
 │       └── missionConfig.lua   ← auto-created from defaults
 └── published/
     └── veaf-scripts.lua
-</code></pre>
+</code></pre></div></p>
 <h4 id="4-build-once-to-remove-old-v5-triggers">4. Build once to remove old v5 triggers</h4>
 <p>The <code>build</code> command automatically detects and removes old v5 <code>DO SCRIPT FILE</code> triggers (enabled by default via <code>--migrate-from-v5</code>):</p>
-<pre><code class="language-powershell">.\veaf-tools.exe build my-mission .
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span> <span class="n">my-mission</span> <span class="p">.</span>
+</code></pre></div>
 <p>The output <code>.miz</code> will have:
 - All old v5 trigger actions removed
 - A fresh v6 trigger injected that loads <code>veaf-scripts.lua</code></p>
@@ -2657,41 +2657,41 @@ cd my-mission
 <h4 id="5-port-your-configuration-to-missionconfiglua">5. Port your configuration to missionConfig.lua</h4>
 <p>Your v5 mission likely had module initialization calls either in inline trigger scripts or in a separate Lua file. Move all of them into <code>src/scripts/missionConfig.lua</code>.</p>
 <p>If you already have a <code>missionConfig.lua</code> from a previous VEAF version, run the migration helper to automate the most common fixes:</p>
-<pre><code class="language-batch">veaf-tools.exe migrate-config src\scripts\missionConfig.lua
-</code></pre>
+<div class="highlight"><pre><span></span><code>veaf-tools.exe migrate-config src\scripts\missionConfig.lua
+</code></pre></div>
 <p>This will:
 - Comment out any <code>doFile(...)</code> calls loading VEAF scripts (the builder injects them automatically now).
 - Wrap bare <code>veafXxx.initialize()</code> calls in <code>if veafXxx then … end</code> guards.
 - Print a <code>lua_modules:</code> YAML snippet you can paste into <code>mission.yaml</code> to document (or fine-tune) which modules are enabled.</p>
 <p>The migrated file is written as <code>&lt;name&gt;_v6.lua</code> next to the original; review it, then replace the original once satisfied.</p>
-<p><strong>v5 pattern (inline trigger or separate file):</strong></p>
-<pre><code class="language-lua">-- Somewhere in a DCS trigger &quot;DO SCRIPT&quot;:
-veaf.initialize()
-veafSpawn.initialize()
-veafRadio.initialize(true)
-veafAssets.initialize()
--- ... asset definitions inline ...
-veafAssets.Assets = {
-    { ... }
-}
-</code></pre>
-<p><strong>v6 pattern in <code>src/scripts/missionConfig.lua</code>:</strong></p>
-<pre><code class="language-lua">veaf.config.MISSION_NAME = &quot;My Mission&quot;
+<p><strong>v5 pattern (inline trigger or separate file):</strong>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Somewhere in a DCS trigger &quot;DO SCRIPT&quot;:</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="nv">veafSpawn</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="nv">veafAssets</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="c1">-- ... asset definitions inline ...</span>
+<span class="nv">veafAssets</span><span class="p">.</span><span class="py">Assets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>v6 pattern in <code>src/scripts/missionConfig.lua</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">MISSION_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;My Mission&quot;</span>
 
--- Initialize only the modules you use
-if veafRadio then
-    veafRadio.initialize(true)
-end
-if veafSpawn then
-    veafSpawn.initialize()
-end
-if veafAssets then
-    veafAssets.initialize()
-    veafAssets.Assets = {
-        { ... }
-    }
-end
-</code></pre>
+<span class="c1">-- Initialize only the modules you use</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">veafRadio</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="kr">end</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">veafSpawn</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="nv">veafSpawn</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="kr">end</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">veafAssets</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="nv">veafAssets</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">veafAssets</span><span class="p">.</span><span class="py">Assets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="kr">end</span>
+</code></pre></div></p>
 <p>The <code>if veafXxx then ... end</code> guard makes the config robust: if a module is not available (e.g. you switch to a minimal script variant), no error is thrown.</p>
 <h4 id="6-check-removed-v5-patterns">6. Check removed v5 patterns</h4>
 <p>Some v5 constructs no longer exist or have been renamed:</p>
@@ -2726,33 +2726,33 @@ end
 </tbody>
 </table>
 <h4 id="7-verify-with-a-test-build">7. Verify with a test build</h4>
-<pre><code class="language-powershell">.\veaf-tools.exe build my-mission .
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span> <span class="n">my-mission</span> <span class="p">.</span>
+</code></pre></div>
 <p>Open the resulting <code>.miz</code> in DCS, load the mission, and confirm:
 - No duplicate <code>DO SCRIPT FILE</code> triggers in the trigger editor
 - The v6 VEAF loader trigger is present (named something like <code>VEAF scripts loader</code>)
 - Radio menus and marker commands work as expected</p>
 <h4 id="8-set-up-version-control">8. Set up version control</h4>
-<pre><code class="language-powershell">git init
-git add src/ .gitignore
-git commit -m &quot;feat: migrate my-mission to VEAF v6&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">add</span> <span class="n">src</span><span class="p">/</span> <span class="p">.</span><span class="n">gitignore</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">&quot;feat: migrate my-mission to VEAF v6&quot;</span>
+</code></pre></div>
 <p>Add <code>published/</code> and <code>*.miz</code> to <code>.gitignore</code> — they are build artifacts.</p>
 <hr />
 <h2 id="integrating-veaf-into-a-vanilla-dcs-mission">Integrating VEAF into a Vanilla DCS Mission</h2>
 <p>A <strong>vanilla</strong> mission has no VEAF scripts, no special triggers, and was built entirely with the DCS Mission Editor.</p>
 <h3 id="step-by-step-integration">Step-by-step Integration</h3>
 <h4 id="1-create-the-mission-folder_1">1. Create the mission folder</h4>
-<pre><code class="language-powershell">mkdir my-mission
-cd my-mission
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">mkdir</span> <span class="n">my-mission</span>
+<span class="nb">cd </span><span class="n">my-mission</span>
+</code></pre></div>
 <h4 id="2-install-veaf-v6_1">2. Install VEAF v6</h4>
-<pre><code class="language-powershell">.\veaf-tools-updater.exe
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools-updater</span><span class="p">.</span><span class="n">exe</span>
+</code></pre></div>
 <h4 id="3-convert-the-vanilla-miz">3. Convert the vanilla .miz</h4>
 <p>The <code>convert-mission</code> command does everything in one step: extract, inject VEAF scripts, rebuild.</p>
-<pre><code class="language-powershell">.\veaf-tools.exe convert-mission &quot;C:\path\to\vanilla.miz&quot; .
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="nb">convert-mission</span> <span class="s2">&quot;C:\path\to\vanilla.miz&quot;</span> <span class="p">.</span>
+</code></pre></div>
 <p>This:
 1. Extracts <code>vanilla.miz</code> into <code>src/mission/</code>
 2. Copies the default <code>src/scripts/missionConfig.lua</code>
@@ -2760,33 +2760,33 @@ cd my-mission
 4. Rebuilds a new <code>.miz</code> next to the folder</p>
 <h4 id="4-optionally-prepare-the-folder-with-defaults-only">4. Optionally: prepare the folder with defaults only</h4>
 <p>If you want to set up the folder structure without converting a mission yet, use <code>prepare</code>:</p>
-<pre><code class="language-powershell">.\veaf-tools.exe prepare .
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">prepare</span> <span class="p">.</span>
+</code></pre></div>
 <p>Then copy your <code>.miz</code> as <code>mission.miz</code> and run:</p>
-<pre><code class="language-powershell">.\veaf-tools.exe extract mission.miz .
-.\veaf-tools.exe build mission .
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">extract</span> <span class="n">mission</span><span class="p">.</span><span class="n">miz</span> <span class="p">.</span>
+<span class="p">.\</span><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span> <span class="n">mission</span> <span class="p">.</span>
+</code></pre></div>
 <h4 id="5-configure-which-modules-to-enable">5. Configure which modules to enable</h4>
 <p>Open <code>src/scripts/missionConfig.lua</code>. By default, only the essential modules (markers, spawn, radio) are enabled. Uncomment the modules you want:</p>
-<pre><code class="language-lua">veaf.config.MISSION_NAME = &quot;My Vanilla Mission&quot;
+<div class="highlight"><pre><span></span><code><span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">MISSION_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;My Vanilla Mission&quot;</span>
 
-if veafRadio then
-    veafRadio.initialize(true)
-end
-if veafSpawn then
-    veafSpawn.initialize()
-end
+<span class="kr">if</span><span class="w"> </span><span class="nv">veafRadio</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="kr">end</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">veafSpawn</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="nv">veafSpawn</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="kr">end</span>
 
--- Uncomment to enable CAS missions:
--- if veafCasMission then
---     veafCasMission.initialize()
--- end
+<span class="c1">-- Uncomment to enable CAS missions:</span>
+<span class="c1">-- if veafCasMission then</span>
+<span class="c1">--     veafCasMission.initialize()</span>
+<span class="c1">-- end</span>
 
--- Uncomment to enable carrier ops:
--- if veafCarrierOperations then
---     veafCarrierOperations.initialize()
--- end
-</code></pre>
+<span class="c1">-- Uncomment to enable carrier ops:</span>
+<span class="c1">-- if veafCarrierOperations then</span>
+<span class="c1">--     veafCarrierOperations.initialize()</span>
+<span class="c1">-- end</span>
+</code></pre></div>
 <p>See <a href="#missionconfiglua-reference">missionConfig.lua reference</a> below and the individual script guides in <a href="scripts/">scripts/</a> for all options.</p>
 <h4 id="6-keep-your-existing-mission-content">6. Keep your existing mission content</h4>
 <p>Everything you built in the DCS Mission Editor (units, triggers, waypoints, zones) is preserved. VEAF does not remove or overwrite mission content — it only:
@@ -2795,14 +2795,14 @@ end
 - Responds to F10 map marker commands</p>
 <p>Your custom triggers, statics, and groups are untouched.</p>
 <h4 id="7-test-and-iterate">7. Test and iterate</h4>
-<pre><code class="language-powershell"># Rebuild after every config change
-.\veaf-tools.exe build mission .
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c"># Rebuild after every config change</span>
+<span class="p">.\</span><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span> <span class="n">mission</span> <span class="p">.</span>
+</code></pre></div>
 <p>Each build produces a dated <code>.miz</code> file (e.g. <code>mission_20260516.miz</code>). Open it in DCS and test.</p>
 <hr />
 <h2 id="mission-folder-reference">Mission Folder Reference</h2>
 <p>After migration, your folder should look like this:</p>
-<pre><code>my-mission/
+<div class="highlight"><pre><span></span><code>my-mission/
 ├── src/
 │   ├── mission/                ← extracted DCS mission data (commit this)
 │   │   ├── mission             ← main mission Lua dictionary
@@ -2820,33 +2820,33 @@ end
 ├── veaf-tools.exe              ← installed by veaf-tools-updater (do NOT commit)
 ├── veaf-tools-updater.exe      ← commit this
 └── mission_20260516.miz        ← build output (do NOT commit)
-</code></pre>
+</code></pre></div>
 <h3 id="recommended-gitignore">Recommended .gitignore</h3>
-<pre><code class="language-gitignore">published/
+<div class="highlight"><pre><span></span><code>published/
 *.miz
 *.log
 __pycache__/
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="missionconfiglua-reference">missionConfig.lua Reference</h2>
 <p>The minimal working <code>missionConfig.lua</code>:</p>
-<pre><code class="language-lua">veaf.config.MISSION_NAME = &quot;My Mission&quot;   -- shown in logs
+<div class="highlight"><pre><span></span><code><span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">MISSION_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;My Mission&quot;</span><span class="w">   </span><span class="c1">-- shown in logs</span>
 
--- Radio module (required for all F10 menus)
-if veafRadio then
-    veafRadio.initialize(true)
-end
+<span class="c1">-- Radio module (required for all F10 menus)</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">veafRadio</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="kr">end</span>
 
--- Spawn module (required for marker commands)
-if veafSpawn then
-    veafSpawn.initialize()
-end
+<span class="c1">-- Spawn module (required for marker commands)</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">veafSpawn</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="nv">veafSpawn</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="kr">end</span>
 
--- Shortcuts (required for aliases)
-if veafShortcuts then
-    veafShortcuts.initialize()
-end
-</code></pre>
+<span class="c1">-- Shortcuts (required for aliases)</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">veafShortcuts</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="nv">veafShortcuts</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="kr">end</span>
+</code></pre></div>
 <p>For each additional module, see the corresponding guide in <a href="scripts/">scripts/</a>.</p>
 <hr />
 <h2 id="common-issues">Common Issues</h2>

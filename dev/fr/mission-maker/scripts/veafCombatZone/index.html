@@ -1945,8 +1945,8 @@
 </ul>
 <hr />
 <h2 id="activation">Activation</h2>
-<pre><code class="language-lua">veafCombatZone.initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafCombatZone</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <p>Les zones individuelles sont créées et initialisées séparément (voir ci-dessous).</p>
 <hr />
 <h2 id="constantes-du-module">Constantes du module</h2>
@@ -1988,22 +1988,22 @@
 </table>
 <hr />
 <h2 id="definir-une-zone">Définir une zone</h2>
-<pre><code class="language-lua">local strikeZone = VeafCombatZone:new()
-  :setName(&quot;Strike Alpha&quot;)                   -- nom interne
-  :setZoneName(&quot;ZONE-STRIKE-ALPHA&quot;)          -- nom de la zone de trigger DCS
-  :setDescription(&quot;Colonne blindée — Senaki&quot;)
-  :setBriefing(&quot;Détruire tous les véhicules. Prévoir de l'AAA et des MANPADS.&quot;)
-  :addElement(
-    VeafCombatZoneElement:new()
-      :setGroupName(&quot;STRIKE-ALPHA-ARMOR&quot;)    -- groupe DCS à faire apparaître
-      :setSpawnRadius(100)
-  )
-  :addElement(
-    VeafCombatZoneElement:new()
-      :setGroupName(&quot;STRIKE-ALPHA-AAA&quot;)
-  )
-  :initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">strikeZone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">VeafCombatZone</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Strike Alpha&quot;</span><span class="p">)</span><span class="w">                   </span><span class="c1">-- nom interne</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setZoneName</span><span class="p">(</span><span class="s2">&quot;ZONE-STRIKE-ALPHA&quot;</span><span class="p">)</span><span class="w">          </span><span class="c1">-- nom de la zone de trigger DCS</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setDescription</span><span class="p">(</span><span class="s2">&quot;Colonne blindée — Senaki&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setBriefing</span><span class="p">(</span><span class="s2">&quot;Détruire tous les véhicules. Prévoir de l&#39;AAA et des MANPADS.&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">addElement</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">VeafCombatZoneElement</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">      </span><span class="p">:</span><span class="nf">setGroupName</span><span class="p">(</span><span class="s2">&quot;STRIKE-ALPHA-ARMOR&quot;</span><span class="p">)</span><span class="w">    </span><span class="c1">-- groupe DCS à faire apparaître</span>
+<span class="w">      </span><span class="p">:</span><span class="nf">setSpawnRadius</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">addElement</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">VeafCombatZoneElement</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">      </span><span class="p">:</span><span class="nf">setGroupName</span><span class="p">(</span><span class="s2">&quot;STRIKE-ALPHA-AAA&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="methodes-du-builder-veafcombatzone">Méthodes du builder VeafCombatZone</h3>
 <table>
 <thead>
@@ -2094,13 +2094,13 @@
 <hr />
 <h2 id="operations-zones-groupees">Opérations (zones groupées)</h2>
 <p>Plusieurs zones peuvent être regroupées dans une <strong>Opération</strong> qui se complète quand toutes les zones filles sont terminées :</p>
-<pre><code class="language-lua">VeafCombatOperation:new()
-  :setName(&quot;Operation Thunder&quot;)
-  :addZone(&quot;Strike Alpha&quot;)
-  :addZone(&quot;Strike Bravo&quot;)
-  :setBriefing(&quot;Détruire les deux colonnes blindées avant qu'elles atteignent Senaki.&quot;)
-  :initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">VeafCombatOperation</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Operation Thunder&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">addZone</span><span class="p">(</span><span class="s2">&quot;Strike Alpha&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">addZone</span><span class="p">(</span><span class="s2">&quot;Strike Bravo&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setBriefing</span><span class="p">(</span><span class="s2">&quot;Détruire les deux colonnes blindées avant qu&#39;elles atteignent Senaki.&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="voir-aussi">Voir aussi</h2>
 <ul>

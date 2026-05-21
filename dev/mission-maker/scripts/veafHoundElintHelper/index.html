@@ -1844,14 +1844,14 @@
 </ul>
 <hr />
 <h2 id="enable">Enable</h2>
-<pre><code class="language-lua">veafHoundElintHelper.initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafHoundElintHelper</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <p>After this call, units spawned by <code>veafSpawn</code> that are radar emitters will automatically be added to the Hound ELINT network.</p>
 <hr />
 <h2 id="registration-delay">Registration Delay</h2>
 <p>There is a configurable delay before attempting to add newly spawned units to Hound ELINT. This is required for aircraft spawned dynamically:</p>
-<pre><code class="language-lua">veafSpawn.HoundElintAddDelay = 1  -- seconds (default)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafSpawn</span><span class="p">.</span><span class="py">HoundElintAddDelay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="c1">-- seconds (default)</span>
+</code></pre></div>
 <p>Increase if Hound reports units not found immediately after spawn.</p>
 <hr />
 <h2 id="notes">Notes</h2>

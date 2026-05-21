@@ -1783,12 +1783,10 @@
 <summary>Ticket details</summary>
 
 **DOC-001 — Rename branch**
-
-<pre><code class="language-powershell">git branch -m develop/v6-new-build-system develop-v6
-git push origin develop-v6
-git push origin --delete develop/v6-new-build-system
-</code></pre>
-
+<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">branch</span> <span class="n">-m</span> <span class="n">develop</span><span class="p">/</span><span class="n">v6-new-build-system</span> <span class="n">develop-v6</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">develop-v6</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="p">-</span><span class="n">-delete</span> <span class="n">develop</span><span class="p">/</span><span class="n">v6-new-build-system</span>
+</code></pre></div>
 Update the default branch on GitHub if needed.
 
 **DOC-004 — CHANGELOG.md**
@@ -2025,14 +2023,12 @@ Add `inquirerpy` to Poetry dependencies. If `len(sys.argv) == 1` (no arguments):
 
 **FEAT-002 — Preference persistence**
 JSON structure in `~/.veaf/preferences.json`:
-
-<pre><code class="language-json">{
-  &quot;last_command&quot;: &quot;build&quot;,
-  &quot;build&quot;: { &quot;mission_folder&quot;: &quot;...&quot;, &quot;output&quot;: &quot;...&quot; },
-  &quot;inject-weather&quot;: { &quot;mission&quot;: &quot;...&quot;, &quot;config&quot;: &quot;...&quot; }
-}
-</code></pre>
-
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;last_command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;build&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;build&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;mission_folder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;inject-weather&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;mission&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 Read via `veaf_libs` on interactive mode startup, written after each successful run.
 
 **FEAT-003 — Pre-fill from preferences**
@@ -2106,15 +2102,13 @@ On interactive mode launch, read `preferences.json` and inject the last-used val
 
 **LUA-001 — veaf.config**
 In `veaf.lua`: `veaf.config = {}`. Each module registers its default config on load:
-
-<pre><code class="language-lua">-- In veafSpawn.lua
-veaf.config[&quot;veafSpawn&quot;] = {
-  enable = true,
-  logLevel = &quot;info&quot;,
-  -- module-specific options
-}
-</code></pre>
-
+<div class="highlight"><pre><span></span><code><span class="c1">-- In veafSpawn.lua</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">[</span><span class="s2">&quot;veafSpawn&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">logLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;info&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">-- module-specific options</span>
+<span class="p">}</span>
+</code></pre></div>
 Public API: `veaf.getConfig(moduleId)`, `veaf.setConfig(moduleId, key, value)`, `veaf.isEnabled(moduleId)`.
 
 **LUA-002 — missionconfig.lua**
@@ -2273,14 +2267,12 @@ Correction : remplacer par `local args = {...}` + `local nArgs = select('#', ...
 **LUAQ-003 — Wrapper veaf.mist**
 Accès directs à `mist.DBs.unitsByName`, `mist.DBs.groupsByName`, `mist.DBs.humansByName` éparpillés dans veafSpawn, veafRadio, veafGrass, veafQraManager, veafInterpreter. Si mist change ses internals, tous ces modules cassent.
 Proposition :
-
-<pre><code class="language-lua">-- Dans veaf.lua
-veaf.mist = {}
-function veaf.mist.getUnitData(unitName) return mist.DBs.unitsByName[unitName] end
-function veaf.mist.getGroupData(groupName) return mist.DBs.groupsByName[groupName] end
-function veaf.mist.isHumanUnit(unitName) return mist.DBs.humansByName[unitName] ~= nil end
-</code></pre>
-
+<div class="highlight"><pre><span></span><code><span class="c1">-- Dans veaf.lua</span>
+<span class="nv">veaf</span><span class="p">.</span><span class="py">mist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">veaf</span><span class="p">.</span><span class="nc">mist</span><span class="p">.</span><span class="nf">getUnitData</span><span class="p">(</span><span class="nv">unitName</span><span class="p">)</span><span class="w"> </span><span class="kr">return</span><span class="w"> </span><span class="nv">mist</span><span class="p">.</span><span class="py">DBs</span><span class="p">.</span><span class="py">unitsByName</span><span class="p">[</span><span class="nv">unitName</span><span class="p">]</span><span class="w"> </span><span class="kr">end</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">veaf</span><span class="p">.</span><span class="nc">mist</span><span class="p">.</span><span class="nf">getGroupData</span><span class="p">(</span><span class="nv">groupName</span><span class="p">)</span><span class="w"> </span><span class="kr">return</span><span class="w"> </span><span class="nv">mist</span><span class="p">.</span><span class="py">DBs</span><span class="p">.</span><span class="py">groupsByName</span><span class="p">[</span><span class="nv">groupName</span><span class="p">]</span><span class="w"> </span><span class="kr">end</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">veaf</span><span class="p">.</span><span class="nc">mist</span><span class="p">.</span><span class="nf">isHumanUnit</span><span class="p">(</span><span class="nv">unitName</span><span class="p">)</span><span class="w"> </span><span class="kr">return</span><span class="w"> </span><span class="nv">mist</span><span class="p">.</span><span class="py">DBs</span><span class="p">.</span><span class="py">humansByName</span><span class="p">[</span><span class="nv">unitName</span><span class="p">]</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="kr">end</span>
+</code></pre></div>
 Remplacer tous les accès directs par ces wrappers.
 
 **LUAQ-004 — Convoy helpers dans veafSpawn**

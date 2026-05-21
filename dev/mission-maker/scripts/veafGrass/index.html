@@ -1816,18 +1816,18 @@
 <p>Configures unprepared grass airstrips for use in DCS missions. Provides positioning data, radio frequencies, and landing aids for rough-field landing zones that are not standard DCS airbases.</p>
 <hr />
 <h2 id="enable">Enable</h2>
-<pre><code class="language-lua">veafGrass.initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafGrass</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <p>Then define each grass strip:</p>
-<pre><code class="language-lua">VeafGrassRunway:new()
-  :setName(&quot;FARP Whiskey&quot;)
-  :setGroupName(&quot;FARP-WHISKEY-GROUP&quot;)   -- static objects defining the strip
-  :setRunwayHeading(270)                -- runway heading in degrees
-  :setAtcFrequency(127500000)           -- Hz (127.5 MHz)
-  :setAtcModulation(radio.modulation.AM)
-  :setTacanChannel(74, &quot;X&quot;, &quot;WHK&quot;)     -- optional TACAN
-  :initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">VeafGrassRunway</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;FARP Whiskey&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setGroupName</span><span class="p">(</span><span class="s2">&quot;FARP-WHISKEY-GROUP&quot;</span><span class="p">)</span><span class="w">   </span><span class="c1">-- static objects defining the strip</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setRunwayHeading</span><span class="p">(</span><span class="mi">270</span><span class="p">)</span><span class="w">                </span><span class="c1">-- runway heading in degrees</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setAtcFrequency</span><span class="p">(</span><span class="mi">127500000</span><span class="p">)</span><span class="w">           </span><span class="c1">-- Hz (127.5 MHz)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setAtcModulation</span><span class="p">(</span><span class="nv">radio</span><span class="p">.</span><span class="py">modulation</span><span class="p">.</span><span class="py">AM</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setTacanChannel</span><span class="p">(</span><span class="mi">74</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;WHK&quot;</span><span class="p">)</span><span class="w">     </span><span class="c1">-- optional TACAN</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="builder-methods">Builder Methods</h2>
 <table>

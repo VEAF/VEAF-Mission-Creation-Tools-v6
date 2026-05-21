@@ -1900,44 +1900,44 @@
 </ul>
 <hr />
 <h2 id="activation">Activation</h2>
-<pre><code class="language-lua">veafAssets.initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafAssets</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <p>Doit être appelé après avoir défini <code>veafAssets.Assets</code>.</p>
 <hr />
 <h2 id="definir-les-ressources">Définir les ressources</h2>
 <p>Remplir <code>veafAssets.Assets</code> avant d'appeler <code>initialize()</code> :</p>
-<pre><code class="language-lua">veafAssets.Assets = {
-  {
-    name        = &quot;Texaco&quot;,
-    description = &quot;Texaco (KC-135)&quot;,
-    groupName   = &quot;KC-135 Texaco&quot;,
-    information = true,    -- afficher le bouton Infos dans le menu radio
-    disposable  = false,   -- permettre aux joueurs de le désactiver
-  },
-  {
-    name        = &quot;Arco&quot;,
-    description = &quot;Arco (KC-130)&quot;,
-    groupName   = &quot;KC-130 Arco&quot;,
-    information = true,
-    disposable  = false,
-  },
-  {
-    name        = &quot;Overlord&quot;,
-    description = &quot;Overlord (E-3A)&quot;,
-    groupName   = &quot;E-3A Overlord&quot;,
-    information = true,
-    disposable  = false,
-  },
-  {
-    name        = &quot;Mother&quot;,
-    description = &quot;CVN-73 Theodore Roosevelt&quot;,
-    groupName   = &quot;CVN-73&quot;,
-    information = true,
-    carrier     = true,    -- active les infos spécifiques aux porte-avions (BRC, TACAN, ICLS)
-    disposable  = false,
-  },
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafAssets</span><span class="p">.</span><span class="py">Assets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Texaco&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Texaco (KC-135)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">groupName</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;KC-135 Texaco&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">    </span><span class="c1">-- afficher le bouton Infos dans le menu radio</span>
+<span class="w">    </span><span class="nv">disposable</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">   </span><span class="c1">-- permettre aux joueurs de le désactiver</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Arco&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Arco (KC-130)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">groupName</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;KC-130 Arco&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">disposable</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Overlord&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Overlord (E-3A)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">groupName</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;E-3A Overlord&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">disposable</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Mother&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;CVN-73 Theodore Roosevelt&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">groupName</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;CVN-73&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">carrier</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">    </span><span class="c1">-- active les infos spécifiques aux porte-avions (BRC, TACAN, ICLS)</span>
+<span class="w">    </span><span class="nv">disposable</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="champs-de-la-table-de-ressource">Champs de la table de ressource</h3>
 <table>
 <thead>

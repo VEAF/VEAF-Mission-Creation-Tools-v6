@@ -2577,7 +2577,7 @@
 <h2 id="menu-radio-f10">Menu radio F10</h2>
 <p>Toutes les fonctionnalités VEAF sont accessibles via <strong>F10 → Autre → VEAF</strong>.</p>
 <h3 id="structure-typique-du-menu">Structure typique du menu</h3>
-<pre><code class="language-mermaid">mindmap
+<pre class="mermaid"><code>mindmap
   root((F10 → Autre → VEAF))
     Ressources
       Ravitailleurs
@@ -2612,8 +2612,7 @@
         Activer
         Désactiver
         Infos
-    Aide
-</code></pre>
+    Aide</code></pre>
 <p>La structure exacte dépend de ce que le créateur de mission a activé.</p>
 <hr />
 <h2 id="commandes-de-marqueur">Commandes de marqueur</h2>
@@ -2623,11 +2622,11 @@
 </blockquote>
 <h3 id="commandes-de-spawn">Commandes de spawn</h3>
 <h4 id="faire-apparaitre-une-unite-_spawn-unit">Faire apparaître une unité : <code>_spawn unit</code></h4>
-<pre><code>_spawn unit, name F-16C
+<div class="highlight"><pre><span></span><code>_spawn unit, name F-16C
 _spawn unit, name T-80, group 4, hdg 270
 _spawn unit, name MiG-29S, alt 20000, speed 500, hdg 090
 _spawn unit, name SA-6
-</code></pre>
+</code></pre></div>
 <p>Options courantes :</p>
 <table>
 <thead>
@@ -2676,55 +2675,55 @@ _spawn unit, name SA-6
 </tbody>
 </table>
 <h4 id="faire-apparaitre-un-groupe-predefini-_spawn-group">Faire apparaître un groupe prédéfini : <code>_spawn group</code></h4>
-<pre><code>_spawn group, name CAP-2
+<div class="highlight"><pre><span></span><code>_spawn group, name CAP-2
 _spawn group, name RED-SAM-SITE, hdg 180
-</code></pre>
+</code></pre></div>
 <p>Les groupes doivent être définis dans le fichier <code>spawnables.yaml</code> de la mission par le créateur.</p>
 <h4 id="faire-apparaitre-une-patrouille-cap-_spawn-cap">Faire apparaître une patrouille CAP : <code>_spawn cap</code></h4>
-<pre><code>_spawn cap, name Su-27, alt 25000, capradius 20000
+<div class="highlight"><pre><span></span><code>_spawn cap, name Su-27, alt 25000, capradius 20000
 _spawn cap, name F-15C, group 2, alt 30000, capradius 25000
-</code></pre>
+</code></pre></div>
 <p>Options supplémentaires : <code>capradius [M]</code> (rayon d'orbite en mètres), <code>distance [M]</code>.</p>
 <h4 id="faire-apparaitre-un-convoi-_spawn-convoy">Faire apparaître un convoi : <code>_spawn convoy</code></h4>
 <p>Placer deux marqueurs : un à la position de départ (avec la commande), un à la destination.</p>
-<pre><code>Marqueur au départ :
+<div class="highlight"><pre><span></span><code>Marqueur au départ :
 _spawn convoy, dest [NOM_MARQUEUR_DESTINATION], speed 50, defense 2, armor 2
 
 Marqueur à la destination :
 (vide ou juste un nom)
-</code></pre>
+</code></pre></div>
 <p>Options : <code>dest [NOM]</code>, <code>speed [KMH]</code>, <code>defense [0-5]</code>, <code>armor [0-5]</code>, <code>size [0-5]</code>, <code>patrol</code>, <code>offroad</code>.</p>
 <h4 id="faire-apparaitre-un-afacjtac-_spawn-afac">Faire apparaître un AFAC/JTAC : <code>_spawn afac</code></h4>
-<pre><code>_spawn afac, name A-10C, alt 15000, freq 133.0, mod AM, code 1688
+<div class="highlight"><pre><span></span><code>_spawn afac, name A-10C, alt 15000, freq 133.0, mod AM, code 1688
 _spawn afac, name L-39ZA, freq 135.0, code 1584, immortal
-</code></pre>
+</code></pre></div>
 <h4 id="faire-apparaitre-de-la-fumee-_spawn-smoke">Faire apparaître de la fumée : <code>_spawn smoke</code></h4>
-<pre><code>_spawn smoke, color red
+<div class="highlight"><pre><span></span><code>_spawn smoke, color red
 _spawn smoke, color green, shells 5
-</code></pre>
+</code></pre></div>
 <p>Couleurs disponibles : <code>red</code>, <code>green</code>, <code>blue</code>, <code>white</code>, <code>orange</code>.</p>
 <h4 id="faire-apparaitre-des-fusees-eclairantes-_spawn-flare">Faire apparaître des fusées éclairantes : <code>_spawn flare</code></h4>
-<pre><code>_spawn flare, power 1000000, shells 5
-</code></pre>
+<div class="highlight"><pre><span></span><code>_spawn flare, power 1000000, shells 5
+</code></pre></div>
 <h4 id="faire-apparaitre-des-explosions-_spawn-bomb">Faire apparaître des explosions : <code>_spawn bomb</code></h4>
-<pre><code>_spawn bomb, power 500, shells 3
-</code></pre>
+<div class="highlight"><pre><span></span><code>_spawn bomb, power 500, shells 3
+</code></pre></div>
 <h3 id="commande-cas">Commande CAS</h3>
-<pre><code>_cas
+<div class="highlight"><pre><span></span><code>_cas
 _cas, size 3, defense 2, armor 3
-</code></pre>
+</code></pre></div>
 <p>Options : <code>size [0-5]</code>, <code>defense [0-5]</code>, <code>armor [0-5]</code>, <code>side [blue/red]</code>.</p>
 <h3 id="commande-de-teleportation">Commande de téléportation</h3>
-<pre><code>_teleport, name Viper Flight
-</code></pre>
+<div class="highlight"><pre><span></span><code>_teleport, name Viper Flight
+</code></pre></div>
 <p>Téléporte le groupe nommé à la position du marqueur.</p>
 <h3 id="commande-de-destruction">Commande de destruction</h3>
-<pre><code>_destroy, radius 500
+<div class="highlight"><pre><span></span><code>_destroy, radius 500
 _destroy, name Tank-1
-</code></pre>
+</code></pre></div>
 <h3 id="authentification-de-securite">Authentification de sécurité</h3>
-<pre><code>_auth [MOT_DE_PASSE]
-</code></pre>
+<div class="highlight"><pre><span></span><code>_auth [MOT_DE_PASSE]
+</code></pre></div>
 <p>Accorde des permissions élevées temporaires. Requis sur certains serveurs avant d'utiliser les commandes de spawn avancées.</p>
 <hr />
 <h2 id="ressources">Ressources</h2>
@@ -2902,8 +2901,8 @@ _destroy, name Tank-1
 </tbody>
 </table>
 <p>Pour s'authentifier en tant qu'admin :</p>
-<pre><code>_auth [MOT_DE_PASSE]
-</code></pre>
+<div class="highlight"><pre><span></span><code>_auth [MOT_DE_PASSE]
+</code></pre></div>
 <p>Après authentification, les droits élevés sont valables pendant la durée configurée (par défaut : 10 minutes). Le mot de passe est défini par le créateur de mission ou l'admin serveur.</p>
 <hr />
 <h2 id="conseils-par-role-dappareil">Conseils par rôle d'appareil</h2>

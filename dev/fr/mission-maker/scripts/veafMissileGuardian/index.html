@@ -1843,16 +1843,16 @@
 </ul>
 <hr />
 <h2 id="activation">Activation</h2>
-<pre><code class="language-lua">veafMissileGuardian.initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">veafMissileGuardian</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <p>Puis définir les zones de protection :</p>
-<pre><code class="language-lua">VeafMissileGuardian:new()
-  :setName(&quot;Carrier Defense&quot;)
-  :setGroupName(&quot;CVN-73&quot;)           -- protéger ce groupe
-  :setRadius(30000)                 -- rayon d'interception en mètres
-  :setMissileTypes({ &quot;P-700&quot;, &quot;Kh-41&quot; })  -- intercepter ces types de missiles
-  :initialize()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">VeafMissileGuardian</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Carrier Defense&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setGroupName</span><span class="p">(</span><span class="s2">&quot;CVN-73&quot;</span><span class="p">)</span><span class="w">           </span><span class="c1">-- protéger ce groupe</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setRadius</span><span class="p">(</span><span class="mi">30000</span><span class="p">)</span><span class="w">                 </span><span class="c1">-- rayon d&#39;interception en mètres</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setMissileTypes</span><span class="p">({</span><span class="w"> </span><span class="s2">&quot;P-700&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Kh-41&quot;</span><span class="w"> </span><span class="p">})</span><span class="w">  </span><span class="c1">-- intercepter ces types de missiles</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="methodes-du-builder">Méthodes du builder</h2>
 <table>
