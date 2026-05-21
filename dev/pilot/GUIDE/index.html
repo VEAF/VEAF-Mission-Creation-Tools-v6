@@ -2577,42 +2577,27 @@
 <h2 id="f10-radio-menu">F10 Radio Menu</h2>
 <p>All VEAF features are accessible via <strong>F10 → Other → VEAF</strong>.</p>
 <h3 id="typical-menu-structure">Typical Menu Structure</h3>
-<pre class="mermaid"><code>mindmap
-  root((F10 → Other → VEAF))
-    Assets
-      Tankers
-        [Tanker name]
-          Info
-          Respawn
-      AWACS
-        [AWACS name]
-          Info
-          Respawn
-      Carriers
-        [Carrier name]
-          Info
-          Start Recovery
-          Stop Recovery
-    CAS Mission
-      Generate
-      Smoke
-      Flare
-      Skip
-      Info
-      Cleanup
-    Combat Zones
-      [Zone name]
-        Activate
-        Deactivate
-        Info
-        Smoke
-        Flare
-    Missions
-      [Mission name]
-        Activate
-        Deactivate
-        Info
-    Help</code></pre>
+<div class="highlight"><pre><span></span><code>F10 → Other → VEAF
+├── Assets
+│   ├── Tankers
+│   │   └── [Tanker name] → Info / Respawn
+│   ├── AWACS
+│   │   └── [AWACS name] → Info / Respawn
+│   └── Carriers
+│       └── [Carrier name] → Info / Start Recovery / Stop Recovery
+├── CAS Mission
+│   ├── Generate
+│   ├── Smoke
+│   ├── Flare
+│   ├── Skip
+│   ├── Info
+│   └── Cleanup
+├── Combat Zones
+│   └── [Zone name] → Activate / Deactivate / Info / Smoke / Flare
+├── Missions
+│   └── [Mission name] → Activate / Deactivate / Info
+└── Help
+</code></pre></div>
 <p>The exact structure depends on what the mission maker has enabled.</p>
 <hr />
 <h2 id="marker-commands">Marker Commands</h2>
