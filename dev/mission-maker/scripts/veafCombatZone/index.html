@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#veafcombatzone-activatable-combat-zones" class="md-skip">
+        <a href="#veafcombatzone--activatable-combat-zones" class="md-skip">
           Skip to content
         </a>
       
@@ -342,7 +342,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../TOOLS_REFERENCE/" class="md-tabs__link">
+        <a href="../../../LUA_API_REFERENCE/" class="md-tabs__link">
           
   
   
@@ -536,6 +536,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ALIASES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aliases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -688,6 +716,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ALIASES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aliases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -709,10 +765,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
             
   
   
@@ -730,8 +786,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1331,6 +1387,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../veafShortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafShortcuts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../veafSkynetIadsHelper/" class="md-nav__link">
         
   
@@ -1561,6 +1645,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1629,34 +1741,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../TOOLS_REFERENCE/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Tools Reference
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../LUA_API_REFERENCE/" class="md-nav__link">
         
   
@@ -1685,14 +1769,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../USER_GUIDE/" class="md-nav__link">
+      <a href="../../../TOOLS_REFERENCE/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    User Guide
+    Tools CLI Reference
   
 
     
@@ -1721,34 +1805,6 @@
     
   
     Roadmap
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../TESTING/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Testing
   
 
     
@@ -1931,25 +1987,25 @@
   
 
 
-<h1 id="veafcombatzone-activatable-combat-zones">veafCombatZone — Activatable Combat Zones</h1>
+<h1 id="veafcombatzone--activatable-combat-zones">veafCombatZone — Activatable Combat Zones<a class="headerlink" href="#veafcombatzone--activatable-combat-zones" title="Permanent link">&para;</a></h1>
 <p><strong>Module ID:</strong> <code>COMBATZONE</code> | <strong>Version:</strong> 1.22.x | <strong>File:</strong> <code>veafCombatZone.lua</code></p>
 <hr />
-<h2 id="purpose">Purpose</h2>
+<h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
 <p>Defines named combat zones in the mission editor that players can activate and deactivate via the F10 radio menu. Each zone tracks enemy unit state, fires objective-completion events, supports scoring, and can contain multiple unit groups with spawning rules.</p>
 <hr />
-<h2 id="dependencies">Dependencies</h2>
+<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>veafRadio</code> — F10 menu</li>
 <li><code>veafSpawn</code> — unit spawning backend</li>
 <li><code>veafMarkers</code> — optional marker commands</li>
 </ul>
 <hr />
-<h2 id="enable">Enable</h2>
+<h2 id="enable">Enable<a class="headerlink" href="#enable" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nv">veafCombatZone</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
 </code></pre></div>
 <p>Individual zones are created and initialised separately (see below).</p>
 <hr />
-<h2 id="key-module-constants">Key Module Constants</h2>
+<h2 id="key-module-constants">Key Module Constants<a class="headerlink" href="#key-module-constants" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1987,7 +2043,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="defining-a-zone">Defining a Zone</h2>
+<h2 id="defining-a-zone">Defining a Zone<a class="headerlink" href="#defining-a-zone" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">strikeZone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">VeafCombatZone</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
 <span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Strike Alpha&quot;</span><span class="p">)</span><span class="w">                   </span><span class="c1">-- internal name</span>
 <span class="w">  </span><span class="p">:</span><span class="nf">setZoneName</span><span class="p">(</span><span class="s2">&quot;ZONE-STRIKE-ALPHA&quot;</span><span class="p">)</span><span class="w">          </span><span class="c1">-- DCS trigger zone name</span>
@@ -2004,7 +2060,7 @@
 <span class="w">  </span><span class="p">)</span>
 <span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
 </code></pre></div>
-<h3 id="veafcombatzone-builder-methods">VeafCombatZone Builder Methods</h3>
+<h3 id="veafcombatzone-builder-methods">VeafCombatZone Builder Methods<a class="headerlink" href="#veafcombatzone-builder-methods" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2055,7 +2111,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="veafcombatzoneelement-builder-methods">VeafCombatZoneElement Builder Methods</h3>
+<h3 id="veafcombatzoneelement-builder-methods">VeafCombatZoneElement Builder Methods<a class="headerlink" href="#veafcombatzoneelement-builder-methods" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2083,7 +2139,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="f10-radio-menu-per-zone">F10 Radio Menu (per zone)</h2>
+<h2 id="f10-radio-menu-per-zone">F10 Radio Menu (per zone)<a class="headerlink" href="#f10-radio-menu-per-zone" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Activate</strong> — spawn the zone's unit groups</li>
 <li><strong>Deactivate</strong> — despawn units, reset the zone</li>
@@ -2092,7 +2148,7 @@
 <li><strong>Flare</strong> — mark zone with flares</li>
 </ul>
 <hr />
-<h2 id="operations-grouped-zones">Operations (Grouped Zones)</h2>
+<h2 id="operations-grouped-zones">Operations (Grouped Zones)<a class="headerlink" href="#operations-grouped-zones" title="Permanent link">&para;</a></h2>
 <p>Multiple zones can be grouped into an <strong>Operation</strong> that completes when all child zones are done:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">VeafCombatOperation</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
 <span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Operation Thunder&quot;</span><span class="p">)</span>
@@ -2102,7 +2158,7 @@
 <span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
 </code></pre></div>
 <hr />
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../veafCasMission/">veafCasMission</a> — generated CAS zones (no pre-placed groups needed)</li>
 <li><a href="../../../LUA_API_REFERENCE/">Lua API Reference</a> — full <code>veafCombatZone</code> API</li>

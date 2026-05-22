@@ -8,6 +8,13 @@
         <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devfr/"/>
     </url>
     <url>
+        <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/ALIASES/</loc>
+        <lastmod>2026-05-22</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/ALIASES/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devfr/ALIASES/"/>
+    </url>
+    <url>
         <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/LUA_API_REFERENCE/</loc>
         <lastmod>2026-05-22</lastmod>
         <changefreq>daily</changefreq>
@@ -34,13 +41,6 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/TOOLS_REFERENCE/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devfr/TOOLS_REFERENCE/"/>
-    </url>
-    <url>
-        <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/USER_GUIDE/</loc>
-        <lastmod>2026-05-22</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/USER_GUIDE/"/>
-        <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devfr/USER_GUIDE/"/>
     </url>
     <url>
         <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/backlog-archive/</loc>
@@ -197,6 +197,13 @@
         <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devfr/mission-maker/scripts/veafSecurity/"/>
     </url>
     <url>
+        <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/mission-maker/scripts/veafShortcuts/</loc>
+        <lastmod>2026-05-22</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/mission-maker/scripts/veafShortcuts/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devfr/mission-maker/scripts/veafShortcuts/"/>
+    </url>
+    <url>
         <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/mission-maker/scripts/veafSkynetIadsHelper/</loc>
         <lastmod>2026-05-22</lastmod>
         <changefreq>daily</changefreq>
@@ -246,6 +253,13 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev"/>
     </url>
     <url>
+        <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/ALIASES/</loc>
+        <lastmod>2026-05-22</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/ALIASES/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devALIASES/"/>
+    </url>
+    <url>
         <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/LUA_API_REFERENCE/</loc>
         <lastmod>2026-05-22</lastmod>
         <changefreq>daily</changefreq>
@@ -272,13 +286,6 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/TOOLS_REFERENCE/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devTOOLS_REFERENCE/"/>
-    </url>
-    <url>
-        <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/USER_GUIDE/</loc>
-        <lastmod>2026-05-22</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/USER_GUIDE/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devUSER_GUIDE/"/>
     </url>
     <url>
         <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/backlog-archive/</loc>
@@ -433,6 +440,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/mission-maker/scripts/veafSecurity/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devmission-maker/scripts/veafSecurity/"/>
+    </url>
+    <url>
+        <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/mission-maker/scripts/veafShortcuts/</loc>
+        <lastmod>2026-05-22</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/mission-maker/scripts/veafShortcuts/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devmission-maker/scripts/veafShortcuts/"/>
     </url>
     <url>
         <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/mission-maker/scripts/veafSkynetIadsHelper/</loc>
