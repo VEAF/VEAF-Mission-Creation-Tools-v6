@@ -795,6 +795,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#global-user-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global User Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#creating-a-new-mission" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2102,6 +2113,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#global-user-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global User Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#creating-a-new-mission" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2351,6 +2373,7 @@
 <li><a href="#what-you-get">What You Get</a></li>
 <li><a href="#prerequisites">Prerequisites</a></li>
 <li><a href="#installation-and-updates">Installation and Updates</a></li>
+<li><a href="#global-user-configuration">Global User Configuration</a></li>
 <li><a href="#creating-a-new-mission">Creating a New Mission</a></li>
 <li><a href="#how-scripts-are-loaded">How Scripts Are Loaded</a></li>
 <li><a href="#configuring-modules">Configuring Modules</a></li>
@@ -2430,6 +2453,33 @@
 <div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools-updater</span><span class="p">.</span><span class="n">exe</span> <span class="p">-</span><span class="n">-tag</span> <span class="n">published-v6</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">0</span>
 </code></pre></div>
 <p>Full CLI reference: <a href="../../TOOLS_REFERENCE/">Tools Reference</a></p>
+<hr />
+<h2 id="global-user-configuration">Global User Configuration<a class="headerlink" href="#global-user-configuration" title="Permanent link">&para;</a></h2>
+<p>Create <code>~/veafmct.yaml</code> (i.e. <code>C:\Users\YourName\veafmct.yaml</code> on Windows) to set persistent defaults that apply to <strong>all</strong> your VEAF projects on this machine:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ~/veafmct.yaml</span>
+<span class="nt">lang</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fr</span><span class="w">                 </span><span class="c1"># Tool output language: &quot;en&quot; (default) or &quot;fr&quot;</span>
+<span class="nt">check_updates</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">      </span><span class="c1"># Check for new veaf-tools releases at startup</span>
+<span class="nt">scripts_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">D:/dev/_VEAF/VEAF-Mission-Creation-Tools</span><span class="w">   </span><span class="c1"># Local repo path (for --dev-mode)</span>
+</code></pre></div>
+<p>All keys are optional. To initialise the file from the CLI:</p>
+<div class="highlight"><pre><span></span><code><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">user-config</span> <span class="p">-</span><span class="n">-init</span>
+</code></pre></div>
+<p>Or inspect/edit values interactively:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Show effective configuration and its source</span>
+<span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">user-config</span>
+
+<span class="c"># Set a value</span>
+<span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">user-config</span> <span class="p">-</span><span class="n">-set</span> <span class="n">lang</span><span class="p">=</span><span class="n">fr</span>
+
+<span class="c"># Remove a value (revert to default)</span>
+<span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">user-config</span> <span class="p">-</span><span class="n">-unset</span> <span class="n">lang</span>
+</code></pre></div>
+<p><strong>Language detection order</strong> (first match wins):
+1. <code>--lang</code> CLI option
+2. <code>VEAF_LANG</code> environment variable
+3. <code>~/veafmct.yaml</code> → <code>lang:</code> key
+4. OS locale (Windows registry / system locale on Linux–macOS)
+5. <code>en</code> (built-in fallback)</p>
 <hr />
 <h2 id="creating-a-new-mission">Creating a New Mission<a class="headerlink" href="#creating-a-new-mission" title="Permanent link">&para;</a></h2>
 <h3 id="recommended-fork-the-demo-mission">Recommended: Fork the Demo Mission<a class="headerlink" href="#recommended-fork-the-demo-mission" title="Permanent link">&para;</a></h3>
@@ -2623,6 +2673,10 @@
 <tr>
 <td><code>convert-v5</code></td>
 <td>Migrates a v5 mission folder to v6 format</td>
+</tr>
+<tr>
+<td><code>user-config</code></td>
+<td>Shows or edits the global user config (<code>~/veafmct.yaml</code>)</td>
 </tr>
 </tbody>
 </table>

@@ -1743,6 +1743,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#lot-17--user-config-configuration-globale-utilisateur--i18n-complète" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lot 17 — USER-CONFIG: Configuration globale utilisateur + i18n complète
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lot-16--lua-coverage-couverture-de-tests--50--par-module" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1956,8 +1967,13 @@
 <td>⬜</td>
 </tr>
 <tr>
+<td>Lot 17 — USER-CONFIG</td>
+<td>~3h</td>
+<td>✅</td>
+</tr>
+<tr>
 <td><strong>Total</strong></td>
-<td><strong>~126h15</strong></td>
+<td><strong>~129h15</strong></td>
 <td></td>
 </tr>
 </tbody>
@@ -2129,6 +2145,66 @@ Direct commits on <code>develop-v6</code> (no feature branch needed — no code 
 </tbody>
 </table>
 <p><strong>Estimated total: ~65 min</strong></p>
+<hr />
+<hr />
+<h2 id="lot-17--user-config-configuration-globale-utilisateur--i18n-complète">Lot 17 — USER-CONFIG: Configuration globale utilisateur + i18n complète<a class="headerlink" href="#lot-17--user-config-configuration-globale-utilisateur--i18n-complète" title="Permanent link">&para;</a></h2>
+<p><strong>Goal</strong>: Ajouter un fichier <code>~/veafmct.yaml</code> de configuration globale utilisateur ; compléter l'audit i18n (toutes les chaînes des commandes CLI traduites) ; nouvelle commande <code>user-config</code>.
+<strong>Branch</strong>: <code>feature/user-global-config</code> → PR → <code>develop-v6</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Ticket</th>
+<th>Fichiers touchés</th>
+<th>Type</th>
+<th>Effort</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UC-001</td>
+<td>Créer <code>veaf_libs/user_config.py</code> + tests</td>
+<td><code>user_config.py</code>, <code>test_user_config.py</code></td>
+<td>feat</td>
+<td>45 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>UC-002</td>
+<td>Brancher <code>user_config.get_lang()</code> dans <code>i18n._detect_lang()</code></td>
+<td><code>veaf_libs/i18n.py</code></td>
+<td>feat</td>
+<td>15 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>UC-003</td>
+<td>Brancher <code>user_config.get_check_updates()</code> dans <code>app.py</code></td>
+<td><code>veaf_tools/app.py</code></td>
+<td>feat</td>
+<td>10 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>UC-004</td>
+<td>Audit i18n complet — 55+ clés locales + mise à jour de toutes les commandes</td>
+<td><code>locales/en.json</code>, <code>locales/fr.json</code>, toutes les commandes</td>
+<td>feat</td>
+<td>90 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>UC-005</td>
+<td>Nouvelle commande <code>user-config</code></td>
+<td><code>veaf_tools/commands/user_config.py</code></td>
+<td>feat</td>
+<td>20 min</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Estimated total: ~3h</strong></p>
 <hr />
 <h2 id="lot-16--lua-coverage-couverture-de-tests--50--par-module">Lot 16 — LUA-COVERAGE: Couverture de tests ≥ 50 % par module<a class="headerlink" href="#lot-16--lua-coverage-couverture-de-tests--50--par-module" title="Permanent link">&para;</a></h2>
 <p><strong>Goal</strong>: Faire passer chaque module Lua à au moins 50 % de couverture de ligne (mesurée via <code>poetry run test-lua --coverage</code>).
