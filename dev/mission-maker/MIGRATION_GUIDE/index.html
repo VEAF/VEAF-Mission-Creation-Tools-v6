@@ -858,10 +858,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-build-once-to-remove-old-v5-triggers" class="md-nav__link">
+  <a href="#4-convert-the-mission-folder-to-v6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Build once to remove old v5 triggers
+        4. Convert the mission folder to v6
       
     </span>
   </a>
@@ -869,10 +869,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-port-your-configuration-to-missionconfiglua" class="md-nav__link">
+  <a href="#5-check-removed-v5-patterns" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Port your configuration to missionConfig.lua
+        5. Check removed v5 patterns
       
     </span>
   </a>
@@ -880,10 +880,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-check-removed-v5-patterns" class="md-nav__link">
+  <a href="#6-verify-with-a-test-build" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Check removed v5 patterns
+        6. Verify with a test build
       
     </span>
   </a>
@@ -891,21 +891,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#7-verify-with-a-test-build" class="md-nav__link">
+  <a href="#7-set-up-version-control" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Verify with a test build
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#8-set-up-version-control" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. Set up version control
+        7. Set up version control
       
     </span>
   </a>
@@ -2237,10 +2226,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-build-once-to-remove-old-v5-triggers" class="md-nav__link">
+  <a href="#4-convert-the-mission-folder-to-v6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Build once to remove old v5 triggers
+        4. Convert the mission folder to v6
       
     </span>
   </a>
@@ -2248,10 +2237,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-port-your-configuration-to-missionconfiglua" class="md-nav__link">
+  <a href="#5-check-removed-v5-patterns" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Port your configuration to missionConfig.lua
+        5. Check removed v5 patterns
       
     </span>
   </a>
@@ -2259,10 +2248,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-check-removed-v5-patterns" class="md-nav__link">
+  <a href="#6-verify-with-a-test-build" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Check removed v5 patterns
+        6. Verify with a test build
       
     </span>
   </a>
@@ -2270,21 +2259,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#7-verify-with-a-test-build" class="md-nav__link">
+  <a href="#7-set-up-version-control" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Verify with a test build
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#8-set-up-version-control" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. Set up version control
+        7. Set up version control
       
     </span>
   </a>
@@ -2659,7 +2637,7 @@
 <tr>
 <td><strong>Config migration</strong></td>
 <td>Manual rewrite</td>
-<td><code>veaf-tools.exe migrate-config</code> automates the common fixes</td>
+<td><code>veaf-tools.exe convert-v5</code> — one command converts <code>missionConfig.lua</code>, pipeline files (presets, waypoints, weather, aircraft groups), and generates <code>mission.yaml</code>. Use <code>migrate-config</code> only to migrate <code>missionConfig.lua</code> alone.</td>
 </tr>
 <tr>
 <td><strong>Module log levels</strong></td>
@@ -2700,56 +2678,22 @@
 └── published/
     └── veaf-scripts.lua
 </code></pre></div></p>
-<h4 id="4-build-once-to-remove-old-v5-triggers">4. Build once to remove old v5 triggers<a class="headerlink" href="#4-build-once-to-remove-old-v5-triggers" title="Permanent link">&para;</a></h4>
-<p>The <code>build</code> command automatically detects and removes old v5 <code>DO SCRIPT FILE</code> triggers (enabled by default via <code>--migrate-from-v5</code>):</p>
-<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span> <span class="n">my-mission</span> <span class="p">.</span>
+<h4 id="4-convert-the-mission-folder-to-v6">4. Convert the mission folder to v6<a class="headerlink" href="#4-convert-the-mission-folder-to-v6" title="Permanent link">&para;</a></h4>
+<p>Run the all-in-one converter:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="nb">convert-v5</span> <span class="p">.</span>
 </code></pre></div>
-<p>The output <code>.miz</code> will have:
-- All old v5 trigger actions removed
-- A fresh v6 trigger injected that loads <code>veaf-scripts.lua</code></p>
+<p>This single command handles everything in one pass:</p>
+<ul>
+<li><strong><code>missionConfig.lua</code> migration</strong> — comments out <code>doFile()</code> calls that load VEAF scripts (the builder injects them automatically), wraps bare <code>veafXxx.initialize()</code> calls in <code>if veafXxx then … end</code> guards.</li>
+<li><strong>Pipeline config conversion</strong> — converts v5 config files (radio presets, waypoints, weather, aircraft groups) from Lua to v6 YAML format.</li>
+<li><strong><code>mission.yaml</code> generation</strong> — creates <code>mission.yaml</code> with the correct <code>lua_modules:</code> and <code>pipeline:</code> sections.</li>
+<li><strong>Conversion report</strong> — saves <code>convert-v5-report.md</code> with all actions taken and any items requiring manual review.</li>
+</ul>
+<p>Old DCS <code>DO SCRIPT FILE</code> triggers are removed automatically by <code>veaf-tools build</code> in the next step — no manual action needed.</p>
 <blockquote>
-<p>If you need to keep the old triggers for inspection first, pass <code>--no-migrate-from-v5</code>.</p>
+<p><strong>If you only need to migrate <code>missionConfig.lua</code></strong> without converting pipeline files, use <code>veaf-tools.exe migrate-config src\scripts\missionConfig.lua</code> directly.</p>
 </blockquote>
-<h4 id="5-port-your-configuration-to-missionconfiglua">5. Port your configuration to missionConfig.lua<a class="headerlink" href="#5-port-your-configuration-to-missionconfiglua" title="Permanent link">&para;</a></h4>
-<p>Your v5 mission likely had module initialization calls either in inline trigger scripts or in a separate Lua file. Move all of them into <code>src/scripts/missionConfig.lua</code>.</p>
-<p>If you already have a <code>missionConfig.lua</code> from a previous VEAF version, run the migration helper to automate the most common fixes:</p>
-<div class="highlight"><pre><span></span><code>veaf-tools.exe migrate-config src\scripts\missionConfig.lua
-</code></pre></div>
-<p>This will:
-- Comment out any <code>doFile(...)</code> calls loading VEAF scripts (the builder injects them automatically now).
-- Wrap bare <code>veafXxx.initialize()</code> calls in <code>if veafXxx then … end</code> guards.
-- Print a <code>lua_modules:</code> YAML snippet you can paste into <code>mission.yaml</code> to document (or fine-tune) which modules are enabled.</p>
-<p>The migrated file is written as <code>&lt;name&gt;_v6.lua</code> next to the original; review it, then replace the original once satisfied.</p>
-<p><strong>v5 pattern (inline trigger or separate file):</strong>
-<div class="highlight"><pre><span></span><code><span class="c1">-- Somewhere in a DCS trigger &quot;DO SCRIPT&quot;:</span>
-<span class="nv">veaf</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="nv">veafSpawn</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
-<span class="nv">veafAssets</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="c1">-- ... asset definitions inline ...</span>
-<span class="nv">veafAssets</span><span class="p">.</span><span class="py">Assets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></p>
-<p><strong>v6 pattern in <code>src/scripts/missionConfig.lua</code>:</strong>
-<div class="highlight"><pre><span></span><code><span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">MISSION_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;My Mission&quot;</span>
-
-<span class="c1">-- Initialize only the modules you use</span>
-<span class="kr">if</span><span class="w"> </span><span class="nv">veafRadio</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">    </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
-<span class="kr">end</span>
-<span class="kr">if</span><span class="w"> </span><span class="nv">veafSpawn</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">    </span><span class="nv">veafSpawn</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="kr">end</span>
-<span class="kr">if</span><span class="w"> </span><span class="nv">veafAssets</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">    </span><span class="nv">veafAssets</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="w">    </span><span class="nv">veafAssets</span><span class="p">.</span><span class="py">Assets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="kr">end</span>
-</code></pre></div></p>
-<p>The <code>if veafXxx then ... end</code> guard makes the config robust: if a module is not available (e.g. you switch to a minimal script variant), no error is thrown.</p>
-<h4 id="6-check-removed-v5-patterns">6. Check removed v5 patterns<a class="headerlink" href="#6-check-removed-v5-patterns" title="Permanent link">&para;</a></h4>
+<h4 id="5-check-removed-v5-patterns">5. Check removed v5 patterns<a class="headerlink" href="#5-check-removed-v5-patterns" title="Permanent link">&para;</a></h4>
 <p>Some v5 constructs no longer exist or have been renamed:</p>
 <table>
 <thead>
@@ -2781,14 +2725,14 @@
 </tr>
 </tbody>
 </table>
-<h4 id="7-verify-with-a-test-build">7. Verify with a test build<a class="headerlink" href="#7-verify-with-a-test-build" title="Permanent link">&para;</a></h4>
+<h4 id="6-verify-with-a-test-build">6. Verify with a test build<a class="headerlink" href="#6-verify-with-a-test-build" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span> <span class="n">my-mission</span> <span class="p">.</span>
 </code></pre></div>
 <p>Open the resulting <code>.miz</code> in DCS, load the mission, and confirm:
 - No duplicate <code>DO SCRIPT FILE</code> triggers in the trigger editor
 - The v6 VEAF MCT loader trigger is present (named something like <code>VEAF scripts loader</code>)
 - Radio menus and marker commands work as expected</p>
-<h4 id="8-set-up-version-control">8. Set up version control<a class="headerlink" href="#8-set-up-version-control" title="Permanent link">&para;</a></h4>
+<h4 id="7-set-up-version-control">7. Set up version control<a class="headerlink" href="#7-set-up-version-control" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">init</span>
 <span class="n">git</span> <span class="n">add</span> <span class="n">src</span><span class="p">/</span> <span class="p">.</span><span class="n">gitignore</span>
 <span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">&quot;feat: migrate my-mission to VEAF MCT v6&quot;</span>
