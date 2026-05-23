@@ -1732,6 +1732,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#lot-updater-fix--séparation-updater--prepare--workflow-v5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lot UPDATER-FIX — Séparation updater / prepare / workflow v5
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lot-16--lua-coverage-couverture-de-tests--50--par-module" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1935,6 +1946,11 @@
 <td>✅</td>
 </tr>
 <tr>
+<td>Lot UPDATER-FIX</td>
+<td>~65 min</td>
+<td>✅</td>
+</tr>
+<tr>
 <td>Lot 16 — LUA-COVERAGE</td>
 <td>~17h15</td>
 <td>⬜</td>
@@ -2054,6 +2070,65 @@ Direct commits on <code>develop-v6</code> (no feature branch needed — no code 
 </tbody>
 </table>
 <p><strong>Estimated total: ~85 min (~1h30)</strong></p>
+<hr />
+<h2 id="lot-updater-fix--séparation-updater--prepare--workflow-v5">Lot UPDATER-FIX — Séparation updater / prepare / workflow v5<a class="headerlink" href="#lot-updater-fix--séparation-updater--prepare--workflow-v5" title="Permanent link">&para;</a></h2>
+<p><strong>Goal</strong>: Corriger l'architecture updater → ne plus créer de fichiers <code>src/</code> par défaut. <code>prepare</code> est la commande dédiée pour initialiser un nouveau dossier. Supprimer <code>build.cmd</code> du toolkit v6. Corriger la doc MIGRATION_GUIDE (partir du dossier v5 existant, pas d'un dossier vide).
+<strong>Branch</strong>: <code>feature/updater-no-src-defaults</code> → PR → <code>develop-v6</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Ticket</th>
+<th>Fichiers touchés</th>
+<th>Type</th>
+<th>Effort</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UPDFIX-001</td>
+<td>Supprimer <code>src/build-scripts/build.cmd</code> (plus de <code>build.cmd</code> dans le toolkit v6)</td>
+<td><code>src/build-scripts/build.cmd</code></td>
+<td>chore</td>
+<td>5 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>UPDFIX-002</td>
+<td><code>veaf-tools-updater.py</code> — <code>_install_defaults()</code> n'installe plus rien dans <code>src/</code> ; affiche juste un message vers <code>veaf-tools prepare</code> au premier install</td>
+<td><code>src/python/veaf-tools/veaf-tools-updater.py</code></td>
+<td>fix</td>
+<td>15 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>UPDFIX-003</td>
+<td><code>prepare.py</code> — corriger la résolution de chemin (sans bloc <code>build_scripts</code>)</td>
+<td><code>src/python/veaf-tools/veaf_tools/commands/prepare.py</code></td>
+<td>fix</td>
+<td>20 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>UPDFIX-004</td>
+<td>Doc <code>MIGRATION_GUIDE.md/.fr.md</code> — workflow v5 : partir du dossier existant, pas d'un dossier vide</td>
+<td><code>doc/mission-maker/MIGRATION_GUIDE.md</code>, <code>doc/mission-maker/MIGRATION_GUIDE.fr.md</code></td>
+<td>doc</td>
+<td>20 min</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>UPDFIX-005</td>
+<td>Doc <code>GUIDE.md/.fr.md</code> — supprimer <code>build.cmd</code> de la structure de dossier</td>
+<td><code>doc/mission-maker/GUIDE.md</code>, <code>doc/mission-maker/GUIDE.fr.md</code></td>
+<td>doc</td>
+<td>5 min</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Estimated total: ~65 min</strong></p>
 <hr />
 <h2 id="lot-16--lua-coverage-couverture-de-tests--50--par-module">Lot 16 — LUA-COVERAGE: Couverture de tests ≥ 50 % par module<a class="headerlink" href="#lot-16--lua-coverage-couverture-de-tests--50--par-module" title="Permanent link">&para;</a></h2>
 <p><strong>Goal</strong>: Faire passer chaque module Lua à au moins 50 % de couverture de ligne (mesurée via <code>poetry run test-lua --coverage</code>).
