@@ -1629,6 +1629,45 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#couverture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Couverture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Couverture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prérequis_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#infrastructure" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2060,6 +2099,45 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#couverture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Couverture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Couverture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prérequis_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#infrastructure" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2246,6 +2324,7 @@
 <ul>
 <li><a href="#vue-densemble">Vue d'ensemble</a></li>
 <li><a href="#executer-les-tests">Exécuter les tests</a></li>
+<li><a href="#couverture">Couverture</a></li>
 <li><a href="#infrastructure">Infrastructure</a></li>
 <li><a href="#suite-de-tests">Suite de tests</a></li>
 <li><a href="#ecrire-des-tests">Écrire des tests</a></li>
@@ -2257,22 +2336,41 @@
 <hr />
 <h2 id="exécuter-les-tests">Exécuter les tests<a class="headerlink" href="#exécuter-les-tests" title="Permanent link">&para;</a></h2>
 <h3 id="tous-les-tests">Tous les tests<a class="headerlink" href="#tous-les-tests" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">run_tests</span><span class="p">.</span><span class="n">ps1</span>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>test-lua
 </code></pre></div>
 <p>Code de sortie <code>0</code> si toutes les suites passent, <code>1</code> si un test échoue.</p>
 <h3 id="exécution-filtrée">Exécution filtrée<a class="headerlink" href="#exécution-filtrée" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c"># Exécuter les suites dont le nom de fichier correspond à une sous-chaîne</span>
-<span class="p">.\</span><span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">run_tests</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Filter</span> <span class="n">spawn</span>
-<span class="p">.\</span><span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">run_tests</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Filter</span> <span class="n">combat</span>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>test-lua<span class="w"> </span>--filter<span class="w"> </span>spawn
+poetry<span class="w"> </span>run<span class="w"> </span>test-lua<span class="w"> </span>--filter<span class="w"> </span>combat
 </code></pre></div>
 <h3 id="fichier-unique">Fichier unique<a class="headerlink" href="#fichier-unique" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">lua</span> <span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">test_veafSpawn</span><span class="p">.</span><span class="n">lua</span>
+<div class="highlight"><pre><span></span><code>lua<span class="w"> </span>test/lua/test_veafSpawn.lua
 </code></pre></div>
 <h3 id="prérequis">Prérequis<a class="headerlink" href="#prérequis" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Lua 5.1 dans le PATH, ou installé à <code>c:\program files (x86)\lua\5.1\lua.exe</code></li>
+<li><code>poetry install</code> doit avoir été exécuté une fois</li>
+<li>Lua 5.1 dans le PATH (<code>lua5.1</code> sous Linux/DevContainer, <code>lua</code> ou <code>C:\Program Files (x86)\Lua\5.1\lua.exe</code> sous Windows)</li>
 <li>Aucune autre dépendance (luaunit est embarqué dans <code>test/lua/luaunit.lua</code>)</li>
 </ul>
+<hr />
+<h2 id="couverture">Couverture<a class="headerlink" href="#couverture" title="Permanent link">&para;</a></h2>
+<p>Générez un rapport de couverture ligne par ligne avec <a href="https://github.com/lunarmodules/luacov">luacov</a> :</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>test-lua<span class="w"> </span>--coverage
+<span class="c1"># ou forme courte :</span>
+poetry<span class="w"> </span>run<span class="w"> </span>test-lua<span class="w"> </span>-c
+</code></pre></div>
+<p>Après l'exécution, un tableau est affiché avec le nombre de lignes couvertes, manquées et le pourcentage de couverture par module. Le rapport est également écrit dans <code>luacov.report.out</code> à la racine du dépôt.</p>
+<h3 id="prérequis_1">Prérequis<a class="headerlink" href="#prérequis_1" title="Permanent link">&para;</a></h3>
+<p>luacov doit être installé via luarocks :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Linux / DevContainer (luarocks est pré-installé)</span>
+luarocks<span class="w"> </span>install<span class="w"> </span>luacov
+
+<span class="c1"># Windows (peut nécessiter un shell élevé)</span>
+luarocks<span class="w"> </span>install<span class="w"> </span>luacov
+</code></pre></div>
+<p>Dans le DevContainer, luacov est installé automatiquement — aucune étape supplémentaire requise.</p>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<p>La couverture est collectée uniquement pour les modules sous <code>src/scripts/veaf/</code> (les helpers de test et luaunit sont exclus). Le fichier <code>.luacov</code> à la racine du dépôt contrôle ce comportement.</p>
 <hr />
 <h2 id="infrastructure">Infrastructure<a class="headerlink" href="#infrastructure" title="Permanent link">&para;</a></h2>
 <h3 id="organisation-des-fichiers">Organisation des fichiers<a class="headerlink" href="#organisation-des-fichiers" title="Permanent link">&para;</a></h3>
@@ -2280,7 +2378,6 @@
 ├── luaunit.lua         # Framework de test (embarqué)
 ├── dcs_mocks.lua       # Stubs de l&#39;API DCS
 ├── veaf_loader.lua     # Chargeur de modules pour src/scripts/veaf/
-├── run_tests.ps1       # Lanceur de tests (PowerShell)
 └── test_*.lua          # Un fichier par module (31 fichiers)
 </code></pre></div>
 <h3 id="dcs_mockslua">dcs_mocks.lua<a class="headerlink" href="#dcs_mockslua" title="Permanent link">&para;</a></h3>

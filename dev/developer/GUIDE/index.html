@@ -1846,6 +1846,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#single-suite" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2527,6 +2538,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#single-suite" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2941,15 +2963,20 @@ Checksum verified before extraction
 <hr />
 <h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
 <h3 id="run-all-tests">Run All Tests<a class="headerlink" href="#run-all-tests" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">run_tests</span><span class="p">.</span><span class="n">ps1</span>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>test-lua
 </code></pre></div>
 <p>Exit code <code>0</code> = all pass, <code>1</code> = failures.</p>
+<p>Works on Windows, Linux, and inside the DevContainer (auto-detects <code>lua5.1</code> / <code>lua</code> / Windows fallback path).</p>
 <h3 id="filtered-run">Filtered Run<a class="headerlink" href="#filtered-run" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">run_tests</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Filter</span> <span class="n">spawn</span>
-<span class="p">.\</span><span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">run_tests</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Filter</span> <span class="n">combat</span>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>test-lua<span class="w"> </span>--filter<span class="w"> </span>spawn
+poetry<span class="w"> </span>run<span class="w"> </span>test-lua<span class="w"> </span>--filter<span class="w"> </span>combat
 </code></pre></div>
+<h3 id="coverage">Coverage<a class="headerlink" href="#coverage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>test-lua<span class="w"> </span>--coverage
+</code></pre></div>
+<p>Prints a per-file line coverage table. Requires <code>luarocks install luacov</code> (pre-installed in the DevContainer). See <a href="../../TESTING/#coverage">TESTING.md</a> for details.</p>
 <h3 id="single-suite">Single Suite<a class="headerlink" href="#single-suite" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">lua</span> <span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">test_veafSpawn</span><span class="p">.</span><span class="n">lua</span>
+<div class="highlight"><pre><span></span><code>lua<span class="w"> </span>test/lua/test_veafSpawn.lua
 </code></pre></div>
 <h3 id="infrastructure">Infrastructure<a class="headerlink" href="#infrastructure" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3031,7 +3058,7 @@ docs(api): document veafMove tanker helpers
 <h3 id="pull-request-checklist">Pull Request Checklist<a class="headerlink" href="#pull-request-checklist" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] All Lua changes pass <code>stylua --check</code></li>
-<li>[ ] All unit tests pass (<code>run_tests.ps1</code>)</li>
+<li>[ ] All unit tests pass (<code>poetry run test-lua</code>)</li>
 <li>[ ] New functionality has tests in <code>test/lua/</code></li>
 <li>[ ] Public API changes documented in <code>doc/LUA_API_REFERENCE.md</code></li>
 <li>[ ] <code>CHANGELOG.md</code> updated for user-visible changes</li>

@@ -1846,6 +1846,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#couverture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Couverture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#suite-unique" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2527,6 +2538,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#couverture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Couverture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#suite-unique" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2941,15 +2963,20 @@ Somme de contrôle vérifiée avant extraction
 <hr />
 <h2 id="tests">Tests<a class="headerlink" href="#tests" title="Permanent link">&para;</a></h2>
 <h3 id="lancer-tous-les-tests">Lancer tous les tests<a class="headerlink" href="#lancer-tous-les-tests" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">run_tests</span><span class="p">.</span><span class="n">ps1</span>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>test-lua
 </code></pre></div>
 <p>Code de sortie <code>0</code> = tous passent, <code>1</code> = échecs.</p>
+<p>Fonctionne sur Windows, Linux et dans le DevContainer (détection automatique de <code>lua5.1</code> / <code>lua</code> / chemin Windows de secours).</p>
 <h3 id="exécution-filtrée">Exécution filtrée<a class="headerlink" href="#exécution-filtrée" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">run_tests</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Filter</span> <span class="n">spawn</span>
-<span class="p">.\</span><span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">run_tests</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Filter</span> <span class="n">combat</span>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>test-lua<span class="w"> </span>--filter<span class="w"> </span>spawn
+poetry<span class="w"> </span>run<span class="w"> </span>test-lua<span class="w"> </span>--filter<span class="w"> </span>combat
 </code></pre></div>
+<h3 id="couverture">Couverture<a class="headerlink" href="#couverture" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>test-lua<span class="w"> </span>--coverage
+</code></pre></div>
+<p>Affiche un tableau de couverture ligne par ligne. Nécessite <code>luarocks install luacov</code> (pré-installé dans le DevContainer). Voir <a href="../../TESTING/#couverture">TESTING.md</a> pour plus de détails.</p>
 <h3 id="suite-unique">Suite unique<a class="headerlink" href="#suite-unique" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">lua</span> <span class="n">test</span><span class="p">\</span><span class="n">lua</span><span class="p">\</span><span class="n">test_veafSpawn</span><span class="p">.</span><span class="n">lua</span>
+<div class="highlight"><pre><span></span><code>lua<span class="w"> </span>test/lua/test_veafSpawn.lua
 </code></pre></div>
 <h3 id="infrastructure">Infrastructure<a class="headerlink" href="#infrastructure" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3032,7 +3059,7 @@ docs(api): documenter les helpers tanker de veafMove
 <h3 id="checklist-pull-request">Checklist Pull Request<a class="headerlink" href="#checklist-pull-request" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] Tous les changements Lua passent <code>stylua --check</code></li>
-<li>[ ] Tous les tests unitaires passent (<code>run_tests.ps1</code>)</li>
+<li>[ ] Tous les tests unitaires passent (<code>poetry run test-lua</code>)</li>
 <li>[ ] Les nouvelles fonctionnalités ont des tests dans <code>test/lua/</code></li>
 <li>[ ] Les changements d'API publique sont documentés dans <code>doc/LUA_API_REFERENCE.md</code></li>
 <li>[ ] <code>CHANGELOG.md</code> mis à jour pour les changements visibles par les utilisateurs</li>

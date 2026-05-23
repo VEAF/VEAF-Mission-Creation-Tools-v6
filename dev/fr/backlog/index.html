@@ -1732,6 +1732,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#lot-16--lua-coverage-couverture-de-tests--50--par-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lot 16 — LUA-COVERAGE: Couverture de tests ≥ 50 % par module
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lot-9--lua-refactor-refactoring-structurel-des-modules-majeurs" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1924,8 +1935,13 @@
 <td>✅</td>
 </tr>
 <tr>
+<td>Lot 16 — LUA-COVERAGE</td>
+<td>~17h15</td>
+<td>⬜</td>
+</tr>
+<tr>
 <td><strong>Total</strong></td>
-<td><strong>~109h</strong></td>
+<td><strong>~126h15</strong></td>
 <td></td>
 </tr>
 </tbody>
@@ -2038,6 +2054,94 @@ Direct commits on <code>develop-v6</code> (no feature branch needed — no code 
 </tbody>
 </table>
 <p><strong>Estimated total: ~85 min (~1h30)</strong></p>
+<hr />
+<h2 id="lot-16--lua-coverage-couverture-de-tests--50--par-module">Lot 16 — LUA-COVERAGE: Couverture de tests ≥ 50 % par module<a class="headerlink" href="#lot-16--lua-coverage-couverture-de-tests--50--par-module" title="Permanent link">&para;</a></h2>
+<p><strong>Goal</strong>: Faire passer chaque module Lua à au moins 50 % de couverture de ligne (mesurée via <code>poetry run test-lua --coverage</code>).
+Couverture initiale (2026-05-23) : 48,35 % global, mais 26 modules en dessous du seuil.
+<strong>Branch</strong>: une branche par ticket <code>test/cov-xxx</code> → PR → <code>develop-v6</code>
+⚠️ Certains modules nécessitent d'étoffer <code>dcs_mocks.lua</code> pour exposer des chemins de code difficiles à atteindre.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Ticket</th>
+<th>Modules ciblés (couverture actuelle)</th>
+<th>Type</th>
+<th>Effort</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COV-001</td>
+<td><code>veaf.lua</code> → 50 % (31 %) — utilitaires core : <code>veaf.p</code>, <code>veaf.safeCall</code>, timers, loggers, <code>getCountryForCoalition</code>, <code>getClosestAirbase</code></td>
+<td><code>veaf.lua</code></td>
+<td>chore</td>
+<td>90 min</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>COV-002</td>
+<td><code>veafSpawn</code> sub-modules → 50 % chacun — Core (19 %), Ground (6 %), Aircraft (3 %), Effects (7 %) ; nécessite mock <code>mist.dynAdd</code> et <code>trigger.action.*</code></td>
+<td><code>veafSpawnCore</code>, <code>veafSpawnGround</code>, <code>veafSpawnAircraft</code>, <code>veafSpawnEffects</code></td>
+<td>chore</td>
+<td>180 min</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>COV-003</td>
+<td><code>veafCombatMission</code> (32 %) + <code>veafCombatZone</code> (26 %) → 50 % chacun — logique d'état de zone, spawn de vagues, victoire</td>
+<td><code>veafCombatMission.lua</code>, <code>veafCombatZone.lua</code></td>
+<td>chore</td>
+<td>120 min</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>COV-004</td>
+<td><code>veafAirWaves</code> (34 %) + <code>veafCarrierOperations</code> (9 %) → 50 % chacun — FSM AirWave, helpers carrier</td>
+<td><code>veafAirWaves.lua</code>, <code>veafCarrierOperations.lua</code></td>
+<td>chore</td>
+<td>120 min</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>COV-005</td>
+<td><code>veafRadio</code> (30 %) + <code>veafShortcuts</code> (10 %) → 50 % chacun — construction de menus, dispatch de raccourcis</td>
+<td><code>veafRadio.lua</code>, <code>veafShortcuts.lua</code></td>
+<td>chore</td>
+<td>90 min</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>COV-006</td>
+<td><code>veafQraCore</code> (43 %) + <code>veafQraLogistics</code> (31 %) + <code>veafSkynetIadsHelper</code> (11 %) + <code>veafSkynetIadsMonitor</code> (23 %) → 50 % chacun</td>
+<td><code>veafQraCore.lua</code>, <code>veafQraLogistics.lua</code>, <code>veafSkynetIadsHelper.lua</code>, <code>veafSkynetIadsMonitor.lua</code></td>
+<td>chore</td>
+<td>90 min</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>COV-007</td>
+<td><code>veafCasMission</code> (47 %) + <code>veafTransportMission</code> (21 %) + <code>veafGroundAI</code> (28 %) + <code>veafMove</code> (18 %) → 50 % chacun</td>
+<td><code>veafCasMission.lua</code>, <code>veafTransportMission.lua</code>, <code>veafGroundAI.lua</code>, <code>veafMove.lua</code></td>
+<td>chore</td>
+<td>90 min</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>COV-008</td>
+<td><code>veafAirbases</code> (29 %) + <code>veafAssets</code> (23 %) + <code>veafInterpreter</code> (39 %) + <code>veafMissileGuardian</code> (36 %) + <code>veafRemote</code> (32 %) + <code>veafSanctuary</code> (31 %) + <code>veafWeather</code> (37 %) → 50 % chacun</td>
+<td>7 fichiers</td>
+<td>chore</td>
+<td>120 min</td>
+<td>⬜</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raw total: 900 min → estimated (×1.15): ~1035 min (~17h15)</strong></p>
+<blockquote>
+<p>Modules déjà ≥ 50 % (non ciblés) : <code>dcsDataExport</code> (55 %), <code>veafCacheManager</code> (100 %), <code>veafCommands</code> (76 %), <code>veafEventHandler</code> (83 %), <code>veafGrass</code> (70 %), <code>veafMarkers</code> (52 %), <code>veafNamedPoints</code> (97 %), <code>veafQraManager</code> (100 %), <code>veafSecurity</code> (59 %), <code>veafSpawn</code> proxy (100 %), <code>veafSpawnParser</code> (54 %), <code>veafTime</code> (87 %), <code>veafUnits</code> (78 %).</p>
+</blockquote>
 <hr />
 <h2 id="lot-9--lua-refactor-refactoring-structurel-des-modules-majeurs">Lot 9 — LUA-REFACTOR: Refactoring structurel des modules majeurs<a class="headerlink" href="#lot-9--lua-refactor-refactoring-structurel-des-modules-majeurs" title="Permanent link">&para;</a></h2>
 <p><strong>Goal</strong>: Réduire la complexité des modules les plus chargés du codebase Lua.
