@@ -1791,6 +1791,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#langue-de-linterface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Langue de l'interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sortie-verbeuse-débogage" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2642,6 +2653,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#langue-de-linterface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Langue de l'interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sortie-verbeuse-débogage" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3421,6 +3443,22 @@
 - La falsification de fichiers
 - Les téléchargements incomplets</p>
 <p>À n'utiliser qu'en dernier recours.</p>
+<h3 id="langue-de-linterface">Langue de l'interface<a class="headerlink" href="#langue-de-linterface" title="Permanent link">&para;</a></h3>
+<p>La langue des messages est détectée automatiquement — aucune configuration requise :</p>
+<ol>
+<li>Option CLI <code>--lang</code> (priorité maximale)</li>
+<li>Variable d'environnement <code>VEAF_LANG</code></li>
+<li><code>~/veafmct.yaml</code> → clé <code>lang:</code></li>
+<li>Locale du système (registre Windows / locale système sur Linux–macOS)</li>
+<li><code>en</code> (repli intégré)</li>
+</ol>
+<p>Pour forcer la langue sur une seule exécution :</p>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>--lang<span class="w"> </span>fr
+</code></pre></div>
+<p>Pour définir une préférence persistante :</p>
+<div class="highlight"><pre><span></span><code>veaf-tools.exe<span class="w"> </span>user-config<span class="w"> </span>--set<span class="w"> </span><span class="nv">lang</span><span class="o">=</span>fr
+</code></pre></div>
+<p>Valeurs supportées : <code>en</code>, <code>fr</code>.</p>
 <h3 id="sortie-verbeuse-débogage">Sortie verbeuse (débogage)<a class="headerlink" href="#sortie-verbeuse-débogage" title="Permanent link">&para;</a></h3>
 <p>Pour un dépannage détaillé :</p>
 <div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>--verbose
@@ -3793,9 +3831,10 @@ Options<span class="w"> </span>:
 <span class="w">  </span>--token<span class="w"> </span>TEXT<span class="w">                   </span>Token<span class="w"> </span>GitHub<span class="w"> </span><span class="o">(</span>optionnel,<span class="w"> </span>remplace<span class="w"> </span>le<span class="w"> </span>fichier<span class="w"> </span>de<span class="w"> </span>config<span class="o">)</span>
 <span class="w">  </span>--force<span class="w">                        </span>Ignorer<span class="w"> </span>la<span class="w"> </span>vérification<span class="w"> </span>de<span class="w"> </span>version,<span class="w"> </span>installer<span class="w"> </span>quand<span class="w"> </span>même
 <span class="w">  </span>--no-verify-checksum<span class="w">           </span>Ignorer<span class="w"> </span>la<span class="w"> </span>vérification<span class="w"> </span>de<span class="w"> </span>checksum<span class="w"> </span><span class="o">(</span>non<span class="w"> </span>recommandé<span class="o">)</span>
-<span class="w">  </span>--verbose<span class="w">                      </span>Afficher<span class="w"> </span>la<span class="w"> </span>sortie<span class="w"> </span>de<span class="w"> </span>débogage<span class="w"> </span>détaillée
-<span class="w">  </span>--pause<span class="w">                        </span>Attendre<span class="w"> </span>une<span class="w"> </span>entrée<span class="w"> </span>utilisateur<span class="w"> </span>avant<span class="w"> </span>de<span class="w"> </span>quitter
-<span class="w">  </span>--help<span class="w">                         </span>Afficher<span class="w"> </span>le<span class="w"> </span>message<span class="w"> </span>d<span class="err">&#39;</span>aide
+<span class="w">  </span>--lang<span class="w"> </span>TEXT<span class="w">                    </span>Forcer<span class="w"> </span>la<span class="w"> </span>langue<span class="w"> </span>de<span class="w"> </span>l<span class="s1">&#39;interface (en, fr) ; remplace la locale système et ~/veafmct.yaml</span>
+<span class="s1">  --verbose                      Afficher la sortie de débogage détaillée</span>
+<span class="s1">  --pause                        Attendre une entrée utilisateur avant de quitter</span>
+<span class="s1">  --help                         Afficher le message d&#39;</span>aide
 </code></pre></div>
 <p><strong>Note :</strong> Les paramètres de <code>veaf-tools-config.yaml</code> sont utilisés automatiquement. Les options en ligne de commande remplacent les valeurs du fichier de config.</p>
 <p><strong>Exemples :</strong>

@@ -1791,6 +1791,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#interface-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interface Language
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#verbose-output-debugging" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2642,6 +2653,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#interface-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interface Language
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#verbose-output-debugging" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3421,6 +3443,22 @@
 - File tampering
 - Incomplete downloads</p>
 <p>Only use if absolutely necessary.</p>
+<h3 id="interface-language">Interface Language<a class="headerlink" href="#interface-language" title="Permanent link">&para;</a></h3>
+<p>The tool output language is detected automatically — no configuration needed:</p>
+<ol>
+<li><code>--lang</code> CLI option (highest priority)</li>
+<li><code>VEAF_LANG</code> environment variable</li>
+<li><code>~/veafmct.yaml</code> → <code>lang:</code> key</li>
+<li>OS locale (Windows registry / system locale on Linux–macOS)</li>
+<li><code>en</code> (built-in fallback)</li>
+</ol>
+<p>To override for a single run:</p>
+<div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>--lang<span class="w"> </span>fr
+</code></pre></div>
+<p>To set a persistent preference:</p>
+<div class="highlight"><pre><span></span><code>veaf-tools.exe<span class="w"> </span>user-config<span class="w"> </span>--set<span class="w"> </span><span class="nv">lang</span><span class="o">=</span>fr
+</code></pre></div>
+<p>Supported values: <code>en</code>, <code>fr</code>.</p>
 <h3 id="verbose-output-debugging">Verbose Output (Debugging)<a class="headerlink" href="#verbose-output-debugging" title="Permanent link">&para;</a></h3>
 <p>For detailed troubleshooting:</p>
 <div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>--verbose
@@ -3793,6 +3831,7 @@ Options:
 <span class="w">  </span>--token<span class="w"> </span>TEXT<span class="w">                   </span>GitHub<span class="w"> </span>token<span class="w"> </span><span class="o">(</span>optional,<span class="w"> </span>overrides<span class="w"> </span>config<span class="w"> </span>file<span class="o">)</span>
 <span class="w">  </span>--force<span class="w">                        </span>Ignore<span class="w"> </span>version<span class="w"> </span>check,<span class="w"> </span>install<span class="w"> </span>anyway
 <span class="w">  </span>--no-verify-checksum<span class="w">           </span>Skip<span class="w"> </span>checksum<span class="w"> </span>verification<span class="w"> </span><span class="o">(</span>not<span class="w"> </span>recommended<span class="o">)</span>
+<span class="w">  </span>--lang<span class="w"> </span>TEXT<span class="w">                    </span>Force<span class="w"> </span>interface<span class="w"> </span>language<span class="w"> </span><span class="o">(</span>en,<span class="w"> </span>fr<span class="o">)</span><span class="p">;</span><span class="w"> </span>overrides<span class="w"> </span>OS<span class="w"> </span>locale<span class="w"> </span>and<span class="w"> </span>~/veafmct.yaml
 <span class="w">  </span>--verbose<span class="w">                      </span>Show<span class="w"> </span>detailed<span class="w"> </span>debug<span class="w"> </span>output
 <span class="w">  </span>--pause<span class="w">                        </span>Wait<span class="w"> </span><span class="k">for</span><span class="w"> </span>user<span class="w"> </span>input<span class="w"> </span>before<span class="w"> </span>exiting
 <span class="w">  </span>--help<span class="w">                         </span>Show<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message
