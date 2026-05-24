@@ -155,6 +155,13 @@
         <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devfr/mission-maker/scripts/veafHoundElintHelper/"/>
     </url>
     <url>
+        <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/mission-maker/scripts/veafInterpreter/</loc>
+        <lastmod>2026-05-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/mission-maker/scripts/veafInterpreter/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devfr/mission-maker/scripts/veafInterpreter/"/>
+    </url>
+    <url>
         <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/mission-maker/scripts/veafMissileGuardian/</loc>
         <lastmod>2026-05-24</lastmod>
         <changefreq>daily</changefreq>
@@ -181,6 +188,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/mission-maker/scripts/veafQraManager/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devfr/mission-maker/scripts/veafQraManager/"/>
+    </url>
+    <url>
+        <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/mission-maker/scripts/veafRadio/</loc>
+        <lastmod>2026-05-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/mission-maker/scripts/veafRadio/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devfr/mission-maker/scripts/veafRadio/"/>
     </url>
     <url>
         <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/mission-maker/scripts/veafSanctuary/</loc>
@@ -400,6 +414,13 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devmission-maker/scripts/veafHoundElintHelper/"/>
     </url>
     <url>
+        <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/mission-maker/scripts/veafInterpreter/</loc>
+        <lastmod>2026-05-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/mission-maker/scripts/veafInterpreter/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devmission-maker/scripts/veafInterpreter/"/>
+    </url>
+    <url>
         <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/mission-maker/scripts/veafMissileGuardian/</loc>
         <lastmod>2026-05-24</lastmod>
         <changefreq>daily</changefreq>
@@ -426,6 +447,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/mission-maker/scripts/veafQraManager/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devmission-maker/scripts/veafQraManager/"/>
+    </url>
+    <url>
+        <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/mission-maker/scripts/veafRadio/</loc>
+        <lastmod>2026-05-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/mission-maker/scripts/veafRadio/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devmission-maker/scripts/veafRadio/"/>
     </url>
     <url>
         <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/mission-maker/scripts/veafSanctuary/</loc>

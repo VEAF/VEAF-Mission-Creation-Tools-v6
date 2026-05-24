@@ -1056,6 +1056,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../veafInterpreter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafInterpreter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../veafMissileGuardian/" class="md-nav__link">
         
   
@@ -1148,6 +1176,34 @@
     
   
     veafQraManager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../veafRadio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafRadio
   
 
     
@@ -1457,10 +1513,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#runtime-weather-report" class="md-nav__link">
+  <a href="#f10-radio-menu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Runtime Weather Report
+        F10 Radio Menu
       
     </span>
   </a>
@@ -1468,10 +1524,71 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#f10-radio-menu" class="md-nav__link">
+  <a href="#runtime-weather-reports" class="md-nav__link">
     <span class="md-ellipsis">
       
-        F10 Radio Menu
+        Runtime Weather Reports
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fog-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fog Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fog Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-defined-fog-constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-defined fog constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activating-a-fog-object-directly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activating a fog object directly
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripting-fog-changes-on-a-trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scripting fog changes on a trigger
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chat--remote-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chat / Remote Commands
       
     </span>
   </a>
@@ -1891,10 +2008,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#runtime-weather-report" class="md-nav__link">
+  <a href="#f10-radio-menu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Runtime Weather Report
+        F10 Radio Menu
       
     </span>
   </a>
@@ -1902,10 +2019,71 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#f10-radio-menu" class="md-nav__link">
+  <a href="#runtime-weather-reports" class="md-nav__link">
     <span class="md-ellipsis">
       
-        F10 Radio Menu
+        Runtime Weather Reports
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fog-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fog Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fog Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-defined-fog-constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-defined fog constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activating-a-fog-object-directly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activating a fog object directly
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripting-fog-changes-on-a-trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scripting fog changes on a trigger
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chat--remote-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chat / Remote Commands
       
     </span>
   </a>
@@ -1947,7 +2125,11 @@
 <p><strong>Module ID:</strong> <code>WEATHER</code> | <strong>Version:</strong> — | <strong>File:</strong> <code>veafWeather.lua</code></p>
 <hr />
 <h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
-<p>Provides weather reporting and dynamic weather injection for DCS missions. Generates human-readable METAR-style reports and integrates with <code>veaf-tools.exe weather-inject</code> for injecting real-world or configured weather at build time.</p>
+<p>Two distinct roles:</p>
+<ol>
+<li><strong>Design-time</strong>: inject real-world or configured weather into a <code>.miz</code> at build time, before players load the mission. Handled by <code>veaf-tools.exe weather-inject</code>.</li>
+<li><strong>Runtime</strong>: players can request weather reports and ATC information via the F10 radio menu, and the mission maker can script dynamic fog changes.</li>
+</ol>
 <hr />
 <h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1958,6 +2140,7 @@
 <h2 id="enable">Enable<a class="headerlink" href="#enable" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nv">veafWeather</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
 </code></pre></div>
+<p>No parameters required.</p>
 <hr />
 <h2 id="design-time-weather-injection">Design-Time Weather Injection<a class="headerlink" href="#design-time-weather-injection" title="Permanent link">&para;</a></h2>
 <p>Weather is injected at build time (before the mission is loaded) using <code>veaf-tools.exe</code>:</p>
@@ -1979,14 +2162,123 @@
 <span class="w">  </span><span class="nt">qnh</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1013</span><span class="w">              </span><span class="c1"># hPa</span>
 </code></pre></div>
 <hr />
-<h2 id="runtime-weather-report">Runtime Weather Report<a class="headerlink" href="#runtime-weather-report" title="Permanent link">&para;</a></h2>
-<p>Get a weather report for a position:</p>
+<h2 id="f10-radio-menu">F10 Radio Menu<a class="headerlink" href="#f10-radio-menu" title="Permanent link">&para;</a></h2>
+<p>When the <code>WEATHER</code> module is enabled, a <strong>"WEATHER AND ATC"</strong> submenu appears in the F10 menu:</p>
+<table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Available to</th>
+<th>What it shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Weather on closest point</td>
+<td>Per group</td>
+<td>Wind, visibility, QNH, temperature at nearest named point</td>
+</tr>
+<tr>
+<td>ATC on closest airbase</td>
+<td>Per group</td>
+<td>Runway in use, QFE/QNH, pattern info at nearest airbase</td>
+</tr>
+<tr>
+<td>ATC and weather in one go</td>
+<td>Per group</td>
+<td>Both reports combined</td>
+</tr>
+<tr>
+<td>Fog settings → ...</td>
+<td>All (secured)</td>
+<td>Change fog conditions (see below)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="runtime-weather-reports">Runtime Weather Reports<a class="headerlink" href="#runtime-weather-reports" title="Permanent link">&para;</a></h2>
+<p>Get a weather report programmatically:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veaf</span><span class="p">.</span><span class="nf">weatherReport</span><span class="p">(</span><span class="nv">position</span><span class="p">,</span><span class="w"> </span><span class="nv">altitude</span><span class="p">,</span><span class="w"> </span><span class="nv">withLASTE</span><span class="p">)</span>
 <span class="nv">veaf</span><span class="p">.</span><span class="nf">outTextForUnit</span><span class="p">(</span><span class="nv">unitName</span><span class="p">,</span><span class="w"> </span><span class="nv">report</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h2 id="f10-radio-menu">F10 Radio Menu<a class="headerlink" href="#f10-radio-menu" title="Permanent link">&para;</a></h2>
-<p>If enabled, provides a <strong>Weather</strong> submenu where players can request local weather reports.</p>
+<h2 id="fog-management">Fog Management<a class="headerlink" href="#fog-management" title="Permanent link">&para;</a></h2>
+<p>The runtime fog system lets you change visibility conditions during a mission — useful for immersion, training scenarios, or scripted events.</p>
+<h3 id="pre-defined-fog-constants">Pre-defined fog constants<a class="headerlink" href="#pre-defined-fog-constants" title="Permanent link">&para;</a></h3>
+<p>Three fog families are available. Activate any constant with <code>:activate()</code>:</p>
+<p><strong>Dynamic fog</strong> — recalculates density periodically based on weather conditions:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">veafWeather</span><span class="p">.</span><span class="py">FOG_DYNAMIC_HEAVY</span><span class="p">:</span><span class="nf">activate</span><span class="p">()</span>
+<span class="nv">veafWeather</span><span class="p">.</span><span class="py">FOG_DYNAMIC_MEDIUM</span><span class="p">:</span><span class="nf">activate</span><span class="p">()</span>
+<span class="nv">veafWeather</span><span class="p">.</span><span class="py">FOG_DYNAMIC_SPARSE</span><span class="p">:</span><span class="nf">activate</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Static fog</strong> — fixed visibility:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">veafWeather</span><span class="p">.</span><span class="py">FOG_STATIC_HEAVY</span><span class="p">:</span><span class="nf">activate</span><span class="p">()</span>
+<span class="nv">veafWeather</span><span class="p">.</span><span class="py">FOG_STATIC_MEDIUM</span><span class="p">:</span><span class="nf">activate</span><span class="p">()</span>
+<span class="nv">veafWeather</span><span class="p">.</span><span class="py">FOG_STATIC_MEDIUM_LOW</span><span class="p">:</span><span class="nf">activate</span><span class="p">()</span>
+<span class="nv">veafWeather</span><span class="p">.</span><span class="py">FOG_STATIC_SPARSE</span><span class="p">:</span><span class="nf">activate</span><span class="p">()</span>
+<span class="nv">veafWeather</span><span class="p">.</span><span class="py">FOG_STATIC_SPARSE_LOW</span><span class="p">:</span><span class="nf">activate</span><span class="p">()</span>
+<span class="nv">veafWeather</span><span class="p">.</span><span class="py">FOG_STATIC_NO</span><span class="p">:</span><span class="nf">activate</span><span class="p">()</span><span class="w">    </span><span class="c1">-- clears all fog</span>
+</code></pre></div>
+<p><strong>Animated fog</strong> — transitions smoothly to a target state over a set duration. The pattern is <code>FOG_ANIMATED_&lt;DURATION&gt;M_&lt;DENSITY&gt;</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Duration</th>
+<th>Density variants</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1M</code>, <code>5M</code>, <code>10M</code>, <code>15M</code>, <code>30M</code>, <code>60M</code>, <code>90M</code></td>
+<td><code>HEAVY</code>, <code>MEDIUM</code>, <code>MEDIUM_LOW</code>, <code>SPARSE</code>, <code>SPARSE_LOW</code>, <code>NO</code></td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">veafWeather</span><span class="p">.</span><span class="py">FOG_ANIMATED_10M_MEDIUM</span><span class="p">:</span><span class="nf">activate</span><span class="p">()</span><span class="w">   </span><span class="c1">-- fade to medium fog over 10 minutes</span>
+<span class="nv">veafWeather</span><span class="p">.</span><span class="py">FOG_ANIMATED_30M_NO</span><span class="p">:</span><span class="nf">activate</span><span class="p">()</span><span class="w">       </span><span class="c1">-- clear fog over 30 minutes</span>
+<span class="nv">veafWeather</span><span class="p">.</span><span class="py">FOG_ANIMATED_5M_HEAVY</span><span class="p">:</span><span class="nf">activate</span><span class="p">()</span><span class="w">     </span><span class="c1">-- roll in heavy fog over 5 minutes</span>
+</code></pre></div>
+<h3 id="activating-a-fog-object-directly">Activating a fog object directly<a class="headerlink" href="#activating-a-fog-object-directly" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nv">veafWeather</span><span class="p">.</span><span class="nf">setAndActivateFog</span><span class="p">(</span><span class="nv">veafWeather</span><span class="p">.</span><span class="py">FOG_STATIC_MEDIUM</span><span class="p">)</span>
+</code></pre></div>
+<p>This is equivalent to calling <code>:activate()</code> on the constant. Any previously active fog is cancelled first.</p>
+<h3 id="scripting-fog-changes-on-a-trigger">Scripting fog changes on a trigger<a class="headerlink" href="#scripting-fog-changes-on-a-trigger" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">-- On a DCS trigger &quot;Begin Night Phase&quot;, enable heavy fog</span>
+<span class="nv">mist</span><span class="p">.</span><span class="nf">scheduleFunction</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<span class="w">  </span><span class="nv">veafWeather</span><span class="p">.</span><span class="py">FOG_ANIMATED_15M_HEAVY</span><span class="p">:</span><span class="nf">activate</span><span class="p">()</span>
+<span class="kr">end</span><span class="p">,</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="nv">timer</span><span class="p">.</span><span class="nf">getTime</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="chat--remote-commands">Chat / Remote Commands<a class="headerlink" href="#chat--remote-commands" title="Permanent link">&para;</a></h2>
+<p>Players or administrators can change fog via the chat window (requires <code>veafRemote</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Chat command</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_weather</code></td>
+<td>Weather report at current position</td>
+</tr>
+<tr>
+<td><code>_atc</code></td>
+<td>ATC report at nearest airbase</td>
+</tr>
+<tr>
+<td><code>_weather fog FOG_STATIC_MEDIUM</code></td>
+<td>Activate a named fog constant</td>
+</tr>
+<tr>
+<td><code>_weather fog FOG_ANIMATED_10M_NO</code></td>
+<td>Animated fog clear over 10 minutes</td>
+</tr>
+</tbody>
+</table>
+<p>The fog name is case-insensitive. Use the exact constant names listed above (without the <code>veafWeather.</code> prefix).</p>
 <hr />
 <h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
 <ul>

@@ -16,7 +16,7 @@
         <link rel="prev" href="../veafNamedPoints/">
       
       
-        <link rel="next" href="../veafSanctuary/">
+        <link rel="next" href="../veafRadio/">
       
       
         
@@ -1056,6 +1056,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../veafInterpreter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafInterpreter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../veafMissileGuardian/" class="md-nav__link">
         
   
@@ -1349,13 +1377,52 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#qra-state-machine" class="md-nav__link">
+  <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        QRA State Machine
+        How it works
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="How it works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#state-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-in-the-dcs-mission-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting up in the DCS Mission Editor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logistics-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logistics chain
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1413,6 +1480,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../veafRadio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafRadio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -2095,13 +2190,52 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#qra-state-machine" class="md-nav__link">
+  <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        QRA State Machine
+        How it works
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="How it works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#state-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-in-the-dcs-mission-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting up in the DCS Mission Editor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logistics-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logistics chain
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2470,12 +2604,109 @@
 </tbody>
 </table>
 <hr />
-<h2 id="qra-state-machine">QRA State Machine<a class="headerlink" href="#qra-state-machine" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>READY ──(intruder enters)──&gt; ACTIVE ──(QRA destroyed)──&gt; DEAD
-  ^                                                          |
-  └──────(all intruders left + rearm delay)─────────────────┘
+<h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
+<p>A QRA zone monitors a volume of airspace defined by a DCS trigger zone. The moment a hostile aircraft enters that space, the QRA scrambles — provided it is ready. When the QRA is shot down, the zone enters a rearming state; it will become active again once the enemies leave and the rearm timer expires.</p>
+<h3 id="state-machine">State machine<a class="headerlink" href="#state-machine" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>STOP ──start()──► READY ──(intruder enters)──► ACTIVE ──(QRA destroyed)──► DEAD
+  ▲                 ▲                                                          │
+  │                 └──────────(all intruders left + rearm delay)─────────────┘
+  │                                                     │
+  └──────────────────────────stop()────────────────────►┘
 </code></pre></div>
-<p>Additional states: <code>WILLREARM</code>, <code>OUT</code> (no more groups), <code>NOAIRBASE</code> (airbase destroyed), <code>STOP</code> (manually disabled).</p>
+<p>Full states:</p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>STOP</code></td>
+<td>Inactive — <code>stop()</code> was called or the QRA was never started</td>
+</tr>
+<tr>
+<td><code>READY</code></td>
+<td>Armed and watching for intruders</td>
+</tr>
+<tr>
+<td><code>READY_WAITINGFORMORE</code></td>
+<td>QRA scrambled; additional intruders triggered deployment of more groups</td>
+</tr>
+<tr>
+<td><code>ACTIVE</code></td>
+<td>QRA is airborne and intercepting</td>
+</tr>
+<tr>
+<td><code>DEAD</code></td>
+<td>QRA was destroyed; waiting for conditions to rearm</td>
+</tr>
+<tr>
+<td><code>WILLREARM</code></td>
+<td>Rearming timer is running</td>
+</tr>
+<tr>
+<td><code>OUT</code></td>
+<td>No more aircraft available (stock exhausted)</td>
+</tr>
+<tr>
+<td><code>NOAIRBASE</code></td>
+<td>The linked airbase was destroyed — QRA stands down</td>
+</tr>
+</tbody>
+</table>
+<h3 id="setting-up-in-the-dcs-mission-editor">Setting up in the DCS Mission Editor<a class="headerlink" href="#setting-up-in-the-dcs-mission-editor" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Create a trigger zone</strong> — draw the airspace you want to protect. Name it something memorable, e.g. <code>ZONE-QRA-NORTH</code>.</li>
+<li><strong>Place the QRA group</strong> — create the aircraft group that will scramble. Set it to <strong>Late Activation</strong> so it does not spawn at mission start (VEAF handles activation). Give the group a distinctive name, e.g. <code>MiG-29 QRA North</code>.</li>
+<li><strong>Wire it up in <code>missionConfig.lua</code></strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nv">VeafQRA</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;QRA-North&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setTriggerZone</span><span class="p">(</span><span class="s2">&quot;ZONE-QRA-NORTH&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setCoalition</span><span class="p">(</span><span class="nv">coalition</span><span class="p">.</span><span class="py">side</span><span class="p">.</span><span class="py">RED</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">addGroup</span><span class="p">(</span><span class="s2">&quot;MiG-29 QRA North&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">start</span><span class="p">()</span>
+</code></pre></div>
+<p>That is all — no trigger conditions, no scheduled functions. VEAF handles detection, scramble, and rearm automatically.</p>
+<h3 id="logistics-chain">Logistics chain<a class="headerlink" href="#logistics-chain" title="Permanent link">&para;</a></h3>
+<p>By default a QRA has unlimited aircraft. The logistics system lets you model a finite airfield stock with optional resupply — useful for long persistent missions:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setQRAcount(n)</code></td>
+<td>Total aircraft groups available (acts as the current stock)</td>
+</tr>
+<tr>
+<td><code>setQRAmaxCount(n)</code></td>
+<td>Hard cap on simultaneous active groups</td>
+</tr>
+<tr>
+<td><code>setQRAresupplyDelay(s)</code></td>
+<td>Seconds to wait before a resupply starts</td>
+</tr>
+<tr>
+<td><code>setQRAminCountforResupply(n)</code></td>
+<td>Stock level that triggers a resupply</td>
+</tr>
+<tr>
+<td><code>setQRAmaxResupplyCount(n)</code></td>
+<td>Maximum number of resupply cycles (<code>-1</code> = unlimited)</td>
+</tr>
+<tr>
+<td><code>setResupplyAmount(n)</code></td>
+<td>Groups added per resupply cycle (default <code>1</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Think of it as a warehouse: <code>QRAcount</code> is what is on the shelf, <code>resupplyDelay</code> is the truck delivery time, and <code>minCountforResupply</code> is the reorder point.</p>
 <hr />
 <h2 id="global-configuration">Global Configuration<a class="headerlink" href="#global-configuration" title="Permanent link">&para;</a></h2>
 <table>

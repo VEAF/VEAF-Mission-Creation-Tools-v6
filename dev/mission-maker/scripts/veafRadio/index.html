@@ -10,19 +10,19 @@
       
       
       
-        <link rel="canonical" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/mission-maker/scripts/veafCombatZone/">
+        <link rel="canonical" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/mission-maker/scripts/veafRadio/">
       
       
-        <link rel="prev" href="../veafCasMission/">
+        <link rel="prev" href="../veafQraManager/">
       
       
-        <link rel="next" href="../veafGrass/">
+        <link rel="next" href="../veafSanctuary/">
       
       
         
           <link rel="alternate" href="./" hreflang="en">
         
-          <link rel="alternate" href="../../../fr/mission-maker/scripts/veafCombatZone/" hreflang="fr">
+          <link rel="alternate" href="../../../fr/mission-maker/scripts/veafRadio/" hreflang="fr">
         
       
       
@@ -31,7 +31,7 @@
     
     
       
-        <title>veafCombatZone - VEAF Mission Creation Tools</title>
+        <title>veafRadio - VEAF Mission Creation Tools</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#veafcombatzone--activatable-combat-zones" class="md-skip">
+        <a href="#veafradio--f10-radio-menu-builder" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              veafCombatZone
+              veafRadio
             
           </span>
         </div>
@@ -173,7 +173,7 @@
           </li>
         
           <li class="md-select__item">
-            <a href="../../../fr/mission-maker/scripts/veafCombatZone/" hreflang="fr" class="md-select__link">
+            <a href="../../../fr/mission-maker/scripts/veafRadio/" hreflang="fr" class="md-select__link">
               Français
             </a>
           </li>
@@ -969,37 +969,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    veafCombatZone
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../veafCombatZone/" class="md-nav__link">
         
   
   
@@ -1015,209 +988,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#purpose" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Purpose
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enable" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Enable
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How it works
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="How it works">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#setting-up-in-the-dcs-mission-editor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setting up in the DCS Mission Editor
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#unit-name-tags" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Unit Name Tags
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Unit Name Tags">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#practical-example--manpads-ambush" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Practical example — MANPADS ambush
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#command--spawning-via-veaf-marker-syntax" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        #command — spawning via VEAF marker syntax
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#defining-a-zone" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Defining a Zone
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Defining a Zone">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#veafcombatzone-builder-methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VeafCombatZone Builder Methods
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#veafcombatzoneelement-builder-methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VeafCombatZoneElement Builder Methods
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#f10-radio-menu-per-zone" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        F10 Radio Menu (per zone)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#operations-grouped-zones" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Operations (Grouped Zones)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#zone-chaining" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Zone Chaining
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#training-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Training Mode
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1423,10 +1193,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../veafRadio/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    veafRadio
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1442,6 +1239,187 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enable
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-custom-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a custom menu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a custom menu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helpers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Helpers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group-specific-menus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Group-specific menus
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage constants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#low-level-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Low-level API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Low-level API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paginated-menus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paginated menus
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#qra-startstop-from-a-custom-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QRA start/stop from a custom menu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flag-based-mission-triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flag-based mission triggers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-group-command-forgroup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-group command (ForGroup)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1986,17 +1964,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#enable" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2008,22 +1975,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
+  <a href="#creating-a-custom-menu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How it works
+        Creating a custom menu
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="How it works">
+    <nav class="md-nav" aria-label="Creating a custom menu">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#setting-up-in-the-dcs-mission-editor" class="md-nav__link">
+  <a href="#helpers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Setting up in the DCS Mission Editor
+        Helpers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group-specific-menus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Group-specific menus
       
     </span>
   </a>
@@ -2036,33 +2014,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#unit-name-tags" class="md-nav__link">
+  <a href="#usage-constants" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Unit Name Tags
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Unit Name Tags">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#practical-example--manpads-ambush" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Practical example — MANPADS ambush
+        Usage constants
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#command--spawning-via-veaf-marker-syntax" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#low-level-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        #command — spawning via VEAF marker syntax
+        Low-level API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Low-level API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paginated-menus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paginated menus
       
     </span>
   </a>
@@ -2075,22 +2053,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#defining-a-zone" class="md-nav__link">
+  <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Defining a Zone
+        Examples
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Defining a Zone">
+    <nav class="md-nav" aria-label="Examples">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#veafcombatzone-builder-methods" class="md-nav__link">
+  <a href="#qra-startstop-from-a-custom-menu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        VeafCombatZone Builder Methods
+        QRA start/stop from a custom menu
       
     </span>
   </a>
@@ -2098,10 +2076,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#veafcombatzoneelement-builder-methods" class="md-nav__link">
+  <a href="#flag-based-mission-triggers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        VeafCombatZoneElement Builder Methods
+        Flag-based mission triggers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-group-command-forgroup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-group command (ForGroup)
       
     </span>
   </a>
@@ -2114,43 +2103,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#f10-radio-menu-per-zone" class="md-nav__link">
+  <a href="#see-also" class="md-nav__link">
     <span class="md-ellipsis">
       
-        F10 Radio Menu (per zone)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#operations-grouped-zones" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Operations (Grouped Zones)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#zone-chaining" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Zone Chaining
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#training-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Training Mode
+        See Also
       
     </span>
   </a>
@@ -2177,270 +2133,196 @@
   
 
 
-<h1 id="veafcombatzone--activatable-combat-zones">veafCombatZone — Activatable Combat Zones<a class="headerlink" href="#veafcombatzone--activatable-combat-zones" title="Permanent link">&para;</a></h1>
-<p><strong>Module ID:</strong> <code>COMBATZONE</code> | <strong>Version:</strong> 1.22.x | <strong>File:</strong> <code>veafCombatZone.lua</code></p>
+<h1 id="veafradio--f10-radio-menu-builder">veafRadio — F10 Radio Menu Builder<a class="headerlink" href="#veafradio--f10-radio-menu-builder" title="Permanent link">&para;</a></h1>
+<p><strong>Module ID:</strong> <code>RADIO</code> | <strong>File:</strong> <code>veafRadio.lua</code></p>
 <hr />
 <h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
-<p>Defines named combat zones in the mission editor that players can activate and deactivate via the F10 radio menu. Each zone tracks enemy unit state, fires objective-completion events, supports scoring, and can contain multiple unit groups with spawning rules.</p>
-<hr />
-<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>veafRadio</code> — F10 menu</li>
-<li><code>veafSpawn</code> — unit spawning backend</li>
-<li><code>veafMarkers</code> — optional marker commands</li>
-</ul>
+<p>The F10 "Other" menu in DCS is the primary interface between players and VEAF scripts. <code>veafRadio</code> manages that entire menu tree: building it, refreshing it as human groups join and leave, and providing helpers that let other VEAF modules and mission makers add their own entries without worrying about DCS radio menu limits.</p>
 <hr />
 <h2 id="enable">Enable<a class="headerlink" href="#enable" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="nv">veafCombatZone</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
 </code></pre></div>
-<p>Individual zones are created and initialised separately (see below).</p>
-<hr />
-<h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
-<p>Place all the units that should appear in the zone directly in the DCS Mission Editor, inside the trigger zone. When the mission starts VEAF removes them all — the zone is empty. When a player activates the zone via the F10 menu, all units are respawned at randomised positions within the zone radius. When every enemy unit is destroyed, the zone is marked as completed (optional callback fires, optional chained zones activate).</p>
-<p>This approach gives you full visual design in the editor while keeping the zone inactive at mission start.</p>
-<h3 id="setting-up-in-the-dcs-mission-editor">Setting up in the DCS Mission Editor<a class="headerlink" href="#setting-up-in-the-dcs-mission-editor" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>Create a trigger zone</strong> — define the combat area. Name it, e.g. <code>ZONE-ALPHA</code>.</li>
-<li><strong>Place unit groups</strong> inside the zone. Set them to any coalition — VEAF will handle their lifecycle.</li>
-<li><strong>Use unit name tags</strong> (see below) to customise spawn behaviour per group.</li>
-<li><strong>Register the zone</strong> in <code>missionConfig.lua</code>:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="nv">VeafCombatZone</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Alpha&quot;</span><span class="p">)</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setZoneName</span><span class="p">(</span><span class="s2">&quot;ZONE-ALPHA&quot;</span><span class="p">)</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setDescription</span><span class="p">(</span><span class="s2">&quot;Strike Alpha — Armoured column&quot;</span><span class="p">)</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
+<p>Optional parameters:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">(</span>
+<span class="w">  </span><span class="nv">skipHelpMenus</span><span class="p">,</span><span class="w">   </span><span class="c1">-- bool: omit &quot;Help&quot; entries from built-in menus (default false)</span>
+<span class="w">  </span><span class="nv">dontCreateMenus</span><span class="w">  </span><span class="c1">-- bool: suppress all DCS radio menu creation (default false)</span>
+<span class="p">)</span>
 </code></pre></div>
-<p><code>veafCombatZone.initialize()</code> must be called at the module level first.</p>
-<hr />
-<h2 id="unit-name-tags">Unit Name Tags<a class="headerlink" href="#unit-name-tags" title="Permanent link">&para;</a></h2>
-<p>Unit and group names in the DCS Mission Editor can carry special tags that control how VEAF handles them when the zone activates. Tags are embedded in the name and do not affect DCS itself.</p>
-<table>
-<thead>
-<tr>
-<th>Tag</th>
-<th>Example</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>#spawnradius=N</code></td>
-<td><code>#spawnradius=200</code></td>
-<td>Scatter radius in metres around the zone centre for this group</td>
-</tr>
-<tr>
-<td><code>#spawnchance=N</code></td>
-<td><code>#spawnchance=50</code></td>
-<td>Percentage chance (0–100) this group will actually spawn</td>
-</tr>
-<tr>
-<td><code>#spawncount=N</code></td>
-<td><code>#spawncount=3</code></td>
-<td>Number of instances to spawn (can be &gt;1 for repeated units)</td>
-</tr>
-<tr>
-<td><code>#spawngroup="name"</code></td>
-<td><code>#spawngroup="SAM"</code></td>
-<td>Override the spawn group name (useful to target a named template)</td>
-</tr>
-<tr>
-<td><code>#spawndelay=N</code></td>
-<td><code>#spawndelay=120</code></td>
-<td>Delay in seconds before this group spawns after zone activation</td>
-</tr>
-<tr>
-<td><code>#command="cmd"</code></td>
-<td><code>#command="-spawn sa-11"</code></td>
-<td>Execute a VEAF command instead of spawning this group; the unit acts as a trigger and is destroyed</td>
-</tr>
-</tbody>
-</table>
-<h3 id="practical-example--manpads-ambush">Practical example — MANPADS ambush<a class="headerlink" href="#practical-example--manpads-ambush" title="Permanent link">&para;</a></h3>
-<p>You want four MANPADS positions in a zone, but only two should actually be occupied. Place four dummy infantry units named:</p>
-<div class="highlight"><pre><span></span><code>ALPHA-MANPAD-1 #spawnchance=50
-ALPHA-MANPAD-2 #spawnchance=50
-ALPHA-MANPAD-3 #spawnchance=50
-ALPHA-MANPAD-4 #spawnchance=50
+<p>After all modules are initialised, call:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">refreshRadioMenu</span><span class="p">()</span>
 </code></pre></div>
-<p>Each position has a 50% chance of spawning — statistically, around two will be active each time the zone is triggered.</p>
-<h3 id="command--spawning-via-veaf-marker-syntax"><code>#command</code> — spawning via VEAF marker syntax<a class="headerlink" href="#command--spawning-via-veaf-marker-syntax" title="Permanent link">&para;</a></h3>
-<p>The <code>#command</code> tag turns a unit into a one-shot trigger. When the zone activates, VEAF executes the command at the unit's position and destroys the unit. This is equivalent to dropping a map marker at that location.</p>
-<div class="highlight"><pre><span></span><code>SPAWN-SA11 #command=&quot;-spawn sa-11, side red&quot;
-CONVOY-TRIGGER #command=&quot;-convoy from ZONE-ALPHA to ZONE-BRAVO&quot;
-</code></pre></div>
-<p>This lets you set up complex spawns (SA-11 battery, convoys with AI routes) without any Lua code.</p>
+<p>This rebuilds the entire F10 tree. It is safe to call multiple times — it debounces internally (1-second delay).</p>
 <hr />
-<p>|----------|---------|-------------|
-| <code>veafCombatZone.SecondsBetweenWatchdogChecks</code> | <code>60</code> | How often the zone watchdog polls (s) |
-| <code>veafCombatZone.SecondsBetweenSmokeRequests</code> | <code>180</code> | Smoke mark cooldown (s) |
-| <code>veafCombatZone.SecondsBetweenFlareRequests</code> | <code>120</code> | Flare mark cooldown (s) |
-| <code>veafCombatZone.RadioMenuName</code> | <code>"COMBAT ZONES"</code> | F10 submenu label |
-| <code>veafCombatZone.DefaultSpawnRadiusForUnits</code> | <code>50</code> | Default unit scatter radius (m) |</p>
-<hr />
-<h2 id="defining-a-zone">Defining a Zone<a class="headerlink" href="#defining-a-zone" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">strikeZone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">VeafCombatZone</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Strike Alpha&quot;</span><span class="p">)</span><span class="w">                   </span><span class="c1">-- internal name</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setZoneName</span><span class="p">(</span><span class="s2">&quot;ZONE-STRIKE-ALPHA&quot;</span><span class="p">)</span><span class="w">          </span><span class="c1">-- DCS trigger zone name</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setDescription</span><span class="p">(</span><span class="s2">&quot;Armoured column — Senaki&quot;</span><span class="p">)</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setBriefing</span><span class="p">(</span><span class="s2">&quot;Destroy all vehicles. Expect AAA and MANPADS.&quot;</span><span class="p">)</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">addElement</span><span class="p">(</span>
-<span class="w">    </span><span class="nv">VeafCombatZoneElement</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
-<span class="w">      </span><span class="p">:</span><span class="nf">setGroupName</span><span class="p">(</span><span class="s2">&quot;STRIKE-ALPHA-ARMOR&quot;</span><span class="p">)</span><span class="w">    </span><span class="c1">-- DCS group to spawn</span>
-<span class="w">      </span><span class="p">:</span><span class="nf">setSpawnRadius</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<h2 id="creating-a-custom-menu">Creating a custom menu<a class="headerlink" href="#creating-a-custom-menu" title="Permanent link">&para;</a></h2>
+<p>Use <code>veafRadio.createUserMenu()</code> to build a structured menu tree from a simple Lua table, using three helpers:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">createUserMenu</span><span class="p">(</span>
+<span class="w">  </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">mainmenu</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">menu</span><span class="p">(</span><span class="s2">&quot;QRA Management&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">command</span><span class="p">(</span><span class="s2">&quot;Start QRA North&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">veafQraManager</span><span class="p">.</span><span class="py">startQra</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;QRA-NORTH&quot;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">      </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">command</span><span class="p">(</span><span class="s2">&quot;Stop QRA North&quot;</span><span class="p">,</span><span class="w">  </span><span class="nv">veafQraManager</span><span class="p">.</span><span class="py">stopQra</span><span class="p">,</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;QRA-NORTH&quot;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">      </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">command</span><span class="p">(</span><span class="s2">&quot;Status&quot;</span><span class="p">,</span><span class="w">          </span><span class="nv">veafQraManager</span><span class="p">.</span><span class="py">getStatus</span><span class="p">,{</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;QRA-NORTH&quot;</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">menu</span><span class="p">(</span><span class="s2">&quot;Flags&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">command</span><span class="p">(</span><span class="s2">&quot;Set Flag 10&quot;</span><span class="p">,</span><span class="w">   </span><span class="nv">trigger</span><span class="p">.</span><span class="py">action</span><span class="p">.</span><span class="py">setUserFlag</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;FLAG-10&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">      </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">command</span><span class="p">(</span><span class="s2">&quot;Clear Flag 10&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">trigger</span><span class="p">.</span><span class="py">action</span><span class="p">.</span><span class="py">setUserFlag</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;FLAG-10&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">)</span>
 <span class="w">  </span><span class="p">)</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">addElement</span><span class="p">(</span>
-<span class="w">    </span><span class="nv">VeafCombatZoneElement</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
-<span class="w">      </span><span class="p">:</span><span class="nf">setGroupName</span><span class="p">(</span><span class="s2">&quot;STRIKE-ALPHA-AAA&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="helpers">Helpers<a class="headerlink" href="#helpers" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Helper</th>
+<th>Signature</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mainmenu(...)</code></td>
+<td>Variable args of <code>menu()</code> or <code>command()</code> items</td>
+<td>Flat array for <code>createUserMenu()</code></td>
+</tr>
+<tr>
+<td><code>menu(name, ...)</code></td>
+<td>Name + variable args of nested items</td>
+<td>A submenu node</td>
+</tr>
+<tr>
+<td><code>command(name, fn, params)</code></td>
+<td>Name + function + parameter table</td>
+<td>A command node</td>
+</tr>
+</tbody>
+</table>
+<h3 id="group-specific-menus">Group-specific menus<a class="headerlink" href="#group-specific-menus" title="Permanent link">&para;</a></h3>
+<p>Pass a <code>groupId</code> as the second argument to <code>createUserMenu()</code> — the menu will only appear for that group:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">playerGroupId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">101</span>
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">createUserMenu</span><span class="p">(</span>
+<span class="w">  </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">mainmenu</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">command</span><span class="p">(</span><span class="s2">&quot;Request tanker&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">myMission</span><span class="p">.</span><span class="py">requestTanker</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">groupId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">playerGroupId</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">),</span>
+<span class="w">  </span><span class="nv">playerGroupId</span>
+<span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="usage-constants">Usage constants<a class="headerlink" href="#usage-constants" title="Permanent link">&para;</a></h2>
+<p>When adding commands via the low-level API, the <code>usage</code> parameter controls who sees the entry:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Value</th>
+<th>Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>veafRadio.USAGE_ForAll</code></td>
+<td><code>0</code></td>
+<td>Single entry visible to all players</td>
+</tr>
+<tr>
+<td><code>veafRadio.USAGE_ForGroup</code></td>
+<td><code>1</code></td>
+<td>One entry per connected human group; the unit name is appended to params automatically</td>
+</tr>
+<tr>
+<td><code>veafRadio.USAGE_ForUnit</code></td>
+<td><code>2</code></td>
+<td>One entry per connected human pilot; entry title is prefixed with the pilot's callsign</td>
+</tr>
+</tbody>
+</table>
+<p><code>USAGE_ForGroup</code> is ideal for commands that should respond differently per flight (e.g. "Request support for my flight"). <code>USAGE_ForUnit</code> is for individual pilot interactions.</p>
+<hr />
+<h2 id="low-level-api">Low-level API<a class="headerlink" href="#low-level-api" title="Permanent link">&para;</a></h2>
+<p>For finer control, build the menu tree directly:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Add a top-level submenu under the VEAF root</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">missionMenu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">addMenu</span><span class="p">(</span><span class="s2">&quot;Mission Control&quot;</span><span class="p">)</span>
+
+<span class="c1">-- Add a submenu inside it</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">qraMenu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">addSubMenu</span><span class="p">(</span><span class="s2">&quot;QRA&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">missionMenu</span><span class="p">)</span>
+
+<span class="c1">-- Add a command (ForAll)</span>
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">addCommandToSubmenu</span><span class="p">(</span>
+<span class="w">  </span><span class="s2">&quot;Start QRA North&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">qraMenu</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">veafQraManager</span><span class="p">.</span><span class="py">startQra</span><span class="p">,</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;QRA-NORTH&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nv">veafRadio</span><span class="p">.</span><span class="py">USAGE_ForAll</span>
+<span class="p">)</span>
+
+<span class="c1">-- Add a secured command (requires /secu login)</span>
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">addSecuredCommandToSubmenu</span><span class="p">(</span>
+<span class="w">  </span><span class="s2">&quot;Emergency stop all QRA&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">missionMenu</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">veafQraManager</span><span class="p">.</span><span class="py">stopAll</span><span class="p">,</span>
+<span class="w">  </span><span class="p">{},</span>
+<span class="w">  </span><span class="nv">veafRadio</span><span class="p">.</span><span class="py">USAGE_ForAll</span>
+<span class="p">)</span>
+
+<span class="c1">-- Trigger a rebuild</span>
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">refreshRadioMenu</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="paginated-menus">Paginated menus<a class="headerlink" href="#paginated-menus" title="Permanent link">&para;</a></h3>
+<p>When a submenu has more than ~9 entries (DCS limit), use paginated helpers:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">addPaginatedRadioMenu</span><span class="p">(</span>
+<span class="w">  </span><span class="s2">&quot;All Zones&quot;</span><span class="p">,</span><span class="w">          </span><span class="c1">-- menu title</span>
+<span class="w">  </span><span class="nv">parentMenu</span><span class="p">,</span><span class="w">           </span><span class="c1">-- parent menu node</span>
+<span class="w">  </span><span class="nv">veafRadio</span><span class="p">.</span><span class="py">addCommandToSubmenu</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">myZonesList</span><span class="p">,</span><span class="w">          </span><span class="c1">-- table of elements</span>
+<span class="w">  </span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="w">               </span><span class="c1">-- attribute used as the entry title</span>
+<span class="w">  </span><span class="s2">&quot;sortKey&quot;</span><span class="w">             </span><span class="c1">-- attribute used for sorting (optional)</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Pages of 10 are created automatically with a "Next page" submenu.</p>
+<hr />
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<h3 id="qra-startstop-from-a-custom-menu">QRA start/stop from a custom menu<a class="headerlink" href="#qra-startstop-from-a-custom-menu" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">controlMenu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">addMenu</span><span class="p">(</span><span class="s2">&quot;Mission Control&quot;</span><span class="p">)</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">qraMenu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">addSubMenu</span><span class="p">(</span><span class="s2">&quot;Quick Reaction Alerts&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">controlMenu</span><span class="p">)</span>
+
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">addCommandToSubmenu</span><span class="p">(</span><span class="s2">&quot;Start QRA North&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">qraMenu</span><span class="p">,</span><span class="w"> </span><span class="nv">myNorthQRA</span><span class="p">.</span><span class="py">start</span><span class="p">,</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="nv">veafRadio</span><span class="p">.</span><span class="py">USAGE_ForAll</span><span class="p">)</span>
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">addCommandToSubmenu</span><span class="p">(</span><span class="s2">&quot;Stop QRA North&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">qraMenu</span><span class="p">,</span><span class="w"> </span><span class="nv">myNorthQRA</span><span class="p">.</span><span class="py">stop</span><span class="p">,</span><span class="w">  </span><span class="p">{},</span><span class="w"> </span><span class="nv">veafRadio</span><span class="p">.</span><span class="py">USAGE_ForAll</span><span class="p">)</span>
+
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">addCommandToSubmenu</span><span class="p">(</span><span class="s2">&quot;Start QRA South&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">qraMenu</span><span class="p">,</span><span class="w"> </span><span class="nv">mySouthQRA</span><span class="p">.</span><span class="py">start</span><span class="p">,</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="nv">veafRadio</span><span class="p">.</span><span class="py">USAGE_ForAll</span><span class="p">)</span>
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">addCommandToSubmenu</span><span class="p">(</span><span class="s2">&quot;Stop QRA South&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">qraMenu</span><span class="p">,</span><span class="w"> </span><span class="nv">mySouthQRA</span><span class="p">.</span><span class="py">stop</span><span class="p">,</span><span class="w">  </span><span class="p">{},</span><span class="w"> </span><span class="nv">veafRadio</span><span class="p">.</span><span class="py">USAGE_ForAll</span><span class="p">)</span>
+
+<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">refreshRadioMenu</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="flag-based-mission-triggers">Flag-based mission triggers<a class="headerlink" href="#flag-based-mission-triggers" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">createUserMenu</span><span class="p">(</span>
+<span class="w">  </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">mainmenu</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">menu</span><span class="p">(</span><span class="s2">&quot;Phase control&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">command</span><span class="p">(</span><span class="s2">&quot;Begin Phase 2&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">trigger</span><span class="p">.</span><span class="py">action</span><span class="p">.</span><span class="py">setUserFlag</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;PHASE2&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">      </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">command</span><span class="p">(</span><span class="s2">&quot;Begin Phase 3&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">trigger</span><span class="p">.</span><span class="py">action</span><span class="p">.</span><span class="py">setUserFlag</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;PHASE3&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">      </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">command</span><span class="p">(</span><span class="s2">&quot;End mission&quot;</span><span class="p">,</span><span class="w">   </span><span class="nv">trigger</span><span class="p">.</span><span class="py">action</span><span class="p">.</span><span class="py">setUserFlag</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;MISSIONEND&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">)</span>
 <span class="w">  </span><span class="p">)</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="p">)</span>
 </code></pre></div>
-<h3 id="veafcombatzone-builder-methods">VeafCombatZone Builder Methods<a class="headerlink" href="#veafcombatzone-builder-methods" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>:setName(name)</code></td>
-<td>Internal identifier</td>
-</tr>
-<tr>
-<td><code>:setZoneName(zoneName)</code></td>
-<td>DCS trigger zone that defines the spawn area</td>
-</tr>
-<tr>
-<td><code>:setDescription(text)</code></td>
-<td>Short name shown in radio menu</td>
-</tr>
-<tr>
-<td><code>:setBriefing(text)</code></td>
-<td>Full briefing text</td>
-</tr>
-<tr>
-<td><code>:addElement(element)</code></td>
-<td>Add a unit group to the zone</td>
-</tr>
-<tr>
-<td><code>:setCoalition(side)</code></td>
-<td>Override spawn coalition</td>
-</tr>
-<tr>
-<td><code>:setRadioGroup(name)</code></td>
-<td>Group zones under a common radio submenu</td>
-</tr>
-<tr>
-<td><code>:setActivateAtStart(bool)</code></td>
-<td>Auto-activate when mission starts</td>
-</tr>
-<tr>
-<td><code>:setSilent(bool)</code></td>
-<td>Suppress status messages</td>
-</tr>
-<tr>
-<td><code>:setOnCompleted(fn)</code></td>
-<td>Callback when all enemies destroyed</td>
-</tr>
-</tbody>
-</table>
-<h3 id="veafcombatzoneelement-builder-methods">VeafCombatZoneElement Builder Methods<a class="headerlink" href="#veafcombatzoneelement-builder-methods" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>:setGroupName(name)</code></td>
-<td>DCS group to spawn (must exist in mission editor)</td>
-</tr>
-<tr>
-<td><code>:setSpawnRadius(m)</code></td>
-<td>Scatter radius around zone centre</td>
-</tr>
-<tr>
-<td><code>:setRespawn(bool)</code></td>
-<td>Whether to respawn when destroyed</td>
-</tr>
-<tr>
-<td><code>:setRespawnDelay(s)</code></td>
-<td>Delay before respawn (seconds)</td>
-</tr>
-</tbody>
-</table>
+<h3 id="per-group-command-forgroup">Per-group command (ForGroup)<a class="headerlink" href="#per-group-command-forgroup" title="Permanent link">&para;</a></h3>
+<p>A "Request close air support" entry that appears once per connected flight, automatically passing that group's unit name:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">addCommandToSubmenu</span><span class="p">(</span>
+<span class="w">  </span><span class="s2">&quot;Request CAS&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">supportMenu</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">myCasDispatch</span><span class="p">,</span><span class="w">      </span><span class="c1">-- receives { originalParams, unitName } at runtime</span>
+<span class="w">  </span><span class="p">{},</span>
+<span class="w">  </span><span class="nv">veafRadio</span><span class="p">.</span><span class="py">USAGE_ForGroup</span>
+<span class="p">)</span>
+</code></pre></div>
 <hr />
-<h2 id="f10-radio-menu-per-zone">F10 Radio Menu (per zone)<a class="headerlink" href="#f10-radio-menu-per-zone" title="Permanent link">&para;</a></h2>
+<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Activate</strong> — spawn the zone's unit groups</li>
-<li><strong>Deactivate</strong> — despawn units, reset the zone</li>
-<li><strong>Info</strong> — status, remaining unit count, briefing</li>
-<li><strong>Smoke</strong> — mark zone with smoke (cooldown applies)</li>
-<li><strong>Flare</strong> — mark zone with flares</li>
-</ul>
-<hr />
-<h2 id="operations-grouped-zones">Operations (Grouped Zones)<a class="headerlink" href="#operations-grouped-zones" title="Permanent link">&para;</a></h2>
-<p>Multiple zones can be grouped into an <strong>Operation</strong> that completes when all child zones are done:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">VeafCombatOperation</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Operation Thunder&quot;</span><span class="p">)</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">addZone</span><span class="p">(</span><span class="s2">&quot;Strike Alpha&quot;</span><span class="p">)</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">addZone</span><span class="p">(</span><span class="s2">&quot;Strike Bravo&quot;</span><span class="p">)</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setBriefing</span><span class="p">(</span><span class="s2">&quot;Destroy both armour columns before they reach Senaki.&quot;</span><span class="p">)</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
-</code></pre></div>
-<p><code>VeafCombatOperation</code> extends <code>VeafCombatZone</code> — all the builder methods above apply, and the operation itself appears in the radio menu as a single activatable entry.</p>
-<hr />
-<h2 id="zone-chaining">Zone Chaining<a class="headerlink" href="#zone-chaining" title="Permanent link">&para;</a></h2>
-<p>A zone can automatically activate one or more follow-on zones when it is completed. This lets you build dynamic campaign progressions without manual scripting:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">VeafCombatZone</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Strike Alpha&quot;</span><span class="p">)</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setZoneName</span><span class="p">(</span><span class="s2">&quot;ZONE-ALPHA&quot;</span><span class="p">)</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">addChainedCombatZone</span><span class="p">(</span><span class="s2">&quot;Strike Bravo&quot;</span><span class="p">)</span><span class="w">     </span><span class="c1">-- triggers when Alpha is done</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">addChainedCombatZone</span><span class="p">(</span><span class="s2">&quot;Strike Charlie&quot;</span><span class="p">)</span><span class="w">   </span><span class="c1">-- one is chosen at random</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setChainedCombatZonesDelay</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span><span class="w">           </span><span class="c1">-- wait 60 s before chaining</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
-</code></pre></div>
-<p>When multiple chained zones are defined, <strong>one is picked at random</strong> — useful for branching narratives or avoiding predictability.</p>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>:addChainedCombatZone(name)</code></td>
-<td>Add a zone to trigger after completion</td>
-</tr>
-<tr>
-<td><code>:setChainedCombatZonesDelay(s)</code></td>
-<td>Seconds to wait before chaining (default: 0)</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="training-mode">Training Mode<a class="headerlink" href="#training-mode" title="Permanent link">&para;</a></h2>
-<p>Setting a zone to training mode changes two things:</p>
-<ul>
-<li><strong>No security</strong>: any player can activate or deactivate the zone via the radio menu (normally the zone activation is logged and can be restricted by <code>/secu login</code>).</li>
-<li><strong>Verbose status</strong>: the zone info message lists remaining units and their approximate positions (using smoke or bearings), giving pilots a clear picture of what is left.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nv">VeafCombatZone</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Training-A&quot;</span><span class="p">)</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setZoneName</span><span class="p">(</span><span class="s2">&quot;ZONE-TRAINING-A&quot;</span><span class="p">)</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setTraining</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
-</code></pre></div>
-<p>Training mode is ideal for BFM / CAS training scenarios where pilots need to know unit positions.</p>
-<hr />
-<ul>
-<li><a href="../veafCasMission/">veafCasMission</a> — generated CAS zones (no pre-placed groups needed)</li>
-<li><a href="../../../LUA_API_REFERENCE/">Lua API Reference</a> — full <code>veafCombatZone</code> API</li>
+<li><a href="../veafSecurity/">veafSecurity</a> — securing commands with <code>/secu login</code></li>
+<li><a href="../../../LUA_API_REFERENCE/">Lua API Reference</a> — full <code>veafRadio</code> API</li>
 </ul>
 
 
