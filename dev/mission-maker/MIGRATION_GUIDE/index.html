@@ -2545,6 +2545,9 @@
 <ol>
 <li>Have your v5 mission folder on hand</li>
 </ol>
+<blockquote>
+<p><strong>Tip — Global User Configuration:</strong> Before starting, create <code>~/veafmct.yaml</code> (i.e. <code>C:\Users\YourName\veafmct.yaml</code> on Windows) to set persistent defaults for all your VEAF projects on this machine — for example your language preference (<code>lang: fr</code>). See <a href="../GUIDE/#global-user-configuration">Global User Configuration</a> for the full reference and CLI commands.</p>
+</blockquote>
 <hr />
 <h2 id="migrating-from-veaf-mct-v5xx">Migrating from VEAF MCT v5.xx<a class="headerlink" href="#migrating-from-veaf-mct-v5xx" title="Permanent link">&para;</a></h2>
 <h3 id="what-changed-in-v6">What Changed in v6<a class="headerlink" href="#what-changed-in-v6" title="Permanent link">&para;</a></h3>
@@ -2693,7 +2696,7 @@
 </tbody>
 </table>
 <h4 id="5-verify-with-a-test-build">5. Verify with a test build<a class="headerlink" href="#5-verify-with-a-test-build" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span> <span class="n">my-mission</span> <span class="p">.</span>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span>
 </code></pre></div>
 <p>Open the resulting <code>.miz</code> in DCS, load the mission, and confirm:
 - No duplicate <code>DO SCRIPT FILE</code> triggers in the trigger editor
