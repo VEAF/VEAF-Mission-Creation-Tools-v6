@@ -825,10 +825,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-open-your-existing-v5-mission-folder" class="md-nav__link">
+  <a href="#1-create-a-new-mission-folder-and-copy-your-v5-source-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Open your existing v5 mission folder
+        1. Create a new mission folder and copy your v5 source files
       
     </span>
   </a>
@@ -2238,10 +2238,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-open-your-existing-v5-mission-folder" class="md-nav__link">
+  <a href="#1-create-a-new-mission-folder-and-copy-your-v5-source-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Open your existing v5 mission folder
+        1. Create a new mission folder and copy your v5 source files
       
     </span>
   </a>
@@ -2594,6 +2594,11 @@
 <h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Install <code>veaf-tools-updater.exe</code> — download from the <a href="https://github.com/VEAF/VEAF-Mission-Creation-Tools/releases/tag/published-latest">latest GitHub release</a></li>
+</ol>
+<blockquote>
+<p><strong>Windows security:</strong> Windows may block <code>.exe</code> files downloaded from the internet. If the file doesn't run, right-click it → <strong>Properties</strong> → <strong>General</strong> tab → check <strong>Unblock</strong> at the bottom → <strong>OK</strong>.</p>
+</blockquote>
+<ol>
 <li>Run the updater once to install <code>veaf-tools.exe</code> and all VEAF scripts:</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools-updater</span><span class="p">.</span><span class="n">exe</span>
@@ -2617,11 +2622,6 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>Script delivery</strong></td>
-<td>Individual <code>.lua</code> files delivered per mission, updated manually</td>
-<td>All modules concatenated into a single <code>veaf-scripts.lua</code> managed centrally</td>
-</tr>
-<tr>
 <td><strong>DCS trigger</strong></td>
 <td>Manual <code>DO SCRIPT FILE</code> triggers pointing at each <code>.lua</code> file</td>
 <td>Single trigger injected automatically by <code>veaf-tools build</code>; no manual trigger work</td>
@@ -2643,7 +2643,7 @@
 </tr>
 <tr>
 <td><strong>Tool updates</strong></td>
-<td>Manual download and replacement of script files</td>
+<td>NPM (<code>npm install</code>) — scripts distributed as a versioned package</td>
 <td><code>veaf-tools-updater.exe</code> — downloads and verifies the latest release in one command</td>
 </tr>
 <tr>
@@ -2654,47 +2654,45 @@
 <tr>
 <td><strong>Module enable/disable</strong></td>
 <td>Edit <code>missionConfig.lua</code> (or simply omit the <code>initialize()</code> call)</td>
-<td><code>mission.yaml</code> → <code>lua_modules:</code> section; generates <code>veaf-modules-config.lua</code> automatically</td>
+<td><code>mission.yaml</code> → <code>lua_modules:</code> section; generates <code>veaf-config.lua</code> automatically</td>
 </tr>
 <tr>
 <td><strong>Module configuration</strong></td>
 <td>Direct assignment: <code>veafSpawn.SpawnKeyphrase = "_spawn"</code> in <code>missionConfig.lua</code></td>
-<td>Same direct assignment still works; or <code>veaf.setConfig("MODULE_ID", "key", value)</code> for config-driven overrides</td>
+<td>Same direct assignment still works in <code>mission-script.lua</code>; or <code>veaf.setConfig("MODULE_ID", "key", value)</code> for config-driven overrides</td>
 </tr>
 <tr>
 <td><strong>Module init pattern</strong></td>
 <td>Bare <code>veafXxx.initialize()</code> calls</td>
-<td><code>if veafXxx then veafXxx.initialize() end</code> guard (tolerates missing modules)</td>
+<td>Auto-generated into <code>veaf-config.lua</code> by <code>veaf-tools build</code>; no manual <code>initialize()</code> calls needed</td>
 </tr>
 <tr>
 <td><strong>Config location</strong></td>
 <td>Initialization scattered in DCS trigger scripts or a separate Lua file</td>
-<td>Centralised in <code>src/scripts/missionConfig.lua</code></td>
+<td><code>mission.yaml</code> generates <code>veaf-config.lua</code> at build time; optional custom Lua in <code>mission-script.lua</code></td>
 </tr>
 <tr>
 <td><strong>Config migration</strong></td>
 <td>Manual rewrite</td>
-<td><code>veaf-tools.exe convert-v5</code> — one command converts <code>missionConfig.lua</code>, pipeline files (presets, waypoints, weather, aircraft groups), and generates <code>mission.yaml</code>. Use <code>migrate-config</code> only to migrate <code>missionConfig.lua</code> alone.</td>
+<td><code>veaf-tools.exe convert-v5</code> — one command converts <code>missionConfig.lua</code>, pipeline files (presets, waypoints, weather, aircraft groups), and generates <code>mission.yaml</code> + <code>mission-script.lua</code>. Use <code>migrate-config</code> only to migrate <code>missionConfig.lua</code> alone.</td>
 </tr>
 <tr>
 <td><strong>Module log levels</strong></td>
 <td>Set per-module by assigning <code>veafXxx.LogLevel</code> before init</td>
 <td><code>mission.yaml</code> → <code>lua_modules: → MODULE_ID: logLevel:</code> or <code>--log-modules</code> CLI flag</td>
 </tr>
-<tr>
-<td><strong>Version control</strong></td>
-<td>Binary <code>.miz</code> committed to Git</td>
-<td>Source files (<code>src/</code>) committed; <code>.miz</code> is a build artifact</td>
-</tr>
 </tbody>
 </table>
 <h3 id="step-by-step-migration">Step-by-step Migration<a class="headerlink" href="#step-by-step-migration" title="Permanent link">&para;</a></h3>
-<h4 id="1-open-your-existing-v5-mission-folder">1. Open your existing v5 mission folder<a class="headerlink" href="#1-open-your-existing-v5-mission-folder" title="Permanent link">&para;</a></h4>
-<p>Navigate to the folder that already contains your v5 mission files — the one with <code>src/scripts/missionConfig.lua</code>, <code>src/radio/radioSettings.lua</code> (if you use presets), and similar v5 source files:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd </span><span class="n">C</span><span class="p">:\</span><span class="n">path</span><span class="p">\</span><span class="n">to</span><span class="p">\</span><span class="n">your-v5-mission-folder</span>
+<h4 id="1-create-a-new-mission-folder-and-copy-your-v5-source-files">1. Create a new mission folder and copy your v5 source files<a class="headerlink" href="#1-create-a-new-mission-folder-and-copy-your-v5-source-files" title="Permanent link">&para;</a></h4>
+<p>Create a new empty folder for your v6 mission project, then copy the <code>src/</code> folder from your v5 mission into it. Starting fresh prevents old v5 artefacts from interfering and gives you a single clean copy of your source files:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Adapt these paths to your setup</span>
+<span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="s2">&quot;C:\path\to\my-new-v6-mission&quot;</span>
+<span class="nb">Copy-Item</span> <span class="n">-Recurse</span> <span class="s2">&quot;C:\path\to\your-v5-mission\src&quot;</span> <span class="s2">&quot;C:\path\to\my-new-v6-mission\&quot;</span>
+<span class="nb">Set-Location</span> <span class="s2">&quot;C:\path\to\my-new-v6-mission&quot;</span>
 </code></pre></div>
 <blockquote>
-<p><strong>Do not create an empty folder.</strong> The converter reads your existing v5 source files directly.</p>
+<p><strong>Tip:</strong> You can also do this in Windows Explorer — create a new folder, copy the <code>src/</code> folder from your v5 mission into it, then open a terminal there.</p>
 </blockquote>
 <h4 id="2-install-veaf-mct-v6">2. Install VEAF MCT v6<a class="headerlink" href="#2-install-veaf-mct-v6" title="Permanent link">&para;</a></h4>
 <p>Copy <code>veaf-tools-updater.exe</code> into the folder and run:</p>

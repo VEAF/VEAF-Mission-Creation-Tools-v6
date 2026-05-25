@@ -896,21 +896,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#missionconfiglua-example-advanced" class="md-nav__link">
+  <a href="#mission-scriptlua-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        missionConfig.lua Example (advanced)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#full-configuration-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Full Configuration Example
+        mission-script.lua Example
       
     </span>
   </a>
@@ -1040,10 +1029,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#enabling-ctld-in-missionconfiglua" class="md-nav__link">
+  <a href="#enabling-ctld-in-mission-scriptlua" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enabling CTLD in missionConfig.lua
+        Enabling CTLD in mission-script.lua
       
     </span>
   </a>
@@ -1051,10 +1040,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#enabling-csar-in-missionconfiglua" class="md-nav__link">
+  <a href="#enabling-csar-in-mission-scriptlua" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enabling CSAR in missionConfig.lua
+        Enabling CSAR in mission-script.lua
       
     </span>
   </a>
@@ -2370,21 +2359,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#missionconfiglua-example-advanced" class="md-nav__link">
+  <a href="#mission-scriptlua-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        missionConfig.lua Example (advanced)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#full-configuration-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Full Configuration Example
+        mission-script.lua Example
       
     </span>
   </a>
@@ -2514,10 +2492,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#enabling-ctld-in-missionconfiglua" class="md-nav__link">
+  <a href="#enabling-ctld-in-mission-scriptlua" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enabling CTLD in missionConfig.lua
+        Enabling CTLD in mission-script.lua
       
     </span>
   </a>
@@ -2525,10 +2503,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#enabling-csar-in-missionconfiglua" class="md-nav__link">
+  <a href="#enabling-csar-in-mission-scriptlua" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enabling CSAR in missionConfig.lua
+        Enabling CSAR in mission-script.lua
       
     </span>
   </a>
@@ -2696,7 +2674,11 @@
 <hr />
 <h2 id="installation-and-updates">Installation and Updates<a class="headerlink" href="#installation-and-updates" title="Permanent link">&para;</a></h2>
 <h3 id="first-installation">First Installation<a class="headerlink" href="#first-installation" title="Permanent link">&para;</a></h3>
-<p>Download <code>veaf-tools-updater.exe</code> from the <a href="https://github.com/VEAF/VEAF-Mission-Creation-Tools/releases/tag/published-latest">latest GitHub release</a> and place it in your mission project folder, then run:</p>
+<p>Download <code>veaf-tools-updater.exe</code> from the <a href="https://github.com/VEAF/VEAF-Mission-Creation-Tools/releases/tag/published-latest">latest GitHub release</a> and place it in your mission project folder.</p>
+<blockquote>
+<p><strong>Windows security:</strong> Windows may block <code>.exe</code> files downloaded from the internet. If the file doesn't run, right-click it → <strong>Properties</strong> → <strong>General</strong> tab → check <strong>Unblock</strong> at the bottom → <strong>OK</strong>.</p>
+</blockquote>
+<p>Then run:</p>
 <div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools-updater</span><span class="p">.</span><span class="n">exe</span>
 </code></pre></div>
 <p>This downloads <code>published.zip</code>, verifies the SHA256 checksum, and extracts all scripts and tools into your mission folder.</p>
@@ -2752,14 +2734,14 @@
 <li>Copy your existing <code>.miz</code> file there</li>
 <li>Run <code>veaf-tools-updater.exe</code> to fetch all VEAF scripts</li>
 <li>Extract your mission: <code>veaf-tools.exe extract my-mission.miz</code></li>
-<li>Configure modules in <code>mission.yaml</code> and optionally <code>src/scripts/missionConfig.lua</code></li>
+<li>Configure modules in <code>mission.yaml</code> and optionally <code>src/scripts/mission-script.lua</code></li>
 </ol>
 <p>Recommended project layout:</p>
 <div class="highlight"><pre><span></span><code>MyMission/
 ├── src/
 │   ├── mission/                  # Extracted DCS mission data (from extract)
 │   ├── scripts/
-│   │   └── missionConfig.lua    # Your runtime Lua configuration (optional)
+│   │   └── mission-script.lua    # Your custom Lua code (optional)
 │   ├── presets.yaml             # Radio frequency presets
 │   ├── spawnables.yaml          # Predefined spawnable groups
 │   └── waypoints.yaml           # Bullseye / navigation points
@@ -2771,7 +2753,7 @@
 <hr />
 <h2 id="how-scripts-are-loaded">How Scripts Are Loaded<a class="headerlink" href="#how-scripts-are-loaded" title="Permanent link">&para;</a></h2>
 <p>The <code>build</code> command <strong>automatically injects</strong> a <code>DO SCRIPT FILE</code> trigger at mission start that loads all VEAF scripts. You do <strong>not</strong> need to manually add any trigger in the DCS Mission Editor.</p>
-<p>If you have a custom <code>src/scripts/missionConfig.lua</code>, it is also injected automatically by the builder.</p>
+<p>If you have a custom <code>src/scripts/mission-script.lua</code>, it is also injected automatically by the builder.</p>
 <h3 id="what-the-builder-does">What the builder does<a class="headerlink" href="#what-the-builder-does" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Reads <code>src/mission/</code> (the extracted DCS data)</li>
@@ -2784,9 +2766,9 @@
 <p>VEAF MCT has two configuration layers:</p>
 <ul>
 <li><strong><code>mission.yaml</code></strong> (at the project root) — build-time configuration: which modules to enable/disable, log levels, security settings, asset declarations</li>
-<li><strong><code>src/scripts/missionConfig.lua</code></strong> (optional) — runtime Lua code that runs at mission start, for advanced setup like custom aliases, QRA zones, combat zones, etc.</li>
+<li><strong><code>src/scripts/mission-script.lua</code></strong> (optional) — custom Lua code that runs at mission start: aliases, helper functions, third-party script setup (CTLD, CSAR). Module initialization and configuration are generated automatically from <code>mission.yaml</code>.</li>
 </ul>
-<p>For most missions, <code>mission.yaml</code> is sufficient. Use <code>missionConfig.lua</code> only when you need Lua-level control.</p>
+<p>For most missions, <code>mission.yaml</code> is sufficient. Use <code>mission-script.lua</code> only for custom Lua code that cannot be expressed in YAML.</p>
 <h3 id="missionyaml-example">mission.yaml Example<a class="headerlink" href="#missionyaml-example" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">mission</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My-Mission&quot;</span>
@@ -2804,52 +2786,18 @@
 <span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Arco-1</span><span class="nv"> </span><span class="s">(KC-135)&quot;</span>
 <span class="w">        </span><span class="nt">information</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Tacan</span><span class="nv"> </span><span class="s">64Y\nU290.50</span><span class="nv"> </span><span class="s">(20)&quot;</span>
 </code></pre></div>
-<h3 id="missionconfiglua-example-advanced">missionConfig.lua Example (advanced)<a class="headerlink" href="#missionconfiglua-example-advanced" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">-- Enable markers and basic spawn</span>
-<span class="nv">veafMarkers</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="nv">veafSpawn</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">refreshRadioMenu</span><span class="p">()</span>
-</code></pre></div>
-<h3 id="full-configuration-example">Full Configuration Example<a class="headerlink" href="#full-configuration-example" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">-- Security: restrict spawn commands to authenticated users</span>
-<span class="nv">veafSecurity</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<h3 id="mission-scriptlua-example">mission-script.lua Example<a class="headerlink" href="#mission-scriptlua-example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">-- mission-script.lua — custom mission-level code</span>
+<span class="c1">-- Module initialization is handled automatically by veaf-config.lua (generated from mission.yaml).</span>
+<span class="c1">-- Put custom aliases, helper functions, and third-party script setup here.</span>
 
-<span class="c1">-- Named points: pre-defined positions</span>
-<span class="nv">veafNamedPoints</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="c1">-- Example: custom shortcut alias</span>
+<span class="c1">-- VeafAlias:new():setName(&quot;cas1&quot;):setCommand(&quot;/_cas_start&quot;):register()</span>
 
-<span class="c1">-- Markers: intercept F10 map marker text</span>
-<span class="nv">veafMarkers</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-
-<span class="c1">-- Spawn: allow players to spawn units via markers</span>
-<span class="nv">veafSpawn</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-
-<span class="c1">-- CAS Mission: training CAS generator</span>
-<span class="nv">veafCasMission</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="nv">veafCasMission</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
-
-<span class="c1">-- Assets: tankers, AWACS, carriers</span>
-<span class="nv">veafAssets</span><span class="p">.</span><span class="py">Assets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Texaco&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Texaco (KC-135)&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">groupName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;KC-135 Texaco&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">disposable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Overlord&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Overlord (E-3A)&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">groupName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;E-3A Overlord&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">disposable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="p">}</span>
-<span class="nv">veafAssets</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-
-<span class="c1">-- Radio menu</span>
-<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">refreshRadioMenu</span><span class="p">()</span>
+<span class="c1">-- Example: CTLD third-party integration (see CTLD and CSAR Integration for full details)</span>
+<span class="c1">-- if ctld then ctld.initialize(function()</span>
+<span class="c1">--     -- ctld.hoverPickup = false</span>
+<span class="c1">-- end) end</span>
 </code></pre></div>
 <h3 id="security-levels">Security Levels<a class="headerlink" href="#security-levels" title="Permanent link">&para;</a></h3>
 <table>
@@ -2878,8 +2826,11 @@
 </tr>
 </tbody>
 </table>
-<p>Set passwords (SHA-1 hashes) in <code>missionconfig.lua</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">veafSecurity</span><span class="p">.</span><span class="py">password_L9</span><span class="p">[</span><span class="nv">sha1</span><span class="p">.</span><span class="nf">hex</span><span class="p">(</span><span class="s2">&quot;yourpassword&quot;</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<p>Set passwords (SHA-256 hashes) in <code>mission.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">security</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">disabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">password_hashes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&lt;SHA-256</span><span class="nv"> </span><span class="s">hash</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">your</span><span class="nv"> </span><span class="s">password&gt;&quot;</span>
 </code></pre></div>
 <hr />
 <h2 id="design-time-tools">Design-Time Tools<a class="headerlink" href="#design-time-tools" title="Permanent link">&para;</a></h2>
@@ -3023,15 +2974,17 @@
 </code></pre></div>
 <hr />
 <h2 id="ctld-and-csar-integration">CTLD and CSAR Integration<a class="headerlink" href="#ctld-and-csar-integration" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/ciribob/DCS-CTLD">CTLD</a> (Combat Troop Loading and Deployment) and <a href="https://github.com/ciribob/DCS-CSAR">CSAR</a> (Combat Search and Rescue) are third-party scripts that VEAF supports natively. VEAF monkey-patches their <code>initialize()</code> functions at startup, so you do not need to load or initialise them separately — just call them from <code>missionConfig.lua</code> using the standard VEAF pattern.</p>
+<p><a href="https://github.com/ciribob/DCS-CTLD">CTLD</a> (Combat Troop Loading and Deployment) and <a href="https://github.com/ciribob/DCS-CSAR">CSAR</a> (Combat Search and Rescue) are third-party scripts that VEAF supports natively. VEAF monkey-patches their <code>initialize()</code> functions at startup, so you do not need to load or initialise them separately — just call them from <code>mission-script.lua</code> using the standard VEAF pattern.</p>
 <h3 id="loading-order-in-the-dcs-trigger-chain">Loading order in the DCS trigger chain<a class="headerlink" href="#loading-order-in-the-dcs-trigger-chain" title="Permanent link">&para;</a></h3>
 <p>CTLD/CSAR scripts must be loaded before the VEAF scripts:</p>
-<div class="highlight"><pre><span></span><code>DO SCRIPT FILE → ctld.lua         (third-party)
-DO SCRIPT FILE → csar.lua         (third-party)
-DO SCRIPT FILE → veaf-scripts.lua (VEAF — triggers missionConfig.lua at end)
+<div class="highlight"><pre><span></span><code>DO SCRIPT FILE → ctld.lua          (third-party)
+DO SCRIPT FILE → csar.lua          (third-party)
+DO SCRIPT FILE → veaf-scripts.lua  (VEAF modules)
+DO SCRIPT FILE → veaf-config.lua   (generated from mission.yaml)
+DO SCRIPT FILE → mission-script.lua (your custom code)
 </code></pre></div>
 <p>When <code>veaf-scripts.lua</code> loads, it detects the presence of <code>ctld</code> and <code>csar</code> global tables and wraps their <code>initialize()</code> functions, applying VEAF defaults before calling the real initialiser.</p>
-<h3 id="enabling-ctld-in-missionconfiglua">Enabling CTLD in missionConfig.lua<a class="headerlink" href="#enabling-ctld-in-missionconfiglua" title="Permanent link">&para;</a></h3>
+<h3 id="enabling-ctld-in-mission-scriptlua">Enabling CTLD in mission-script.lua<a class="headerlink" href="#enabling-ctld-in-mission-scriptlua" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kr">if</span><span class="w"> </span><span class="nv">ctld</span><span class="w"> </span><span class="kr">then</span>
 <span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">initializeCTLD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">initializeCTLD</span><span class="w"> </span><span class="kr">then</span>
@@ -3050,7 +3003,7 @@ DO SCRIPT FILE → veaf-scripts.lua (VEAF — triggers missionConfig.lua at end)
 <span class="kr">end</span>
 </code></pre></div>
 <p>The <code>configurationCallback</code> is called immediately before the real <code>ctld.initialize()</code> — set CTLD properties there, not before.</p>
-<h3 id="enabling-csar-in-missionconfiglua">Enabling CSAR in missionConfig.lua<a class="headerlink" href="#enabling-csar-in-missionconfiglua" title="Permanent link">&para;</a></h3>
+<h3 id="enabling-csar-in-mission-scriptlua">Enabling CSAR in mission-script.lua<a class="headerlink" href="#enabling-csar-in-mission-scriptlua" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kr">if</span><span class="w"> </span><span class="nv">csar</span><span class="w"> </span><span class="kr">then</span>
 <span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">initializeCSAR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">initializeCSAR</span><span class="w"> </span><span class="kr">then</span>

@@ -896,21 +896,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#exemple-missionconfiglua-avancé" class="md-nav__link">
+  <a href="#exemple-mission-scriptlua" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exemple missionConfig.lua (avancé)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exemple-de-configuration-complète" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exemple de configuration complète
+        Exemple mission-script.lua
       
     </span>
   </a>
@@ -2270,21 +2259,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#exemple-missionconfiglua-avancé" class="md-nav__link">
+  <a href="#exemple-mission-scriptlua" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exemple missionConfig.lua (avancé)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exemple-de-configuration-complète" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exemple de configuration complète
+        Exemple mission-script.lua
       
     </span>
   </a>
@@ -2494,7 +2472,11 @@
 <hr />
 <h2 id="installation-et-mises-à-jour">Installation et mises à jour<a class="headerlink" href="#installation-et-mises-à-jour" title="Permanent link">&para;</a></h2>
 <h3 id="première-installation">Première installation<a class="headerlink" href="#première-installation" title="Permanent link">&para;</a></h3>
-<p>Téléchargez <code>veaf-tools-updater.exe</code> depuis la <a href="https://github.com/VEAF/VEAF-Mission-Creation-Tools/releases/tag/published-latest">dernière release GitHub</a> et placez-le dans le dossier de votre projet de mission, puis exécutez :</p>
+<p>Téléchargez <code>veaf-tools-updater.exe</code> depuis la <a href="https://github.com/VEAF/VEAF-Mission-Creation-Tools/releases/tag/published-latest">dernière release GitHub</a> et placez-le dans le dossier de votre projet de mission.</p>
+<blockquote>
+<p><strong>Sécurité Windows :</strong> Windows peut bloquer les fichiers <code>.exe</code> téléchargés depuis Internet. Si le fichier ne s'exécute pas, cliquez droit dessus → <strong>Propriétés</strong> → onglet <strong>Général</strong> → cochez <strong>Débloquer</strong> en bas de la fenêtre → <strong>OK</strong>.</p>
+</blockquote>
+<p>Puis exécutez :</p>
 <div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">veaf-tools-updater</span><span class="p">.</span><span class="n">exe</span>
 </code></pre></div>
 <p>Cela télécharge <code>published.zip</code>, vérifie le checksum SHA256 et extrait tous les scripts et outils dans votre dossier de mission.</p>
@@ -2550,14 +2532,14 @@
 <li>Copiez votre fichier <code>.miz</code> existant dedans</li>
 <li>Exécutez <code>veaf-tools-updater.exe</code> pour récupérer tous les scripts VEAF</li>
 <li>Extrayez votre mission : <code>veaf-tools.exe extract ma-mission.miz</code></li>
-<li>Configurez les modules dans <code>mission.yaml</code> et éventuellement <code>src/scripts/missionConfig.lua</code></li>
+<li>Configurez les modules dans <code>mission.yaml</code> et éventuellement <code>src/scripts/mission-script.lua</code></li>
 </ol>
 <p>Structure de projet recommandée :</p>
 <div class="highlight"><pre><span></span><code>MyMission/
 ├── src/
 │   ├── mission/                  # Données DCS extraites (via extract)
 │   ├── scripts/
-│   │   └── missionConfig.lua    # Configuration Lua runtime (optionnel)
+│   │   └── mission-script.lua    # Votre code Lua personnalisé (optionnel)
 │   ├── presets.yaml             # Préréglages de fréquences radio
 │   ├── spawnables.yaml          # Groupes spawnable prédéfinis
 │   └── waypoints.yaml           # Bullseye / points de navigation
@@ -2569,7 +2551,7 @@
 <hr />
 <h2 id="comment-les-scripts-sont-chargés">Comment les scripts sont chargés<a class="headerlink" href="#comment-les-scripts-sont-chargés" title="Permanent link">&para;</a></h2>
 <p>La commande <code>build</code> <strong>injecte automatiquement</strong> un trigger <code>DO SCRIPT FILE</code> au démarrage de la mission qui charge tous les scripts VEAF. Vous n'avez <strong>pas</strong> besoin d'ajouter manuellement un trigger dans l'éditeur de missions DCS.</p>
-<p>Si vous avez un <code>src/scripts/missionConfig.lua</code> personnalisé, il est aussi injecté automatiquement par le builder.</p>
+<p>Si vous avez un <code>src/scripts/mission-script.lua</code> personnalisé, il est aussi injecté automatiquement par le builder.</p>
 <h3 id="ce-que-fait-le-builder">Ce que fait le builder<a class="headerlink" href="#ce-que-fait-le-builder" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Lit <code>src/mission/</code> (les données DCS extraites)</li>
@@ -2582,9 +2564,9 @@
 <p>VEAF MCT a deux niveaux de configuration :</p>
 <ul>
 <li><strong><code>mission.yaml</code></strong> (à la racine du projet) — configuration de build : quels modules activer/désactiver, niveaux de log, sécurité, déclarations d'assets</li>
-<li><strong><code>src/scripts/missionConfig.lua</code></strong> (optionnel) — code Lua runtime exécuté au démarrage de la mission, pour les configurations avancées comme les alias personnalisés, zones QRA, zones de combat, etc.</li>
+<li><strong><code>src/scripts/mission-script.lua</code></strong> (optionnel) — code Lua personnalisé exécuté au démarrage de la mission : alias, fonctions utilitaires, intégration de scripts tiers (CTLD, CSAR). L'initialisation et la configuration des modules sont générées automatiquement depuis <code>mission.yaml</code>.</li>
 </ul>
-<p>Pour la plupart des missions, <code>mission.yaml</code> suffit. N'utilisez <code>missionConfig.lua</code> que lorsque vous avez besoin de contrôle au niveau Lua.</p>
+<p>Pour la plupart des missions, <code>mission.yaml</code> suffit. N'utilisez <code>mission-script.lua</code> que pour du code Lua personnalisé qui ne peut pas être exprimé en YAML.</p>
 <h3 id="exemple-missionyaml">Exemple mission.yaml<a class="headerlink" href="#exemple-missionyaml" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">mission</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My-Mission&quot;</span>
@@ -2602,52 +2584,18 @@
 <span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Arco-1</span><span class="nv"> </span><span class="s">(KC-135)&quot;</span>
 <span class="w">        </span><span class="nt">information</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Tacan</span><span class="nv"> </span><span class="s">64Y\nU290.50</span><span class="nv"> </span><span class="s">(20)&quot;</span>
 </code></pre></div>
-<h3 id="exemple-missionconfiglua-avancé">Exemple missionConfig.lua (avancé)<a class="headerlink" href="#exemple-missionconfiglua-avancé" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">-- Activer les marqueurs et le spawn de base</span>
-<span class="nv">veafMarkers</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="nv">veafSpawn</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">refreshRadioMenu</span><span class="p">()</span>
-</code></pre></div>
-<h3 id="exemple-de-configuration-complète">Exemple de configuration complète<a class="headerlink" href="#exemple-de-configuration-complète" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">-- Sécurité : restreindre les commandes spawn aux utilisateurs authentifiés</span>
-<span class="nv">veafSecurity</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<h3 id="exemple-mission-scriptlua">Exemple mission-script.lua<a class="headerlink" href="#exemple-mission-scriptlua" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">-- mission-script.lua — code Lua personnalisé au niveau mission</span>
+<span class="c1">-- L&#39;initialisation des modules est gérée automatiquement par veaf-config.lua (généré depuis mission.yaml).</span>
+<span class="c1">-- Mettez ici vos alias, fonctions utilitaires et intégrations de scripts tiers.</span>
 
-<span class="c1">-- Points nommés : positions prédéfinies</span>
-<span class="nv">veafNamedPoints</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+<span class="c1">-- Exemple : alias de raccourci personnalisé</span>
+<span class="c1">-- VeafAlias:new():setName(&quot;cas1&quot;):setCommand(&quot;/_cas_start&quot;):register()</span>
 
-<span class="c1">-- Marqueurs : intercepter le texte des marqueurs sur la carte F10</span>
-<span class="nv">veafMarkers</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-
-<span class="c1">-- Spawn : permettre aux joueurs de faire apparaître des unités via les marqueurs</span>
-<span class="nv">veafSpawn</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-
-<span class="c1">-- Mission CAS : générateur de CAS d&#39;entraînement</span>
-<span class="nv">veafCasMission</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="nv">veafCasMission</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
-
-<span class="c1">-- Actifs : tankers, AWACS, carriers</span>
-<span class="nv">veafAssets</span><span class="p">.</span><span class="py">Assets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Texaco&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Texaco (KC-135)&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">groupName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;KC-135 Texaco&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">disposable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Overlord&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Overlord (E-3A)&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">groupName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;E-3A Overlord&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">disposable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="p">}</span>
-<span class="nv">veafAssets</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-
-<span class="c1">-- Menu radio</span>
-<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="nv">veafRadio</span><span class="p">.</span><span class="nf">refreshRadioMenu</span><span class="p">()</span>
+<span class="c1">-- Exemple : intégration CTLD (voir la section Intégration CTLD et CSAR pour les détails)</span>
+<span class="c1">-- if ctld then ctld.initialize(function()</span>
+<span class="c1">--     -- ctld.hoverPickup = false</span>
+<span class="c1">-- end) end</span>
 </code></pre></div>
 <h3 id="niveaux-de-sécurité">Niveaux de sécurité<a class="headerlink" href="#niveaux-de-sécurité" title="Permanent link">&para;</a></h3>
 <table>
@@ -2676,8 +2624,11 @@
 </tr>
 </tbody>
 </table>
-<p>Définissez les mots de passe (hachages SHA-1) dans <code>missionconfig.lua</code> :</p>
-<div class="highlight"><pre><span></span><code><span class="nv">veafSecurity</span><span class="p">.</span><span class="py">password_L9</span><span class="p">[</span><span class="nv">sha1</span><span class="p">.</span><span class="nf">hex</span><span class="p">(</span><span class="s2">&quot;votremotdepasse&quot;</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<p>Définissez les mots de passe (hachages SHA-256) dans <code>mission.yaml</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="nt">security</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">disabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">password_hashes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&lt;hachage</span><span class="nv"> </span><span class="s">SHA-256</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">votre</span><span class="nv"> </span><span class="s">mot</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">passe&gt;&quot;</span>
 </code></pre></div>
 <hr />
 <h2 id="outils-de-conception">Outils de conception<a class="headerlink" href="#outils-de-conception" title="Permanent link">&para;</a></h2>
