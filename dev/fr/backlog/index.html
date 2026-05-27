@@ -1810,6 +1810,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#lot-20--deepening-architecture-deepening-python--lua" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lot 20 — DEEPENING: Architecture deepening Python + Lua
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lot-updater-fix--séparation-updater--prepare--workflow-v5" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2060,8 +2071,13 @@
 <td>⬜</td>
 </tr>
 <tr>
+<td>Lot 20 — DEEPENING</td>
+<td>~7h</td>
+<td>⬜</td>
+</tr>
+<tr>
 <td><strong>Total</strong></td>
-<td><strong>~133h30</strong></td>
+<td><strong>~140h30</strong></td>
 <td></td>
 </tr>
 </tbody>
@@ -2318,6 +2334,224 @@ Direct commits on <code>develop-v6</code> (no feature branch needed — no code 
 </tbody>
 </table>
 <p><strong>Estimated total: ~85 min (~1h30)</strong></p>
+<hr />
+<h2 id="lot-20--deepening-architecture-deepening-python--lua">Lot 20 — DEEPENING: Architecture deepening Python + Lua<a class="headerlink" href="#lot-20--deepening-architecture-deepening-python--lua" title="Permanent link">&para;</a></h2>
+<p><strong>Goal</strong>: Approfondir l'architecture sur 5 axes identifiés lors de la revue de session <code>develop-v6</code>.
+- Python : enrichir <code>DcsMission</code>, abstraire le traversal coalition/country/group, base class injectors, résolution config builder
+- Lua : migrer <code>veafGroundAI</code> vers <code>veafCommands</code>, restructurer la table d'options spawn
+<strong>Branch</strong>: une branche par ticket <code>feature/deep-xxx</code> → PR → <code>develop-v6</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Ticket</th>
+<th>File(s)</th>
+<th>Type</th>
+<th>Effort</th>
+<th>Depends on</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEEP-001</td>
+<td><code>Group</code> dataclass + <code>DcsMission.iter_groups()</code> + tests (<code>TestIterGroups</code> synthétique + smoke test sur <code>test.miz</code>)</td>
+<td><code>miz_tools.py</code>, <code>__init__.py</code>, <code>test_miz_tools.py</code></td>
+<td>feat</td>
+<td>60 min</td>
+<td>—</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>DEEP-002</td>
+<td><code>DcsMission.get/set_weather()</code> + <code>get/set_options()</code> + migrer <code>_set_mission_weather()</code> dans <code>WeatherInjectorWorker</code></td>
+<td><code>miz_tools.py</code>, <code>weather_injector_worker.py</code></td>
+<td>feat</td>
+<td>30 min</td>
+<td>—</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>DEEP-003</td>
+<td>Supprimer le traversal dupliqué (coalition/country/group + <code>human_pilot</code>) des 3 injectors ; utiliser <code>mission.iter_groups()</code></td>
+<td><code>presets_injector_worker.py</code>, <code>waypoints_injector_worker.py</code>, <code>aircrafts_injector_worker.py</code></td>
+<td>chore</td>
+<td>60 min</td>
+<td>DEEP-001</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>DEEP-004</td>
+<td><code>GroupInjectorWorker</code> base class + normaliser <code>AircraftGroupsInjectorWorker.inject(mode)</code> → <code>.work()</code> avec <code>mode</code> dans <code>__init__</code></td>
+<td><code>veaf_libs/</code> (nouveau fichier), 3 injectors, <code>build.py</code></td>
+<td>feat</td>
+<td>60 min</td>
+<td>DEEP-001, DEEP-003</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>DEEP-005</td>
+<td>Migrer <code>veafGroundAI.onEventMarkChange</code> vers <code>veafCommands.registerCommandHandler</code> ; supprimer <code>veafMarkers.registerEventHandler(MarkerChange, ...)</code> direct</td>
+<td><code>veafGroundAI.lua</code>, <code>veafCommands.lua</code></td>
+<td>chore</td>
+<td>30 min</td>
+<td>—</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>DEEP-006</td>
+<td>Refactor structure <code>veafSpawnParser.markTextAnalysis()</code> — defaults communs en tête, defaults spécifiques au type dans leur bloc IF/ELSEIF ; aucun changement comportemental</td>
+<td><code>veafSpawnParser.lua</code></td>
+<td>chore</td>
+<td>60 min</td>
+<td>—</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>DEEP-007</td>
+<td>Déplacer la résolution de config (<code>dev_mode</code>, <code>scripts_path</code>, <code>log_modules</code> → <code>lua_modules</code>) dans <code>MissionBuilderWorker.__init__()</code> ; <code>build.py</code> ne fait que parser les args CLI et appeler le worker</td>
+<td><code>mission_builder_worker.py</code>, <code>build.py</code></td>
+<td>chore</td>
+<td>60 min</td>
+<td>—</td>
+<td>⬜</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raw total: 360 min → estimated (×1.15): ~414 min (~6h54)</strong></p>
+<details>
+<summary>Ticket details</summary>
+
+**DEEP-001 — `Group` dataclass + `iter_groups()`**
+
+Nouveau dataclass canonique `Group` dans `miz_tools.py` (avant `DcsMission`) :
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Group</span><span class="p">:</span>
+    <span class="n">group_dcs</span><span class="p">:</span> <span class="nb">dict</span>       <span class="c1"># raw DCS Lua dict — callers mutent directement</span>
+    <span class="n">aircraft_type</span><span class="p">:</span> <span class="nb">str</span>    <span class="c1"># &quot;helicopter&quot; | &quot;plane&quot;</span>
+    <span class="n">country</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">coalition</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">human_pilot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">unit_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+
+Nouvelle méthode `DcsMission.iter_groups() -> Iterator[Group]` : générateur traversant `mission_content["coalition"] → country → {"helicopter","plane"} → group`. Peuple `human_pilot` en scannant `unit.skill in ["Client", "Player"]`, `name` depuis `group["name"]`, `unit_type` depuis le premier `unit["type"]`.
+
+Tests ajoutés dans `TestIterGroups` :
+- synthétique : `DcsMission` avec `mission_content` construit à la main → assert nombre de groups, `human_pilot`, `aircraft_type`, `coalition`
+- smoke test : charger `test/veaf-tools/test.miz` → assert ≥ 1 group retourné
+
+`Group` exporté depuis `mission_tools/__init__.py`.
+
+---
+
+**DEEP-002 — `get/set_weather()` + `get/set_options()`**
+
+Méthodes ajoutées à `DcsMission` :
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_weather</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mission_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weather&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mission_content</span> <span class="k">else</span> <span class="kc">None</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">set_weather</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mission_content</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mission_content</span><span class="p">[</span><span class="s2">&quot;weather&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_options</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">options_content</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">set_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">options_content</span> <span class="o">=</span> <span class="n">data</span>
+</code></pre></div>
+
+`WeatherInjectorWorker._set_mission_weather()` utilise `self.mission_data.set_weather(weather)` au lieu de l'accès direct au dict.
+
+Note : `_set_mission_time()` et `_set_mission_date()` gardent leurs accès directs (hors scope DEEP-002).
+
+---
+
+**DEEP-003 — Supprimer traversal dupliqué des injectors**
+
+Dans chaque injector (`presets`, `waypoints`, `aircrafts`) :
+- Supprimer la classe `Group` locale (identique à celle de `mission_tools`)
+- Supprimer les méthodes `add_group()`, `_process_coalition()`, `_process_country()`, `_process_aircraft_type()` (ou leurs équivalents)
+- Réécrire la boucle principale pour itérer via `self.dcs_mission.iter_groups()`
+- `waypoints_injector_worker.py` : `group.category` → `group.aircraft_type` (les deux champs étaient identiques, cf. ligne 158 : `category=aircraft_type`)
+
+---
+
+**DEEP-004 — `GroupInjectorWorker` base class**
+
+Nouveau `GroupInjectorWorker(BaseWorker, ABC)` dans `veaf_libs/group_injector_worker.py` :
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GroupInjectorWorker</span><span class="p">(</span><span class="n">BaseWorker</span><span class="p">,</span> <span class="n">ABC</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">input_mission</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">output_mission</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span><span class="p">):</span> <span class="o">...</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="p">:</span> <span class="n">Group</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">work</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read miz, iter_groups, process each group, write miz.&quot;&quot;&quot;</span>
+        <span class="o">...</span>
+</code></pre></div>
+
+`PresetsInjectorWorker`, `WaypointsInjectorWorker`, `AircraftGroupsInjectorWorker` héritent de `GroupInjectorWorker`.
+
+`AircraftGroupsInjectorWorker.inject(mode=...)` → renommé `.work()`, `mode` passé dans `__init__`. Appel dans `build.py` mis à jour : `AircraftGroupsInjectorWorker(..., mode=aircraft_mode).work()`.
+
+Note : vérifier à l'implémentation si la logique inject-FROM-YAML de `AircraftGroupsInjectorWorker` s'intègre proprement dans le pattern `process_group` — adapter si besoin.
+
+---
+
+**DEEP-005 — `veafGroundAI` → `veafCommands`**
+
+Dans `veafCommands.lua` : ajouter `veafCommands.PRIORITY_GROUNDAI = 62` (entre MOVE=60 et RADIO=70).
+
+Dans `veafGroundAI.lua`, fonction `initialize()`, remplacer :
+<div class="highlight"><pre><span></span><code><span class="nv">veafMarkers</span><span class="p">.</span><span class="nf">registerEventHandler</span><span class="p">(</span><span class="nv">veafMarkers</span><span class="p">.</span><span class="py">MarkerChange</span><span class="p">,</span><span class="w"> </span><span class="nv">veafGroundAI</span><span class="p">.</span><span class="py">onEventMarkChange</span><span class="p">)</span>
+</code></pre></div>
+par :
+<div class="highlight"><pre><span></span><code><span class="nv">veafCommands</span><span class="p">.</span><span class="nf">registerCommandHandler</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">pos</span><span class="p">,</span><span class="w"> </span><span class="nv">event</span><span class="p">,</span><span class="w"> </span><span class="nv">bypass</span><span class="p">,</span><span class="w"> </span><span class="nv">fromMarker</span><span class="p">,</span><span class="w"> </span><span class="nv">groups</span><span class="p">,</span><span class="w"> </span><span class="nv">route</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">fromMarker</span><span class="w"> </span><span class="kr">then</span><span class="w"> </span><span class="kr">return</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">veafGroundAI</span><span class="p">.</span><span class="nf">onEventMarkChange</span><span class="p">(</span><span class="nv">pos</span><span class="p">,</span><span class="w"> </span><span class="nv">event</span><span class="p">)</span>
+<span class="kr">end</span><span class="p">,</span><span class="w"> </span><span class="nv">veafCommands</span><span class="p">.</span><span class="py">PRIORITY_GROUNDAI</span><span class="p">)</span>
+</code></pre></div>
+
+La fonction `veafGroundAI.onEventMarkChange` reste publique. Quality gate : stylua + luacheck + test suite Lua.
+
+---
+
+**DEEP-006 — Restructurer table options spawn**
+
+Dans `veafSpawnParser.markTextAnalysis()` (lignes 33–234) :
+1. Bloc d'init en tête : garder uniquement les **champs communs** (`czName`, `name`, `unitName`, `country`, `side`, `altitude`, `altitudedelta`, `heading`, `radius`, `multiplier`, `password`, `repeatCount`, `repeatDelay`, `delayedStart`, `hiddenOnMFD`, `AlarmState`, `disperse`).
+2. Déplacer les champs spécifiques dans leur bloc IF/ELSEIF de détection, groupés par domaine (`-- ground`, `-- air`, `-- effects`, `-- drawing`, `-- mm`).
+
+Aucun changement comportemental. Quality gate : stylua + luacheck + test suite Lua.
+
+---
+
+**DEEP-007 — Config resolution dans `MissionBuilderWorker`**
+
+Déplacer de `build.py` vers `MissionBuilderWorker.__init__()` :
+- Lecture de `mission.yaml` (si `mission_folder / "mission.yaml"` existe)
+- Résolution priorité CLI > YAML > défaut : `dev_mode`, `scripts_path`
+- Transformation `log_modules` → liste de modules à silencer
+- Extraction `lua_modules`, `global_log_level`, `pipeline_cfg` depuis YAML
+
+Nouveaux paramètres du `__init__` : `dev_mode_override: bool | None = None`, `scripts_path_override: str | Path | None = None`, `log_modules_filter: str | None = None`.
+
+Reste dans `build.py` (préoccupations CLI uniquement) :
+- `_update_build_config_in_yaml()` (persistance préférences utilisateur)
+- Validation de l'existence du dossier mission
+- Résolution chemin de sortie (`p_output_mission`)
+- Orchestration pipeline (presets, waypoints, aircraft, weather)
+
+`build.py` passe de ~180 lignes à ~100 lignes.
+
+</details>
+
 <hr />
 <h2 id="lot-updater-fix--séparation-updater--prepare--workflow-v5">Lot UPDATER-FIX — Séparation updater / prepare / workflow v5<a class="headerlink" href="#lot-updater-fix--séparation-updater--prepare--workflow-v5" title="Permanent link">&para;</a></h2>
 <p><strong>Goal</strong>: Corriger l'architecture updater → ne plus créer de fichiers <code>src/</code> par défaut. <code>prepare</code> est la commande dédiée pour initialiser un nouveau dossier. Supprimer <code>build.cmd</code> du toolkit v6. Corriger la doc MIGRATION_GUIDE (partir du dossier v5 existant, pas d'un dossier vide).
