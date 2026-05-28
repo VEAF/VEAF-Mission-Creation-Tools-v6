@@ -1469,34 +1469,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../scripts/veafHoundElintHelper.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    veafHoundElintHelper
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../scripts/veafInterpreter/" class="md-nav__link">
         
   
@@ -2631,7 +2603,7 @@
 <li><strong>Pre-built mission types</strong> — CAS, transport, carrier ops, QRA, air waves, combat zones</li>
 <li><strong>Asset management</strong> — tankers, AWACS, carriers with automatic state tracking and radio menus</li>
 <li><strong>Named points</strong> — reusable map positions with optional ATC/TACAN services</li>
-<li><strong>Integrations</strong> — Skynet IADS, Hound ELINT, CTLD/CSAR</li>
+<li><strong>Integrations</strong> — Skynet IADS, CTLD/CSAR</li>
 </ul>
 <hr />
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
@@ -2937,7 +2909,7 @@
 </tr>
 <tr>
 <td>Integrations</td>
-<td><a href="../scripts/veafSkynetIadsHelper/">veafSkynetIadsHelper</a>, <a href="scripts/veafHoundElintHelper.md">veafHoundElintHelper</a></td>
+<td><a href="../scripts/veafSkynetIadsHelper/">veafSkynetIadsHelper</a></td>
 </tr>
 </tbody>
 </table>
@@ -3054,11 +3026,12 @@ DO SCRIPT FILE → mission-script.lua (your custom code)
 </tbody>
 </table>
 <h3 id="switching-log-levels">Switching log levels<a class="headerlink" href="#switching-log-levels" title="Permanent link">&para;</a></h3>
-<p>In the DCS Mission Editor, find the <code>DO SCRIPT FILE</code> trigger that loads <code>veaf-scripts.lua</code> and change the file name:</p>
-<div class="highlight"><pre><span></span><code>DO SCRIPT FILE: published/veaf-scripts.lua       → normal
-DO SCRIPT FILE: published/veaf-scripts-trace.lua → full trace
+<p>Set <code>logLevel</code> per module in <code>mission.yaml</code>, then rebuild:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">lua_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">SPAWN</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debug</span><span class="w">   </span><span class="c1"># trace | debug | info | warning | error</span>
 </code></pre></div>
-<p>Rebuild the mission after this change.</p>
+<p><code>veaf-tools.exe build</code> regenerates <code>veaf-config.lua</code> from <code>mission.yaml</code>. For a quick change without rebuilding, edit <code>veaf-config.lua</code> directly — it is a generated file so your changes will be overwritten on the next build.</p>
 <h3 id="reading-the-log">Reading the log<a class="headerlink" href="#reading-the-log" title="Permanent link">&para;</a></h3>
 <p>We recommend <a href="https://klogg.filimonov.dev/">Klogg</a> — a fast log viewer with regex highlighting. Load <code>dcs.log</code> and filter on <code>VEAF</code> to see only VEAF messages. The VEAF Discord shares a Klogg highlight profile that colour-codes log levels.</p>
 <hr />

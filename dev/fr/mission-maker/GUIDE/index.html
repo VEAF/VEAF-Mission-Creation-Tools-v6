@@ -1006,6 +1006,45 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#journalisation-de-débogage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Journalisation de débogage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Journalisation de débogage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changer-le-niveau-de-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changer le niveau de log
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lire-le-journal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lire le journal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ressources" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1349,34 +1388,6 @@
     
   
     veafGrass
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../mission-maker/scripts/veafHoundElintHelper.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    veafHoundElintHelper
   
 
     
@@ -2369,6 +2380,45 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#journalisation-de-débogage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Journalisation de débogage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Journalisation de débogage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changer-le-niveau-de-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changer le niveau de log
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lire-le-journal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lire le journal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ressources" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2429,7 +2479,7 @@
 <li><strong>Types de missions préconstruits</strong> — CAS, transport, opérations carrier, QRA, vagues aériennes, zones de combat</li>
 <li><strong>Gestion des actifs</strong> — tankers, AWACS, carriers avec suivi d'état automatique et menus radio</li>
 <li><strong>Points nommés</strong> — positions cartographiques réutilisables avec services ATC/TACAN optionnels</li>
-<li><strong>Intégrations</strong> — Skynet IADS, Hound ELINT, CTLD/CSAR</li>
+<li><strong>Intégrations</strong> — Skynet IADS, CTLD/CSAR</li>
 </ul>
 <hr />
 <h2 id="prérequis">Prérequis<a class="headerlink" href="#prérequis" title="Permanent link">&para;</a></h2>
@@ -2735,7 +2785,7 @@
 </tr>
 <tr>
 <td>Intégrations</td>
-<td><a href="../scripts/veafSkynetIadsHelper/">veafSkynetIadsHelper</a>, <a href="scripts/veafHoundElintHelper.md">veafHoundElintHelper</a></td>
+<td><a href="../scripts/veafSkynetIadsHelper/">veafSkynetIadsHelper</a></td>
 </tr>
 </tbody>
 </table>
@@ -2770,6 +2820,44 @@
 <span class="w">  </span><span class="p">:</span><span class="nf">setMinimumPlayersForWave</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
 </code></pre></div>
+<hr />
+<h2 id="journalisation-de-débogage">Journalisation de débogage<a class="headerlink" href="#journalisation-de-débogage" title="Permanent link">&para;</a></h2>
+<p>Tous les scripts VEAF écrivent dans le journal DCS (<code>Saved Games\DCS\Logs\dcs.log</code>). Trois niveaux de journalisation sont disponibles, chacun avec son propre script de chargement :</p>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Niveau</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>veaf-scripts.lua</code></td>
+<td>Normal (info + avertissements)</td>
+<td>Missions en production</td>
+</tr>
+<tr>
+<td><code>veaf-scripts-trace.lua</code></td>
+<td>Trace (tous les messages)</td>
+<td>Débogage approfondi</td>
+</tr>
+<tr>
+<td><code>veaf-scripts-trace-with-events.lua</code></td>
+<td>Trace + événements DCS</td>
+<td>Débogage des handlers d'événements</td>
+</tr>
+</tbody>
+</table>
+<h3 id="changer-le-niveau-de-log">Changer le niveau de log<a class="headerlink" href="#changer-le-niveau-de-log" title="Permanent link">&para;</a></h3>
+<p>Définissez <code>logLevel</code> par module dans <code>mission.yaml</code>, puis reconstruisez :</p>
+<div class="highlight"><pre><span></span><code><span class="nt">lua_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">SPAWN</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debug</span><span class="w">   </span><span class="c1"># trace | debug | info | warning | error</span>
+</code></pre></div>
+<p><code>veaf-tools.exe build</code> régénère <code>veaf-config.lua</code> depuis <code>mission.yaml</code>. Pour un changement rapide sans reconstruire, éditez directement <code>veaf-config.lua</code> — c'est un fichier généré, donc vos modifications seront écrasées au prochain build.</p>
+<h3 id="lire-le-journal">Lire le journal<a class="headerlink" href="#lire-le-journal" title="Permanent link">&para;</a></h3>
+<p>Nous recommandons <a href="https://klogg.filimonov.dev/">Klogg</a> — un visualiseur de logs rapide avec surligneur regex. Chargez <code>dcs.log</code> et filtrez sur <code>VEAF</code> pour ne voir que les messages VEAF. Le Discord VEAF partage un profil de surligneur Klogg qui code les niveaux de log par couleur.</p>
 <hr />
 <h2 id="ressources">Ressources<a class="headerlink" href="#ressources" title="Permanent link">&para;</a></h2>
 <ul>

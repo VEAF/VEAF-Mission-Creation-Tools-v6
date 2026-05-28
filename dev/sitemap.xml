@@ -43,20 +43,6 @@
         <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devfr/TOOLS_REFERENCE/"/>
     </url>
     <url>
-        <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/backlog-archive/</loc>
-        <lastmod>2026-05-28</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/backlog-archive/"/>
-        <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devfr/backlog-archive/"/>
-    </url>
-    <url>
-        <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/backlog/</loc>
-        <lastmod>2026-05-28</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/backlog/"/>
-        <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devfr/backlog/"/>
-    </url>
-    <url>
         <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/developer/</loc>
         <lastmod>2026-05-28</lastmod>
         <changefreq>daily</changefreq>
@@ -293,20 +279,6 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/TOOLS_REFERENCE/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devTOOLS_REFERENCE/"/>
-    </url>
-    <url>
-        <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/backlog-archive/</loc>
-        <lastmod>2026-05-28</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/backlog-archive/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devbacklog-archive/"/>
-    </url>
-    <url>
-        <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/backlog/</loc>
-        <lastmod>2026-05-28</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="fr" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/backlog/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/devbacklog/"/>
     </url>
     <url>
         <loc>https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/fr/developer/</loc>

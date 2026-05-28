@@ -1022,34 +1022,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../mission-maker/scripts/veafHoundElintHelper.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    veafHoundElintHelper
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../mission-maker/scripts/veafInterpreter/" class="md-nav__link">
         
   
@@ -2510,6 +2482,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#language-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Language Detection
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3372,6 +3355,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#language-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Language Detection
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4030,6 +4024,17 @@ A: No (can skip with <code>--no-verify-checksum</code>), but it's strongly recom
 <hr />
 <p><strong>Happy releasing!</strong> 🚀</p>
 <p>For more technical details, see the source code or GitHub repository.</p>
+<hr />
+<h2 id="language-detection">Language Detection<a class="headerlink" href="#language-detection" title="Permanent link">&para;</a></h2>
+<p><code>veaf-tools.exe</code> and <code>veaf-tools-updater.exe</code> display messages in your OS language automatically — no setup required. The detection order is:</p>
+<ol>
+<li><code>--lang</code> CLI option</li>
+<li><code>VEAF_LANG</code> environment variable</li>
+<li><code>~/veafmct.yaml</code> → <code>lang:</code> key</li>
+<li>OS locale (Windows registry / system locale on Linux–macOS)</li>
+<li><code>en</code> (built-in fallback)</li>
+</ol>
+<p>Supported languages: English (<code>en</code>), French (<code>fr</code>). See <a href="../mission-maker/GUIDE/#global-user-configuration">Language Configuration</a> for full details.</p>
 
 
 
