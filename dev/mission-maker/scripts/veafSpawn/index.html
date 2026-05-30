@@ -342,7 +342,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../LUA_API_REFERENCE/" class="md-tabs__link">
+        <a href="../../../MISSION_YAML_REFERENCE/" class="md-tabs__link">
           
   
   
@@ -1857,6 +1857,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../MISSION_YAML_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    mission.yaml Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PIPELINE_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../LUA_API_REFERENCE/" class="md-nav__link">
         
   
@@ -2268,7 +2324,19 @@
 _spawn unit, name F-16C, group 2, hdg 180, alt 20000
 _spawn unit, name T-80, group 4, hdg 270, spacing 50
 </code></pre></div>
-<p>Options: <code>name</code>, <code>group</code>, <code>hdg</code>, <code>alt</code>, <code>speed</code>, <code>side</code>, <code>country</code>, <code>skill</code>, <code>spacing</code>, <code>immortal</code>.</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>name</code> — unit type</li>
+<li><code>group</code> — number of units</li>
+<li><code>hdg</code> — heading (degrees)</li>
+<li><code>alt</code> — altitude (feet)</li>
+<li><code>speed</code> — speed (knots)</li>
+<li><code>side</code> — coalition override</li>
+<li><code>country</code> — country override</li>
+<li><code>skill</code> — AI skill level</li>
+<li><code>spacing</code> — unit spacing (meters)</li>
+<li><code>immortal</code> — make units invulnerable</li>
+</ul>
 <h3 id="spawn-a-predefined-group">Spawn a predefined group<a class="headerlink" href="#spawn-a-predefined-group" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>_spawn group, name [GROUP_NAME]
 </code></pre></div>
@@ -2276,21 +2344,48 @@ _spawn unit, name T-80, group 4, hdg 270, spacing 50
 <h3 id="spawn-a-cap-patrol">Spawn a CAP patrol<a class="headerlink" href="#spawn-a-cap-patrol" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>_spawn cap, name Su-27, alt 25000, capradius 20000
 </code></pre></div>
-<p>Options: <code>name</code>, <code>alt</code>, <code>hdg</code>, <code>speed</code>, <code>group</code>, <code>capradius</code>, <code>distance</code>.</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>name</code> — aircraft type</li>
+<li><code>alt</code> — patrol altitude (feet)</li>
+<li><code>hdg</code> — initial heading</li>
+<li><code>speed</code> — patrol speed (knots)</li>
+<li><code>group</code> — number of aircraft</li>
+<li><code>capradius</code> — CAP orbit radius (meters)</li>
+<li><code>distance</code> — distance from marker</li>
+</ul>
 <h3 id="spawn-an-afacjtac">Spawn an AFAC/JTAC<a class="headerlink" href="#spawn-an-afacjtac" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>_spawn afac, name A-10C, freq 133.0, mod AM, code 1688, alt 15000
 </code></pre></div>
-<p>Options: <code>name</code>, <code>freq</code>, <code>mod</code>, <code>code</code>, <code>alt</code>, <code>speed</code>, <code>immortal</code>.</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>name</code> — aircraft type</li>
+<li><code>freq</code> — radio frequency</li>
+<li><code>mod</code> — modulation (<code>AM</code> or <code>FM</code>)</li>
+<li><code>code</code> — laser code</li>
+<li><code>alt</code> — orbit altitude (feet)</li>
+<li><code>speed</code> — orbit speed (knots)</li>
+<li><code>immortal</code> — make unit invulnerable</li>
+</ul>
 <h3 id="spawn-a-convoy">Spawn a convoy<a class="headerlink" href="#spawn-a-convoy" title="Permanent link">&para;</a></h3>
 <p>Place two markers: one with the command (start), one as the destination.</p>
 <div class="highlight"><pre><span></span><code>_spawn convoy, dest [DEST_MARKER_NAME], speed 50, defense 2, armor 2, size 3
 </code></pre></div>
-<p>Options: <code>dest</code>, <code>speed</code>, <code>defense [0-5]</code>, <code>armor [0-5]</code>, <code>size [0-5]</code>, <code>patrol</code>, <code>offroad</code>.</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>dest</code> — destination marker name</li>
+<li><code>speed</code> — convoy speed (km/h)</li>
+<li><code>defense [0-5]</code> — air defense level</li>
+<li><code>armor [0-5]</code> — armor level</li>
+<li><code>size [0-5]</code> — number of vehicles</li>
+<li><code>patrol</code> — loop back to start</li>
+<li><code>offroad</code> — allow off-road movement</li>
+</ul>
 <h3 id="spawn-smoke">Spawn smoke<a class="headerlink" href="#spawn-smoke" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>_spawn smoke, color red
 _spawn smoke, color green, shells 5
 </code></pre></div>
-<p>Colors: <code>red</code>, <code>green</code>, <code>blue</code>, <code>white</code>, <code>orange</code>.</p>
+<p><strong>Colors:</strong> <code>red</code>, <code>green</code>, <code>blue</code>, <code>white</code>, <code>orange</code></p>
 <h3 id="spawn-illumination-flares">Spawn illumination flares<a class="headerlink" href="#spawn-illumination-flares" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>_spawn flare, power 1000000, shells 5, heading 90, distance 500
 </code></pre></div>

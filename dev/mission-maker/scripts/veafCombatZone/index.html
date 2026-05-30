@@ -342,7 +342,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../LUA_API_REFERENCE/" class="md-tabs__link">
+        <a href="../../../MISSION_YAML_REFERENCE/" class="md-tabs__link">
           
   
   
@@ -1061,6 +1061,67 @@
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-missionyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration (mission.yaml)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration (mission.yaml)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#combat_zone_settings-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        combat_zone_settings fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combat_zones-fields--type-zone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        combat_zones[] fields — type zone
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combat_zones-fields--type-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        combat_zones[] fields — type operation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimal-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1836,6 +1897,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../MISSION_YAML_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    mission.yaml Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PIPELINE_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../LUA_API_REFERENCE/" class="md-nav__link">
         
   
@@ -1976,6 +2093,67 @@
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-missionyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration (mission.yaml)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration (mission.yaml)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#combat_zone_settings-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        combat_zone_settings fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combat_zones-fields--type-zone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        combat_zones[] fields — type zone
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combat_zones-fields--type-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        combat_zones[] fields — type operation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimal-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2166,6 +2344,214 @@
 <div class="highlight"><pre><span></span><code><span class="nv">veafCombatZone</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
 </code></pre></div>
 <p>Individual zones are created and initialised separately (see below).</p>
+<hr />
+<h2 id="configuration-missionyaml">Configuration (<code>mission.yaml</code>)<a class="headerlink" href="#configuration-missionyaml" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nt">lua_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">COMBATZONE</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">          </span><span class="c1"># default: true</span>
+<span class="w">    </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">info</span><span class="w">        </span><span class="c1"># optional log level override</span>
+<span class="w">    </span><span class="nt">combat_zone_settings</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional global overrides</span>
+<span class="w">      </span><span class="nt">event_message_combatzonecomplete</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Zone</span><span class="nv"> </span><span class="s">objective</span><span class="nv"> </span><span class="s">complete!&quot;</span><span class="w">  </span><span class="c1"># null = suppress</span>
+<span class="w">      </span><span class="nt">watchdog_check_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span><span class="w">          </span><span class="c1"># seconds between zone watchdog polls (default: 60)</span>
+<span class="w">      </span><span class="nt">radio_menu_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Combat</span><span class="nv"> </span><span class="s">Zones&quot;</span><span class="w">      </span><span class="c1"># F10 menu label</span>
+<span class="w">      </span><span class="nt">combat_zone_menu_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Combat</span><span class="nv"> </span><span class="s">Zone</span><span class="nv"> </span><span class="s">Operations&quot;</span>
+<span class="w">      </span><span class="nt">operation_menu_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Operations&quot;</span>
+<span class="w">    </span><span class="nt">combat_zones</span><span class="p">:</span><span class="w">         </span><span class="c1"># zone and operation definitions</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zone</span><span class="w">                          </span><span class="c1"># zone | operation</span>
+<span class="w">        </span><span class="nt">zone_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CZ-Alpha&quot;</span><span class="w">              </span><span class="c1"># DCS trigger zone name</span>
+<span class="w">        </span><span class="nt">friendly_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alpha</span><span class="nv"> </span><span class="s">Zone&quot;</span><span class="w">        </span><span class="c1"># label in radio menu</span>
+<span class="w">        </span><span class="nt">briefing</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Destroy</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">armoured</span><span class="nv"> </span><span class="s">column.&quot;</span><span class="w">  </span><span class="c1"># shown in mission info</span>
+<span class="w">        </span><span class="nt">training</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">                     </span><span class="c1"># true = no security, verbose status</span>
+<span class="w">        </span><span class="nt">chained_zones</span><span class="p">:</span><span class="w">                      </span><span class="c1"># zones to trigger when this one completes</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;CZ-Bravo&quot;</span>
+<span class="w">        </span><span class="nt">chained_delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span><span class="w">                   </span><span class="c1"># seconds before chaining fires</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">operation</span>
+<span class="w">        </span><span class="nt">zone_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Op-Thunder&quot;</span>
+<span class="w">        </span><span class="nt">friendly_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Operation</span><span class="nv"> </span><span class="s">Thunder&quot;</span>
+<span class="w">        </span><span class="nt">tasking_orders</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">zone_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CZ-Alpha&quot;</span><span class="w">           </span><span class="c1"># first task (no dependencies)</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">zone_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CZ-Bravo&quot;</span>
+<span class="w">            </span><span class="nt">dependencies</span><span class="p">:</span><span class="w">                   </span><span class="c1"># CZ-Bravo unlocks after CZ-Alpha</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;CZ-Alpha&quot;</span>
+</code></pre></div>
+<h3 id="combat_zone_settings-fields"><code>combat_zone_settings</code> fields<a class="headerlink" href="#combat_zone_settings-fields" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event_message_combatzonecomplete</code></td>
+<td>string | null</td>
+<td><em>(module default)</em></td>
+<td>Message broadcast when a zone completes. <code>null</code> suppresses it.</td>
+</tr>
+<tr>
+<td><code>watchdog_check_interval</code></td>
+<td>integer</td>
+<td><code>60</code></td>
+<td>Seconds between watchdog polls</td>
+</tr>
+<tr>
+<td><code>radio_menu_name</code></td>
+<td>string</td>
+<td><code>"COMBAT ZONES"</code></td>
+<td>F10 top-level menu label</td>
+</tr>
+<tr>
+<td><code>combat_zone_menu_name</code></td>
+<td>string</td>
+<td><em>(default)</em></td>
+<td>Sub-menu label for zone operations</td>
+</tr>
+<tr>
+<td><code>operation_menu_name</code></td>
+<td>string</td>
+<td><em>(default)</em></td>
+<td>Sub-menu label for operations</td>
+</tr>
+</tbody>
+</table>
+<h3 id="combat_zones-fields--type-zone"><code>combat_zones[]</code> fields — type <code>zone</code><a class="headerlink" href="#combat_zones-fields--type-zone" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td><code>zone</code></td>
+<td>No</td>
+<td><code>zone</code> or <code>operation</code></td>
+</tr>
+<tr>
+<td><code>zone_name</code></td>
+<td>string</td>
+<td>—</td>
+<td>Yes</td>
+<td>DCS trigger zone name</td>
+</tr>
+<tr>
+<td><code>friendly_name</code></td>
+<td>string</td>
+<td>—</td>
+<td>No</td>
+<td>Label shown in the F10 menu</td>
+</tr>
+<tr>
+<td><code>briefing</code></td>
+<td>string</td>
+<td>—</td>
+<td>No</td>
+<td>Briefing text shown to players</td>
+</tr>
+<tr>
+<td><code>training</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td>No</td>
+<td>Training mode: no security, verbose status</td>
+</tr>
+<tr>
+<td><code>chained_zones</code></td>
+<td>string[]</td>
+<td><code>[]</code></td>
+<td>No</td>
+<td>Zone names to trigger on completion</td>
+</tr>
+<tr>
+<td><code>chained_delay</code></td>
+<td>integer</td>
+<td><code>0</code></td>
+<td>No</td>
+<td>Seconds before chained zones fire</td>
+</tr>
+</tbody>
+</table>
+<h3 id="combat_zones-fields--type-operation"><code>combat_zones[]</code> fields — type <code>operation</code><a class="headerlink" href="#combat_zones-fields--type-operation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>—</td>
+<td>Yes</td>
+<td>Must be <code>operation</code></td>
+</tr>
+<tr>
+<td><code>zone_name</code></td>
+<td>string</td>
+<td>—</td>
+<td>Yes</td>
+<td>DCS trigger zone name</td>
+</tr>
+<tr>
+<td><code>friendly_name</code></td>
+<td>string</td>
+<td>—</td>
+<td>No</td>
+<td>Label in the radio menu</td>
+</tr>
+<tr>
+<td><code>briefing</code></td>
+<td>string</td>
+<td>—</td>
+<td>No</td>
+<td>Briefing text</td>
+</tr>
+<tr>
+<td><code>tasking_orders</code></td>
+<td>object[]</td>
+<td><code>[]</code></td>
+<td>No</td>
+<td>Ordered task list</td>
+</tr>
+<tr>
+<td><code>tasking_orders[].zone_name</code></td>
+<td>string</td>
+<td>—</td>
+<td>Yes</td>
+<td>Combat zone name for this task</td>
+</tr>
+<tr>
+<td><code>tasking_orders[].dependencies</code></td>
+<td>string[]</td>
+<td><code>[]</code></td>
+<td>No</td>
+<td>Zone names that must complete first</td>
+</tr>
+</tbody>
+</table>
+<h3 id="minimal-example">Minimal example<a class="headerlink" href="#minimal-example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">lua_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">COMBATZONE</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">combat_zones</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zone</span>
+<span class="w">        </span><span class="nt">zone_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CZ-Alpha&quot;</span>
+<span class="w">        </span><span class="nt">friendly_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alpha&quot;</span>
+</code></pre></div>
 <hr />
 <h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
 <p>Place all the units that should appear in the zone directly in the DCS Mission Editor, inside the trigger zone. When the mission starts VEAF removes them all — the zone is empty. When a player activates the zone via the F10 menu, all units are respawned at randomised positions within the zone radius. When every enemy unit is destroyed, the zone is marked as completed (optional callback fires, optional chained zones activate).</p>

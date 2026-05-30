@@ -342,7 +342,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../LUA_API_REFERENCE/" class="md-tabs__link">
+        <a href="../../../MISSION_YAML_REFERENCE/" class="md-tabs__link">
           
   
   
@@ -1857,6 +1857,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../MISSION_YAML_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Référence mission.yaml
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PIPELINE_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Référence Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../LUA_API_REFERENCE/" class="md-nav__link">
         
   
@@ -2268,7 +2324,19 @@
 _spawn unit, name F-16C, group 2, hdg 180, alt 20000
 _spawn unit, name T-80, group 4, hdg 270, spacing 50
 </code></pre></div>
-<p>Options : <code>name</code>, <code>group</code>, <code>hdg</code>, <code>alt</code>, <code>speed</code>, <code>side</code>, <code>country</code>, <code>skill</code>, <code>spacing</code>, <code>immortal</code>.</p>
+<p><strong>Options :</strong></p>
+<ul>
+<li><code>name</code> — type d'unité</li>
+<li><code>group</code> — nombre d'unités</li>
+<li><code>hdg</code> — cap (degrés)</li>
+<li><code>alt</code> — altitude (pieds)</li>
+<li><code>speed</code> — vitesse (nœuds)</li>
+<li><code>side</code> — coalition</li>
+<li><code>country</code> — pays</li>
+<li><code>skill</code> — niveau de compétence IA</li>
+<li><code>spacing</code> — espacement entre unités (mètres)</li>
+<li><code>immortal</code> — unités invulnérables</li>
+</ul>
 <h3 id="faire-apparaître-un-groupe-prédéfini">Faire apparaître un groupe prédéfini<a class="headerlink" href="#faire-apparaître-un-groupe-prédéfini" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>_spawn group, name [NOM_GROUPE]
 </code></pre></div>
@@ -2276,21 +2344,48 @@ _spawn unit, name T-80, group 4, hdg 270, spacing 50
 <h3 id="faire-apparaître-une-patrouille-cap">Faire apparaître une patrouille CAP<a class="headerlink" href="#faire-apparaître-une-patrouille-cap" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>_spawn cap, name Su-27, alt 25000, capradius 20000
 </code></pre></div>
-<p>Options : <code>name</code>, <code>alt</code>, <code>hdg</code>, <code>speed</code>, <code>group</code>, <code>capradius</code>, <code>distance</code>.</p>
+<p><strong>Options :</strong></p>
+<ul>
+<li><code>name</code> — type d'avion</li>
+<li><code>alt</code> — altitude de patrouille (pieds)</li>
+<li><code>hdg</code> — cap initial</li>
+<li><code>speed</code> — vitesse de patrouille (nœuds)</li>
+<li><code>group</code> — nombre d'avions</li>
+<li><code>capradius</code> — rayon d'orbite CAP (mètres)</li>
+<li><code>distance</code> — distance depuis le marqueur</li>
+</ul>
 <h3 id="faire-apparaître-un-afacjtac">Faire apparaître un AFAC/JTAC<a class="headerlink" href="#faire-apparaître-un-afacjtac" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>_spawn afac, name A-10C, freq 133.0, mod AM, code 1688, alt 15000
 </code></pre></div>
-<p>Options : <code>name</code>, <code>freq</code>, <code>mod</code>, <code>code</code>, <code>alt</code>, <code>speed</code>, <code>immortal</code>.</p>
+<p><strong>Options :</strong></p>
+<ul>
+<li><code>name</code> — type d'avion</li>
+<li><code>freq</code> — fréquence radio</li>
+<li><code>mod</code> — modulation (<code>AM</code> ou <code>FM</code>)</li>
+<li><code>code</code> — code laser</li>
+<li><code>alt</code> — altitude d'orbite (pieds)</li>
+<li><code>speed</code> — vitesse d'orbite (nœuds)</li>
+<li><code>immortal</code> — unité invulnérable</li>
+</ul>
 <h3 id="faire-apparaître-un-convoi">Faire apparaître un convoi<a class="headerlink" href="#faire-apparaître-un-convoi" title="Permanent link">&para;</a></h3>
 <p>Placer deux marqueurs : un avec la commande (départ), un comme destination.</p>
 <div class="highlight"><pre><span></span><code>_spawn convoy, dest [NOM_MARQUEUR_DEST], speed 50, defense 2, armor 2, size 3
 </code></pre></div>
-<p>Options : <code>dest</code>, <code>speed</code>, <code>defense [0-5]</code>, <code>armor [0-5]</code>, <code>size [0-5]</code>, <code>patrol</code>, <code>offroad</code>.</p>
+<p><strong>Options :</strong></p>
+<ul>
+<li><code>dest</code> — nom du marqueur de destination</li>
+<li><code>speed</code> — vitesse du convoi (km/h)</li>
+<li><code>defense [0-5]</code> — niveau de défense aérienne</li>
+<li><code>armor [0-5]</code> — niveau de blindage</li>
+<li><code>size [0-5]</code> — nombre de véhicules</li>
+<li><code>patrol</code> — retour à la position de départ</li>
+<li><code>offroad</code> — autoriser le déplacement hors route</li>
+</ul>
 <h3 id="faire-apparaître-de-la-fumée">Faire apparaître de la fumée<a class="headerlink" href="#faire-apparaître-de-la-fumée" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>_spawn smoke, color red
 _spawn smoke, color green, shells 5
 </code></pre></div>
-<p>Couleurs : <code>red</code>, <code>green</code>, <code>blue</code>, <code>white</code>, <code>orange</code>.</p>
+<p><strong>Couleurs :</strong> <code>red</code>, <code>green</code>, <code>blue</code>, <code>white</code>, <code>orange</code></p>
 <h3 id="faire-apparaître-des-fusées-éclairantes">Faire apparaître des fusées éclairantes<a class="headerlink" href="#faire-apparaître-des-fusées-éclairantes" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>_spawn flare, power 1000000, shells 5, heading 90, distance 500
 </code></pre></div>

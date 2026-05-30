@@ -342,7 +342,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../LUA_API_REFERENCE/" class="md-tabs__link">
+        <a href="../../MISSION_YAML_REFERENCE/" class="md-tabs__link">
           
   
   
@@ -2127,6 +2127,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../MISSION_YAML_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Référence mission.yaml
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PIPELINE_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Référence Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../LUA_API_REFERENCE/" class="md-nav__link">
         
   
@@ -2762,7 +2818,8 @@
     zip --&gt;|consommé par| RT
     subgraph RT["RUNTIME — Lua dans DCS World"]
         scripts["veaf-scripts.lua&lt;br/&gt;— les 34 modules concaténés"]
-        config["missionconfig.lua&lt;br/&gt;— config spécifique à la mission"]
+        config["veaf-config.lua&lt;br/&gt;— config générée des modules (depuis mission.yaml)"]
+        custom["mission-script.lua&lt;br/&gt;— code Lua custom spécifique à la mission"]
     end</code></pre>
 <ul>
 <li><strong>Runtime</strong> (<code>src/scripts/veaf/</code>) — 34 modules Lua chargés dans les missions DCS</li>
@@ -2909,8 +2966,8 @@ ou <code>poetry shell</code> pour ouvrir une session interactive.</p>
 <span class="w">  </span><span class="nt">RADIO</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trace</span>
 </code></pre></div>
-<p>Cela génère des appels <code>veaf.setConfig("MODULE_ID", "logLevel", "...")</code> dans <code>veaf-modules-config.lua</code>. Ou utiliser <code>--log-modules SPAWN,RADIO</code> sur la CLI pour réduire au silence tout le reste.</p>
-<p>Pour le contrôle <strong>par module au runtime</strong> (sans rebuild), utiliser <code>missionconfig.lua</code> directement :</p>
+<p>Cela génère des appels <code>veaf.setConfig("MODULE_ID", "logLevel", "...")</code> dans <code>veaf-config.lua</code>. Ou utiliser <code>--log-modules SPAWN,RADIO</code> sur la CLI pour réduire au silence tout le reste.</p>
+<p>Pour le contrôle <strong>par module au runtime</strong> (sans rebuild), ajouter l'appel Lua directement dans <code>mission-script.lua</code> :</p>
 <div class="highlight"><pre><span></span><code><span class="nv">veaf</span><span class="p">.</span><span class="py">loggers</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">&quot;SPAWN&quot;</span><span class="p">):</span><span class="nf">setLevel</span><span class="p">(</span><span class="s2">&quot;debug&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w">  </span><span class="c1">-- force=true contourne le cap BaseLogLevel</span>
 </code></pre></div>
 <h3 id="accès-mistdbs">Accès mist.DBs<a class="headerlink" href="#accès-mistdbs" title="Permanent link">&para;</a></h3>
@@ -3083,7 +3140,7 @@ fix(qra): vérifier unit:isExist() avant unit:inAir()
 chore(deps): mettre à jour luaunit à 3.4
 docs(api): documenter les helpers tanker de veafMove
 </code></pre></div>
-<p>Types : <code>feat</code>, <code>fix</code>, <code>chore</code>, <code>docs</code>, <code>test</code>, <code>refactor</code>, <code>style</code>.</p>
+<p><strong>Types :</strong> <code>feat</code>, <code>fix</code>, <code>chore</code>, <code>docs</code>, <code>test</code>, <code>refactor</code>, <code>style</code></p>
 <h3 id="checklist-pull-request">Checklist Pull Request<a class="headerlink" href="#checklist-pull-request" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] Tous les changements Lua passent <code>stylua --check</code></li>

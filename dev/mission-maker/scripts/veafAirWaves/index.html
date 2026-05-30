@@ -342,7 +342,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../LUA_API_REFERENCE/" class="md-tabs__link">
+        <a href="../../../MISSION_YAML_REFERENCE/" class="md-tabs__link">
           
   
   
@@ -921,6 +921,78 @@
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-missionyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration (mission.yaml)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration (mission.yaml)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#airwave_zones-common-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        airwave_zones[] common fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zone-location-use-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zone location (use one)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timing-and-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timing and limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waves-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        waves[] fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimal-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1830,6 +1902,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../MISSION_YAML_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    mission.yaml Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PIPELINE_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../LUA_API_REFERENCE/" class="md-nav__link">
         
   
@@ -1970,6 +2098,78 @@
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-missionyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration (mission.yaml)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration (mission.yaml)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#airwave_zones-common-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        airwave_zones[] common fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zone-location-use-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zone location (use one)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timing-and-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timing and limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waves-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        waves[] fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimal-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2159,6 +2359,228 @@
 <span class="w">  </span><span class="p">:</span><span class="nf">addWave</span><span class="p">({</span><span class="w"> </span><span class="s2">&quot;MiG-29 Wave 2&quot;</span><span class="w"> </span><span class="p">})</span>
 <span class="w">  </span><span class="p">:</span><span class="nf">setMinimumPlayersForWave</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="configuration-missionyaml">Configuration (<code>mission.yaml</code>)<a class="headerlink" href="#configuration-missionyaml" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nt">lua_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AIRWAVES</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">          </span><span class="c1"># default: true</span>
+<span class="w">    </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">info</span><span class="w">        </span><span class="c1"># optional log level override</span>
+<span class="w">    </span><span class="nt">airwave_zones</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;BVR</span><span class="nv"> </span><span class="s">Zone&quot;</span><span class="w">                  </span><span class="c1"># REQUIRED — internal identifier</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Eastern</span><span class="nv"> </span><span class="s">BVR</span><span class="nv"> </span><span class="s">arena&quot;</span><span class="w">  </span><span class="c1"># shown in messages (optional)</span>
+<span class="w">        </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                       </span><span class="c1"># true = start automatically at mission start</span>
+<span class="w">        </span><span class="nt">player_coalitions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">BLUE</span><span class="p p-Indicator">]</span><span class="w">         </span><span class="c1"># BLUE | RED — which coalition&#39;s players trigger waves</span>
+<span class="w">        </span><span class="nt">zone_center_coordinates</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;N41°00&#39;00\&quot;</span><span class="nv"> </span><span class="s">E044°00&#39;00\&quot;&quot;</span><span class="w">  </span><span class="c1"># use this OR trigger_zone_name</span>
+<span class="w">        </span><span class="nt">trigger_zone_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ZONE-BVR-EAST&quot;</span><span class="w">  </span><span class="c1"># DCS trigger zone name (alternative to coordinates)</span>
+<span class="w">        </span><span class="nt">zone_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50000</span><span class="w">               </span><span class="c1"># radius in metres (when using coordinates)</span>
+<span class="w">        </span><span class="nt">draw_zone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                  </span><span class="c1"># draw zone boundary on the map</span>
+<span class="w">        </span><span class="nt">respawn_default_offset</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span><span class="w">   </span><span class="c1"># [lat_delta_m, lon_delta_m] spawn offset from zone centre</span>
+<span class="w">        </span><span class="nt">respawn_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span><span class="w">             </span><span class="c1"># scatter radius around spawn offset (metres)</span>
+<span class="w">        </span><span class="nt">delay_before_activation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span><span class="w">      </span><span class="c1"># seconds to wait after players enter before first wave</span>
+<span class="w">        </span><span class="nt">delay_between_waves</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">120</span><span class="w">         </span><span class="c1"># fixed delay between waves (ignored if min/max set)</span>
+<span class="w">        </span><span class="nt">min_seconds_between_waves</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span><span class="w">    </span><span class="c1"># minimum inter-wave delay (random range)</span>
+<span class="w">        </span><span class="nt">max_seconds_between_waves</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">180</span><span class="w">   </span><span class="c1"># maximum inter-wave delay (random range)</span>
+<span class="w">        </span><span class="nt">max_altitude_ft</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span><span class="w">          </span><span class="c1"># AI units above this altitude are removed</span>
+<span class="w">        </span><span class="nt">min_altitude_ft</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span><span class="w">           </span><span class="c1"># AI units below this altitude are removed</span>
+<span class="w">        </span><span class="nt">max_seconds_outside_ia</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span><span class="w">     </span><span class="c1"># seconds before an AI group is considered lost outside zone</span>
+<span class="w">        </span><span class="nt">minimum_life_percent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w">       </span><span class="c1"># AI unit removed when below this life fraction (0–1)</span>
+<span class="w">        </span><span class="nt">reset_when_dying</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">         </span><span class="c1"># reset all waves when a player dies</span>
+<span class="w">        </span><span class="nt">message_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Zone</span><span class="nv"> </span><span class="s">active!&quot;</span><span class="w">   </span><span class="c1"># custom zone-start message (optional)</span>
+<span class="w">        </span><span class="nt">message_wait_for_humans</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Waiting</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">players...&quot;</span>
+<span class="w">        </span><span class="nt">message_wave_deployed</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Wave</span><span class="nv"> </span><span class="s">inbound!&quot;</span>
+<span class="w">        </span><span class="nt">message_end_zone</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Zone</span><span class="nv"> </span><span class="s">cleared!&quot;</span>
+<span class="w">        </span><span class="nt">message_end_all</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;All</span><span class="nv"> </span><span class="s">zones</span><span class="nv"> </span><span class="s">cleared!&quot;</span>
+<span class="w">        </span><span class="nt">waves</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">groups</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;su27-flight&quot;</span><span class="w">       </span><span class="c1"># DCS group name or space-separated list</span>
+<span class="w">            </span><span class="nt">delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">                    </span><span class="c1"># seconds after this wave is cleared before the next; -1 = concurrent</span>
+<span class="w">            </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1-2&quot;</span><span class="w">              </span><span class="c1"># how many groups to pick: integer or &quot;min-max&quot; range</span>
+<span class="w">            </span><span class="nt">bias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">                     </span><span class="c1"># shift random selection towards harder groups</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">groups</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;su30sm-flight&quot;</span>
+<span class="w">            </span><span class="nt">delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">120</span>
+</code></pre></div>
+<h3 id="airwave_zones-common-fields"><code>airwave_zones[]</code> common fields<a class="headerlink" href="#airwave_zones-common-fields" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>—</td>
+<td>Yes</td>
+<td>Internal identifier</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>—</td>
+<td>No</td>
+<td>Label shown in messages and logs</td>
+</tr>
+<tr>
+<td><code>start</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td>No</td>
+<td>Auto-start at mission launch</td>
+</tr>
+<tr>
+<td><code>player_coalitions</code></td>
+<td>string[]</td>
+<td>—</td>
+<td>No</td>
+<td>Coalitions whose players trigger waves (<code>BLUE</code>, <code>RED</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="zone-location-use-one">Zone location (use one)<a class="headerlink" href="#zone-location-use-one" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trigger_zone_name</code></td>
+<td>string</td>
+<td>DCS trigger zone name (preferred)</td>
+</tr>
+<tr>
+<td><code>zone_center_coordinates</code></td>
+<td>string</td>
+<td>Coordinate string, e.g. <code>"N41°00'00\" E044°00'00\""</code></td>
+</tr>
+<tr>
+<td><code>zone_radius</code></td>
+<td>number</td>
+<td>Zone radius in metres (required with coordinates)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="timing-and-limits">Timing and limits<a class="headerlink" href="#timing-and-limits" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delay_before_activation</code></td>
+<td>integer</td>
+<td><code>0</code></td>
+<td>Seconds before first wave after players enter</td>
+</tr>
+<tr>
+<td><code>delay_between_waves</code></td>
+<td>integer</td>
+<td><code>0</code></td>
+<td>Fixed inter-wave delay (overridden by min/max)</td>
+</tr>
+<tr>
+<td><code>min_seconds_between_waves</code></td>
+<td>integer</td>
+<td>—</td>
+<td>Random minimum inter-wave delay</td>
+</tr>
+<tr>
+<td><code>max_seconds_between_waves</code></td>
+<td>integer</td>
+<td>—</td>
+<td>Random maximum inter-wave delay</td>
+</tr>
+<tr>
+<td><code>max_altitude_ft</code></td>
+<td>integer</td>
+<td>—</td>
+<td>Remove AI units above this altitude</td>
+</tr>
+<tr>
+<td><code>min_altitude_ft</code></td>
+<td>integer</td>
+<td>—</td>
+<td>Remove AI units below this altitude</td>
+</tr>
+<tr>
+<td><code>max_seconds_outside_ia</code></td>
+<td>integer</td>
+<td>—</td>
+<td>Seconds before off-zone AI group is discarded</td>
+</tr>
+<tr>
+<td><code>minimum_life_percent</code></td>
+<td>number</td>
+<td>—</td>
+<td>Remove AI unit when life drops below this fraction</td>
+</tr>
+</tbody>
+</table>
+<h3 id="waves-fields"><code>waves[]</code> fields<a class="headerlink" href="#waves-fields" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>groups</code></td>
+<td>string</td>
+<td>—</td>
+<td>DCS group name, space-separated list, or VEAF spawn command</td>
+</tr>
+<tr>
+<td><code>delay</code></td>
+<td>integer</td>
+<td><code>0</code></td>
+<td>Seconds after wave cleared before next; <code>-1</code> = concurrent</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td>string | integer</td>
+<td>—</td>
+<td>How many groups to pick: <code>2</code> or <code>"1-3"</code> range</td>
+</tr>
+<tr>
+<td><code>bias</code></td>
+<td>integer</td>
+<td><code>0</code></td>
+<td>Shift random start index toward harder entries</td>
+</tr>
+</tbody>
+</table>
+<h3 id="minimal-example">Minimal example<a class="headerlink" href="#minimal-example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">lua_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AIRWAVES</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">airwave_zones</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;BVR</span><span class="nv"> </span><span class="s">Arena&quot;</span>
+<span class="w">        </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">player_coalitions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">BLUE</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">trigger_zone_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ZONE-BVR&quot;</span>
+<span class="w">        </span><span class="nt">delay_between_waves</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90</span>
+<span class="w">        </span><span class="nt">waves</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">groups</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;su27-2ship&quot;</span>
+<span class="w">            </span><span class="nt">delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">groups</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;su30sm-2ship&quot;</span>
+<span class="w">            </span><span class="nt">delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span>
 </code></pre></div>
 <hr />
 <h2 id="airwavezone-builder-methods">AirWaveZone Builder Methods<a class="headerlink" href="#airwavezone-builder-methods" title="Permanent link">&para;</a></h2>

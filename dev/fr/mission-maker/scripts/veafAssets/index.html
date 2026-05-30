@@ -342,7 +342,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../LUA_API_REFERENCE/" class="md-tabs__link">
+        <a href="../../../MISSION_YAML_REFERENCE/" class="md-tabs__link">
           
   
   
@@ -977,6 +977,34 @@
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-missionyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration (mission.yaml)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration (mission.yaml)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-minimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple minimal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1747,6 +1775,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../MISSION_YAML_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Référence mission.yaml
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PIPELINE_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Référence Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../LUA_API_REFERENCE/" class="md-nav__link">
         
   
@@ -1891,6 +1975,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration-missionyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration (mission.yaml)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration (mission.yaml)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-minimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple minimal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#définir-les-ressources" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1987,6 +2099,129 @@
 <div class="highlight"><pre><span></span><code><span class="nv">veafAssets</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
 </code></pre></div>
 <p>Doit être appelé après avoir défini <code>veafAssets.Assets</code>.</p>
+<hr />
+<h2 id="configuration-missionyaml">Configuration (<code>mission.yaml</code>)<a class="headerlink" href="#configuration-missionyaml" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nt">lua_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ASSETS</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">          </span><span class="c1"># défaut : true</span>
+<span class="w">    </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">info</span><span class="w">        </span><span class="c1"># surcharge optionnelle du niveau de log</span>
+<span class="w">    </span><span class="nt">assets</span><span class="p">:</span><span class="w">               </span><span class="c1"># liste des ressources persistantes à gérer</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">sort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w">                         </span><span class="c1"># ordre de tri dans le menu F10 (plus petit = premier)</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Texaco&quot;</span><span class="w">                  </span><span class="c1"># identifiant interne</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Texaco</span><span class="nv"> </span><span class="s">(KC-135)&quot;</span><span class="w"> </span><span class="c1"># libellé affiché dans le menu F10</span>
+<span class="w">        </span><span class="nt">information</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Tacan</span><span class="nv"> </span><span class="s">51Y\nU251.00</span><span class="nv"> </span><span class="s">(21)&#39;</span><span class="w">  </span><span class="c1"># guillemets simples : \n est conservé tel quel → échappement Lua valide</span>
+<span class="w">        </span><span class="nt">linked</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">                    </span><span class="c1"># nom d&#39;une ressource liée (optionnel)</span>
+<span class="w">        </span><span class="nt">jtac</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">                     </span><span class="c1"># true = la ressource est un JTAC (optionnel)</span>
+<span class="w">        </span><span class="nt">freq</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">                      </span><span class="c1"># fréquence de remplacement pour l&#39;affichage infos (optionnel)</span>
+<span class="w">        </span><span class="nt">mod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">                       </span><span class="c1"># modulation radio (AM | FM, optionnel)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Type</th>
+<th>Défaut</th>
+<th>Requis</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enable</code></td>
+<td>booléen</td>
+<td><code>true</code></td>
+<td>Non</td>
+<td>Activer ou désactiver le module</td>
+</tr>
+<tr>
+<td><code>logLevel</code></td>
+<td>string</td>
+<td><em>(global)</em></td>
+<td>Non</td>
+<td>Surcharge du niveau de log par module</td>
+</tr>
+<tr>
+<td><code>assets</code></td>
+<td>objet[]</td>
+<td><code>[]</code></td>
+<td>Non</td>
+<td>Liste des ressources à gérer</td>
+</tr>
+<tr>
+<td><code>assets[].sort</code></td>
+<td>entier</td>
+<td><code>0</code></td>
+<td>Non</td>
+<td>Ordre de tri dans le menu F10 (croissant)</td>
+</tr>
+<tr>
+<td><code>assets[].name</code></td>
+<td>string</td>
+<td>—</td>
+<td>Oui</td>
+<td>Identifiant interne</td>
+</tr>
+<tr>
+<td><code>assets[].description</code></td>
+<td>string</td>
+<td>—</td>
+<td>Oui</td>
+<td>Libellé affiché dans le menu F10</td>
+</tr>
+<tr>
+<td><code>assets[].information</code></td>
+<td>string</td>
+<td>—</td>
+<td>Non</td>
+<td>Texte d'info affiché aux joueurs — utiliser du YAML entre guillemets simples <code>'ligne1\nligné2'</code> ou <code>"ligne1\\nligne2"</code> (double-quoté) pour obtenir un <code>\n</code> Lua valide</td>
+</tr>
+<tr>
+<td><code>assets[].linked</code></td>
+<td>string</td>
+<td><code>null</code></td>
+<td>Non</td>
+<td>Nom d'une ressource liée (ex : un porte-avions lié à son escorte)</td>
+</tr>
+<tr>
+<td><code>assets[].jtac</code></td>
+<td>booléen</td>
+<td><code>false</code></td>
+<td>Non</td>
+<td>Marque cette ressource comme JTAC</td>
+</tr>
+<tr>
+<td><code>assets[].freq</code></td>
+<td>nombre</td>
+<td><code>null</code></td>
+<td>Non</td>
+<td>Fréquence de remplacement pour l'affichage infos (MHz)</td>
+</tr>
+<tr>
+<td><code>assets[].mod</code></td>
+<td>string</td>
+<td><code>null</code></td>
+<td>Non</td>
+<td>Modulation radio de remplacement (<code>AM</code> ou <code>FM</code>)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Le groupe DCS référencé par <code>name</code> doit exister dans l'éditeur de mission. Les ressources porte-avions nécessitent également le module <code>CARRIER</code> activé.</p>
+</blockquote>
+<h3 id="exemple-minimal">Exemple minimal<a class="headerlink" href="#exemple-minimal" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">lua_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ASSETS</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">assets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">sort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Texaco&quot;</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Texaco</span><span class="nv"> </span><span class="s">(KC-135)&quot;</span>
+<span class="w">        </span><span class="nt">information</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Tacan</span><span class="nv"> </span><span class="s">51Y\nU251.00</span><span class="nv"> </span><span class="s">(21)&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">sort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Overlord&quot;</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Overlord</span><span class="nv"> </span><span class="s">(E-3A)&quot;</span>
+<span class="w">        </span><span class="nt">information</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SRS</span><span class="nv"> </span><span class="s">251.00&quot;</span>
+</code></pre></div>
 <hr />
 <h2 id="définir-les-ressources">Définir les ressources<a class="headerlink" href="#définir-les-ressources" title="Permanent link">&para;</a></h2>
 <p>Remplir <code>veafAssets.Assets</code> avant d'appeler <code>initialize()</code> :</p>

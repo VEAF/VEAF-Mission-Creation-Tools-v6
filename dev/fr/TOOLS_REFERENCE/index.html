@@ -342,7 +342,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../LUA_API_REFERENCE/" class="md-tabs__link">
+        <a href="../MISSION_YAML_REFERENCE/" class="md-tabs__link">
           
   
   
@@ -1595,6 +1595,62 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MISSION_YAML_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Référence mission.yaml
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PIPELINE_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Référence Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2970,10 +3026,12 @@
 <p><strong>Sans fichier de configuration :</strong>
 <div class="highlight"><pre><span></span><code>veaf-tools-updater.exe<span class="w"> </span>publish<span class="w"> </span><span class="m">6</span>.0.1<span class="w"> </span>./published.zip<span class="w"> </span>--token<span class="w"> </span>ghp_xxxxxxxxxxxx
 </code></pre></div></p>
-<p><strong>Arguments :</strong>
-- <code>6.0.1</code> — Numéro de version
-- <code>./published.zip</code> — Chemin vers votre fichier zip
-- Le token est lu depuis <code>veaf-tools-config.yaml</code> (s'il existe) ou le paramètre <code>--token</code></p>
+<p><strong>Arguments :</strong></p>
+<ul>
+<li><code>6.0.1</code> — Numéro de version</li>
+<li><code>./published.zip</code> — Chemin vers votre fichier zip</li>
+<li>Le token est lu depuis <code>veaf-tools-config.yaml</code> (s'il existe) ou le paramètre <code>--token</code></li>
+</ul>
 <p><strong>Ce qui se passe :</strong>
 1. ✅ Crée un tag Git : <code>published-v6.0.1</code>
 2. ✅ Génère le checksum SHA256 du zip
@@ -3092,11 +3150,13 @@
 ├── published-v5.9.9   ──► Release GitHub avec assets
 └── published-latest   ──► Pointe vers la version courante (mobile)
 </code></pre></div>
-<p><strong>Avantages :</strong>
-- ✅ Historique de versions clair dans Git
-- ✅ Facile de revenir à n'importe quelle version précédente
-- ✅ <code>published-latest</code> toujours disponible pour les utilisateurs
-- ✅ Snapshots de versions immuables</p>
+<p><strong>Avantages :</strong></p>
+<ul>
+<li>✅ Historique de versions clair dans Git</li>
+<li>✅ Facile de revenir à n'importe quelle version précédente</li>
+<li>✅ <code>published-latest</code> toujours disponible pour les utilisateurs</li>
+<li>✅ Snapshots de versions immuables</li>
+</ul>
 <h3 id="vérification-dintégrité">Vérification d'intégrité<a class="headerlink" href="#vérification-dintégrité" title="Permanent link">&para;</a></h3>
 <p>Chaque release inclut une vérification de checksum :</p>
 <div class="highlight"><pre><span></span><code>L&#39;utilisateur télécharge :
@@ -3109,10 +3169,12 @@ Processus de mise à jour :
   3. Si correspondance ✓ → Installer
   4. Si différence ✗ → Erreur (abandon, réessayer)
 </code></pre></div>
-<p><strong>Protection contre :</strong>
-- La corruption réseau
-- Les téléchargements incomplets
-- La falsification de fichiers</p>
+<p><strong>Protection contre :</strong></p>
+<ul>
+<li>La corruption réseau</li>
+<li>Les téléchargements incomplets</li>
+<li>La falsification de fichiers</li>
+</ul>
 <h3 id="comparaison-de-versions">Comparaison de versions<a class="headerlink" href="#comparaison-de-versions" title="Permanent link">&para;</a></h3>
 <p>Le système compare correctement les versions sémantiques :</p>
 <div class="highlight"><pre><span></span><code>Installée : 6.0.0

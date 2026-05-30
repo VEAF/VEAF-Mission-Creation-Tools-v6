@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/LUA_API_REFERENCE/">
       
       
-        <link rel="prev" href="../TESTING/">
+        <link rel="prev" href="../PIPELINE_REFERENCE/">
       
       
         <link rel="next" href="../TOOLS_REFERENCE/">
@@ -342,7 +342,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../MISSION_YAML_REFERENCE/" class="md-tabs__link">
           
   
   
@@ -1595,6 +1595,62 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MISSION_YAML_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    mission.yaml Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PIPELINE_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -9990,17 +10046,21 @@
 3. <code>veafMarkers.lua</code>
 4. Other modules (any order)</p>
 <h3 id="conventions-used">Conventions Used<a class="headerlink" href="#conventions-used" title="Permanent link">&para;</a></h3>
-<p><strong>Parameter Types:</strong>
-- <code>string</code> - Text string
-- <code>number</code> - Numeric value
-- <code>boolean</code> - true/false
-- <code>table</code> - Lua table/array
-- <code>vec3</code> - 3D vector: <code>{x=number, y=number, z=number}</code>
-- <code>function</code> - Callback function
-- <code>coalition</code> - Coalition ID: 0=neutral, 1=blue, 2=red</p>
-<p><strong>Return Values:</strong>
-- Functions return <code>nil</code> on failure unless otherwise specified
-- Boolean returns indicate success/failure</p>
+<p><strong>Parameter Types:</strong></p>
+<ul>
+<li><code>string</code> - Text string</li>
+<li><code>number</code> - Numeric value</li>
+<li><code>boolean</code> - true/false</li>
+<li><code>table</code> - Lua table/array</li>
+<li><code>vec3</code> - 3D vector: <code>{x=number, y=number, z=number}</code></li>
+<li><code>function</code> - Callback function</li>
+<li><code>coalition</code> - Coalition ID: 0=neutral, 1=blue, 2=red</li>
+</ul>
+<p><strong>Return Values:</strong></p>
+<ul>
+<li>Functions return <code>nil</code> on failure unless otherwise specified</li>
+<li>Boolean returns indicate success/failure</li>
+</ul>
 <hr />
 <h2 id="module-architecture">Module Architecture<a class="headerlink" href="#module-architecture" title="Permanent link">&para;</a></h2>
 <h3 id="standard-module-structure">Standard Module Structure<a class="headerlink" href="#standard-module-structure" title="Permanent link">&para;</a></h3>
@@ -10089,9 +10149,11 @@
 <h4 id="json-functions">JSON Functions<a class="headerlink" href="#json-functions" title="Permanent link">&para;</a></h4>
 <h5 id="veafjsonstringifyobj-as_key"><code>veaf.json.stringify(obj, as_key)</code><a class="headerlink" href="#veafjsonstringifyobj-as_key" title="Permanent link">&para;</a></h5>
 <p>Convert Lua object to JSON string.</p>
-<p><strong>Parameters:</strong>
-- <code>obj</code> (any) - Lua object to serialize
-- <code>as_key</code> (boolean, optional) - Format as JSON key</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>obj</code> (any) - Lua object to serialize</li>
+<li><code>as_key</code> (boolean, optional) - Format as JSON key</li>
+</ul>
 <p><strong>Returns:</strong> <code>string</code> - JSON representation</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Strike&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mission&quot;</span><span class="p">}</span>
@@ -10100,10 +10162,12 @@
 </code></pre></div></p>
 <h5 id="veafjsonparsestr-pos-end_delim"><code>veaf.json.parse(str, pos, end_delim)</code><a class="headerlink" href="#veafjsonparsestr-pos-end_delim" title="Permanent link">&para;</a></h5>
 <p>Parse JSON string to Lua object.</p>
-<p><strong>Parameters:</strong>
-- <code>str</code> (string) - JSON string
-- <code>pos</code> (number, optional) - Starting position (default: 1)
-- <code>end_delim</code> (string, optional) - End delimiter</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>str</code> (string) - JSON string</li>
+<li><code>pos</code> (number, optional) - Starting position (default: 1)</li>
+<li><code>end_delim</code> (string, optional) - End delimiter</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Parsed Lua object</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;{&quot;name&quot;:&quot;Strike&quot;,&quot;type&quot;:&quot;mission&quot;}&#39;</span>
@@ -10113,8 +10177,10 @@
 <h4 id="string-utilities">String Utilities<a class="headerlink" href="#string-utilities" title="Permanent link">&para;</a></h4>
 <h5 id="veaftrims"><code>veaf.trim(s)</code><a class="headerlink" href="#veaftrims" title="Permanent link">&para;</a></h5>
 <p>Remove leading and trailing whitespace.</p>
-<p><strong>Parameters:</strong>
-- <code>s</code> (string) - String to trim</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>s</code> (string) - String to trim</li>
+</ul>
 <p><strong>Returns:</strong> <code>string</code> - Trimmed string</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">trimmed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veaf</span><span class="p">.</span><span class="nf">trim</span><span class="p">(</span><span class="s2">&quot;  hello  &quot;</span><span class="p">)</span>
@@ -10122,9 +10188,11 @@
 </code></pre></div></p>
 <h5 id="veafsplitstr-sep"><code>veaf.split(str, sep)</code><a class="headerlink" href="#veafsplitstr-sep" title="Permanent link">&para;</a></h5>
 <p>Split string by separator into array.</p>
-<p><strong>Parameters:</strong>
-- <code>str</code> (string) - String to split
-- <code>sep</code> (string) - Separator character/string</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>str</code> (string) - String to split</li>
+<li><code>sep</code> (string) - Separator character/string</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Array of substrings</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">parts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veaf</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s2">&quot;red,blue,green&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
@@ -10132,15 +10200,19 @@
 </code></pre></div></p>
 <h5 id="veafsplitwithpatternstr-pat"><code>veaf.splitWithPattern(str, pat)</code><a class="headerlink" href="#veafsplitwithpatternstr-pat" title="Permanent link">&para;</a></h5>
 <p>Split string using regex pattern.</p>
-<p><strong>Parameters:</strong>
-- <code>str</code> (string) - String to split
-- <code>pat</code> (string) - Lua pattern</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>str</code> (string) - String to split</li>
+<li><code>pat</code> (string) - Lua pattern</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Array of substrings</p>
 <h5 id="veafbreakstringstr-sep"><code>veaf.breakString(str, sep)</code><a class="headerlink" href="#veafbreakstringstr-sep" title="Permanent link">&para;</a></h5>
 <p>Break string around separator (returns 2 parts).</p>
-<p><strong>Parameters:</strong>
-- <code>str</code> (string) - String to break
-- <code>sep</code> (string) - Separator</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>str</code> (string) - String to break</li>
+<li><code>sep</code> (string) - Separator</li>
+</ul>
 <p><strong>Returns:</strong> <code>string, string</code> - Two parts (before and after separator)</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">before</span><span class="p">,</span><span class="w"> </span><span class="nv">after</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veaf</span><span class="p">.</span><span class="nf">breakString</span><span class="p">(</span><span class="s2">&quot;key=value&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;=&quot;</span><span class="p">)</span>
@@ -10148,14 +10220,18 @@
 </code></pre></div></p>
 <h5 id="veafescaperegexstringtoescape"><code>veaf.escapeRegex(stringToEscape)</code><a class="headerlink" href="#veafescaperegexstringtoescape" title="Permanent link">&para;</a></h5>
 <p>Escape special regex characters.</p>
-<p><strong>Parameters:</strong>
-- <code>stringToEscape</code> (string) - String to escape</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>stringToEscape</code> (string) - String to escape</li>
+</ul>
 <p><strong>Returns:</strong> <code>string</code> - Escaped string</p>
 <h4 id="tablearray-utilities">Table/Array Utilities<a class="headerlink" href="#tablearray-utilities" title="Permanent link">&para;</a></h4>
 <h5 id="veaflengtht"><code>veaf.length(T)</code><a class="headerlink" href="#veaflengtht" title="Permanent link">&para;</a></h5>
 <p>Get table length (handles non-sequential keys).</p>
-<p><strong>Parameters:</strong>
-- <code>T</code> (table) - Table to measure</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>T</code> (table) - Table to measure</li>
+</ul>
 <p><strong>Returns:</strong> <code>number</code> - Number of elements</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">c</span><span class="o">=</span><span class="mi">3</span><span class="p">}</span>
@@ -10164,9 +10240,11 @@
 </code></pre></div></p>
 <h5 id="veafarrayremovewhent-fnkeep"><code>veaf.arrayRemoveWhen(t, fnKeep)</code><a class="headerlink" href="#veafarrayremovewhent-fnkeep" title="Permanent link">&para;</a></h5>
 <p>Remove elements from array based on condition.</p>
-<p><strong>Parameters:</strong>
-- <code>t</code> (table) - Array to filter
-- <code>fnKeep</code> (function) - Keep function: <code>function(element) return boolean end</code></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>t</code> (table) - Array to filter</li>
+<li><code>fnKeep</code> (function) - Keep function: <code>function(element) return boolean end</code></li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Modified array</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">}</span>
@@ -10175,20 +10253,26 @@
 </code></pre></div></p>
 <h5 id="veafshuffletbl"><code>veaf.shuffle(tbl)</code><a class="headerlink" href="#veafshuffletbl" title="Permanent link">&para;</a></h5>
 <p>Randomly shuffle array elements in place.</p>
-<p><strong>Parameters:</strong>
-- <code>tbl</code> (table) - Array to shuffle</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>tbl</code> (table) - Array to shuffle</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Shuffled array (same reference)</p>
 <h5 id="veaftablecontainstable-element"><code>veaf.tableContains(table, element)</code><a class="headerlink" href="#veaftablecontainstable-element" title="Permanent link">&para;</a></h5>
 <p>Check if table contains element.</p>
-<p><strong>Parameters:</strong>
-- <code>table</code> (table) - Table to search
-- <code>element</code> (any) - Element to find</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>table</code> (table) - Table to search</li>
+<li><code>element</code> (any) - Element to find</li>
+</ul>
 <p><strong>Returns:</strong> <code>boolean</code> - True if found</p>
 <h5 id="veafrandomlychoosefromatable-bias"><code>veaf.randomlyChooseFrom(aTable, bias)</code><a class="headerlink" href="#veafrandomlychoosefromatable-bias" title="Permanent link">&para;</a></h5>
 <p>Choose random element from table with optional bias.</p>
-<p><strong>Parameters:</strong>
-- <code>aTable</code> (table) - Table to choose from
-- <code>bias</code> (number, optional) - Bias factor (default: 1.0)</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>aTable</code> (table) - Table to choose from</li>
+<li><code>bias</code> (number, optional) - Bias factor (default: 1.0)</li>
+</ul>
 <p><strong>Returns:</strong> <code>any</code> - Random element</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;green&quot;</span><span class="p">}</span>
@@ -10197,8 +10281,10 @@
 <h4 id="vector--coordinate-functions">Vector &amp; Coordinate Functions<a class="headerlink" href="#vector--coordinate-functions" title="Permanent link">&para;</a></h4>
 <h5 id="veafvectostringvec"><code>veaf.vecToString(vec)</code><a class="headerlink" href="#veafvectostringvec" title="Permanent link">&para;</a></h5>
 <p>Convert 3D vector to human-readable string.</p>
-<p><strong>Parameters:</strong>
-- <code>vec</code> (vec3) - Vector <code>{x, y, z}</code></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>vec</code> (vec3) - Vector <code>{x, y, z}</code></li>
+</ul>
 <p><strong>Returns:</strong> <code>string</code> - Formatted string</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">x</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="o">=</span><span class="mi">2000</span><span class="p">}</span>
@@ -10207,32 +10293,42 @@
 </code></pre></div></p>
 <h5 id="veaffindpointinzonespawnspot-dispersion-isship"><code>veaf.findPointInZone(spawnSpot, dispersion, isShip)</code><a class="headerlink" href="#veaffindpointinzonespawnspot-dispersion-isship" title="Permanent link">&para;</a></h5>
 <p>Find random spawn point within zone with dispersion.</p>
-<p><strong>Parameters:</strong>
-- <code>spawnSpot</code> (vec3) - Center position
-- <code>dispersion</code> (number) - Radius in meters
-- <code>isShip</code> (boolean, optional) - Find water location</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>spawnSpot</code> (vec3) - Center position</li>
+<li><code>dispersion</code> (number) - Radius in meters</li>
+<li><code>isShip</code> (boolean, optional) - Find water location</li>
+</ul>
 <p><strong>Returns:</strong> <code>vec3</code> - Random point within zone</p>
 <h5 id="veafplacepointonlandvec3"><code>veaf.placePointOnLand(vec3)</code><a class="headerlink" href="#veafplacepointonlandvec3" title="Permanent link">&para;</a></h5>
 <p>Place point on land surface (adjusts Y altitude).</p>
-<p><strong>Parameters:</strong>
-- <code>vec3</code> (vec3) - Position to adjust</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>vec3</code> (vec3) - Position to adjust</li>
+</ul>
 <p><strong>Returns:</strong> <code>vec3</code> - Position on land surface</p>
 <h5 id="veafgetlandheightvec3"><code>veaf.getLandHeight(vec3)</code><a class="headerlink" href="#veafgetlandheightvec3" title="Permanent link">&para;</a></h5>
 <p>Get terrain height at coordinates.</p>
-<p><strong>Parameters:</strong>
-- <code>vec3</code> (vec3) - Position</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>vec3</code> (vec3) - Position</li>
+</ul>
 <p><strong>Returns:</strong> <code>number</code> - Terrain altitude in meters</p>
 <h5 id="veafheadingbetweenpointspoint1-point2"><code>veaf.headingBetweenPoints(point1, point2)</code><a class="headerlink" href="#veafheadingbetweenpointspoint1-point2" title="Permanent link">&para;</a></h5>
 <p>Calculate heading from point1 to point2.</p>
-<p><strong>Parameters:</strong>
-- <code>point1</code> (vec3) - Starting point
-- <code>point2</code> (vec3) - Destination point</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>point1</code> (vec3) - Starting point</li>
+<li><code>point2</code> (vec3) - Destination point</li>
+</ul>
 <p><strong>Returns:</strong> <code>number</code> - Heading in degrees (0-360)</p>
 <h5 id="veafgetbearingandrangefromtofrompoint-topoint"><code>veaf.getBearingAndRangeFromTo(fromPoint, toPoint)</code><a class="headerlink" href="#veafgetbearingandrangefromtofrompoint-topoint" title="Permanent link">&para;</a></h5>
 <p>Calculate bearing and range between two points.</p>
-<p><strong>Parameters:</strong>
-- <code>fromPoint</code> (vec3) - Starting point
-- <code>toPoint</code> (vec3) - Destination point</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>fromPoint</code> (vec3) - Starting point</li>
+<li><code>toPoint</code> (vec3) - Destination point</li>
+</ul>
 <p><strong>Returns:</strong> <code>number, number</code> - Bearing (degrees), Range (meters)</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">bearing</span><span class="p">,</span><span class="w"> </span><span class="nv">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veaf</span><span class="p">.</span><span class="nf">getBearingAndRangeFromTo</span><span class="p">(</span><span class="nv">pos1</span><span class="p">,</span><span class="w"> </span><span class="nv">pos2</span><span class="p">)</span>
@@ -10240,87 +10336,111 @@
 </code></pre></div></p>
 <h5 id="veafcomputellfromstringvalue"><code>veaf.computeLLFromString(value)</code><a class="headerlink" href="#veafcomputellfromstringvalue" title="Permanent link">&para;</a></h5>
 <p>Parse latitude/longitude from string.</p>
-<p><strong>Parameters:</strong>
-- <code>value</code> (string) - Lat/Lon string (various formats supported)</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>value</code> (string) - Lat/Lon string (various formats supported)</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - <code>{lat=number, lon=number}</code> or nil</p>
-<p><strong>Supported Formats:</strong>
-- DMS: <code>N 43°15'30" E 005°45'20"</code>
-- Decimal: <code>43.258333, 5.755556</code>
-- MGRS: (via conversion)</p>
+<p><strong>Supported Formats:</strong></p>
+<ul>
+<li>DMS: <code>N 43°15'30" E 005°45'20"</code></li>
+<li>Decimal: <code>43.258333, 5.755556</code></li>
+<li>MGRS: (via conversion)</li>
+</ul>
 <h5 id="veafcomputecoordinatesoffsetfromroutestartingpoint-destinationpoint-distancefromstartingpoint-offset"><code>veaf.computeCoordinatesOffsetFromRoute(startingPoint, destinationPoint, distanceFromStartingPoint, offset)</code><a class="headerlink" href="#veafcomputecoordinatesoffsetfromroutestartingpoint-destinationpoint-distancefromstartingpoint-offset" title="Permanent link">&para;</a></h5>
 <p>Calculate position offset from a route.</p>
-<p><strong>Parameters:</strong>
-- <code>startingPoint</code> (vec3) - Route start
-- <code>destinationPoint</code> (vec3) - Route end
-- <code>distanceFromStartingPoint</code> (number) - Distance along route (meters)
-- <code>offset</code> (number) - Perpendicular offset (meters, positive = right)</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>startingPoint</code> (vec3) - Route start</li>
+<li><code>destinationPoint</code> (vec3) - Route end</li>
+<li><code>distanceFromStartingPoint</code> (number) - Distance along route (meters)</li>
+<li><code>offset</code> (number) - Perpendicular offset (meters, positive = right)</li>
+</ul>
 <p><strong>Returns:</strong> <code>vec3</code> - Offset position</p>
 <h4 id="unit--group-functions">Unit &amp; Group Functions<a class="headerlink" href="#unit--group-functions" title="Permanent link">&para;</a></h4>
 <h5 id="veafaddunitgroup-spawnspot-dispersion-unittype-unitname-skill"><code>veaf.addUnit(group, spawnSpot, dispersion, unitType, unitName, skill)</code><a class="headerlink" href="#veafaddunitgroup-spawnspot-dispersion-unittype-unitname-skill" title="Permanent link">&para;</a></h5>
 <p>Add unit to group definition.</p>
-<p><strong>Parameters:</strong>
-- <code>group</code> (table) - Group definition table
-- <code>spawnSpot</code> (vec3) - Spawn position
-- <code>dispersion</code> (number) - Dispersion radius (meters)
-- <code>unitType</code> (string) - DCS unit type name
-- <code>unitName</code> (string) - Unit name
-- <code>skill</code> (string) - Skill level: "Average", "Good", "High", "Excellent", "Random"</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>group</code> (table) - Group definition table</li>
+<li><code>spawnSpot</code> (vec3) - Spawn position</li>
+<li><code>dispersion</code> (number) - Dispersion radius (meters)</li>
+<li><code>unitType</code> (string) - DCS unit type name</li>
+<li><code>unitName</code> (string) - Unit name</li>
+<li><code>skill</code> (string) - Skill level: "Average", "Good", "High", "Excellent", "Random"</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Modified group table</p>
 <h5 id="veafgetaveragepositiongroup"><code>veaf.getAveragePosition(group)</code><a class="headerlink" href="#veafgetaveragepositiongroup" title="Permanent link">&para;</a></h5>
 <p>Get center position of group.</p>
-<p><strong>Parameters:</strong>
-- <code>group</code> (table or DCS Group) - Group object or table</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>group</code> (table or DCS Group) - Group object or table</li>
+</ul>
 <p><strong>Returns:</strong> <code>vec3</code> - Average position</p>
 <h5 id="veafgetavggroupposgroupname"><code>veaf.getAvgGroupPos(groupName)</code><a class="headerlink" href="#veafgetavggroupposgroupname" title="Permanent link">&para;</a></h5>
 <p>Get average position of group by name.</p>
-<p><strong>Parameters:</strong>
-- <code>groupName</code> (string) - Group name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>groupName</code> (string) - Group name</li>
+</ul>
 <p><strong>Returns:</strong> <code>vec3</code> - Average position or nil</p>
 <h5 id="veafmovegroupatgroupname-leadunitname-heading-speed-timeinseconds-endposition-pmiddlepointdistance"><code>veaf.moveGroupAt(groupName, leadUnitName, heading, speed, timeInSeconds, endPosition, pMiddlePointDistance)</code><a class="headerlink" href="#veafmovegroupatgroupname-leadunitname-heading-speed-timeinseconds-endposition-pmiddlepointdistance" title="Permanent link">&para;</a></h5>
 <p>Move group in specific direction and speed.</p>
-<p><strong>Parameters:</strong>
-- <code>groupName</code> (string) - Group to move
-- <code>leadUnitName</code> (string) - Lead unit name
-- <code>heading</code> (number) - Direction in degrees
-- <code>speed</code> (number) - Speed in m/s
-- <code>timeInSeconds</code> (number) - Duration of movement
-- <code>endPosition</code> (vec3, optional) - Final position
-- <code>pMiddlePointDistance</code> (number, optional) - Intermediate waypoint distance</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>groupName</code> (string) - Group to move</li>
+<li><code>leadUnitName</code> (string) - Lead unit name</li>
+<li><code>heading</code> (number) - Direction in degrees</li>
+<li><code>speed</code> (number) - Speed in m/s</li>
+<li><code>timeInSeconds</code> (number) - Duration of movement</li>
+<li><code>endPosition</code> (vec3, optional) - Final position</li>
+<li><code>pMiddlePointDistance</code> (number, optional) - Intermediate waypoint distance</li>
+</ul>
 <p><strong>Returns:</strong> <code>boolean</code> - Success flag</p>
 <h5 id="veafmovegrouptogroupname-pos-speed-altitude"><code>veaf.moveGroupTo(groupName, pos, speed, altitude)</code><a class="headerlink" href="#veafmovegrouptogroupname-pos-speed-altitude" title="Permanent link">&para;</a></h5>
 <p>Move group to position.</p>
-<p><strong>Parameters:</strong>
-- <code>groupName</code> (string) - Group name
-- <code>pos</code> (vec3) - Destination
-- <code>speed</code> (number, optional) - Speed in m/s (default: 30 kph)
-- <code>altitude</code> (number, optional) - Altitude override</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>groupName</code> (string) - Group name</li>
+<li><code>pos</code> (vec3) - Destination</li>
+<li><code>speed</code> (number, optional) - Speed in m/s (default: 30 kph)</li>
+<li><code>altitude</code> (number, optional) - Altitude override</li>
+</ul>
 <p><strong>Returns:</strong> <code>boolean</code> - Success</p>
 <h5 id="veafreadyforcombatgroup-alarm-dispersetime"><code>veaf.readyForCombat(group, alarm, disperseTime)</code><a class="headerlink" href="#veafreadyforcombatgroup-alarm-dispersetime" title="Permanent link">&para;</a></h5>
 <p>Prepare ground group for combat.</p>
-<p><strong>Parameters:</strong>
-- <code>group</code> (DCS Group or string) - Group or group name
-- <code>alarm</code> (boolean, optional) - Alarm state (default: false)
-- <code>disperseTime</code> (number, optional) - Time to disperse in seconds</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>group</code> (DCS Group or string) - Group or group name</li>
+<li><code>alarm</code> (boolean, optional) - Alarm state (default: false)</li>
+<li><code>disperseTime</code> (number, optional) - Time to disperse in seconds</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Description:</strong> Sets group to combat ready state, optionally disperses units.</p>
 <h5 id="veafgetgroupsofcoalitioncoa"><code>veaf.getGroupsOfCoalition(coa)</code><a class="headerlink" href="#veafgetgroupsofcoalitioncoa" title="Permanent link">&para;</a></h5>
 <p>Get all groups of coalition.</p>
-<p><strong>Parameters:</strong>
-- <code>coa</code> (coalition, optional) - Coalition filter (default: all)</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>coa</code> (coalition, optional) - Coalition filter (default: all)</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Array of DCS Group objects</p>
 <h5 id="veafgetunitsofcoalitionincludestatics-coa"><code>veaf.getUnitsOfCoalition(includeStatics, coa)</code><a class="headerlink" href="#veafgetunitsofcoalitionincludestatics-coa" title="Permanent link">&para;</a></h5>
 <p>Get all units of coalition.</p>
-<p><strong>Parameters:</strong>
-- <code>includeStatics</code> (boolean) - Include static objects
-- <code>coa</code> (coalition, optional) - Coalition filter</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>includeStatics</code> (boolean) - Include static objects</li>
+<li><code>coa</code> (coalition, optional) - Coalition filter</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Array of unit/static objects</p>
 <h5 id="veaffindunitsincirclecenter-radius-includestatics-onlytheseunits"><code>veaf.findUnitsInCircle(center, radius, includeStatics, onlyTheseUnits)</code><a class="headerlink" href="#veaffindunitsincirclecenter-radius-includestatics-onlytheseunits" title="Permanent link">&para;</a></h5>
 <p>Find units in circular area.</p>
-<p><strong>Parameters:</strong>
-- <code>center</code> (vec3) - Circle center
-- <code>radius</code> (number) - Radius in meters
-- <code>includeStatics</code> (boolean, optional) - Include statics
-- <code>onlyTheseUnits</code> (table, optional) - Filter to these units only</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>center</code> (vec3) - Circle center</li>
+<li><code>radius</code> (number) - Radius in meters</li>
+<li><code>includeStatics</code> (boolean, optional) - Include statics</li>
+<li><code>onlyTheseUnits</code> (table, optional) - Filter to these units only</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Array of units/statics</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">targetPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">x</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="o">=</span><span class="mi">2000</span><span class="p">}</span>
@@ -10329,34 +10449,44 @@
 </code></pre></div></p>
 <h5 id="veafisunitinzoneunitorname-zoneorname"><code>veaf.isUnitInZone(unitOrName, zoneOrName)</code><a class="headerlink" href="#veafisunitinzoneunitorname-zoneorname" title="Permanent link">&para;</a></h5>
 <p>Check if unit is inside trigger zone.</p>
-<p><strong>Parameters:</strong>
-- <code>unitOrName</code> (DCS Unit or string) - Unit or unit name
-- <code>zoneOrName</code> (DCS Zone or string) - Zone or zone name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>unitOrName</code> (DCS Unit or string) - Unit or unit name</li>
+<li><code>zoneOrName</code> (DCS Zone or string) - Zone or zone name</li>
+</ul>
 <p><strong>Returns:</strong> <code>boolean</code> - True if inside zone</p>
 <h5 id="veafisunitaliveunit"><code>veaf.isUnitAlive(unit)</code><a class="headerlink" href="#veafisunitaliveunit" title="Permanent link">&para;</a></h5>
 <p>Check if unit is alive.</p>
-<p><strong>Parameters:</strong>
-- <code>unit</code> (DCS Unit or string) - Unit or unit name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>unit</code> (DCS Unit or string) - Unit or unit name</li>
+</ul>
 <p><strong>Returns:</strong> <code>boolean</code> - True if alive</p>
 <h5 id="veafgetunitliferelativeunit"><code>veaf.getUnitLifeRelative(unit)</code><a class="headerlink" href="#veafgetunitliferelativeunit" title="Permanent link">&para;</a></h5>
 <p>Get unit health as percentage.</p>
-<p><strong>Parameters:</strong>
-- <code>unit</code> (DCS Unit or string) - Unit or unit name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>unit</code> (DCS Unit or string) - Unit or unit name</li>
+</ul>
 <p><strong>Returns:</strong> <code>number</code> - Health percentage (0-100)</p>
 <h5 id="veaffixunitstableunitsornames"><code>veaf.fixUnitsTable(unitsOrNames)</code><a class="headerlink" href="#veaffixunitstableunitsornames" title="Permanent link">&para;</a></h5>
 <p>Convert unit names to unit objects.</p>
-<p><strong>Parameters:</strong>
-- <code>unitsOrNames</code> (table) - Array of units or unit names</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>unitsOrNames</code> (table) - Array of units or unit names</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Array of unit objects</p>
 <h4 id="route-generation">Route Generation<a class="headerlink" href="#route-generation" title="Permanent link">&para;</a></h4>
 <h5 id="veafgeneratevehiclesroutestartpoint-destination-onroad-speed-groupname"><code>veaf.generateVehiclesRoute(startPoint, destination, onRoad, speed, groupName)</code><a class="headerlink" href="#veafgeneratevehiclesroutestartpoint-destination-onroad-speed-groupname" title="Permanent link">&para;</a></h5>
 <p>Generate vehicle movement route.</p>
-<p><strong>Parameters:</strong>
-- <code>startPoint</code> (vec3) - Starting position
-- <code>destination</code> (vec3) - Destination position
-- <code>onRoad</code> (boolean) - Use roads when possible
-- <code>speed</code> (number) - Speed in m/s
-- <code>groupName</code> (string, optional) - Group name for logging</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>startPoint</code> (vec3) - Starting position</li>
+<li><code>destination</code> (vec3) - Destination position</li>
+<li><code>onRoad</code> (boolean) - Use roads when possible</li>
+<li><code>speed</code> (number) - Speed in m/s</li>
+<li><code>groupName</code> (string, optional) - Group name for logging</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Route table</p>
 <p><strong>Route Table Structure:</strong>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -10372,17 +10502,21 @@
 </code></pre></div></p>
 <h5 id="veafpatrolwatchdoggroupname-patrolroute-speed-firstpass"><code>veaf.PatrolWatchdog(groupName, patrolRoute, speed, firstPass)</code><a class="headerlink" href="#veafpatrolwatchdoggroupname-patrolroute-speed-firstpass" title="Permanent link">&para;</a></h5>
 <p>Monitor patrol route and repeat.</p>
-<p><strong>Parameters:</strong>
-- <code>groupName</code> (string) - Group name
-- <code>patrolRoute</code> (table) - Route table
-- <code>speed</code> (number) - Speed in m/s
-- <code>firstPass</code> (boolean) - Is first iteration</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>groupName</code> (string) - Group name</li>
+<li><code>patrolRoute</code> (table) - Route table</li>
+<li><code>speed</code> (number) - Speed in m/s</li>
+<li><code>firstPass</code> (boolean) - Is first iteration</li>
+</ul>
 <p><strong>Returns:</strong> None (schedules itself)</p>
 <h4 id="information-functions">Information Functions<a class="headerlink" href="#information-functions" title="Permanent link">&para;</a></h4>
 <h5 id="veafgettankerdatatankergroupname"><code>veaf.getTankerData(tankerGroupName)</code><a class="headerlink" href="#veafgettankerdatatankergroupname" title="Permanent link">&para;</a></h5>
 <p>Get tanker information.</p>
-<p><strong>Parameters:</strong>
-- <code>tankerGroupName</code> (string) - Tanker group name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>tankerGroupName</code> (string) - Tanker group name</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Tanker data structure</p>
 <p><strong>Tanker Data Structure:</strong>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -10399,9 +10533,11 @@
 </code></pre></div></p>
 <h5 id="veafgetcarrieratcdatacarriergroupname-carrierunitname"><code>veaf.getCarrierATCdata(carrierGroupName, carrierUnitName)</code><a class="headerlink" href="#veafgetcarrieratcdatacarriergroupname-carrierunitname" title="Permanent link">&para;</a></h5>
 <p>Get carrier ATC information.</p>
-<p><strong>Parameters:</strong>
-- <code>carrierGroupName</code> (string) - Carrier group name
-- <code>carrierUnitName</code> (string, optional) - Specific unit name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>carrierGroupName</code> (string) - Carrier group name</li>
+<li><code>carrierUnitName</code> (string, optional) - Specific unit name</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - ATC data</p>
 <p><strong>ATC Data Structure:</strong>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -10419,15 +10555,19 @@
 </code></pre></div></p>
 <h5 id="veafgetgroupdatagroupident"><code>veaf.getGroupData(groupIdent)</code><a class="headerlink" href="#veafgetgroupdatagroupident" title="Permanent link">&para;</a></h5>
 <p>Get raw DCS group data.</p>
-<p><strong>Parameters:</strong>
-- <code>groupIdent</code> (string or number) - Group name or ID</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>groupIdent</code> (string or number) - Group name or ID</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - DCS group data table</p>
 <h5 id="veafweatherreportvec3-alt-withlaste"><code>veaf.weatherReport(vec3, alt, withLASTE)</code><a class="headerlink" href="#veafweatherreportvec3-alt-withlaste" title="Permanent link">&para;</a></h5>
 <p>Generate weather report string.</p>
-<p><strong>Parameters:</strong>
-- <code>vec3</code> (vec3) - Position for report
-- <code>alt</code> (number, optional) - Altitude for report (default: 0)
-- <code>withLASTE</code> (boolean, optional) - Include LASTE data</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>vec3</code> (vec3) - Position for report</li>
+<li><code>alt</code> (number, optional) - Altitude for report (default: 0)</li>
+<li><code>withLASTE</code> (boolean, optional) - Include LASTE data</li>
+</ul>
 <p><strong>Returns:</strong> <code>string</code> - Weather report text</p>
 <p><strong>Example Output:</strong>
 <div class="highlight"><pre><span></span><code>Weather at position:
@@ -10438,46 +10578,56 @@ Wind: 270° at 10 kts
 <h4 id="output-functions">Output Functions<a class="headerlink" href="#output-functions" title="Permanent link">&para;</a></h4>
 <h5 id="veafouttextforunitunitname-message-duration-forallgroup"><code>veaf.outTextForUnit(unitName, message, duration, forAllGroup)</code><a class="headerlink" href="#veafouttextforunitunitname-message-duration-forallgroup" title="Permanent link">&para;</a></h5>
 <p>Display text message to unit.</p>
-<p><strong>Parameters:</strong>
-- <code>unitName</code> (string) - Target unit name
-- <code>message</code> (string) - Message text
-- <code>duration</code> (number, optional) - Display duration in seconds (default: 5)
-- <code>forAllGroup</code> (boolean, optional) - Show to all group members</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>unitName</code> (string) - Target unit name</li>
+<li><code>message</code> (string) - Message text</li>
+<li><code>duration</code> (number, optional) - Display duration in seconds (default: 5)</li>
+<li><code>forAllGroup</code> (boolean, optional) - Show to all group members</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="nv">veaf</span><span class="p">.</span><span class="nf">outTextForUnit</span><span class="p">(</span><span class="s2">&quot;Viper 1-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Target destroyed!&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
 </code></pre></div></p>
 <h5 id="veafouttextforgroupunitname-message-duration"><code>veaf.outTextForGroup(unitName, message, duration)</code><a class="headerlink" href="#veafouttextforgroupunitname-message-duration" title="Permanent link">&para;</a></h5>
 <p>Display text to entire group.</p>
-<p><strong>Parameters:</strong>
-- <code>unitName</code> (string) - Any unit in group
-- <code>message</code> (string) - Message text
-- <code>duration</code> (number, optional) - Duration in seconds</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>unitName</code> (string) - Any unit in group</li>
+<li><code>message</code> (string) - Message text</li>
+<li><code>duration</code> (number, optional) - Duration in seconds</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h4 id="conversion-functions">Conversion Functions<a class="headerlink" href="#conversion-functions" title="Permanent link">&para;</a></h4>
 <h5 id="veafconvertmachspeedmach-altitude-temperature"><code>veaf.convertMachSpeed(mach, altitude, temperature)</code><a class="headerlink" href="#veafconvertmachspeedmach-altitude-temperature" title="Permanent link">&para;</a></h5>
 <p>Convert Mach number to true airspeed.</p>
-<p><strong>Parameters:</strong>
-- <code>mach</code> (number) - Mach number
-- <code>altitude</code> (number) - Altitude in meters
-- <code>temperature</code> (number, optional) - Temperature offset in °C</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>mach</code> (number) - Mach number</li>
+<li><code>altitude</code> (number) - Altitude in meters</li>
+<li><code>temperature</code> (number, optional) - Temperature offset in °C</li>
+</ul>
 <p><strong>Returns:</strong> <code>number</code> - True airspeed in knots</p>
 <h5 id="veafconverttrueairspeedktas-altitude-temperature"><code>veaf.convertTrueAirSpeed(ktas, altitude, temperature)</code><a class="headerlink" href="#veafconverttrueairspeedktas-altitude-temperature" title="Permanent link">&para;</a></h5>
 <p>Convert true airspeed to Mach.</p>
-<p><strong>Parameters:</strong>
-- <code>ktas</code> (number) - True airspeed in knots
-- <code>altitude</code> (number) - Altitude in meters
-- <code>temperature</code> (number, optional) - Temperature offset</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>ktas</code> (number) - True airspeed in knots</li>
+<li><code>altitude</code> (number) - Altitude in meters</li>
+<li><code>temperature</code> (number, optional) - Temperature offset</li>
+</ul>
 <p><strong>Returns:</strong> <code>number</code> - Mach number</p>
 <h5 id="veafconvertspeedsmach-kias-ktas-altitude-temperature-pressure"><code>veaf.convertSpeeds(mach, kias, ktas, altitude, temperature, pressure)</code><a class="headerlink" href="#veafconvertspeedsmach-kias-ktas-altitude-temperature-pressure" title="Permanent link">&para;</a></h5>
 <p>Convert between speed formats.</p>
-<p><strong>Parameters:</strong>
-- <code>mach</code> (number, optional) - Mach number
-- <code>kias</code> (number, optional) - Indicated airspeed (knots)
-- <code>ktas</code> (number, optional) - True airspeed (knots)
-- <code>altitude</code> (number) - Altitude in meters
-- <code>temperature</code> (number, optional) - Temperature offset
-- <code>pressure</code> (number, optional) - Pressure in hPa</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>mach</code> (number, optional) - Mach number</li>
+<li><code>kias</code> (number, optional) - Indicated airspeed (knots)</li>
+<li><code>ktas</code> (number, optional) - True airspeed (knots)</li>
+<li><code>altitude</code> (number) - Altitude in meters</li>
+<li><code>temperature</code> (number, optional) - Temperature offset</li>
+<li><code>pressure</code> (number, optional) - Pressure in hPa</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - <code>{mach, kias, ktas}</code></p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">speeds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veaf</span><span class="p">.</span><span class="nf">convertSpeeds</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="mi">10000</span><span class="p">)</span>
@@ -10488,20 +10638,26 @@ Wind: 270° at 10 kts
 <p><strong>Returns:</strong> <code>number</code> - Declination in degrees</p>
 <h5 id="veafgetwindpoint"><code>veaf.getWind(point)</code><a class="headerlink" href="#veafgetwindpoint" title="Permanent link">&para;</a></h5>
 <p>Get wind at position.</p>
-<p><strong>Parameters:</strong>
-- <code>point</code> (vec3) - Position</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>point</code> (vec3) - Position</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - <code>{direction=number, strength=number}</code></p>
 <h4 id="math--utility-functions">Math &amp; Utility Functions<a class="headerlink" href="#math--utility-functions" title="Permanent link">&para;</a></h4>
 <h5 id="veafroundnum-numdecimalplaces"><code>veaf.round(num, numDecimalPlaces)</code><a class="headerlink" href="#veafroundnum-numdecimalplaces" title="Permanent link">&para;</a></h5>
 <p>Round number to decimal places.</p>
-<p><strong>Parameters:</strong>
-- <code>num</code> (number) - Number to round
-- <code>numDecimalPlaces</code> (number, optional) - Decimal places (default: 0)</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>num</code> (number) - Number to round</li>
+<li><code>numDecimalPlaces</code> (number, optional) - Decimal places (default: 0)</li>
+</ul>
 <p><strong>Returns:</strong> <code>number</code> - Rounded number</p>
 <h5 id="veafgetrandomizablenumericval"><code>veaf.getRandomizableNumeric(val)</code><a class="headerlink" href="#veafgetrandomizablenumericval" title="Permanent link">&para;</a></h5>
 <p>Parse randomizable numeric value.</p>
-<p><strong>Parameters:</strong>
-- <code>val</code> (string or number) - Value like "2-6" or "5"</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>val</code> (string or number) - Value like "2-6" or "5"</li>
+</ul>
 <p><strong>Returns:</strong> <code>number</code> - Random value in range</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veaf</span><span class="p">.</span><span class="nf">getRandomizableNumeric</span><span class="p">(</span><span class="s2">&quot;3-7&quot;</span><span class="p">)</span>
@@ -10509,50 +10665,68 @@ Wind: 270° at 10 kts
 </code></pre></div></p>
 <h5 id="veafinvertheadingheading"><code>veaf.invertHeading(heading)</code><a class="headerlink" href="#veafinvertheadingheading" title="Permanent link">&para;</a></h5>
 <p>Get opposite heading.</p>
-<p><strong>Parameters:</strong>
-- <code>heading</code> (number) - Heading in degrees</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>heading</code> (number) - Heading in degrees</li>
+</ul>
 <p><strong>Returns:</strong> <code>number</code> - Opposite heading (0-360)</p>
 <h5 id="veaflasercodetodigitcode"><code>veaf.laserCodeToDigit(code)</code><a class="headerlink" href="#veaflasercodetodigitcode" title="Permanent link">&para;</a></h5>
 <p>Convert laser code to digit.</p>
-<p><strong>Parameters:</strong>
-- <code>code</code> (number) - Laser code (e.g., 1688)</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>code</code> (number) - Laser code (e.g., 1688)</li>
+</ul>
 <p><strong>Returns:</strong> <code>number</code> - Digit representation</p>
 <h4 id="country--coalition-functions">Country &amp; Coalition Functions<a class="headerlink" href="#country--coalition-functions" title="Permanent link">&para;</a></h4>
 <h5 id="veafgetcountryidcountryname"><code>veaf.getCountryId(countryName)</code><a class="headerlink" href="#veafgetcountryidcountryname" title="Permanent link">&para;</a></h5>
 <p>Get DCS country ID from name.</p>
-<p><strong>Parameters:</strong>
-- <code>countryName</code> (string) - Country name (e.g., "USA", "Russia")</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>countryName</code> (string) - Country name (e.g., "USA", "Russia")</li>
+</ul>
 <p><strong>Returns:</strong> <code>number</code> - Country ID or nil</p>
 <h5 id="veafgetcountrynamecountryid"><code>veaf.getCountryName(countryId)</code><a class="headerlink" href="#veafgetcountrynamecountryid" title="Permanent link">&para;</a></h5>
 <p>Get country name from ID.</p>
-<p><strong>Parameters:</strong>
-- <code>countryId</code> (number) - DCS country ID</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>countryId</code> (number) - DCS country ID</li>
+</ul>
 <p><strong>Returns:</strong> <code>string</code> - Country name</p>
 <h5 id="veafgetcountryforcoalitioncoalition"><code>veaf.getCountryForCoalition(coalition)</code><a class="headerlink" href="#veafgetcountryforcoalitioncoalition" title="Permanent link">&para;</a></h5>
 <p>Get default country for coalition.</p>
-<p><strong>Parameters:</strong>
-- <code>coalition</code> (coalition) - Coalition ID</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>coalition</code> (coalition) - Coalition ID</li>
+</ul>
 <p><strong>Returns:</strong> <code>number</code> - Country ID</p>
-<p><strong>Default Mapping:</strong>
-- Blue → USA (2)
-- Red → Russia (0)</p>
+<p><strong>Default Mapping:</strong></p>
+<ul>
+<li>Blue → USA (2)</li>
+<li>Red → Russia (0)</li>
+</ul>
 <h5 id="veafgetcoalitionforcountrycountryname-asnumber"><code>veaf.getCoalitionForCountry(countryName, asNumber)</code><a class="headerlink" href="#veafgetcoalitionforcountrycountryname-asnumber" title="Permanent link">&para;</a></h5>
 <p>Get coalition for country.</p>
-<p><strong>Parameters:</strong>
-- <code>countryName</code> (string) - Country name
-- <code>asNumber</code> (boolean, optional) - Return as number instead of coalition object</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>countryName</code> (string) - Country name</li>
+<li><code>asNumber</code> (boolean, optional) - Return as number instead of coalition object</li>
+</ul>
 <p><strong>Returns:</strong> <code>coalition</code> or <code>number</code> - Coalition</p>
 <h5 id="veafgetairbaseforcoalitionairbase_name-coa"><code>veaf.getAirbaseForCoalition(airbase_name, coa)</code><a class="headerlink" href="#veafgetairbaseforcoalitionairbase_name-coa" title="Permanent link">&para;</a></h5>
 <p>Get airbase object for coalition.</p>
-<p><strong>Parameters:</strong>
-- <code>airbase_name</code> (string) - Airbase name
-- <code>coa</code> (coalition) - Coalition</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>airbase_name</code> (string) - Airbase name</li>
+<li><code>coa</code> (coalition) - Coalition</li>
+</ul>
 <p><strong>Returns:</strong> <code>DCS Airbase</code> - Airbase object or nil</p>
 <h4 id="airbase-functions">Airbase Functions<a class="headerlink" href="#airbase-functions" title="Permanent link">&para;</a></h4>
 <h5 id="veaffinddcsairbasename"><code>veaf.findDcsAirbase(name)</code><a class="headerlink" href="#veaffinddcsairbasename" title="Permanent link">&para;</a></h5>
 <p>Find DCS airbase by name (case-insensitive).</p>
-<p><strong>Parameters:</strong>
-- <code>name</code> (string) - Airbase name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name</code> (string) - Airbase name</li>
+</ul>
 <p><strong>Returns:</strong> <code>DCS Airbase</code> - Airbase object or nil</p>
 <h5 id="veafsilenceatconallairbases"><code>veaf.silenceAtcOnAllAirbases()</code><a class="headerlink" href="#veafsilenceatconallairbases" title="Permanent link">&para;</a></h5>
 <p>Disable ATC on all airbases.</p>
@@ -10564,31 +10738,39 @@ Wind: 270° at 10 kts
 <p><strong>Description:</strong> Must be called before using <code>veaf.getAirbaseLife()</code>.</p>
 <h5 id="veafgetairbaselifeairbase_name-percentage-loading"><code>veaf.getAirbaseLife(airbase_name, percentage, loading)</code><a class="headerlink" href="#veafgetairbaselifeairbase_name-percentage-loading" title="Permanent link">&para;</a></h5>
 <p>Get airbase health/damage.</p>
-<p><strong>Parameters:</strong>
-- <code>airbase_name</code> (string) - Airbase name
-- <code>percentage</code> (boolean, optional) - Return as percentage
-- <code>loading</code> (boolean, optional) - Loading initial data</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>airbase_name</code> (string) - Airbase name</li>
+<li><code>percentage</code> (boolean, optional) - Return as percentage</li>
+<li><code>loading</code> (boolean, optional) - Loading initial data</li>
+</ul>
 <p><strong>Returns:</strong> <code>number</code> - Health value (0-1 or 0-100 if percentage)</p>
 <h5 id="veafgetpolygonfromunitsunitnames"><code>veaf.getPolygonFromUnits(unitNames)</code><a class="headerlink" href="#veafgetpolygonfromunitsunitnames" title="Permanent link">&para;</a></h5>
 <p>Create polygon from unit positions.</p>
-<p><strong>Parameters:</strong>
-- <code>unitNames</code> (table) - Array of unit names</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>unitNames</code> (table) - Array of unit names</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Array of vec3 positions</p>
 <h4 id="trigger-zone-functions">Trigger Zone Functions<a class="headerlink" href="#trigger-zone-functions" title="Permanent link">&para;</a></h4>
 <h5 id="veafgettriggerzonezonename"><code>veaf.getTriggerZone(zoneName)</code><a class="headerlink" href="#veafgettriggerzonezonename" title="Permanent link">&para;</a></h5>
 <p>Get trigger zone by name.</p>
-<p><strong>Parameters:</strong>
-- <code>zoneName</code> (string) - Zone name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>zoneName</code> (string) - Zone name</li>
+</ul>
 <p><strong>Returns:</strong> <code>DCS Zone</code> - Zone object or nil</p>
 <h4 id="mission-control-functions">Mission Control Functions<a class="headerlink" href="#mission-control-functions" title="Permanent link">&para;</a></h4>
 <h5 id="veafendmissionatendtimehour-endtimeminute-checkintervalinseconds-checkmessage-"><code>veaf.endMissionAt(endTimeHour, endTimeMinute, checkIntervalInSeconds, checkMessage, ...)</code><a class="headerlink" href="#veafendmissionatendtimehour-endtimeminute-checkintervalinseconds-checkmessage-" title="Permanent link">&para;</a></h5>
 <p>Schedule mission end at specific time.</p>
-<p><strong>Parameters:</strong>
-- <code>endTimeHour</code> (number) - Hour (0-23)
-- <code>endTimeMinute</code> (number) - Minute (0-59)
-- <code>checkIntervalInSeconds</code> (number) - Check frequency
-- <code>checkMessage</code> (string, optional) - Message to display
-- Additional parameters for message formatting</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>endTimeHour</code> (number) - Hour (0-23)</li>
+<li><code>endTimeMinute</code> (number) - Minute (0-59)</li>
+<li><code>checkIntervalInSeconds</code> (number) - Check frequency</li>
+<li><code>checkMessage</code> (string, optional) - Message to display</li>
+<li>Additional parameters for message formatting</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- End mission at 14:30 (2:30 PM)</span>
@@ -10596,18 +10778,22 @@ Wind: 270° at 10 kts
 </code></pre></div></p>
 <h5 id="veafgetdcstypenamedcselementname"><code>veaf.getDcsTypeName(dcsElementName)</code><a class="headerlink" href="#veafgetdcstypenamedcselementname" title="Permanent link">&para;</a></h5>
 <p>Get DCS type name from element name.</p>
-<p><strong>Parameters:</strong>
-- <code>dcsElementName</code> (string) - DCS element name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dcsElementName</code> (string) - DCS element name</li>
+</ul>
 <p><strong>Returns:</strong> <code>string</code> - Type name</p>
 <h4 id="serialization-functions">Serialization Functions<a class="headerlink" href="#serialization-functions" title="Permanent link">&para;</a></h4>
 <h5 id="veafpo-level-skip-includemeta-dontrecurse"><code>veaf.p(o, level, skip, includeMeta, dontRecurse)</code><a class="headerlink" href="#veafpo-level-skip-includemeta-dontrecurse" title="Permanent link">&para;</a></h5>
 <p>Pretty-print/serialize object.</p>
-<p><strong>Parameters:</strong>
-- <code>o</code> (any) - Object to serialize
-- <code>level</code> (number, optional) - Indentation level
-- <code>skip</code> (table, optional) - Keys to skip
-- <code>includeMeta</code> (boolean, optional) - Include metatables
-- <code>dontRecurse</code> (table, optional) - Objects not to recurse</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>o</code> (any) - Object to serialize</li>
+<li><code>level</code> (number, optional) - Indentation level</li>
+<li><code>skip</code> (table, optional) - Keys to skip</li>
+<li><code>includeMeta</code> (boolean, optional) - Include metatables</li>
+<li><code>dontRecurse</code> (table, optional) - Objects not to recurse</li>
+</ul>
 <p><strong>Returns:</strong> <code>string</code> - Serialized representation</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Strike&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">units</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}}</span>
@@ -10625,19 +10811,23 @@ Wind: 270° at 10 kts
 </code></pre></div></p>
 <h5 id="veafserializename-value-level"><code>veaf.serialize(name, value, level)</code><a class="headerlink" href="#veafserializename-value-level" title="Permanent link">&para;</a></h5>
 <p>Serialize value to Lua code string.</p>
-<p><strong>Parameters:</strong>
-- <code>name</code> (string) - Variable name
-- <code>value</code> (any) - Value to serialize
-- <code>level</code> (number, optional) - Indentation level</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name</code> (string) - Variable name</li>
+<li><code>value</code> (any) - Value to serialize</li>
+<li><code>level</code> (number, optional) - Indentation level</li>
+</ul>
 <p><strong>Returns:</strong> <code>string</code> - Lua code string</p>
 <h5 id="veafexportasjsondata-name-jsonify-filename-export_path"><code>veaf.exportAsJson(data, name, jsonify, filename, export_path)</code><a class="headerlink" href="#veafexportasjsondata-name-jsonify-filename-export_path" title="Permanent link">&para;</a></h5>
 <p>Export data to JSON file.</p>
-<p><strong>Parameters:</strong>
-- <code>data</code> (any) - Data to export
-- <code>name</code> (string) - Variable name
-- <code>jsonify</code> (boolean) - Convert to JSON (vs Lua)
-- <code>filename</code> (string, optional) - Output filename
-- <code>export_path</code> (string, optional) - Export directory path</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>data</code> (any) - Data to export</li>
+<li><code>name</code> (string) - Variable name</li>
+<li><code>jsonify</code> (boolean) - Convert to JSON (vs Lua)</li>
+<li><code>filename</code> (string, optional) - Output filename</li>
+<li><code>export_path</code> (string, optional) - Export directory path</li>
+</ul>
 <p><strong>Returns:</strong> <code>boolean</code> - Success flag</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">missions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -10662,14 +10852,18 @@ Wind: 270° at 10 kts
 <p>Set logger name.</p>
 <p><strong><code>logger:setLevel(value, force)</code></strong></p>
 <p>Set logging level.</p>
-<p><strong>Parameters:</strong>
-- <code>value</code> (string or number) - Level: "error", "warning", "info", "debug", "trace"
-- <code>force</code> (boolean, optional) - Force override base level</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>value</code> (string or number) - Level: "error", "warning", "info", "debug", "trace"</li>
+<li><code>force</code> (boolean, optional) - Force override base level</li>
+</ul>
 <p><strong><code>logger:error(text, ...)</code></strong></p>
 <p>Log error message (level 1).</p>
-<p><strong>Parameters:</strong>
-- <code>text</code> (string) - Message with format placeholders
-- <code>...</code> - Format arguments</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>text</code> (string) - Message with format placeholders</li>
+<li><code>...</code> - Format arguments</li>
+</ul>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="nv">logger</span><span class="p">:</span><span class="nf">error</span><span class="p">(</span><span class="s2">&quot;Failed to spawn %s at position %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">groupName</span><span class="p">,</span><span class="w"> </span><span class="nv">veaf</span><span class="p">.</span><span class="nf">vecToString</span><span class="p">(</span><span class="nv">pos</span><span class="p">))</span>
 </code></pre></div></p>
@@ -10696,36 +10890,42 @@ Wind: 270° at 10 kts
 <h5 id="map-marker-logging">Map Marker Logging<a class="headerlink" href="#map-marker-logging" title="Permanent link">&para;</a></h5>
 <p><strong><code>logger:marker(id, header, message, position, markersTable, radius, fillColor)</code></strong></p>
 <p>Add map marker for debugging.</p>
-<p><strong>Parameters:</strong>
-- <code>id</code> (number) - Marker ID
-- <code>header</code> (string) - Marker header text
-- <code>message</code> (string) - Marker message
-- <code>position</code> (vec3) - Marker position
-- <code>markersTable</code> (table, optional) - Track markers in table
-- <code>radius</code> (number, optional) - Circle radius
-- <code>fillColor</code> (table, optional) - Fill color <code>{r, g, b, a}</code></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>id</code> (number) - Marker ID</li>
+<li><code>header</code> (string) - Marker header text</li>
+<li><code>message</code> (string) - Marker message</li>
+<li><code>position</code> (vec3) - Marker position</li>
+<li><code>markersTable</code> (table, optional) - Track markers in table</li>
+<li><code>radius</code> (number, optional) - Circle radius</li>
+<li><code>fillColor</code> (table, optional) - Fill color <code>{r, g, b, a}</code></li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong><code>logger:markerArrow(id, header, message, positionStart, positionEnd, markersTable, lineType, fillColor)</code></strong></p>
 <p>Add arrow marker.</p>
-<p><strong>Parameters:</strong>
-- <code>id</code> (number) - Marker ID
-- <code>header</code> (string) - Header text
-- <code>message</code> (string) - Message
-- <code>positionStart</code> (vec3) - Arrow start
-- <code>positionEnd</code> (vec3) - Arrow end
-- <code>markersTable</code> (table, optional) - Track markers
-- <code>lineType</code> (number, optional) - Line type
-- <code>fillColor</code> (table, optional) - Color</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>id</code> (number) - Marker ID</li>
+<li><code>header</code> (string) - Header text</li>
+<li><code>message</code> (string) - Message</li>
+<li><code>positionStart</code> (vec3) - Arrow start</li>
+<li><code>positionEnd</code> (vec3) - Arrow end</li>
+<li><code>markersTable</code> (table, optional) - Track markers</li>
+<li><code>lineType</code> (number, optional) - Line type</li>
+<li><code>fillColor</code> (table, optional) - Color</li>
+</ul>
 <p><strong><code>logger:markerQuad(id, header, message, points, markersTable, lineType, fillColor)</code></strong></p>
 <p>Add quadrilateral marker.</p>
-<p><strong>Parameters:</strong>
-- <code>id</code> (number) - Marker ID
-- <code>header</code> (string) - Header
-- <code>message</code> (string) - Message
-- <code>points</code> (table) - Array of 4 vec3 points
-- <code>markersTable</code> (table, optional) - Track markers
-- <code>lineType</code> (number, optional) - Line type
-- <code>fillColor</code> (table, optional) - Color</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>id</code> (number) - Marker ID</li>
+<li><code>header</code> (string) - Header</li>
+<li><code>message</code> (string) - Message</li>
+<li><code>points</code> (table) - Array of 4 vec3 points</li>
+<li><code>markersTable</code> (table, optional) - Track markers</li>
+<li><code>lineType</code> (number, optional) - Line type</li>
+<li><code>fillColor</code> (table, optional) - Color</li>
+</ul>
 <hr />
 <h3 id="veafeventhandlerlua">veafEventHandler.lua<a class="headerlink" href="#veafeventhandlerlua" title="Permanent link">&para;</a></h3>
 <p><strong>Module ID:</strong> <code>EVENTS</code>
@@ -10779,10 +10979,12 @@ Wind: 270° at 10 kts
 <h4 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h4>
 <h5 id="veafeventhandleraddcallbackname-events-callback"><code>veafEventHandler.addCallback(name, events, callback)</code><a class="headerlink" href="#veafeventhandleraddcallbackname-events-callback" title="Permanent link">&para;</a></h5>
 <p>Register event callback function.</p>
-<p><strong>Parameters:</strong>
-- <code>name</code> (string) - Unique callback name
-- <code>events</code> (table or nil) - Array of event IDs/names, or nil for all events
-- <code>callback</code> (function) - Callback function</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name</code> (string) - Unique callback name</li>
+<li><code>events</code> (table or nil) - Array of event IDs/names, or nil for all events</li>
+<li><code>callback</code> (function) - Callback function</li>
+</ul>
 <p><strong>Callback Signature:</strong>
 <div class="highlight"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nf">callback</span><span class="p">(</span><span class="nv">transformedEvent</span><span class="p">)</span>
 <span class="w">  </span><span class="c1">-- transformedEvent is enhanced event table</span>
@@ -10812,8 +11014,10 @@ Wind: 270° at 10 kts
 </code></pre></div></p>
 <h5 id="veafeventhandlercompleteunitunit"><code>veafEventHandler.completeUnit(unit)</code><a class="headerlink" href="#veafeventhandlercompleteunitunit" title="Permanent link">&para;</a></h5>
 <p>Get complete unit information from DCS unit.</p>
-<p><strong>Parameters:</strong>
-- <code>unit</code> (DCS Unit) - Unit object</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>unit</code> (DCS Unit) - Unit object</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Unit info table</p>
 <p><strong>Unit Info Structure:</strong>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -10831,8 +11035,10 @@ Wind: 270° at 10 kts
 </code></pre></div></p>
 <h5 id="veafeventhandlercompleteunitfromnameunitname"><code>veafEventHandler.completeUnitFromName(unitName)</code><a class="headerlink" href="#veafeventhandlercompleteunitfromnameunitname" title="Permanent link">&para;</a></h5>
 <p>Get unit information from unit name.</p>
-<p><strong>Parameters:</strong>
-- <code>unitName</code> (string) - Unit name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>unitName</code> (string) - Unit name</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Unit info table (same as completeUnit)</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">unitInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veafEventHandler</span><span class="p">.</span><span class="nf">completeUnitFromName</span><span class="p">(</span><span class="s2">&quot;Viper 1-1&quot;</span><span class="p">)</span>
@@ -10843,15 +11049,19 @@ Wind: 270° at 10 kts
 </code></pre></div></p>
 <h5 id="veafeventhandlercheckeventknowneventnameorid-warnonly"><code>veafEventHandler.checkEventKnown(eventNameOrId, warnOnly)</code><a class="headerlink" href="#veafeventhandlercheckeventknowneventnameorid-warnonly" title="Permanent link">&para;</a></h5>
 <p>Validate event is recognized by DCS.</p>
-<p><strong>Parameters:</strong>
-- <code>eventNameOrId</code> (string or number) - Event name or ID
-- <code>warnOnly</code> (boolean, optional) - Only warn, don't error</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>eventNameOrId</code> (string or number) - Event name or ID</li>
+<li><code>warnOnly</code> (boolean, optional) - Only warn, don't error</li>
+</ul>
 <p><strong>Returns:</strong> <code>boolean</code> - True if event is known</p>
 <h5 id="veafeventhandlerseteventenabledeventnameorid-enabled"><code>veafEventHandler.setEventEnabled(eventNameOrId, enabled)</code><a class="headerlink" href="#veafeventhandlerseteventenabledeventnameorid-enabled" title="Permanent link">&para;</a></h5>
 <p>Enable or disable event processing.</p>
-<p><strong>Parameters:</strong>
-- <code>eventNameOrId</code> (string or number) - Event to control
-- <code>enabled</code> (boolean) - Enable flag</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>eventNameOrId</code> (string or number) - Event to control</li>
+<li><code>enabled</code> (boolean) - Enable flag</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Disable shooting events for performance</span>
@@ -10860,13 +11070,17 @@ Wind: 270° at 10 kts
 </code></pre></div></p>
 <h5 id="veafeventhandleriseventenabledeventnameorid"><code>veafEventHandler.isEventEnabled(eventNameOrId)</code><a class="headerlink" href="#veafeventhandleriseventenabledeventnameorid" title="Permanent link">&para;</a></h5>
 <p>Check if event processing is enabled.</p>
-<p><strong>Parameters:</strong>
-- <code>eventNameOrId</code> (string or number) - Event to check</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>eventNameOrId</code> (string or number) - Event to check</li>
+</ul>
 <p><strong>Returns:</strong> <code>boolean</code> - True if enabled</p>
 <h5 id="veafeventhandleriseventdelayedcallbackeventnameorid"><code>veafEventHandler.isEventDelayedCallback(eventNameOrId)</code><a class="headerlink" href="#veafeventhandleriseventdelayedcallbackeventnameorid" title="Permanent link">&para;</a></h5>
 <p>Check if event uses delayed callback.</p>
-<p><strong>Parameters:</strong>
-- <code>eventNameOrId</code> (string or number) - Event to check</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>eventNameOrId</code> (string or number) - Event to check</li>
+</ul>
 <p><strong>Returns:</strong> <code>boolean</code> - True if delayed</p>
 <p><strong>Description:</strong> Some events like BIRTH need delayed callbacks to allow DCS to fully initialize objects.</p>
 <h5 id="veafeventhandlerinitialize"><code>veafEventHandler.initialize()</code><a class="headerlink" href="#veafeventhandlerinitialize" title="Permanent link">&para;</a></h5>
@@ -10923,14 +11137,18 @@ Wind: 270° at 10 kts
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="event-handling-best-practices">Event Handling Best Practices<a class="headerlink" href="#event-handling-best-practices" title="Permanent link">&para;</a></h4>
-<p><strong>Performance:</strong>
-- Disable unused events to reduce overhead
-- Use delayed callbacks for expensive operations
-- Filter events by type when registering callbacks</p>
-<p><strong>Event Timing:</strong>
-- BIRTH events fire before units fully initialized
-- Use delayed callbacks for BIRTH if accessing unit properties
-- PLAYER_ENTER_UNIT fires after player fully loaded</p>
+<p><strong>Performance:</strong></p>
+<ul>
+<li>Disable unused events to reduce overhead</li>
+<li>Use delayed callbacks for expensive operations</li>
+<li>Filter events by type when registering callbacks</li>
+</ul>
+<p><strong>Event Timing:</strong></p>
+<ul>
+<li>BIRTH events fire before units fully initialized</li>
+<li>Use delayed callbacks for BIRTH if accessing unit properties</li>
+<li>PLAYER_ENTER_UNIT fires after player fully loaded</li>
+</ul>
 <p><strong>Example: Complete Event Handler:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Track player kills</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">playerKills</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
@@ -10969,9 +11187,11 @@ Wind: 270° at 10 kts
 <h4 id="functions_1">Functions<a class="headerlink" href="#functions_1" title="Permanent link">&para;</a></h4>
 <h5 id="veafmarkersregistereventhandlereventtype-eventhandler"><code>veafMarkers.registerEventHandler(eventType, eventHandler)</code><a class="headerlink" href="#veafmarkersregistereventhandlereventtype-eventhandler" title="Permanent link">&para;</a></h5>
 <p>Register handler for marker events.</p>
-<p><strong>Parameters:</strong>
-- <code>eventType</code> (number) - Event type: <code>MarkerAdd</code>, <code>MarkerChange</code>, or <code>MarkerRemove</code>
-- <code>eventHandler</code> (function) - Handler function</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>eventType</code> (number) - Event type: <code>MarkerAdd</code>, <code>MarkerChange</code>, or <code>MarkerRemove</code></li>
+<li><code>eventHandler</code> (function) - Handler function</li>
+</ul>
 <p><strong>Handler Signature:</strong>
 <div class="highlight"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nf">eventHandler</span><span class="p">(</span><span class="nv">vec3_position</span><span class="p">,</span><span class="w"> </span><span class="nv">event</span><span class="p">)</span>
 <span class="w">  </span><span class="c1">-- vec3_position: marker position</span>
@@ -10994,8 +11214,10 @@ Wind: 270° at 10 kts
 </code></pre></div></p>
 <h5 id="veafmarkersunregistereventhandlerid"><code>veafMarkers.unregisterEventHandler(id)</code><a class="headerlink" href="#veafmarkersunregistereventhandlerid" title="Permanent link">&para;</a></h5>
 <p>Remove marker event handler.</p>
-<p><strong>Parameters:</strong>
-- <code>id</code> (number) - Handler ID from registerEventHandler</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>id</code> (number) - Handler ID from registerEventHandler</li>
+</ul>
 <p><strong>Returns:</strong> <code>boolean</code> - True if unregistered successfully</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">handlerId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veafMarkers</span><span class="p">.</span><span class="nf">registerEventHandler</span><span class="p">(</span><span class="nv">veafMarkers</span><span class="p">.</span><span class="py">MarkerAdd</span><span class="p">,</span><span class="w"> </span><span class="nv">myHandler</span><span class="p">)</span>
@@ -11067,23 +11289,29 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="functions_2">Functions<a class="headerlink" href="#functions_2" title="Permanent link">&para;</a></h4>
 <h5 id="veafcommandsregistercommandhandlerfn-priority"><code>veafCommands.registerCommandHandler(fn, priority)</code><a class="headerlink" href="#veafcommandsregistercommandhandlerfn-priority" title="Permanent link">&para;</a></h5>
 <p>Register a command handler function. Handlers are called in ascending priority order.</p>
-<p><strong>Parameters:</strong>
-- <code>fn</code> (function) - Handler with signature <code>(pos, event, bypass, fromMarker, groups, route) → boolean</code>
-- <code>priority</code> (number) - Execution order (lower = earlier); use the <code>PRIORITY_*</code> constants</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>fn</code> (function) - Handler with signature <code>(pos, event, bypass, fromMarker, groups, route) → boolean</code></li>
+<li><code>priority</code> (number) - Execution order (lower = earlier); use the <code>PRIORITY_*</code> constants</li>
+</ul>
 <h5 id="veafcommandsexecutepos-text-coalition-groups-route"><code>veafCommands.execute(pos, text, coalition, groups, route)</code><a class="headerlink" href="#veafcommandsexecutepos-text-coalition-groups-route" title="Permanent link">&para;</a></h5>
 <p>Execute a command from the interpreter path (unit names). The coalition is used as-is.</p>
-<p><strong>Parameters:</strong>
-- <code>pos</code> (vec3) - Execution position
-- <code>text</code> (string) - Command text
-- <code>coalition</code> (number) - Coalition number
-- <code>groups</code> (table, optional) - Table to receive spawned group names
-- <code>route</code> (table, optional) - Route definition</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>pos</code> (vec3) - Execution position</li>
+<li><code>text</code> (string) - Command text</li>
+<li><code>coalition</code> (number) - Coalition number</li>
+<li><code>groups</code> (table, optional) - Table to receive spawned group names</li>
+<li><code>route</code> (table, optional) - Route definition</li>
+</ul>
 <p><strong>Returns:</strong> <code>boolean</code> — true if a handler consumed the command</p>
 <h5 id="veafcommandsdispatchmarkereventpos-event"><code>veafCommands.dispatchMarker(eventPos, event)</code><a class="headerlink" href="#veafcommandsdispatchmarkereventpos-event" title="Permanent link">&para;</a></h5>
 <p>Handle a marker change event. Inverts coalition (marker events report the placer's side, not the target's), calls all registered handlers in priority order, and removes the mark on success.</p>
-<p><strong>Parameters:</strong>
-- <code>eventPos</code> (vec3) - Marker position
-- <code>event</code> (table) - Marker event object</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>eventPos</code> (vec3) - Marker position</li>
+<li><code>event</code> (table) - Marker event object</li>
+</ul>
 <hr />
 <h3 id="veafinterpreterlua">veafInterpreter.lua<a class="headerlink" href="#veafinterpreterlua" title="Permanent link">&para;</a></h3>
 <p><strong>Module ID:</strong> <code>INTERPRETER</code>
@@ -11097,8 +11325,10 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="functions_3">Functions<a class="headerlink" href="#functions_3" title="Permanent link">&para;</a></h4>
 <h5 id="veafinterpreterinterprettext"><code>veafInterpreter.interpret(text)</code><a class="headerlink" href="#veafinterpreterinterprettext" title="Permanent link">&para;</a></h5>
 <p>Extract command from text string.</p>
-<p><strong>Parameters:</strong>
-- <code>text</code> (string) - Text containing command (unit name or marker text)</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>text</code> (string) - Text containing command (unit name or marker text)</li>
+</ul>
 <p><strong>Returns:</strong> <code>string</code> - Extracted command or nil</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">unitName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;#veafInterpreter[</span><span class="se">\&quot;</span><span class="s2">_spawn, name F-16C, group 2</span><span class="se">\&quot;</span><span class="s2">]&quot;</span>
@@ -11107,12 +11337,14 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafinterpreterexecutecommand-position-coalition-route-spawnedgroups"><code>veafInterpreter.execute(command, position, coalition, route, spawnedGroups)</code><a class="headerlink" href="#veafinterpreterexecutecommand-position-coalition-route-spawnedgroups" title="Permanent link">&para;</a></h5>
 <p>Execute VEAF command. Delegates to <code>veafCommands.execute()</code> — all registered handlers are tried in priority order.</p>
-<p><strong>Parameters:</strong>
-- <code>command</code> (string) - Command string
-- <code>position</code> (vec3) - Command execution position
-- <code>coalition</code> (coalition, optional) - Coalition executing command
-- <code>route</code> (table, optional) - Route definition for spawned groups
-- <code>spawnedGroups</code> (table, optional) - Table to receive spawned group names</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>command</code> (string) - Command string</li>
+<li><code>position</code> (vec3) - Command execution position</li>
+<li><code>coalition</code> (coalition, optional) - Coalition executing command</li>
+<li><code>route</code> (table, optional) - Route definition for spawned groups</li>
+<li><code>spawnedGroups</code> (table, optional) - Table to receive spawned group names</li>
+</ul>
 <p><strong>Returns:</strong> <code>boolean</code> - True if command executed successfully</p>
 <p><strong>Note:</strong> Command routing is handled by <code>veafCommands</code>. Modules register themselves via <code>veafCommands.registerCommandHandler()</code>.</p>
 <p><strong>Example:</strong>
@@ -11124,15 +11356,19 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafinterpreterexecutecommandonunitunitname-command"><code>veafInterpreter.executeCommandOnUnit(unitName, command)</code><a class="headerlink" href="#veafinterpreterexecutecommandonunitunitname-command" title="Permanent link">&para;</a></h5>
 <p>Execute command from unit's position.</p>
-<p><strong>Parameters:</strong>
-- <code>unitName</code> (string) - Unit or static name
-- <code>command</code> (string) - Command to execute</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>unitName</code> (string) - Unit or static name</li>
+<li><code>command</code> (string) - Command to execute</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
-<p><strong>Description:</strong>
-- Finds unit or static object by name
-- Executes command at unit's position
-- Destroys unit/static after successful execution
-- Useful for pre-placed trigger units</p>
+<p><strong>Description:</strong></p>
+<ul>
+<li>Finds unit or static object by name</li>
+<li>Executes command at unit's position</li>
+<li>Destroys unit/static after successful execution</li>
+<li>Useful for pre-placed trigger units</li>
+</ul>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- In mission editor, create unit named: &quot;#veafInterpreter[\&quot;_spawn, name SA-6\&quot;]&quot;</span>
 <span class="c1">-- Or execute via script:</span>
@@ -11141,10 +11377,12 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h5 id="veafinterpreterinitialize"><code>veafInterpreter.initialize()</code><a class="headerlink" href="#veafinterpreterinitialize" title="Permanent link">&para;</a></h5>
 <p>Initialize interpreter module.</p>
 <p><strong>Returns:</strong> None</p>
-<p><strong>Description:</strong>
-- Called automatically during VEAF initialization
-- Scans for units with interpreter commands in names
-- Executes commands after delay</p>
+<p><strong>Description:</strong></p>
+<ul>
+<li>Called automatically during VEAF initialization</li>
+<li>Scans for units with interpreter commands in names</li>
+<li>Executes commands after delay</li>
+</ul>
 <h4 id="command-execution-flow">Command Execution Flow<a class="headerlink" href="#command-execution-flow" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>1. Command received (unit name or marker)
    ↓
@@ -11185,13 +11423,17 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="functions_4">Functions<a class="headerlink" href="#functions_4" title="Permanent link">&para;</a></h4>
 <h5 id="veafspawnmarktextanalysistext"><code>veafSpawn.markTextAnalysis(text)</code><a class="headerlink" href="#veafspawnmarktextanalysistext" title="Permanent link">&para;</a></h5>
 <p>Parse marker text for spawn parameters. Defined in <code>veafSpawnParser.lua</code>, available on the <code>veafSpawn</code> table.</p>
-<p><strong>Parameters:</strong>
-- <code>text</code> (string) - Marker text to parse</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>text</code> (string) - Marker text to parse</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> — options table with parsed key/value pairs</p>
 <h5 id="veafspawnconvertlasertofreqlaser"><code>veafSpawn.convertLaserToFreq(laser)</code><a class="headerlink" href="#veafspawnconvertlasertofreqlaser" title="Permanent link">&para;</a></h5>
 <p>Convert a laser code to a TACAN/radio frequency string.</p>
-<p><strong>Parameters:</strong>
-- <code>laser</code> (number) - Laser code (1111–1788)</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>laser</code> (number) - Laser code (1111–1788)</li>
+</ul>
 <p><strong>Returns:</strong> <code>string</code> — frequency label, or nil if not found</p>
 <hr />
 <h3 id="veafspawnlua">veafSpawn.lua<a class="headerlink" href="#veafspawnlua" title="Permanent link">&para;</a></h3>
@@ -11215,17 +11457,19 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="main-functions">Main Functions<a class="headerlink" href="#main-functions" title="Permanent link">&para;</a></h4>
 <h5 id="veafspawnexecutecommandeventpos-eventtext-coalition-markid-bypasssecurity-spawnedgroups-repeatcount-repeatdelay-route-allowstartdelay"><code>veafSpawn.executeCommand(eventPos, eventText, coalition, markId, bypassSecurity, spawnedGroups, repeatCount, repeatDelay, route, allowStartDelay)</code><a class="headerlink" href="#veafspawnexecutecommandeventpos-eventtext-coalition-markid-bypasssecurity-spawnedgroups-repeatcount-repeatdelay-route-allowstartdelay" title="Permanent link">&para;</a></h5>
 <p>Execute spawn command from marker or script.</p>
-<p><strong>Parameters:</strong>
-- <code>eventPos</code> (vec3) - Spawn position
-- <code>eventText</code> (string) - Command text
-- <code>coalition</code> (coalition, optional) - Coalition
-- <code>markId</code> (number, optional) - Marker ID to remove
-- <code>bypassSecurity</code> (boolean, optional) - Skip security check
-- <code>spawnedGroups</code> (table, optional) - Receive spawned group names
-- <code>repeatCount</code> (number, optional) - Number of repetitions
-- <code>repeatDelay</code> (number, optional) - Delay between spawns (seconds)
-- <code>route</code> (table, optional) - Route for spawned groups
-- <code>allowStartDelay</code> (boolean, optional) - Allow delayed start</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>eventPos</code> (vec3) - Spawn position</li>
+<li><code>eventText</code> (string) - Command text</li>
+<li><code>coalition</code> (coalition, optional) - Coalition</li>
+<li><code>markId</code> (number, optional) - Marker ID to remove</li>
+<li><code>bypassSecurity</code> (boolean, optional) - Skip security check</li>
+<li><code>spawnedGroups</code> (table, optional) - Receive spawned group names</li>
+<li><code>repeatCount</code> (number, optional) - Number of repetitions</li>
+<li><code>repeatDelay</code> (number, optional) - Delay between spawns (seconds)</li>
+<li><code>route</code> (table, optional) - Route for spawned groups</li>
+<li><code>allowStartDelay</code> (boolean, optional) - Allow delayed start</li>
+</ul>
 <p><strong>Returns:</strong> <code>boolean</code> - Success flag</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">x</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="o">=</span><span class="mi">2000</span><span class="p">}</span>
@@ -11233,8 +11477,10 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafspawnmarktextanalysistext_1"><code>veafSpawn.markTextAnalysis(text)</code><a class="headerlink" href="#veafspawnmarktextanalysistext_1" title="Permanent link">&para;</a></h5>
 <p>Parse marker text for spawn parameters.</p>
-<p><strong>Parameters:</strong>
-- <code>text</code> (string) - Marker text</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>text</code> (string) - Marker text</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Parsed options</p>
 <p><strong>Returned Table Fields:</strong>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -11301,22 +11547,24 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="unit-spawning-functions">Unit Spawning Functions<a class="headerlink" href="#unit-spawning-functions" title="Permanent link">&para;</a></h4>
 <h5 id="veafspawnspawnunitspawnposition-radius-name-czname-country-alt-hdg-unitname-role-static-code-freq-mod-silent-hiddenonmfd"><code>veafSpawn.spawnUnit(spawnPosition, radius, name, czName, country, alt, hdg, unitName, role, static, code, freq, mod, silent, hiddenOnMFD)</code><a class="headerlink" href="#veafspawnspawnunitspawnposition-radius-name-czname-country-alt-hdg-unitname-role-static-code-freq-mod-silent-hiddenonmfd" title="Permanent link">&para;</a></h5>
 <p>Spawn single unit.</p>
-<p><strong>Parameters:</strong>
-- <code>spawnPosition</code> (vec3) - Spawn position
-- <code>radius</code> (number) - Dispersion radius (meters)
-- <code>name</code> (string) - Unit type name (DCS type or alias)
-- <code>czName</code> (string, optional) - Combat zone name
-- <code>country</code> (number, optional) - Country ID
-- <code>alt</code> (number, optional) - Altitude (feet)
-- <code>hdg</code> (number, optional) - Heading (degrees)
-- <code>unitName</code> (string, optional) - Override unit name
-- <code>role</code> (string, optional) - Unit role
-- <code>static</code> (boolean, optional) - Spawn as static object
-- <code>code</code> (number, optional) - Laser/TACAN code
-- <code>freq</code> (number, optional) - Radio frequency
-- <code>mod</code> (string, optional) - Radio modulation
-- <code>silent</code> (boolean, optional) - Suppress messages
-- <code>hiddenOnMFD</code> (boolean, optional) - Hide from MFD</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>spawnPosition</code> (vec3) - Spawn position</li>
+<li><code>radius</code> (number) - Dispersion radius (meters)</li>
+<li><code>name</code> (string) - Unit type name (DCS type or alias)</li>
+<li><code>czName</code> (string, optional) - Combat zone name</li>
+<li><code>country</code> (number, optional) - Country ID</li>
+<li><code>alt</code> (number, optional) - Altitude (feet)</li>
+<li><code>hdg</code> (number, optional) - Heading (degrees)</li>
+<li><code>unitName</code> (string, optional) - Override unit name</li>
+<li><code>role</code> (string, optional) - Unit role</li>
+<li><code>static</code> (boolean, optional) - Spawn as static object</li>
+<li><code>code</code> (number, optional) - Laser/TACAN code</li>
+<li><code>freq</code> (number, optional) - Radio frequency</li>
+<li><code>mod</code> (string, optional) - Radio modulation</li>
+<li><code>silent</code> (boolean, optional) - Suppress messages</li>
+<li><code>hiddenOnMFD</code> (boolean, optional) - Hide from MFD</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Spawned group info</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Spawn F-16C at position</span>
@@ -11331,19 +11579,21 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafspawnspawngroupspawnspot-radius-name-czname-country-alt-hdg-spacing-groupname-silent-hasdest-hiddenonmfd"><code>veafSpawn.spawnGroup(spawnSpot, radius, name, czName, country, alt, hdg, spacing, groupName, silent, hasDest, hiddenOnMFD)</code><a class="headerlink" href="#veafspawnspawngroupspawnspot-radius-name-czname-country-alt-hdg-spacing-groupname-silent-hasdest-hiddenonmfd" title="Permanent link">&para;</a></h5>
 <p>Spawn predefined group.</p>
-<p><strong>Parameters:</strong>
-- <code>spawnSpot</code> (vec3) - Spawn position
-- <code>radius</code> (number) - Dispersion radius
-- <code>name</code> (string) - Group template name
-- <code>czName</code> (string, optional) - Combat zone
-- <code>country</code> (number, optional) - Country
-- <code>alt</code> (number, optional) - Altitude
-- <code>hdg</code> (number, optional) - Heading
-- <code>spacing</code> (number, optional) - Unit spacing
-- <code>groupName</code> (string, optional) - Override group name
-- <code>silent</code> (boolean, optional) - Suppress messages
-- <code>hasDest</code> (vec3, optional) - Destination for movement
-- <code>hiddenOnMFD</code> (boolean, optional) - Hide from MFD</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>spawnSpot</code> (vec3) - Spawn position</li>
+<li><code>radius</code> (number) - Dispersion radius</li>
+<li><code>name</code> (string) - Group template name</li>
+<li><code>czName</code> (string, optional) - Combat zone</li>
+<li><code>country</code> (number, optional) - Country</li>
+<li><code>alt</code> (number, optional) - Altitude</li>
+<li><code>hdg</code> (number, optional) - Heading</li>
+<li><code>spacing</code> (number, optional) - Unit spacing</li>
+<li><code>groupName</code> (string, optional) - Override group name</li>
+<li><code>silent</code> (boolean, optional) - Suppress messages</li>
+<li><code>hasDest</code> (vec3, optional) - Destination for movement</li>
+<li><code>hiddenOnMFD</code> (boolean, optional) - Hide from MFD</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Group info</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Spawn armor platoon from template</span>
@@ -11352,19 +11602,21 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="ground-force-spawning">Ground Force Spawning<a class="headerlink" href="#ground-force-spawning" title="Permanent link">&para;</a></h4>
 <h5 id="veafspawnspawninfantrygroupspawnspot-radius-czname-country-side-heading-spacing-defense-armor-size-silent-hiddenonmfd"><code>veafSpawn.spawnInfantryGroup(spawnSpot, radius, czName, country, side, heading, spacing, defense, armor, size, silent, hiddenOnMFD)</code><a class="headerlink" href="#veafspawnspawninfantrygroupspawnspot-radius-czname-country-side-heading-spacing-defense-armor-size-silent-hiddenonmfd" title="Permanent link">&para;</a></h5>
 <p>Spawn infantry group with parameters.</p>
-<p><strong>Parameters:</strong>
-- <code>spawnSpot</code> (vec3) - Spawn position
-- <code>radius</code> (number) - Dispersion radius
-- <code>czName</code> (string, optional) - Combat zone
-- <code>country</code> (number, optional) - Country
-- <code>side</code> (coalition) - Coalition
-- <code>heading</code> (number, optional) - Formation heading
-- <code>spacing</code> (number) - Unit spacing (meters)
-- <code>defense</code> (number) - Defense level 0-5
-- <code>armor</code> (number) - Armor level 0-5
-- <code>size</code> (number) - Size 0-5 (affects unit count)
-- <code>silent</code> (boolean, optional) - Suppress messages
-- <code>hiddenOnMFD</code> (boolean, optional) - Hide from MFD</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>spawnSpot</code> (vec3) - Spawn position</li>
+<li><code>radius</code> (number) - Dispersion radius</li>
+<li><code>czName</code> (string, optional) - Combat zone</li>
+<li><code>country</code> (number, optional) - Country</li>
+<li><code>side</code> (coalition) - Coalition</li>
+<li><code>heading</code> (number, optional) - Formation heading</li>
+<li><code>spacing</code> (number) - Unit spacing (meters)</li>
+<li><code>defense</code> (number) - Defense level 0-5</li>
+<li><code>armor</code> (number) - Armor level 0-5</li>
+<li><code>size</code> (number) - Size 0-5 (affects unit count)</li>
+<li><code>silent</code> (boolean, optional) - Suppress messages</li>
+<li><code>hiddenOnMFD</code> (boolean, optional) - Hide from MFD</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Group info</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Spawn small infantry squad</span>
@@ -11395,24 +11647,26 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="convoy-system">Convoy System<a class="headerlink" href="#convoy-system" title="Permanent link">&para;</a></h4>
 <h5 id="veafspawnspawnconvoyspawnspot-name-czname-radius-country-side-heading-spacing-speed-patrol-offroad-destination-defense-size-armor-silent-hiddenonmfd"><code>veafSpawn.spawnConvoy(spawnSpot, name, czName, radius, country, side, heading, spacing, speed, patrol, offroad, destination, defense, size, armor, silent, hiddenOnMFD)</code><a class="headerlink" href="#veafspawnspawnconvoyspawnspot-name-czname-radius-country-side-heading-spacing-speed-patrol-offroad-destination-defense-size-armor-silent-hiddenonmfd" title="Permanent link">&para;</a></h5>
 <p>Spawn vehicle convoy with waypoints.</p>
-<p><strong>Parameters:</strong>
-- <code>spawnSpot</code> (vec3) - Starting position
-- <code>name</code> (string) - Convoy name
-- <code>czName</code> (string, optional) - Combat zone
-- <code>radius</code> (number) - Dispersion
-- <code>country</code> (number, optional) - Country
-- <code>side</code> (coalition) - Coalition
-- <code>heading</code> (number, optional) - Initial heading
-- <code>spacing</code> (number) - Vehicle spacing
-- <code>speed</code> (number) - Speed (km/h)
-- <code>patrol</code> (boolean) - Patrol mode (return to start)
-- <code>offroad</code> (boolean) - Allow offroad movement
-- <code>destination</code> (vec3) - Destination position
-- <code>defense</code> (number) - Defense level 0-5
-- <code>size</code> (number) - Size 0-5
-- <code>armor</code> (number) - Armor level 0-5
-- <code>silent</code> (boolean, optional) - Suppress messages
-- <code>hiddenOnMFD</code> (boolean, optional) - Hide from MFD</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>spawnSpot</code> (vec3) - Starting position</li>
+<li><code>name</code> (string) - Convoy name</li>
+<li><code>czName</code> (string, optional) - Combat zone</li>
+<li><code>radius</code> (number) - Dispersion</li>
+<li><code>country</code> (number, optional) - Country</li>
+<li><code>side</code> (coalition) - Coalition</li>
+<li><code>heading</code> (number, optional) - Initial heading</li>
+<li><code>spacing</code> (number) - Vehicle spacing</li>
+<li><code>speed</code> (number) - Speed (km/h)</li>
+<li><code>patrol</code> (boolean) - Patrol mode (return to start)</li>
+<li><code>offroad</code> (boolean) - Allow offroad movement</li>
+<li><code>destination</code> (vec3) - Destination position</li>
+<li><code>defense</code> (number) - Defense level 0-5</li>
+<li><code>size</code> (number) - Size 0-5</li>
+<li><code>armor</code> (number) - Armor level 0-5</li>
+<li><code>silent</code> (boolean, optional) - Suppress messages</li>
+<li><code>hiddenOnMFD</code> (boolean, optional) - Hide from MFD</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Convoy info</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">x</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="o">=</span><span class="mi">2000</span><span class="p">}</span>
@@ -11436,25 +11690,29 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="aircraft-spawning">Aircraft Spawning<a class="headerlink" href="#aircraft-spawning" title="Permanent link">&para;</a></h4>
 <h5 id="veafspawnspawncombatairpatrolspawnspot-radius-name-country-altitude-altitudedelta-hdg-distance-speed-capradius-skill-silent-hiddenonmfd"><code>veafSpawn.spawnCombatAirPatrol(spawnSpot, radius, name, country, altitude, altitudeDelta, hdg, distance, speed, capRadius, skill, silent, hiddenOnMFD)</code><a class="headerlink" href="#veafspawnspawncombatairpatrolspawnspot-radius-name-country-altitude-altitudedelta-hdg-distance-speed-capradius-skill-silent-hiddenonmfd" title="Permanent link">&para;</a></h5>
 <p>Spawn CAP flight with patrol orbit.</p>
-<p><strong>Parameters:</strong>
-- <code>spawnSpot</code> (vec3) - Spawn position
-- <code>radius</code> (number) - Dispersion
-- <code>name</code> (string) - Aircraft type
-- <code>country</code> (number, optional) - Country
-- <code>altitude</code> (number) - Patrol altitude (feet)
-- <code>altitudeDelta</code> (number, optional) - Altitude randomization
-- <code>hdg</code> (number) - Orbit heading
-- <code>distance</code> (number) - Distance to orbit (meters)
-- <code>speed</code> (number) - Speed (knots)
-- <code>capRadius</code> (number) - Orbit radius (meters)
-- <code>skill</code> (string) - Skill level
-- <code>silent</code> (boolean, optional) - Suppress messages
-- <code>hiddenOnMFD</code> (boolean, optional) - Hide from MFD</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>spawnSpot</code> (vec3) - Spawn position</li>
+<li><code>radius</code> (number) - Dispersion</li>
+<li><code>name</code> (string) - Aircraft type</li>
+<li><code>country</code> (number, optional) - Country</li>
+<li><code>altitude</code> (number) - Patrol altitude (feet)</li>
+<li><code>altitudeDelta</code> (number, optional) - Altitude randomization</li>
+<li><code>hdg</code> (number) - Orbit heading</li>
+<li><code>distance</code> (number) - Distance to orbit (meters)</li>
+<li><code>speed</code> (number) - Speed (knots)</li>
+<li><code>capRadius</code> (number) - Orbit radius (meters)</li>
+<li><code>skill</code> (string) - Skill level</li>
+<li><code>silent</code> (boolean, optional) - Suppress messages</li>
+<li><code>hiddenOnMFD</code> (boolean, optional) - Hide from MFD</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - CAP flight info</p>
-<p><strong>Description:</strong>
-- Spawns aircraft at position
-- Creates racetrack orbit at specified location
-- Starts watchdog to monitor and engage targets</p>
+<p><strong>Description:</strong></p>
+<ul>
+<li>Spawns aircraft at position</li>
+<li>Creates racetrack orbit at specified location</li>
+<li>Starts watchdog to monitor and engage targets</li>
+</ul>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Spawn F-15C CAP</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="o">=</span><span class="mi">0</span><span class="p">}</span>
@@ -11463,19 +11721,21 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafspawnspawnafacspawnspot-name-country-altitude-speed-hdg-frequency-mod-code-immortal-silent-hiddenonmfd"><code>veafSpawn.spawnAFAC(spawnSpot, name, country, altitude, speed, hdg, frequency, mod, code, immortal, silent, hiddenOnMFD)</code><a class="headerlink" href="#veafspawnspawnafacspawnspot-name-country-altitude-speed-hdg-frequency-mod-code-immortal-silent-hiddenonmfd" title="Permanent link">&para;</a></h5>
 <p>Spawn Airborne Forward Air Controller (AFAC).</p>
-<p><strong>Parameters:</strong>
-- <code>spawnSpot</code> (vec3) - Spawn position
-- <code>name</code> (string) - Aircraft type
-- <code>country</code> (number, optional) - Country
-- <code>altitude</code> (number) - Orbit altitude (feet)
-- <code>speed</code> (number) - Speed (knots)
-- <code>hdg</code> (number) - Orbit heading
-- <code>frequency</code> (number) - Radio frequency (MHz)
-- <code>mod</code> (string) - "AM" or "FM"
-- <code>code</code> (number) - Laser code (e.g., 1688)
-- <code>immortal</code> (boolean) - Invulnerable flag
-- <code>silent</code> (boolean, optional) - Suppress messages
-- <code>hiddenOnMFD</code> (boolean, optional) - Hide from MFD</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>spawnSpot</code> (vec3) - Spawn position</li>
+<li><code>name</code> (string) - Aircraft type</li>
+<li><code>country</code> (number, optional) - Country</li>
+<li><code>altitude</code> (number) - Orbit altitude (feet)</li>
+<li><code>speed</code> (number) - Speed (knots)</li>
+<li><code>hdg</code> (number) - Orbit heading</li>
+<li><code>frequency</code> (number) - Radio frequency (MHz)</li>
+<li><code>mod</code> (string) - "AM" or "FM"</li>
+<li><code>code</code> (number) - Laser code (e.g., 1688)</li>
+<li><code>immortal</code> (boolean) - Invulnerable flag</li>
+<li><code>silent</code> (boolean, optional) - Suppress messages</li>
+<li><code>hiddenOnMFD</code> (boolean, optional) - Hide from MFD</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - AFAC info</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Spawn A-10C AFAC</span>
@@ -11483,27 +11743,31 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafspawnstartcapwatchdogcapgroupname-capcoalition-capzone-ptargetslist-pnumberoftasksaddedbywatchdog"><code>veafSpawn.startCapWatchdog(capGroupName, capCoalition, capZone, pTargetsList, pNumberOfTasksAddedByWatchdog)</code><a class="headerlink" href="#veafspawnstartcapwatchdogcapgroupname-capcoalition-capzone-ptargetslist-pnumberoftasksaddedbywatchdog" title="Permanent link">&para;</a></h5>
 <p>Start CAP engagement watchdog.</p>
-<p><strong>Parameters:</strong>
-- <code>capGroupName</code> (string) - CAP group name
-- <code>capCoalition</code> (coalition) - Coalition
-- <code>capZone</code> (table) - Zone definition
-- <code>pTargetsList</code> (table, optional) - Specific targets
-- <code>pNumberOfTasksAddedByWatchdog</code> (number, optional) - Max tasks</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>capGroupName</code> (string) - CAP group name</li>
+<li><code>capCoalition</code> (coalition) - Coalition</li>
+<li><code>capZone</code> (table) - Zone definition</li>
+<li><code>pTargetsList</code> (table, optional) - Specific targets</li>
+<li><code>pNumberOfTasksAddedByWatchdog</code> (number, optional) - Max tasks</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Description:</strong> Monitors area and tasks CAP to engage enemy aircraft.</p>
 <h4 id="cargo--logistics">Cargo &amp; Logistics<a class="headerlink" href="#cargo--logistics" title="Permanent link">&para;</a></h4>
 <h5 id="veafspawnspawncargospawnspot-radius-cargotype-country-weightbias-cargosmoke-unitname-silent-hiddenonmfd"><code>veafSpawn.spawnCargo(spawnSpot, radius, cargoType, country, weightBias, cargoSmoke, unitName, silent, hiddenOnMFD)</code><a class="headerlink" href="#veafspawnspawncargospawnspot-radius-cargotype-country-weightbias-cargosmoke-unitname-silent-hiddenonmfd" title="Permanent link">&para;</a></h5>
 <p>Spawn CTLD cargo.</p>
-<p><strong>Parameters:</strong>
-- <code>spawnSpot</code> (vec3) - Spawn position
-- <code>radius</code> (number) - Dispersion
-- <code>cargoType</code> (string) - Cargo type: "container", "barrels", "ammo", "fuel"
-- <code>country</code> (number, optional) - Country
-- <code>weightBias</code> (number, optional) - Weight preference (0-1)
-- <code>cargoSmoke</code> (boolean) - Add smoke marker
-- <code>unitName</code> (string, optional) - Cargo name
-- <code>silent</code> (boolean, optional) - Suppress messages
-- <code>hiddenOnMFD</code> (boolean, optional) - Hide from MFD</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>spawnSpot</code> (vec3) - Spawn position</li>
+<li><code>radius</code> (number) - Dispersion</li>
+<li><code>cargoType</code> (string) - Cargo type: "container", "barrels", "ammo", "fuel"</li>
+<li><code>country</code> (number, optional) - Country</li>
+<li><code>weightBias</code> (number, optional) - Weight preference (0-1)</li>
+<li><code>cargoSmoke</code> (boolean) - Add smoke marker</li>
+<li><code>unitName</code> (string, optional) - Cargo name</li>
+<li><code>silent</code> (boolean, optional) - Suppress messages</li>
+<li><code>hiddenOnMFD</code> (boolean, optional) - Hide from MFD</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Cargo info</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Spawn fuel containers</span>
@@ -11515,21 +11779,23 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="farp--fob">FARP &amp; FOB<a class="headerlink" href="#farp--fob" title="Permanent link">&para;</a></h4>
 <h5 id="veafspawnspawnfarpspawnspot-radius-name-country-farptype-side-hdg-spacing-silent-hiddenonmfd-nofarpmarkers-code-freq-mod"><code>veafSpawn.spawnFarp(spawnSpot, radius, name, country, farptype, side, hdg, spacing, silent, hiddenOnMFD, noFarpMarkers, code, freq, mod)</code><a class="headerlink" href="#veafspawnspawnfarpspawnspot-radius-name-country-farptype-side-hdg-spacing-silent-hiddenonmfd-nofarpmarkers-code-freq-mod" title="Permanent link">&para;</a></h5>
 <p>Spawn Forward Arming and Refueling Point (FARP).</p>
-<p><strong>Parameters:</strong>
-- <code>spawnSpot</code> (vec3) - Position
-- <code>radius</code> (number) - Dispersion
-- <code>name</code> (string) - FARP name
-- <code>country</code> (number, optional) - Country
-- <code>farptype</code> (string, optional) - FARP configuration type
-- <code>side</code> (coalition) - Coalition
-- <code>hdg</code> (number, optional) - Heading
-- <code>spacing</code> (number) - Unit spacing
-- <code>silent</code> (boolean, optional) - Suppress messages
-- <code>hiddenOnMFD</code> (boolean, optional) - Hide from MFD
-- <code>noFarpMarkers</code> (boolean, optional) - Don't create markers
-- <code>code</code> (number, optional) - TACAN code
-- <code>freq</code> (number, optional) - Radio frequency
-- <code>mod</code> (string, optional) - Modulation</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>spawnSpot</code> (vec3) - Position</li>
+<li><code>radius</code> (number) - Dispersion</li>
+<li><code>name</code> (string) - FARP name</li>
+<li><code>country</code> (number, optional) - Country</li>
+<li><code>farptype</code> (string, optional) - FARP configuration type</li>
+<li><code>side</code> (coalition) - Coalition</li>
+<li><code>hdg</code> (number, optional) - Heading</li>
+<li><code>spacing</code> (number) - Unit spacing</li>
+<li><code>silent</code> (boolean, optional) - Suppress messages</li>
+<li><code>hiddenOnMFD</code> (boolean, optional) - Hide from MFD</li>
+<li><code>noFarpMarkers</code> (boolean, optional) - Don't create markers</li>
+<li><code>code</code> (number, optional) - TACAN code</li>
+<li><code>freq</code> (number, optional) - Radio frequency</li>
+<li><code>mod</code> (string, optional) - Modulation</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - FARP info</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Spawn basic FARP</span>
@@ -11543,14 +11809,16 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="effects--markers">Effects &amp; Markers<a class="headerlink" href="#effects--markers" title="Permanent link">&para;</a></h4>
 <h5 id="veafspawnspawnbombspawnspot-radius-shells-power-altitude-altitudedelta-password"><code>veafSpawn.spawnBomb(spawnSpot, radius, shells, power, altitude, altitudedelta, password)</code><a class="headerlink" href="#veafspawnspawnbombspawnspot-radius-shells-power-altitude-altitudedelta-password" title="Permanent link">&para;</a></h5>
 <p>Create explosion effect.</p>
-<p><strong>Parameters:</strong>
-- <code>spawnSpot</code> (vec3) - Explosion position
-- <code>radius</code> (number) - Dispersion
-- <code>shells</code> (number) - Number of explosions
-- <code>power</code> (number) - Explosion power (kg TNT equivalent)
-- <code>altitude</code> (number, optional) - Altitude offset
-- <code>altitudedelta</code> (number, optional) - Altitude randomization
-- <code>password</code> (string, optional) - Security password</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>spawnSpot</code> (vec3) - Explosion position</li>
+<li><code>radius</code> (number) - Dispersion</li>
+<li><code>shells</code> (number) - Number of explosions</li>
+<li><code>power</code> (number) - Explosion power (kg TNT equivalent)</li>
+<li><code>altitude</code> (number, optional) - Altitude offset</li>
+<li><code>altitudedelta</code> (number, optional) - Altitude randomization</li>
+<li><code>password</code> (string, optional) - Security password</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Create 5x 500kg explosions</span>
@@ -11558,11 +11826,13 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafspawnspawnsmokespawnspot-color-radius-shells"><code>veafSpawn.spawnSmoke(spawnSpot, color, radius, shells)</code><a class="headerlink" href="#veafspawnspawnsmokespawnspot-color-radius-shells" title="Permanent link">&para;</a></h5>
 <p>Add smoke markers.</p>
-<p><strong>Parameters:</strong>
-- <code>spawnSpot</code> (vec3) - Position
-- <code>color</code> (string) - "Green", "Red", "White", "Orange", "Blue"
-- <code>radius</code> (number) - Dispersion
-- <code>shells</code> (number) - Number of smoke markers</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>spawnSpot</code> (vec3) - Position</li>
+<li><code>color</code> (string) - "Green", "Red", "White", "Orange", "Blue"</li>
+<li><code>radius</code> (number) - Dispersion</li>
+<li><code>shells</code> (number) - Number of smoke markers</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Mark position with red smoke</span>
@@ -11570,23 +11840,27 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafspawnspawnsignalflarespawnspot-radius-shells-color"><code>veafSpawn.spawnSignalFlare(spawnSpot, radius, shells, color)</code><a class="headerlink" href="#veafspawnspawnsignalflarespawnspot-radius-shells-color" title="Permanent link">&para;</a></h5>
 <p>Fire signal flare(s).</p>
-<p><strong>Parameters:</strong>
-- <code>spawnSpot</code> (vec3) - Position
-- <code>radius</code> (number) - Dispersion
-- <code>shells</code> (number) - Number of flares
-- <code>color</code> (string) - Flare color</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>spawnSpot</code> (vec3) - Position</li>
+<li><code>radius</code> (number) - Dispersion</li>
+<li><code>shells</code> (number) - Number of flares</li>
+<li><code>color</code> (string) - Flare color</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafspawnspawnilluminationflarespawnspot-radius-steps-power-height-heading-distance-speed"><code>veafSpawn.spawnIlluminationFlare(spawnSpot, radius, steps, power, height, heading, distance, speed)</code><a class="headerlink" href="#veafspawnspawnilluminationflarespawnspot-radius-steps-power-height-heading-distance-speed" title="Permanent link">&para;</a></h5>
 <p>Create illumination flare pattern.</p>
-<p><strong>Parameters:</strong>
-- <code>spawnSpot</code> (vec3) - Position
-- <code>radius</code> (number) - Dispersion
-- <code>steps</code> (number) - Number of flares in line
-- <code>power</code> (number) - Flare power
-- <code>height</code> (number, optional) - Altitude AGL
-- <code>heading</code> (number, optional) - Line heading
-- <code>distance</code> (number, optional) - Distance between flares
-- <code>speed</code> (number, optional) - Drop speed</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>spawnSpot</code> (vec3) - Position</li>
+<li><code>radius</code> (number) - Dispersion</li>
+<li><code>steps</code> (number) - Number of flares in line</li>
+<li><code>power</code> (number) - Flare power</li>
+<li><code>height</code> (number, optional) - Altitude AGL</li>
+<li><code>heading</code> (number, optional) - Line heading</li>
+<li><code>distance</code> (number, optional) - Distance between flares</li>
+<li><code>speed</code> (number, optional) - Drop speed</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Create illumination line</span>
@@ -11595,13 +11869,15 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="drawing-functions">Drawing Functions<a class="headerlink" href="#drawing-functions" title="Permanent link">&para;</a></h4>
 <h5 id="veafspawndrawcirclepoint-name-radius-color-fillcolor-linetype"><code>veafSpawn.drawCircle(point, name, radius, color, fillColor, lineType)</code><a class="headerlink" href="#veafspawndrawcirclepoint-name-radius-color-fillcolor-linetype" title="Permanent link">&para;</a></h5>
 <p>Draw circle on map.</p>
-<p><strong>Parameters:</strong>
-- <code>point</code> (vec3) - Center position
-- <code>name</code> (string) - Drawing name
-- <code>radius</code> (number) - Circle radius (meters)
-- <code>color</code> (table, optional) - Line color <code>{r, g, b, a}</code> (0-1 range)
-- <code>fillColor</code> (table, optional) - Fill color
-- <code>lineType</code> (number, optional) - Line type</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>point</code> (vec3) - Center position</li>
+<li><code>name</code> (string) - Drawing name</li>
+<li><code>radius</code> (number) - Circle radius (meters)</li>
+<li><code>color</code> (table, optional) - Line color <code>{r, g, b, a}</code> (0-1 range)</li>
+<li><code>fillColor</code> (table, optional) - Fill color</li>
+<li><code>lineType</code> (number, optional) - Line type</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Draw red circle</span>
@@ -11609,26 +11885,32 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafspawndrawsquarepoint-name-side-color-fillcolor-linetype"><code>veafSpawn.drawSquare(point, name, side, color, fillColor, lineType)</code><a class="headerlink" href="#veafspawndrawsquarepoint-name-side-color-fillcolor-linetype" title="Permanent link">&para;</a></h5>
 <p>Draw square on map.</p>
-<p><strong>Parameters:</strong>
-- <code>point</code> (vec3) - Center
-- <code>name</code> (string) - Drawing name
-- <code>side</code> (number) - Side length (meters)
-- <code>color</code> (table, optional) - Line color
-- <code>fillColor</code> (table, optional) - Fill color
-- <code>lineType</code> (number, optional) - Line type</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>point</code> (vec3) - Center</li>
+<li><code>name</code> (string) - Drawing name</li>
+<li><code>side</code> (number) - Side length (meters)</li>
+<li><code>color</code> (table, optional) - Line color</li>
+<li><code>fillColor</code> (table, optional) - Fill color</li>
+<li><code>lineType</code> (number, optional) - Line type</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafspawnerasedrawingname"><code>veafSpawn.eraseDrawing(name)</code><a class="headerlink" href="#veafspawnerasedrawingname" title="Permanent link">&para;</a></h5>
 <p>Remove drawing from map.</p>
-<p><strong>Parameters:</strong>
-- <code>name</code> (string) - Drawing name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name</code> (string) - Drawing name</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h4 id="destruction--teleport">Destruction &amp; Teleport<a class="headerlink" href="#destruction--teleport" title="Permanent link">&para;</a></h4>
 <h5 id="veafspawndestroyspawnspot-radius-unitname"><code>veafSpawn.destroy(spawnSpot, radius, unitName)</code><a class="headerlink" href="#veafspawndestroyspawnspot-radius-unitname" title="Permanent link">&para;</a></h5>
 <p>Destroy units in area or specific unit.</p>
-<p><strong>Parameters:</strong>
-- <code>spawnSpot</code> (vec3) - Position
-- <code>radius</code> (number) - Search radius (0 for specific unit)
-- <code>unitName</code> (string, optional) - Specific unit name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>spawnSpot</code> (vec3) - Position</li>
+<li><code>radius</code> (number) - Search radius (0 for specific unit)</li>
+<li><code>unitName</code> (string, optional) - Specific unit name</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Destroy all units in 500m radius</span>
@@ -11639,10 +11921,12 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafspawnteleportspawnspot-name-silent"><code>veafSpawn.teleport(spawnSpot, name, silent)</code><a class="headerlink" href="#veafspawnteleportspawnspot-name-silent" title="Permanent link">&para;</a></h5>
 <p>Teleport group to position.</p>
-<p><strong>Parameters:</strong>
-- <code>spawnSpot</code> (vec3) - Destination
-- <code>name</code> (string) - Group name
-- <code>silent</code> (boolean, optional) - Suppress messages</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>spawnSpot</code> (vec3) - Destination</li>
+<li><code>name</code> (string) - Group name</li>
+<li><code>silent</code> (boolean, optional) - Suppress messages</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Teleport player group to position</span>
@@ -11651,71 +11935,93 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="jtac-functions">JTAC Functions<a class="headerlink" href="#jtac-functions" title="Permanent link">&para;</a></h4>
 <h5 id="veafspawnjtacautolasegroupname-lasercode-radiodata"><code>veafSpawn.JTACAutoLase(groupName, laserCode, radioData)</code><a class="headerlink" href="#veafspawnjtacautolasegroupname-lasercode-radiodata" title="Permanent link">&para;</a></h5>
 <p>Setup auto-lasing JTAC.</p>
-<p><strong>Parameters:</strong>
-- <code>groupName</code> (string) - JTAC group name
-- <code>laserCode</code> (number) - Laser code (e.g., 1688)
-- <code>radioData</code> (table, optional) - Radio configuration</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>groupName</code> (string) - JTAC group name</li>
+<li><code>laserCode</code> (number) - Laser code (e.g., 1688)</li>
+<li><code>radioData</code> (table, optional) - Radio configuration</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="nv">veafSpawn</span><span class="p">.</span><span class="nf">JTACAutoLase</span><span class="p">(</span><span class="s2">&quot;JTAC-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1688</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">freq</span><span class="o">=</span><span class="mf">133.0</span><span class="p">,</span><span class="w"> </span><span class="nv">mod</span><span class="o">=</span><span class="s2">&quot;AM&quot;</span><span class="p">})</span>
 </code></pre></div></p>
 <h5 id="veafspawnconvertlasertofreqlaser_1"><code>veafSpawn.convertLaserToFreq(laser)</code><a class="headerlink" href="#veafspawnconvertlasertofreqlaser_1" title="Permanent link">&para;</a></h5>
 <p>Convert laser code to radio frequency.</p>
-<p><strong>Parameters:</strong>
-- <code>laser</code> (number) - Laser code</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>laser</code> (number) - Laser code</li>
+</ul>
 <p><strong>Returns:</strong> <code>number</code> - Frequency in MHz</p>
 <h4 id="mission-master-functions">Mission Master Functions<a class="headerlink" href="#mission-master-functions" title="Permanent link">&para;</a></h4>
 <p>Mission Master provides scriptable mission control.</p>
 <h5 id="veafspawnmissionmastersetmessagingmodesilent-togroupid"><code>veafSpawn.missionMasterSetMessagingMode(silent, toGroupId)</code><a class="headerlink" href="#veafspawnmissionmastersetmessagingmodesilent-togroupid" title="Permanent link">&para;</a></h5>
 <p>Set message output mode.</p>
-<p><strong>Parameters:</strong>
-- <code>silent</code> (boolean) - Silent mode
-- <code>toGroupId</code> (number, optional) - Target group ID</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>silent</code> (boolean) - Silent mode</li>
+<li><code>toGroupId</code> (number, optional) - Target group ID</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafspawnmissionmasterouttextmessage"><code>veafSpawn.missionMasterOutText(message)</code><a class="headerlink" href="#veafspawnmissionmasterouttextmessage" title="Permanent link">&para;</a></h5>
 <p>Output Mission Master message.</p>
-<p><strong>Parameters:</strong>
-- <code>message</code> (string) - Message text</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>message</code> (string) - Message text</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafspawnmissionmasteraddrunnablename-code-parameters"><code>veafSpawn.missionMasterAddRunnable(name, code, parameters)</code><a class="headerlink" href="#veafspawnmissionmasteraddrunnablename-code-parameters" title="Permanent link">&para;</a></h5>
 <p>Add executable command.</p>
-<p><strong>Parameters:</strong>
-- <code>name</code> (string) - Command name
-- <code>code</code> (string) - Lua code to execute
-- <code>parameters</code> (table, optional) - Parameters</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name</code> (string) - Command name</li>
+<li><code>code</code> (string) - Lua code to execute</li>
+<li><code>parameters</code> (table, optional) - Parameters</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafspawnmissionmasterrunname"><code>veafSpawn.missionMasterRun(name)</code><a class="headerlink" href="#veafspawnmissionmasterrunname" title="Permanent link">&para;</a></h5>
 <p>Run Mission Master command.</p>
-<p><strong>Parameters:</strong>
-- <code>name</code> (string) - Command name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name</code> (string) - Command name</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafspawnmissionmastersetflagname-value"><code>veafSpawn.missionMasterSetFlag(name, value)</code><a class="headerlink" href="#veafspawnmissionmastersetflagname-value" title="Permanent link">&para;</a></h5>
 <p>Set Mission Master flag.</p>
-<p><strong>Parameters:</strong>
-- <code>name</code> (string) - Flag name
-- <code>value</code> (any) - Flag value</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name</code> (string) - Flag name</li>
+<li><code>value</code> (any) - Flag value</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafspawnmissionmastergetflagname"><code>veafSpawn.missionMasterGetFlag(name)</code><a class="headerlink" href="#veafspawnmissionmastergetflagname" title="Permanent link">&para;</a></h5>
 <p>Get flag value.</p>
-<p><strong>Parameters:</strong>
-- <code>name</code> (string) - Flag name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name</code> (string) - Flag name</li>
+</ul>
 <p><strong>Returns:</strong> <code>any</code> - Flag value</p>
 <h5 id="veafspawnmissionmasteraddvaluetoflagname-increment"><code>veafSpawn.missionMasterAddValueToFlag(name, increment)</code><a class="headerlink" href="#veafspawnmissionmasteraddvaluetoflagname-increment" title="Permanent link">&para;</a></h5>
 <p>Modify flag value.</p>
-<p><strong>Parameters:</strong>
-- <code>name</code> (string) - Flag name
-- <code>increment</code> (number) - Value to add</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name</code> (string) - Flag name</li>
+<li><code>increment</code> (number) - Value to add</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h4 id="utility-functions">Utility Functions<a class="headerlink" href="#utility-functions" title="Permanent link">&para;</a></h4>
 <h5 id="veafspawnlistallcapunitname"><code>veafSpawn.listAllCAP(unitName)</code><a class="headerlink" href="#veafspawnlistallcapunitname" title="Permanent link">&para;</a></h5>
 <p>Display list of all active CAP flights.</p>
-<p><strong>Parameters:</strong>
-- <code>unitName</code> (string) - Requesting unit name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>unitName</code> (string) - Requesting unit name</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafspawndumpspawnableplaneslistexport_path"><code>veafSpawn.dumpSpawnablePlanesList(export_path)</code><a class="headerlink" href="#veafspawndumpspawnableplaneslistexport_path" title="Permanent link">&para;</a></h5>
 <p>Export spawnable aircraft list to file.</p>
-<p><strong>Parameters:</strong>
-- <code>export_path</code> (string, optional) - Export directory</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>export_path</code> (string, optional) - Export directory</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafspawnbuildradiomenu"><code>veafSpawn.buildRadioMenu()</code><a class="headerlink" href="#veafspawnbuildradiomenu" title="Permanent link">&para;</a></h5>
 <p>Build spawn radio menu.</p>
@@ -11737,8 +12043,10 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="functions_5">Functions<a class="headerlink" href="#functions_5" title="Permanent link">&para;</a></h4>
 <h5 id="veafunitsfinddcsunitunittype"><code>veafUnits.findDcsUnit(unitType)</code><a class="headerlink" href="#veafunitsfinddcsunitunittype" title="Permanent link">&para;</a></h5>
 <p>Find DCS unit by type name (case-insensitive).</p>
-<p><strong>Parameters:</strong>
-- <code>unitType</code> (string) - Unit type (e.g., "F-16C", "M-1 Abrams")</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>unitType</code> (string) - Unit type (e.g., "F-16C", "M-1 Abrams")</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Unit definition or nil</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">f16</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veafUnits</span><span class="p">.</span><span class="nf">findDcsUnit</span><span class="p">(</span><span class="s2">&quot;F-16C_50&quot;</span><span class="p">)</span>
@@ -11748,13 +12056,17 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafunitscountinfantryandvehiclesgroupname"><code>veafUnits.countInfantryAndVehicles(groupname)</code><a class="headerlink" href="#veafunitscountinfantryandvehiclesgroupname" title="Permanent link">&para;</a></h5>
 <p>Count infantry and vehicle units in group.</p>
-<p><strong>Parameters:</strong>
-- <code>groupname</code> (string) - Group name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>groupname</code> (string) - Group name</li>
+</ul>
 <p><strong>Returns:</strong> <code>number, number</code> - Vehicle count, Infantry count</p>
 <h5 id="veafunitsprocessgroupgroup"><code>veafUnits.processGroup(group)</code><a class="headerlink" href="#veafunitsprocessgroupgroup" title="Permanent link">&para;</a></h5>
 <p>Process and validate group definition.</p>
-<p><strong>Parameters:</strong>
-- <code>group</code> (table) - Group definition table</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>group</code> (table) - Group definition table</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Processed group</p>
 <p><strong>Description:</strong> Handles unit positioning, spacing, formation.</p>
 <hr />
@@ -11776,28 +12088,36 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="functions_6">Functions<a class="headerlink" href="#functions_6" title="Permanent link">&para;</a></h4>
 <h5 id="veafassetsrespawnname"><code>veafAssets.respawn(name)</code><a class="headerlink" href="#veafassetsrespawnname" title="Permanent link">&para;</a></h5>
 <p>Respawn asset group.</p>
-<p><strong>Parameters:</strong>
-- <code>name</code> (string) - Asset name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name</code> (string) - Asset name</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
-<p><strong>Description:</strong>
-- Respawns asset group
-- Respawns all linked groups
-- Starts JTAC if configured</p>
+<p><strong>Description:</strong></p>
+<ul>
+<li>Respawns asset group</li>
+<li>Respawns all linked groups</li>
+<li>Starts JTAC if configured</li>
+</ul>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="nv">veafAssets</span><span class="p">.</span><span class="nf">respawn</span><span class="p">(</span><span class="s2">&quot;Tanker-1&quot;</span><span class="p">)</span>
 </code></pre></div></p>
 <h5 id="veafassetsdisposename"><code>veafAssets.dispose(name)</code><a class="headerlink" href="#veafassetsdisposename" title="Permanent link">&para;</a></h5>
 <p>Destroy asset.</p>
-<p><strong>Parameters:</strong>
-- <code>name</code> (string) - Asset name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name</code> (string) - Asset name</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="nv">veafAssets</span><span class="p">.</span><span class="nf">dispose</span><span class="p">(</span><span class="s2">&quot;AWACS-1&quot;</span><span class="p">)</span>
 </code></pre></div></p>
 <h5 id="veafassetsinfoparameters"><code>veafAssets.info(parameters)</code><a class="headerlink" href="#veafassetsinfoparameters" title="Permanent link">&para;</a></h5>
 <p>Get asset information.</p>
-<p><strong>Parameters:</strong>
-- <code>parameters</code> (table) - <code>{name=string, unitName=string}</code></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>parameters</code> (table) - <code>{name=string, unitName=string}</code></li>
+</ul>
 <p><strong>Returns:</strong> <code>string</code> - Asset info text</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veafAssets</span><span class="p">.</span><span class="nf">info</span><span class="p">({</span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;Tanker-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">unitName</span><span class="o">=</span><span class="s2">&quot;Viper 1-1&quot;</span><span class="p">})</span>
@@ -11805,13 +12125,17 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafassetsgetassetname"><code>veafAssets.get(assetName)</code><a class="headerlink" href="#veafassetsgetassetname" title="Permanent link">&para;</a></h5>
 <p>Get asset definition.</p>
-<p><strong>Parameters:</strong>
-- <code>assetName</code> (string) - Asset name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>assetName</code> (string) - Asset name</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Asset definition</p>
 <h5 id="veafassetshelpunitname"><code>veafAssets.help(unitName)</code><a class="headerlink" href="#veafassetshelpunitname" title="Permanent link">&para;</a></h5>
 <p>Display help text.</p>
-<p><strong>Parameters:</strong>
-- <code>unitName</code> (string) - Unit to receive help</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>unitName</code> (string) - Unit to receive help</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafassetsbuildradiomenu"><code>veafAssets.buildRadioMenu()</code><a class="headerlink" href="#veafassetsbuildradiomenu" title="Permanent link">&para;</a></h5>
 <p>Build assets radio menu.</p>
@@ -11822,10 +12146,12 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h5 id="veafassetsinitialize"><code>veafAssets.initialize()</code><a class="headerlink" href="#veafassetsinitialize" title="Permanent link">&para;</a></h5>
 <p>Initialize assets module.</p>
 <p><strong>Returns:</strong> None</p>
-<p><strong>Description:</strong>
-- Builds asset database
-- Creates radio menus
-- Must be called after assets defined</p>
+<p><strong>Description:</strong></p>
+<ul>
+<li>Builds asset database</li>
+<li>Creates radio menus</li>
+<li>Must be called after assets defined</li>
+</ul>
 <hr />
 <h2 id="mission-systems">Mission Systems<a class="headerlink" href="#mission-systems" title="Permanent link">&para;</a></h2>
 <h3 id="veafcombatmissionlua">veafCombatMission.lua<a class="headerlink" href="#veafcombatmissionlua" title="Permanent link">&para;</a></h3>
@@ -11840,13 +12166,15 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h4>
 <h5 id="veafcombatmissionobjective">VeafCombatMissionObjective<a class="headerlink" href="#veafcombatmissionobjective" title="Permanent link">&para;</a></h5>
 <p>Mission objective definition.</p>
-<p><strong>Fields:</strong>
-- <code>name</code> (string) - Objective name
-- <code>description</code> (string) - Description text
-- <code>message</code> (string) - Completion message
-- <code>parameters</code> (table) - Objective parameters
-- <code>onStartupFunction</code> (function) - Called when mission starts
-- <code>onCheckFunction</code> (function) - Called periodically to check completion</p>
+<p><strong>Fields:</strong></p>
+<ul>
+<li><code>name</code> (string) - Objective name</li>
+<li><code>description</code> (string) - Description text</li>
+<li><code>message</code> (string) - Completion message</li>
+<li><code>parameters</code> (table) - Objective parameters</li>
+<li><code>onStartupFunction</code> (function) - Called when mission starts</li>
+<li><code>onCheckFunction</code> (function) - Called periodically to check completion</li>
+</ul>
 <p><strong>States:</strong>
 <div class="highlight"><pre><span></span><code><span class="nv">VeafCombatMissionObjective</span><span class="p">.</span><span class="py">FAILED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
 <span class="nv">VeafCombatMissionObjective</span><span class="p">.</span><span class="py">SUCCESS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
@@ -11884,20 +12212,22 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafcombatmission">VeafCombatMission<a class="headerlink" href="#veafcombatmission" title="Permanent link">&para;</a></h5>
 <p>Complete mission definition.</p>
-<p><strong>Fields:</strong>
-- <code>name</code> (string) - Mission name
-- <code>description</code> (string) - Brief description
-- <code>briefing</code> (string) - Full briefing text
-- <code>secured</code> (boolean) - Requires security clearance
-- <code>radioMenuEnabled</code> (boolean) - Show in F10 menu
-- <code>objectives</code> (table) - Array of objectives
-- <code>spawnPosition</code> (vec3) - Spawn location
-- <code>altitude</code> (number) - Spawn altitude
-- <code>spawnZone</code> (string) - Spawn zone name
-- <code>spawnRadius</code> (number) - Spawn dispersion
-- <code>activeSquads</code> (table) - Spawned groups
-- <code>skills</code> (table) - AI skill levels
-- <code>scales</code> (table) - Mission scale factors</p>
+<p><strong>Fields:</strong></p>
+<ul>
+<li><code>name</code> (string) - Mission name</li>
+<li><code>description</code> (string) - Brief description</li>
+<li><code>briefing</code> (string) - Full briefing text</li>
+<li><code>secured</code> (boolean) - Requires security clearance</li>
+<li><code>radioMenuEnabled</code> (boolean) - Show in F10 menu</li>
+<li><code>objectives</code> (table) - Array of objectives</li>
+<li><code>spawnPosition</code> (vec3) - Spawn location</li>
+<li><code>altitude</code> (number) - Spawn altitude</li>
+<li><code>spawnZone</code> (string) - Spawn zone name</li>
+<li><code>spawnRadius</code> (number) - Spawn dispersion</li>
+<li><code>activeSquads</code> (table) - Spawned groups</li>
+<li><code>skills</code> (table) - AI skill levels</li>
+<li><code>scales</code> (table) - Mission scale factors</li>
+</ul>
 <p><strong>Methods:</strong>
 <div class="highlight"><pre><span></span><code><span class="nv">mission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">VeafCombatMission</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
 <span class="nv">mission</span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="nv">value</span><span class="p">)</span>
@@ -11937,16 +12267,20 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="functions_7">Functions<a class="headerlink" href="#functions_7" title="Permanent link">&para;</a></h4>
 <h5 id="veafcombatmissionaddmissionmission"><code>veafCombatMission.AddMission(mission)</code><a class="headerlink" href="#veafcombatmissionaddmissionmission" title="Permanent link">&para;</a></h5>
 <p>Register mission.</p>
-<p><strong>Parameters:</strong>
-- <code>mission</code> (VeafCombatMission) - Mission object</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>mission</code> (VeafCombatMission) - Mission object</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafcombatmissionaddmissionswithskillandscalemission-includeoriginal-skills-scales"><code>veafCombatMission.AddMissionsWithSkillAndScale(mission, includeOriginal, skills, scales)</code><a class="headerlink" href="#veafcombatmissionaddmissionswithskillandscalemission-includeoriginal-skills-scales" title="Permanent link">&para;</a></h5>
 <p>Add mission variants with different skill/scale.</p>
-<p><strong>Parameters:</strong>
-- <code>mission</code> (VeafCombatMission) - Base mission
-- <code>includeOriginal</code> (boolean) - Include original
-- <code>skills</code> (table) - Skill levels: <code>{"Average", "Good", "High"}</code>
-- <code>scales</code> (table) - Scale factors: <code>{0.5, 1.0, 1.5}</code></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>mission</code> (VeafCombatMission) - Base mission</li>
+<li><code>includeOriginal</code> (boolean) - Include original</li>
+<li><code>skills</code> (table) - Skill levels: <code>{"Average", "Good", "High"}</code></li>
+<li><code>scales</code> (table) - Scale factors: <code>{0.5, 1.0, 1.5}</code></li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Description:</strong> Creates multiple variants (e.g., "Strike Alpha - Good - 1.0x")</p>
 <p><strong>Example:</strong>
@@ -11960,53 +12294,69 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafcombatmissiongetmissionname"><code>veafCombatMission.GetMission(name)</code><a class="headerlink" href="#veafcombatmissiongetmissionname" title="Permanent link">&para;</a></h5>
 <p>Get mission by name.</p>
-<p><strong>Parameters:</strong>
-- <code>name</code> (string) - Mission name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name</code> (string) - Mission name</li>
+</ul>
 <p><strong>Returns:</strong> <code>VeafCombatMission</code> - Mission object or nil</p>
 <h5 id="veafcombatmissiongetmissionnumbernumber"><code>veafCombatMission.GetMissionNumber(number)</code><a class="headerlink" href="#veafcombatmissiongetmissionnumbernumber" title="Permanent link">&para;</a></h5>
 <p>Get mission by index.</p>
-<p><strong>Parameters:</strong>
-- <code>number</code> (number) - Mission index (1-based)</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>number</code> (number) - Mission index (1-based)</li>
+</ul>
 <p><strong>Returns:</strong> <code>VeafCombatMission</code> - Mission object</p>
 <h5 id="veafcombatmissionactivatemissionname-silent-unitname"><code>veafCombatMission.ActivateMission(name, silent, unitName)</code><a class="headerlink" href="#veafcombatmissionactivatemissionname-silent-unitname" title="Permanent link">&para;</a></h5>
 <p>Activate mission.</p>
-<p><strong>Parameters:</strong>
-- <code>name</code> (string) - Mission name
-- <code>silent</code> (boolean, optional) - Suppress messages
-- <code>unitName</code> (string, optional) - Unit to receive messages</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name</code> (string) - Mission name</li>
+<li><code>silent</code> (boolean, optional) - Suppress messages</li>
+<li><code>unitName</code> (string, optional) - Unit to receive messages</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
-<p><strong>Description:</strong>
-- Executes all objective startup functions
-- Spawns mission elements
-- Starts watchdog timer
-- Displays briefing</p>
+<p><strong>Description:</strong></p>
+<ul>
+<li>Executes all objective startup functions</li>
+<li>Spawns mission elements</li>
+<li>Starts watchdog timer</li>
+<li>Displays briefing</li>
+</ul>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="nv">veafCombatMission</span><span class="p">.</span><span class="nf">ActivateMission</span><span class="p">(</span><span class="s2">&quot;Strike Alpha&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Viper 1-1&quot;</span><span class="p">)</span>
 </code></pre></div></p>
 <h5 id="veafcombatmissionactivatemissionnumbernumber-silent"><code>veafCombatMission.ActivateMissionNumber(number, silent)</code><a class="headerlink" href="#veafcombatmissionactivatemissionnumbernumber-silent" title="Permanent link">&para;</a></h5>
 <p>Activate mission by index.</p>
-<p><strong>Parameters:</strong>
-- <code>number</code> (number) - Mission index
-- <code>silent</code> (boolean, optional) - Suppress messages</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>number</code> (number) - Mission index</li>
+<li><code>silent</code> (boolean, optional) - Suppress messages</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafcombatmissiondesactivatemissionname-silent-unitname"><code>veafCombatMission.DesactivateMission(name, silent, unitName)</code><a class="headerlink" href="#veafcombatmissiondesactivatemissionname-silent-unitname" title="Permanent link">&para;</a></h5>
 <p>Deactivate mission.</p>
-<p><strong>Parameters:</strong>
-- <code>name</code> (string) - Mission name
-- <code>silent</code> (boolean, optional) - Suppress messages
-- <code>unitName</code> (string, optional) - Unit to receive messages</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name</code> (string) - Mission name</li>
+<li><code>silent</code> (boolean, optional) - Suppress messages</li>
+<li><code>unitName</code> (string, optional) - Unit to receive messages</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
-<p><strong>Description:</strong>
-- Stops mission watchdog
-- Destroys spawned groups
-- Clears objectives</p>
+<p><strong>Description:</strong></p>
+<ul>
+<li>Stops mission watchdog</li>
+<li>Destroys spawned groups</li>
+<li>Clears objectives</li>
+</ul>
 <h5 id="veafcombatmissiondesactivatemissionnumbernumber-silent"><code>veafCombatMission.DesactivateMissionNumber(number, silent)</code><a class="headerlink" href="#veafcombatmissiondesactivatemissionnumbernumber-silent" title="Permanent link">&para;</a></h5>
 <p>Deactivate mission by index.</p>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafcombatmissiongetinformationonmissionparameters"><code>veafCombatMission.GetInformationOnMission(parameters)</code><a class="headerlink" href="#veafcombatmissiongetinformationonmissionparameters" title="Permanent link">&para;</a></h5>
 <p>Get mission status.</p>
-<p><strong>Parameters:</strong>
-- <code>parameters</code> (table) - <code>{name=string, unitName=string}</code></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>parameters</code> (table) - <code>{name=string, unitName=string}</code></li>
+</ul>
 <p><strong>Returns:</strong> <code>string</code> - Mission status text</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veafCombatMission</span><span class="p">.</span><span class="nf">GetInformationOnMission</span><span class="p">({</span>
@@ -12016,48 +12366,60 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafcombatmissioncompletioncheckname"><code>veafCombatMission.CompletionCheck(name)</code><a class="headerlink" href="#veafcombatmissioncompletioncheckname" title="Permanent link">&para;</a></h5>
 <p>Check mission completion status.</p>
-<p><strong>Parameters:</strong>
-- <code>name</code> (string) - Mission name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name</code> (string) - Mission name</li>
+</ul>
 <p><strong>Returns:</strong> <code>number</code> - Status: FAILED (-1), SUCCESS (1), NOTHING (0)</p>
 <p><strong>Description:</strong> Calls all objective check functions and aggregates results.</p>
 <h5 id="veafcombatmissionaddcapmissionmissionname-missiondescription-missionbriefing-secured-radiomenuenabled-skills-scales-spawnradius"><code>veafCombatMission.addCapMission(missionName, missionDescription, missionBriefing, secured, radioMenuEnabled, skills, scales, spawnRadius)</code><a class="headerlink" href="#veafcombatmissionaddcapmissionmissionname-missiondescription-missionbriefing-secured-radiomenuenabled-skills-scales-spawnradius" title="Permanent link">&para;</a></h5>
 <p>Create CAP mission helper.</p>
-<p><strong>Parameters:</strong>
-- <code>missionName</code> (string) - Mission name
-- <code>missionDescription</code> (string) - Description
-- <code>missionBriefing</code> (string) - Briefing
-- <code>secured</code> (boolean) - Security required
-- <code>radioMenuEnabled</code> (boolean) - Show in menu
-- <code>skills</code> (table) - Skill levels
-- <code>scales</code> (table) - Scale factors
-- <code>spawnRadius</code> (number) - Spawn dispersion</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>missionName</code> (string) - Mission name</li>
+<li><code>missionDescription</code> (string) - Description</li>
+<li><code>missionBriefing</code> (string) - Briefing</li>
+<li><code>secured</code> (boolean) - Security required</li>
+<li><code>radioMenuEnabled</code> (boolean) - Show in menu</li>
+<li><code>skills</code> (table) - Skill levels</li>
+<li><code>scales</code> (table) - Scale factors</li>
+<li><code>spawnRadius</code> (number) - Spawn dispersion</li>
+</ul>
 <p><strong>Returns:</strong> <code>VeafCombatMission</code> - Mission object</p>
 <p><strong>Description:</strong> Helper for creating CAP missions with standard objectives.</p>
 <h5 id="veafcombatmissionlistavailablemissionsunitname"><code>veafCombatMission.listAvailableMissions(unitName)</code><a class="headerlink" href="#veafcombatmissionlistavailablemissionsunitname" title="Permanent link">&para;</a></h5>
 <p>Display mission list to player.</p>
-<p><strong>Parameters:</strong>
-- <code>unitName</code> (string) - Unit to receive list</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>unitName</code> (string) - Unit to receive list</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafcombatmissionlistactivemissions"><code>veafCombatMission.listActiveMissions()</code><a class="headerlink" href="#veafcombatmissionlistactivemissions" title="Permanent link">&para;</a></h5>
 <p>Show active missions.</p>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafcombatmissionhelpunitname"><code>veafCombatMission.help(unitName)</code><a class="headerlink" href="#veafcombatmissionhelpunitname" title="Permanent link">&para;</a></h5>
 <p>Display help text.</p>
-<p><strong>Parameters:</strong>
-- <code>unitName</code> (string) - Unit to receive help</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>unitName</code> (string) - Unit to receive help</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafcombatmissionbuildradiomenu"><code>veafCombatMission.buildRadioMenu()</code><a class="headerlink" href="#veafcombatmissionbuildradiomenu" title="Permanent link">&para;</a></h5>
 <p>Build missions radio menu.</p>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafcombatmissionexecutecommandfromremoteparameters"><code>veafCombatMission.executeCommandFromRemote(parameters)</code><a class="headerlink" href="#veafcombatmissionexecutecommandfromremoteparameters" title="Permanent link">&para;</a></h5>
 <p>Execute command from remote API.</p>
-<p><strong>Parameters:</strong>
-- <code>parameters</code> (table) - Remote command parameters</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>parameters</code> (table) - Remote command parameters</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafcombatmissiondumpmissionslistexport_path"><code>veafCombatMission.dumpMissionsList(export_path)</code><a class="headerlink" href="#veafcombatmissiondumpmissionslistexport_path" title="Permanent link">&para;</a></h5>
 <p>Export missions to file.</p>
-<p><strong>Parameters:</strong>
-- <code>export_path</code> (string, optional) - Export directory</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>export_path</code> (string, optional) - Export directory</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafcombatmissioninitialize"><code>veafCombatMission.initialize()</code><a class="headerlink" href="#veafcombatmissioninitialize" title="Permanent link">&para;</a></h5>
 <p>Initialize module.</p>
@@ -12088,17 +12450,21 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="functions_8">Functions<a class="headerlink" href="#functions_8" title="Permanent link">&para;</a></h4>
 <h5 id="veafcasmissionexecutecommandeventpos-eventtext-coalition-markid-bypasssecurity"><code>veafCasMission.executeCommand(eventPos, eventText, coalition, markId, bypassSecurity)</code><a class="headerlink" href="#veafcasmissionexecutecommandeventpos-eventtext-coalition-markid-bypasssecurity" title="Permanent link">&para;</a></h5>
 <p>Execute CAS mission command.</p>
-<p><strong>Parameters:</strong>
-- <code>eventPos</code> (vec3) - Spawn position
-- <code>eventText</code> (string) - Command text
-- <code>coalition</code> (coalition, optional) - Coalition
-- <code>markId</code> (number, optional) - Marker ID
-- <code>bypassSecurity</code> (boolean, optional) - Skip security</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>eventPos</code> (vec3) - Spawn position</li>
+<li><code>eventText</code> (string) - Command text</li>
+<li><code>coalition</code> (coalition, optional) - Coalition</li>
+<li><code>markId</code> (number, optional) - Marker ID</li>
+<li><code>bypassSecurity</code> (boolean, optional) - Skip security</li>
+</ul>
 <p><strong>Returns:</strong> <code>boolean</code> - Success flag</p>
 <h5 id="veafcasmissionmarktextanalysistext"><code>veafCasMission.markTextAnalysis(text)</code><a class="headerlink" href="#veafcasmissionmarktextanalysistext" title="Permanent link">&para;</a></h5>
 <p>Parse CAS marker text.</p>
-<p><strong>Parameters:</strong>
-- <code>text</code> (string) - Marker text</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>text</code> (string) - Marker text</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Parsed options</p>
 <p><strong>Options:</strong>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -12112,19 +12478,23 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafcasmissiongeneratecasmissionspawnspot-size-defense-armor-spacing-disperseonattack-side"><code>veafCasMission.generateCasMission(spawnSpot, size, defense, armor, spacing, disperseOnAttack, side)</code><a class="headerlink" href="#veafcasmissiongeneratecasmissionspawnspot-size-defense-armor-spacing-disperseonattack-side" title="Permanent link">&para;</a></h5>
 <p>Generate complete CAS mission.</p>
-<p><strong>Parameters:</strong>
-- <code>spawnSpot</code> (vec3) - Spawn position
-- <code>size</code> (number) - Size 0-5
-- <code>defense</code> (number) - Defense 0-5
-- <code>armor</code> (number) - Armor 0-5
-- <code>spacing</code> (number) - Unit spacing (meters)
-- <code>disperseOnAttack</code> (boolean) - Disperse on attack
-- <code>side</code> (coalition) - Coalition</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>spawnSpot</code> (vec3) - Spawn position</li>
+<li><code>size</code> (number) - Size 0-5</li>
+<li><code>defense</code> (number) - Defense 0-5</li>
+<li><code>armor</code> (number) - Armor 0-5</li>
+<li><code>spacing</code> (number) - Unit spacing (meters)</li>
+<li><code>disperseOnAttack</code> (boolean) - Disperse on attack</li>
+<li><code>side</code> (coalition) - Coalition</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Generated group info</p>
-<p><strong>Description:</strong>
-- Spawns infantry, armor, transport, and air defense
-- Groups react to player attacks
-- Provides smoke/flare marking</p>
+<p><strong>Description:</strong></p>
+<ul>
+<li>Spawns infantry, armor, transport, and air defense</li>
+<li>Groups react to player attacks</li>
+<li>Provides smoke/flare marking</li>
+</ul>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Generate medium difficulty CAS mission</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">x</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="o">=</span><span class="mi">2000</span><span class="p">}</span>
@@ -12148,13 +12518,17 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafcasmissionreporttargetinformationunitname"><code>veafCasMission.reportTargetInformation(unitName)</code><a class="headerlink" href="#veafcasmissionreporttargetinformationunitname" title="Permanent link">&para;</a></h5>
 <p>Get CAS target info.</p>
-<p><strong>Parameters:</strong>
-- <code>unitName</code> (string) - Unit to receive report</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>unitName</code> (string) - Unit to receive report</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafcasmissionhelpunitname"><code>veafCasMission.help(unitName)</code><a class="headerlink" href="#veafcasmissionhelpunitname" title="Permanent link">&para;</a></h5>
 <p>Display CAS help text.</p>
-<p><strong>Parameters:</strong>
-- <code>unitName</code> (string) - Unit to receive help</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>unitName</code> (string) - Unit to receive help</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafcasmissionbuildradiomenu"><code>veafCasMission.buildRadioMenu()</code><a class="headerlink" href="#veafcasmissionbuildradiomenu" title="Permanent link">&para;</a></h5>
 <p>Build CAS radio menu.</p>
@@ -12170,16 +12544,18 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <strong>Purpose:</strong> Normalized airbase and runway information</p>
 <h4 id="classes_1">Classes<a class="headerlink" href="#classes_1" title="Permanent link">&para;</a></h4>
 <h5 id="airbase">Airbase<a class="headerlink" href="#airbase" title="Permanent link">&para;</a></h5>
-<p><strong>Properties:</strong>
-- <code>name</code> (string) - Airbase name
-- <code>position</code> (vec3) - Airbase position
-- <code>coalition</code> (coalition) - Current owner
-- <code>runways</code> (table) - Array of Runway objects
-- <code>fuelCapacity</code> (number) - Fuel storage
-- <code>ammoBlueMissile</code> (number) - Blue missile ammo
-- <code>ammoBlueGun</code> (number) - Blue gun ammo
-- <code>ammoRedMissile</code> (number) - Red missile ammo
-- <code>ammoRedGun</code> (number) - Red gun ammo</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><code>name</code> (string) - Airbase name</li>
+<li><code>position</code> (vec3) - Airbase position</li>
+<li><code>coalition</code> (coalition) - Current owner</li>
+<li><code>runways</code> (table) - Array of Runway objects</li>
+<li><code>fuelCapacity</code> (number) - Fuel storage</li>
+<li><code>ammoBlueMissile</code> (number) - Blue missile ammo</li>
+<li><code>ammoBlueGun</code> (number) - Blue gun ammo</li>
+<li><code>ammoRedMissile</code> (number) - Red missile ammo</li>
+<li><code>ammoRedGun</code> (number) - Red gun ammo</li>
+</ul>
 <p><strong>Methods:</strong>
 <div class="highlight"><pre><span></span><code><span class="nv">airbase</span><span class="p">:</span><span class="nf">getName</span><span class="p">()</span>
 <span class="nv">airbase</span><span class="p">:</span><span class="nf">getCoalition</span><span class="p">()</span>
@@ -12189,23 +12565,29 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <span class="nv">airbase</span><span class="p">:</span><span class="nf">getNearestRunway</span><span class="p">(</span><span class="nv">position</span><span class="p">)</span><span class="w">  </span><span class="c1">-- Get closest runway to position</span>
 </code></pre></div></p>
 <h5 id="runway">Runway<a class="headerlink" href="#runway" title="Permanent link">&para;</a></h5>
-<p><strong>Properties:</strong>
-- <code>heading1</code> (number) - First heading (degrees)
-- <code>heading2</code> (number) - Opposite heading
-- <code>width</code> (number) - Runway width (meters)
-- <code>length</code> (number) - Runway length (meters)
-- <code>surface</code> (string) - Surface type
-- <code>closed</code> (boolean) - Closed status</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><code>heading1</code> (number) - First heading (degrees)</li>
+<li><code>heading2</code> (number) - Opposite heading</li>
+<li><code>width</code> (number) - Runway width (meters)</li>
+<li><code>length</code> (number) - Runway length (meters)</li>
+<li><code>surface</code> (string) - Surface type</li>
+<li><code>closed</code> (boolean) - Closed status</li>
+</ul>
 <h4 id="functions_9">Functions<a class="headerlink" href="#functions_9" title="Permanent link">&para;</a></h4>
 <h5 id="veafairbasesinitializebreset"><code>veafAirbases.initialize(bReset)</code><a class="headerlink" href="#veafairbasesinitializebreset" title="Permanent link">&para;</a></h5>
 <p>Initialize airbase database.</p>
-<p><strong>Parameters:</strong>
-- <code>bReset</code> (boolean, optional) - Force rebuild database</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>bReset</code> (boolean, optional) - Force rebuild database</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafairbasesgetairbasebynamesairbasename"><code>veafAirbases.getAirbaseByName(sAirbaseName)</code><a class="headerlink" href="#veafairbasesgetairbasebynamesairbasename" title="Permanent link">&para;</a></h5>
 <p>Get airbase by name.</p>
-<p><strong>Parameters:</strong>
-- <code>sAirbaseName</code> (string) - Airbase name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>sAirbaseName</code> (string) - Airbase name</li>
+</ul>
 <p><strong>Returns:</strong> <code>Airbase</code> - Airbase object or nil</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">kutaisi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veafAirbases</span><span class="p">.</span><span class="nf">getAirbaseByName</span><span class="p">(</span><span class="s2">&quot;Kutaisi&quot;</span><span class="p">)</span>
@@ -12216,14 +12598,18 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafairbasesgetairbasefromdcsairbasedcsairbase"><code>veafAirbases.getAirbaseFromDcsAirbase(dcsAirbase)</code><a class="headerlink" href="#veafairbasesgetairbasefromdcsairbasedcsairbase" title="Permanent link">&para;</a></h5>
 <p>Convert DCS airbase to Airbase object.</p>
-<p><strong>Parameters:</strong>
-- <code>dcsAirbase</code> (DCS Airbase) - DCS airbase object</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dcsAirbase</code> (DCS Airbase) - DCS airbase object</li>
+</ul>
 <p><strong>Returns:</strong> <code>Airbase</code> - VEAF airbase object</p>
 <h5 id="veafairbasesgetnearestairbaselistdcsunit-icount"><code>veafAirbases.getNearestAirbaseList(dcsUnit, iCount)</code><a class="headerlink" href="#veafairbasesgetnearestairbaselistdcsunit-icount" title="Permanent link">&para;</a></h5>
 <p>Get nearest airbases to unit.</p>
-<p><strong>Parameters:</strong>
-- <code>dcsUnit</code> (DCS Unit) - Unit object
-- <code>iCount</code> (number) - Number of results</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dcsUnit</code> (DCS Unit) - Unit object</li>
+<li><code>iCount</code> (number) - Number of results</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Array of Airbase objects sorted by distance</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Unit</span><span class="p">.</span><span class="nf">getByName</span><span class="p">(</span><span class="s2">&quot;Viper 1-1&quot;</span><span class="p">)</span>
@@ -12234,8 +12620,10 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafairbasesgetnearestairbasedcsunit"><code>veafAirbases.getNearestAirbase(dcsUnit)</code><a class="headerlink" href="#veafairbasesgetnearestairbasedcsunit" title="Permanent link">&para;</a></h5>
 <p>Get single nearest airbase.</p>
-<p><strong>Parameters:</strong>
-- <code>dcsUnit</code> (DCS Unit) - Unit object</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dcsUnit</code> (DCS Unit) - Unit object</li>
+</ul>
 <p><strong>Returns:</strong> <code>Airbase</code> - Nearest airbase</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Unit</span><span class="p">.</span><span class="nf">getByName</span><span class="p">(</span><span class="s2">&quot;Viper 1-1&quot;</span><span class="p">)</span>
@@ -12251,13 +12639,17 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 <h4 id="functions_10">Functions<a class="headerlink" href="#functions_10" title="Permanent link">&para;</a></h4>
 <h5 id="veafcarrieroperationsstartcarrieroperationsparameters"><code>veafCarrierOperations.startCarrierOperations(parameters)</code><a class="headerlink" href="#veafcarrieroperationsstartcarrieroperationsparameters" title="Permanent link">&para;</a></h5>
 <p>Start carrier recovery operations.</p>
-<p><strong>Parameters:</strong>
-- <code>parameters</code> (table) - <code>{carrierGroupName=string, userUnitName=string}</code></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>parameters</code> (table) - <code>{carrierGroupName=string, userUnitName=string}</code></li>
+</ul>
 <p><strong>Returns:</strong> None</p>
-<p><strong>Description:</strong>
-- Turns carrier into wind
-- Maintains position for recovery
-- Reports wind direction and ATC info</p>
+<p><strong>Description:</strong></p>
+<ul>
+<li>Turns carrier into wind</li>
+<li>Maintains position for recovery</li>
+<li>Reports wind direction and ATC info</li>
+</ul>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="nv">veafCarrierOperations</span><span class="p">.</span><span class="nf">startCarrierOperations</span><span class="p">({</span>
 <span class="w">  </span><span class="nv">carrierGroupName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;CVN-73&quot;</span><span class="p">,</span>
@@ -12266,21 +12658,27 @@ The central dispatcher (<code>veafCommands.dispatchMarker</code>) handles the ma
 </code></pre></div></p>
 <h5 id="veafcarrieroperationscontinuecarrieroperationsgroupname-userunitname"><code>veafCarrierOperations.continueCarrierOperations(groupName, userUnitName)</code><a class="headerlink" href="#veafcarrieroperationscontinuecarrieroperationsgroupname-userunitname" title="Permanent link">&para;</a></h5>
 <p>Continue carrier operations.</p>
-<p><strong>Parameters:</strong>
-- <code>groupName</code> (string) - Carrier group name
-- <code>userUnitName</code> (string, optional) - User unit</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>groupName</code> (string) - Carrier group name</li>
+<li><code>userUnitName</code> (string, optional) - User unit</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafcarrieroperationsstopcarrieroperationsparameters"><code>veafCarrierOperations.stopCarrierOperations(parameters)</code><a class="headerlink" href="#veafcarrieroperationsstopcarrieroperationsparameters" title="Permanent link">&para;</a></h5>
 <p>Stop carrier operations.</p>
-<p><strong>Parameters:</strong>
-- <code>parameters</code> (table) - <code>{carrierGroupName=string}</code></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>parameters</code> (table) - <code>{carrierGroupName=string}</code></li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Description:</strong> Returns carrier to normal navigation.</p>
 <h5 id="veafcarrieroperationsgetatcforcarrieroperationsgroupname-skipnavigationdata"><code>veafCarrierOperations.getAtcForCarrierOperations(groupName, skipNavigationData)</code><a class="headerlink" href="#veafcarrieroperationsgetatcforcarrieroperationsgroupname-skipnavigationdata" title="Permanent link">&para;</a></h5>
 <p>Get carrier ATC data.</p>
-<p><strong>Parameters:</strong>
-- <code>groupName</code> (string) - Carrier group name
-- <code>skipNavigationData</code> (boolean, optional) - Skip nav info</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>groupName</code> (string) - Carrier group name</li>
+<li><code>skipNavigationData</code> (boolean, optional) - Skip nav info</li>
+</ul>
 <p><strong>Returns:</strong> <code>string</code> - ATC information text</p>
 <p><strong>Example Output:</strong>
 <div class="highlight"><pre><span></span><code>CVN-73 Washington
@@ -12294,18 +12692,24 @@ ICLS: 13
 </code></pre></div></p>
 <h5 id="veafcarrieroperationsatcforcarrieroperationsparameters"><code>veafCarrierOperations.atcForCarrierOperations(parameters)</code><a class="headerlink" href="#veafcarrieroperationsatcforcarrieroperationsparameters" title="Permanent link">&para;</a></h5>
 <p>Get ATC for carrier (with output).</p>
-<p><strong>Parameters:</strong>
-- <code>parameters</code> (table) - <code>{carrierGroupName=string, userUnitName=string}</code></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>parameters</code> (table) - <code>{carrierGroupName=string, userUnitName=string}</code></li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafcarrieroperationslistavailablecarriersforgroup"><code>veafCarrierOperations.listAvailableCarriers(forGroup)</code><a class="headerlink" href="#veafcarrieroperationslistavailablecarriersforgroup" title="Permanent link">&para;</a></h5>
 <p>Display available carriers.</p>
-<p><strong>Parameters:</strong>
-- <code>forGroup</code> (string, optional) - Group name to receive list</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>forGroup</code> (string, optional) - Group name to receive list</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafcarrieroperationsexecutecommandfromremoteparameters"><code>veafCarrierOperations.executeCommandFromRemote(parameters)</code><a class="headerlink" href="#veafcarrieroperationsexecutecommandfromremoteparameters" title="Permanent link">&para;</a></h5>
 <p>Execute from remote API.</p>
-<p><strong>Parameters:</strong>
-- <code>parameters</code> (table) - Remote command parameters</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>parameters</code> (table) - Remote command parameters</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafcarrieroperationsinitializecarriergroups"><code>veafCarrierOperations.initializeCarrierGroups()</code><a class="headerlink" href="#veafcarrieroperationsinitializecarriergroups" title="Permanent link">&para;</a></h5>
 <p>Initialize carrier groups.</p>
@@ -12333,9 +12737,11 @@ ICLS: 13
 <h4 id="functions_11">Functions<a class="headerlink" href="#functions_11" title="Permanent link">&para;</a></h4>
 <h5 id="veafradioaddsubmenutitle-parentmenu"><code>veafRadio.addSubMenu(title, parentMenu)</code><a class="headerlink" href="#veafradioaddsubmenutitle-parentmenu" title="Permanent link">&para;</a></h5>
 <p>Add submenu to radio.</p>
-<p><strong>Parameters:</strong>
-- <code>title</code> (string) - Submenu title
-- <code>parentMenu</code> (menu, optional) - Parent menu (nil = root VEAF menu)</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>title</code> (string) - Submenu title</li>
+<li><code>parentMenu</code> (menu, optional) - Parent menu (nil = root VEAF menu)</li>
+</ul>
 <p><strong>Returns:</strong> <code>menu</code> - Submenu object</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">assetsMenu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">addSubMenu</span><span class="p">(</span><span class="s2">&quot;Assets&quot;</span><span class="p">)</span>
@@ -12343,12 +12749,14 @@ ICLS: 13
 </code></pre></div></p>
 <h5 id="veafradioaddcommandtosubmenutext-menu-callback-parameters-usage"><code>veafRadio.addCommandToSubmenu(text, menu, callback, parameters, usage)</code><a class="headerlink" href="#veafradioaddcommandtosubmenutext-menu-callback-parameters-usage" title="Permanent link">&para;</a></h5>
 <p>Add command to submenu.</p>
-<p><strong>Parameters:</strong>
-- <code>text</code> (string) - Command text
-- <code>menu</code> (menu) - Target menu
-- <code>callback</code> (function) - Callback function
-- <code>parameters</code> (any, optional) - Parameters passed to callback
-- <code>usage</code> (number, optional) - Usage type: <code>USAGE_ForAll</code>, <code>USAGE_ForGroup</code>, <code>USAGE_ForUnit</code></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>text</code> (string) - Command text</li>
+<li><code>menu</code> (menu) - Target menu</li>
+<li><code>callback</code> (function) - Callback function</li>
+<li><code>parameters</code> (any, optional) - Parameters passed to callback</li>
+<li><code>usage</code> (number, optional) - Usage type: <code>USAGE_ForAll</code>, <code>USAGE_ForGroup</code>, <code>USAGE_ForUnit</code></li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Callback Signature:</strong>
 <div class="highlight"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nf">callback</span><span class="p">(</span><span class="nv">parameters</span><span class="p">)</span>
@@ -12368,19 +12776,25 @@ ICLS: 13
 <p><strong>Description:</strong> Command only appears if user has security clearance.</p>
 <h5 id="veafradioexecutecommandeventpos-eventtext-eventcoalition-bypasssecurity"><code>veafRadio.executeCommand(eventPos, eventText, eventCoalition, bypassSecurity)</code><a class="headerlink" href="#veafradioexecutecommandeventpos-eventtext-eventcoalition-bypasssecurity" title="Permanent link">&para;</a></h5>
 <p>Execute radio command from marker.</p>
-<p><strong>Parameters:</strong>
-- <code>eventPos</code> (vec3) - Command position
-- <code>eventText</code> (string) - Command text
-- <code>eventCoalition</code> (coalition) - Coalition
-- <code>bypassSecurity</code> (boolean, optional) - Skip security check</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>eventPos</code> (vec3) - Command position</li>
+<li><code>eventText</code> (string) - Command text</li>
+<li><code>eventCoalition</code> (coalition) - Coalition</li>
+<li><code>bypassSecurity</code> (boolean, optional) - Skip security check</li>
+</ul>
 <p><strong>Returns:</strong> <code>boolean</code> - Success flag</p>
-<p><strong>Supported Commands:</strong>
-- <code>transmit</code> - Transmit via SRS
-- <code>playmp3</code> - Play MP3 via SRS</p>
+<p><strong>Supported Commands:</strong></p>
+<ul>
+<li><code>transmit</code> - Transmit via SRS</li>
+<li><code>playmp3</code> - Play MP3 via SRS</li>
+</ul>
 <h5 id="veafradiomarktextanalysistext"><code>veafRadio.markTextAnalysis(text)</code><a class="headerlink" href="#veafradiomarktextanalysistext" title="Permanent link">&para;</a></h5>
 <p>Parse radio marker text.</p>
-<p><strong>Parameters:</strong>
-- <code>text</code> (string) - Marker text</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>text</code> (string) - Marker text</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Parsed options</p>
 <p><strong>Options:</strong>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -12396,14 +12810,16 @@ ICLS: 13
 </code></pre></div></p>
 <h5 id="veafradiotransmitmessagemessage-frequencies-modulations-name-coalition-position-quiet"><code>veafRadio.transmitMessage(message, frequencies, modulations, name, coalition, position, quiet)</code><a class="headerlink" href="#veafradiotransmitmessagemessage-frequencies-modulations-name-coalition-position-quiet" title="Permanent link">&para;</a></h5>
 <p>Transmit message via SRS.</p>
-<p><strong>Parameters:</strong>
-- <code>message</code> (string) - Message text (TTS)
-- <code>frequencies</code> (table) - Array of frequencies
-- <code>modulations</code> (table) - Array of modulations
-- <code>name</code> (string) - Transmission name/callsign
-- <code>coalition</code> (coalition, optional) - Coalition
-- <code>position</code> (vec3, optional) - Transmission origin
-- <code>quiet</code> (boolean, optional) - Suppress confirmation</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>message</code> (string) - Message text (TTS)</li>
+<li><code>frequencies</code> (table) - Array of frequencies</li>
+<li><code>modulations</code> (table) - Array of modulations</li>
+<li><code>name</code> (string) - Transmission name/callsign</li>
+<li><code>coalition</code> (coalition, optional) - Coalition</li>
+<li><code>position</code> (vec3, optional) - Transmission origin</li>
+<li><code>quiet</code> (boolean, optional) - Suppress confirmation</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">transmitMessage</span><span class="p">(</span>
@@ -12418,9 +12834,11 @@ ICLS: 13
 </code></pre></div></p>
 <h5 id="veafradioplaytoradiopath-frequencies-modulations-name-coalition-position-quiet"><code>veafRadio.playToRadio(path, frequencies, modulations, name, coalition, position, quiet)</code><a class="headerlink" href="#veafradioplaytoradiopath-frequencies-modulations-name-coalition-position-quiet" title="Permanent link">&para;</a></h5>
 <p>Play MP3 file via SRS.</p>
-<p><strong>Parameters:</strong>
-- <code>path</code> (string) - MP3 file path
-- Other parameters same as <code>transmitMessage</code></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>path</code> (string) - MP3 file path</li>
+<li>Other parameters same as <code>transmitMessage</code></li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">playToRadio</span><span class="p">(</span>
@@ -12439,18 +12857,22 @@ ICLS: 13
 <p><strong>Description:</strong> Schedules menu rebuild after delay to prevent conflicts.</p>
 <h5 id="veafradioaddpaginatedradioelementsmenu-buildfunction-elements-sortkey-sortfield"><code>veafRadio.addPaginatedRadioElements(menu, buildFunction, elements, sortKey, sortField)</code><a class="headerlink" href="#veafradioaddpaginatedradioelementsmenu-buildfunction-elements-sortkey-sortfield" title="Permanent link">&para;</a></h5>
 <p>Add paginated elements to menu.</p>
-<p><strong>Parameters:</strong>
-- <code>menu</code> (menu) - Target menu
-- <code>buildFunction</code> (function) - Function to build each element
-- <code>elements</code> (table) - Array of elements
-- <code>sortKey</code> (string, optional) - Sort key
-- <code>sortField</code> (string, optional) - Sort field</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>menu</code> (menu) - Target menu</li>
+<li><code>buildFunction</code> (function) - Function to build each element</li>
+<li><code>elements</code> (table) - Array of elements</li>
+<li><code>sortKey</code> (string, optional) - Sort key</li>
+<li><code>sortField</code> (string, optional) - Sort field</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Description:</strong> Creates pages of 10 items with next/previous navigation.</p>
 <h5 id="veafradioonbirtheventevent"><code>veafRadio.onBirthEvent(event)</code><a class="headerlink" href="#veafradioonbirtheventevent" title="Permanent link">&para;</a></h5>
 <p>Handle unit birth (add to radio menu).</p>
-<p><strong>Parameters:</strong>
-- <code>event</code> (table) - Birth event</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>event</code> (table) - Birth event</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Description:</strong> Automatically adds human units to radio menu.</p>
 <h5 id="veafradioinitialize"><code>veafRadio.initialize()</code><a class="headerlink" href="#veafradioinitialize" title="Permanent link">&para;</a></h5>
@@ -12465,8 +12887,10 @@ ICLS: 13
 <h4 id="functions_12">Functions<a class="headerlink" href="#functions_12" title="Permanent link">&para;</a></h4>
 <h5 id="veafweathersetweatherparameters"><code>veafWeather.setWeather(parameters)</code><a class="headerlink" href="#veafweathersetweatherparameters" title="Permanent link">&para;</a></h5>
 <p>Set mission weather.</p>
-<p><strong>Parameters:</strong>
-- <code>parameters</code> (table) - Weather parameters</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>parameters</code> (table) - Weather parameters</li>
+</ul>
 <p><strong>Weather Parameters:</strong>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nv">qnh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">number</span><span class="p">,</span><span class="w">              </span><span class="c1">-- Pressure (mmHg or inHg)</span>
@@ -12491,8 +12915,10 @@ ICLS: 13
 <p><strong>Returns:</strong> None</p>
 <h5 id="veafweathergetweatherposition"><code>veafWeather.getWeather(position)</code><a class="headerlink" href="#veafweathergetweatherposition" title="Permanent link">&para;</a></h5>
 <p>Get current weather at position.</p>
-<p><strong>Parameters:</strong>
-- <code>position</code> (vec3) - Position</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>position</code> (vec3) - Position</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Weather data</p>
 <hr />
 <h3 id="veaftimelua">veafTime.lua<a class="headerlink" href="#veaftimelua" title="Permanent link">&para;</a></h3>
@@ -12502,9 +12928,11 @@ ICLS: 13
 <h4 id="functions_13">Functions<a class="headerlink" href="#functions_13" title="Permanent link">&para;</a></h4>
 <h5 id="veaftimesettimehours-minutes"><code>veafTime.setTime(hours, minutes)</code><a class="headerlink" href="#veaftimesettimehours-minutes" title="Permanent link">&para;</a></h5>
 <p>Set mission time.</p>
-<p><strong>Parameters:</strong>
-- <code>hours</code> (number) - Hour (0-23)
-- <code>minutes</code> (number, optional) - Minute (0-59)</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>hours</code> (number) - Hour (0-23)</li>
+<li><code>minutes</code> (number, optional) - Minute (0-59)</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Set time to 14:30</span>
@@ -12512,10 +12940,12 @@ ICLS: 13
 </code></pre></div></p>
 <h5 id="veaftimesetdateyear-month-day"><code>veafTime.setDate(year, month, day)</code><a class="headerlink" href="#veaftimesetdateyear-month-day" title="Permanent link">&para;</a></h5>
 <p>Set mission date.</p>
-<p><strong>Parameters:</strong>
-- <code>year</code> (number) - Year
-- <code>month</code> (number) - Month (1-12)
-- <code>day</code> (number) - Day (1-31)</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>year</code> (number) - Year</li>
+<li><code>month</code> (number) - Month (1-12)</li>
+<li><code>day</code> (number) - Day (1-31)</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <hr />
 <h2 id="data--database">Data &amp; Database<a class="headerlink" href="#data--database" title="Permanent link">&para;</a></h2>
@@ -12553,8 +12983,10 @@ ICLS: 13
 <h4 id="functions_14">Functions<a class="headerlink" href="#functions_14" title="Permanent link">&para;</a></h4>
 <h5 id="dcsunitsfindunittypename"><code>dcsUnits.findUnit(typeName)</code><a class="headerlink" href="#dcsunitsfindunittypename" title="Permanent link">&para;</a></h5>
 <p>Find unit by type name.</p>
-<p><strong>Parameters:</strong>
-- <code>typeName</code> (string) - Unit type (case-insensitive)</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>typeName</code> (string) - Unit type (case-insensitive)</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Unit definition or nil</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">f16</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">dcsUnits</span><span class="p">.</span><span class="nf">findUnit</span><span class="p">(</span><span class="s2">&quot;F-16C_50&quot;</span><span class="p">)</span>
@@ -12566,8 +12998,10 @@ ICLS: 13
 </code></pre></div></p>
 <h5 id="dcsunitsgetunitsbycategorycategory"><code>dcsUnits.getUnitsByCategory(category)</code><a class="headerlink" href="#dcsunitsgetunitsbycategorycategory" title="Permanent link">&para;</a></h5>
 <p>Get all units of category.</p>
-<p><strong>Parameters:</strong>
-- <code>category</code> (string) - Category name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>category</code> (string) - Category name</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Array of unit definitions</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">aircraft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">dcsUnits</span><span class="p">.</span><span class="nf">getUnitsByCategory</span><span class="p">(</span><span class="s2">&quot;Airplane&quot;</span><span class="p">)</span>
@@ -12577,13 +13011,17 @@ ICLS: 13
 </code></pre></div></p>
 <h5 id="dcsunitsgetunitsbycountrycountry"><code>dcsUnits.getUnitsByCountry(country)</code><a class="headerlink" href="#dcsunitsgetunitsbycountrycountry" title="Permanent link">&para;</a></h5>
 <p>Get units for country.</p>
-<p><strong>Parameters:</strong>
-- <code>country</code> (string) - Country name</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>country</code> (string) - Country name</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Array of unit definitions</p>
 <h5 id="dcsunitsgetunitsbytasktask"><code>dcsUnits.getUnitsByTask(task)</code><a class="headerlink" href="#dcsunitsgetunitsbytasktask" title="Permanent link">&para;</a></h5>
 <p>Get units capable of task.</p>
-<p><strong>Parameters:</strong>
-- <code>task</code> (string) - Task name (e.g., "CAP", "CAS", "SEAD")</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>task</code> (string) - Task name (e.g., "CAP", "CAS", "SEAD")</li>
+</ul>
 <p><strong>Returns:</strong> <code>table</code> - Array of unit definitions</p>
 <hr />
 <h3 id="dcsdataexportlua">dcsDataExport.lua<a class="headerlink" href="#dcsdataexportlua" title="Permanent link">&para;</a></h3>
@@ -12593,14 +13031,18 @@ ICLS: 13
 <h4 id="functions_15">Functions<a class="headerlink" href="#functions_15" title="Permanent link">&para;</a></h4>
 <h5 id="dcsdataexportexportallunitspath"><code>dcsDataExport.exportAllUnits(path)</code><a class="headerlink" href="#dcsdataexportexportallunitspath" title="Permanent link">&para;</a></h5>
 <p>Export all DCS units to file.</p>
-<p><strong>Parameters:</strong>
-- <code>path</code> (string, optional) - Export directory</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>path</code> (string, optional) - Export directory</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <p><strong>Description:</strong> Exports complete unit database to JSON/Lua file.</p>
 <h5 id="dcsdataexportexportairbasespath"><code>dcsDataExport.exportAirbases(path)</code><a class="headerlink" href="#dcsdataexportexportairbasespath" title="Permanent link">&para;</a></h5>
 <p>Export airbase data.</p>
-<p><strong>Parameters:</strong>
-- <code>path</code> (string, optional) - Export directory</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>path</code> (string, optional) - Export directory</li>
+</ul>
 <p><strong>Returns:</strong> None</p>
 <h5 id="dcsdataexportexportweaponspath"><code>dcsDataExport.exportWeapons(path)</code><a class="headerlink" href="#dcsdataexportexportweaponspath" title="Permanent link">&para;</a></h5>
 <p>Export weapons data.</p>

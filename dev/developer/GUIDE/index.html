@@ -342,7 +342,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../LUA_API_REFERENCE/" class="md-tabs__link">
+        <a href="../../MISSION_YAML_REFERENCE/" class="md-tabs__link">
           
   
   
@@ -2127,6 +2127,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../MISSION_YAML_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    mission.yaml Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PIPELINE_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../LUA_API_REFERENCE/" class="md-nav__link">
         
   
@@ -2762,7 +2818,8 @@
     zip --&gt;|consumed by| RT
     subgraph RT["RUNTIME — Lua inside DCS World"]
         scripts["veaf-scripts.lua&lt;br/&gt;— all 34 modules concatenated"]
-        config["missionconfig.lua&lt;br/&gt;— mission-specific config"]
+        config["veaf-config.lua&lt;br/&gt;— generated module config (from mission.yaml)"]
+        custom["mission-script.lua&lt;br/&gt;— mission-specific custom Lua code"]
     end</code></pre>
 <ul>
 <li><strong>Runtime</strong> (<code>src/scripts/veaf/</code>) — 34 Lua modules loaded inside DCS missions</li>
@@ -2909,8 +2966,8 @@ or <code>poetry shell</code> to open an interactive session.</p>
 <span class="w">  </span><span class="nt">RADIO</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trace</span>
 </code></pre></div>
-<p>This generates <code>veaf.setConfig("MODULE_ID", "logLevel", "...")</code> calls in <code>veaf-modules-config.lua</code>. Or use <code>--log-modules SPAWN,RADIO</code> on the CLI to silence everything else.</p>
-<p>For <strong>per-module runtime</strong> control (no rebuild), use <code>missionconfig.lua</code> directly:</p>
+<p>This generates <code>veaf.setConfig("MODULE_ID", "logLevel", "...")</code> calls in <code>veaf-config.lua</code>. Or use <code>--log-modules SPAWN,RADIO</code> on the CLI to silence everything else.</p>
+<p>For <strong>per-module runtime</strong> control (no rebuild), add the Lua call directly in <code>mission-script.lua</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">veaf</span><span class="p">.</span><span class="py">loggers</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">&quot;SPAWN&quot;</span><span class="p">):</span><span class="nf">setLevel</span><span class="p">(</span><span class="s2">&quot;debug&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w">  </span><span class="c1">-- force=true bypasses BaseLogLevel cap</span>
 </code></pre></div>
 <h3 id="mistdbs-access">mist.DBs Access<a class="headerlink" href="#mistdbs-access" title="Permanent link">&para;</a></h3>
@@ -3082,7 +3139,7 @@ fix(qra): guard unit:isExist() before unit:inAir()
 chore(deps): update luaunit to 3.4
 docs(api): document veafMove tanker helpers
 </code></pre></div>
-<p>Types: <code>feat</code>, <code>fix</code>, <code>chore</code>, <code>docs</code>, <code>test</code>, <code>refactor</code>, <code>style</code>.</p>
+<p><strong>Types:</strong> <code>feat</code>, <code>fix</code>, <code>chore</code>, <code>docs</code>, <code>test</code>, <code>refactor</code>, <code>style</code></p>
 <h3 id="pull-request-checklist">Pull Request Checklist<a class="headerlink" href="#pull-request-checklist" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] All Lua changes pass <code>stylua --check</code></li>

@@ -342,7 +342,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../LUA_API_REFERENCE/" class="md-tabs__link">
+        <a href="../../../MISSION_YAML_REFERENCE/" class="md-tabs__link">
           
   
   
@@ -1065,6 +1065,67 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration-missionyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration (mission.yaml)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration (mission.yaml)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#champs-de-combat_zone_settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Champs de combat_zone_settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#champs-de-combat_zones--type-zone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Champs de combat_zones[] — type zone
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#champs-de-combat_zones--type-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Champs de combat_zones[] — type operation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-minimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple minimal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#constantes-du-module" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1769,6 +1830,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../MISSION_YAML_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Référence mission.yaml
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PIPELINE_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Référence Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../LUA_API_REFERENCE/" class="md-nav__link">
         
   
@@ -1913,6 +2030,67 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration-missionyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration (mission.yaml)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration (mission.yaml)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#champs-de-combat_zone_settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Champs de combat_zone_settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#champs-de-combat_zones--type-zone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Champs de combat_zones[] — type zone
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#champs-de-combat_zones--type-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Champs de combat_zones[] — type operation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-minimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple minimal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#constantes-du-module" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2032,6 +2210,214 @@
 <div class="highlight"><pre><span></span><code><span class="nv">veafCombatZone</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
 </code></pre></div>
 <p>Les zones individuelles sont créées et initialisées séparément (voir ci-dessous).</p>
+<hr />
+<h2 id="configuration-missionyaml">Configuration (<code>mission.yaml</code>)<a class="headerlink" href="#configuration-missionyaml" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nt">lua_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">COMBATZONE</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">          </span><span class="c1"># défaut : true</span>
+<span class="w">    </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">info</span><span class="w">        </span><span class="c1"># surcharge optionnelle du niveau de log</span>
+<span class="w">    </span><span class="nt">combat_zone_settings</span><span class="p">:</span><span class="w"> </span><span class="c1"># surcharges globales optionnelles</span>
+<span class="w">      </span><span class="nt">event_message_combatzonecomplete</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Objectif</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">zone</span><span class="nv"> </span><span class="s">atteint</span><span class="nv"> </span><span class="s">!&quot;</span><span class="w">  </span><span class="c1"># null = supprimer</span>
+<span class="w">      </span><span class="nt">watchdog_check_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span><span class="w">          </span><span class="c1"># secondes entre les sondages du watchdog (défaut : 60)</span>
+<span class="w">      </span><span class="nt">radio_menu_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Zones</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">combat&quot;</span><span class="w">   </span><span class="c1"># libellé du menu F10</span>
+<span class="w">      </span><span class="nt">combat_zone_menu_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Opérations</span><span class="nv"> </span><span class="s">Zone</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">Combat&quot;</span>
+<span class="w">      </span><span class="nt">operation_menu_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Opérations&quot;</span>
+<span class="w">    </span><span class="nt">combat_zones</span><span class="p">:</span><span class="w">         </span><span class="c1"># définitions de zones et d&#39;opérations</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zone</span><span class="w">                          </span><span class="c1"># zone | operation</span>
+<span class="w">        </span><span class="nt">zone_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CZ-Alpha&quot;</span><span class="w">              </span><span class="c1"># nom de la zone de trigger DCS</span>
+<span class="w">        </span><span class="nt">friendly_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Zone</span><span class="nv"> </span><span class="s">Alpha&quot;</span><span class="w">        </span><span class="c1"># libellé dans le menu radio</span>
+<span class="w">        </span><span class="nt">briefing</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Détruire</span><span class="nv"> </span><span class="s">la</span><span class="nv"> </span><span class="s">colonne</span><span class="nv"> </span><span class="s">blindée.&quot;</span><span class="w">  </span><span class="c1"># affiché dans les infos mission</span>
+<span class="w">        </span><span class="nt">training</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">                     </span><span class="c1"># true = pas de sécurité, statut verbeux</span>
+<span class="w">        </span><span class="nt">chained_zones</span><span class="p">:</span><span class="w">                      </span><span class="c1"># zones à déclencher quand celle-ci se termine</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;CZ-Bravo&quot;</span>
+<span class="w">        </span><span class="nt">chained_delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span><span class="w">                   </span><span class="c1"># secondes avant le déclenchement des zones chaînées</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">operation</span>
+<span class="w">        </span><span class="nt">zone_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Op-Tonnerre&quot;</span>
+<span class="w">        </span><span class="nt">friendly_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Opération</span><span class="nv"> </span><span class="s">Tonnerre&quot;</span>
+<span class="w">        </span><span class="nt">tasking_orders</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">zone_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CZ-Alpha&quot;</span><span class="w">           </span><span class="c1"># première tâche (sans dépendances)</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">zone_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CZ-Bravo&quot;</span>
+<span class="w">            </span><span class="nt">dependencies</span><span class="p">:</span><span class="w">                   </span><span class="c1"># CZ-Bravo se débloque après CZ-Alpha</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;CZ-Alpha&quot;</span>
+</code></pre></div>
+<h3 id="champs-de-combat_zone_settings">Champs de <code>combat_zone_settings</code><a class="headerlink" href="#champs-de-combat_zone_settings" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Type</th>
+<th>Défaut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event_message_combatzonecomplete</code></td>
+<td>string | null</td>
+<td><em>(défaut module)</em></td>
+<td>Message diffusé quand une zone se termine. <code>null</code> le supprime.</td>
+</tr>
+<tr>
+<td><code>watchdog_check_interval</code></td>
+<td>entier</td>
+<td><code>60</code></td>
+<td>Secondes entre les sondages du watchdog</td>
+</tr>
+<tr>
+<td><code>radio_menu_name</code></td>
+<td>string</td>
+<td><code>"COMBAT ZONES"</code></td>
+<td>Libellé du menu de premier niveau F10</td>
+</tr>
+<tr>
+<td><code>combat_zone_menu_name</code></td>
+<td>string</td>
+<td><em>(défaut)</em></td>
+<td>Libellé du sous-menu des opérations de zone</td>
+</tr>
+<tr>
+<td><code>operation_menu_name</code></td>
+<td>string</td>
+<td><em>(défaut)</em></td>
+<td>Libellé du sous-menu des opérations</td>
+</tr>
+</tbody>
+</table>
+<h3 id="champs-de-combat_zones--type-zone">Champs de <code>combat_zones[]</code> — type <code>zone</code><a class="headerlink" href="#champs-de-combat_zones--type-zone" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Type</th>
+<th>Défaut</th>
+<th>Requis</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td><code>zone</code></td>
+<td>Non</td>
+<td><code>zone</code> ou <code>operation</code></td>
+</tr>
+<tr>
+<td><code>zone_name</code></td>
+<td>string</td>
+<td>—</td>
+<td>Oui</td>
+<td>Nom de la zone de trigger DCS</td>
+</tr>
+<tr>
+<td><code>friendly_name</code></td>
+<td>string</td>
+<td>—</td>
+<td>Non</td>
+<td>Libellé affiché dans le menu F10</td>
+</tr>
+<tr>
+<td><code>briefing</code></td>
+<td>string</td>
+<td>—</td>
+<td>Non</td>
+<td>Texte de briefing affiché aux joueurs</td>
+</tr>
+<tr>
+<td><code>training</code></td>
+<td>booléen</td>
+<td><code>false</code></td>
+<td>Non</td>
+<td>Mode entraînement : pas de sécurité, statut verbeux</td>
+</tr>
+<tr>
+<td><code>chained_zones</code></td>
+<td>string[]</td>
+<td><code>[]</code></td>
+<td>Non</td>
+<td>Noms des zones à déclencher à la completion</td>
+</tr>
+<tr>
+<td><code>chained_delay</code></td>
+<td>entier</td>
+<td><code>0</code></td>
+<td>Non</td>
+<td>Secondes avant le déclenchement des zones chaînées</td>
+</tr>
+</tbody>
+</table>
+<h3 id="champs-de-combat_zones--type-operation">Champs de <code>combat_zones[]</code> — type <code>operation</code><a class="headerlink" href="#champs-de-combat_zones--type-operation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Type</th>
+<th>Défaut</th>
+<th>Requis</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>—</td>
+<td>Oui</td>
+<td>Doit être <code>operation</code></td>
+</tr>
+<tr>
+<td><code>zone_name</code></td>
+<td>string</td>
+<td>—</td>
+<td>Oui</td>
+<td>Nom de la zone de trigger DCS</td>
+</tr>
+<tr>
+<td><code>friendly_name</code></td>
+<td>string</td>
+<td>—</td>
+<td>Non</td>
+<td>Libellé dans le menu radio</td>
+</tr>
+<tr>
+<td><code>briefing</code></td>
+<td>string</td>
+<td>—</td>
+<td>Non</td>
+<td>Texte de briefing</td>
+</tr>
+<tr>
+<td><code>tasking_orders</code></td>
+<td>objet[]</td>
+<td><code>[]</code></td>
+<td>Non</td>
+<td>Liste de tâches ordonnées</td>
+</tr>
+<tr>
+<td><code>tasking_orders[].zone_name</code></td>
+<td>string</td>
+<td>—</td>
+<td>Oui</td>
+<td>Nom de la zone de combat pour cette tâche</td>
+</tr>
+<tr>
+<td><code>tasking_orders[].dependencies</code></td>
+<td>string[]</td>
+<td><code>[]</code></td>
+<td>Non</td>
+<td>Noms des zones devant se terminer en premier</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exemple-minimal">Exemple minimal<a class="headerlink" href="#exemple-minimal" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">lua_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">COMBATZONE</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">combat_zones</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zone</span>
+<span class="w">        </span><span class="nt">zone_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CZ-Alpha&quot;</span>
+<span class="w">        </span><span class="nt">friendly_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alpha&quot;</span>
+</code></pre></div>
 <hr />
 <h2 id="constantes-du-module">Constantes du module<a class="headerlink" href="#constantes-du-module" title="Permanent link">&para;</a></h2>
 <table>
