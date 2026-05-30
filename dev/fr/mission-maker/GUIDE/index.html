@@ -1006,6 +1006,78 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#intégration-ctld-et-csar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intégration CTLD et CSAR
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Intégration CTLD et CSAR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurer-ctld-via-missionyaml-yaml-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurer CTLD via mission.yaml (YAML-first)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordre-de-chargement-dans-la-chaîne-de-triggers-dcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ordre de chargement dans la chaîne de triggers DCS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activer-ctld-dans-mission-scriptlua" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activer CTLD dans mission-script.lua
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activer-csar-dans-mission-scriptlua" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activer CSAR dans mission-script.lua
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valeurs-par-défaut-automatiques-veaf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valeurs par défaut automatiques VEAF
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#journalisation-de-débogage" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2436,6 +2508,78 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#intégration-ctld-et-csar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intégration CTLD et CSAR
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Intégration CTLD et CSAR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurer-ctld-via-missionyaml-yaml-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurer CTLD via mission.yaml (YAML-first)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordre-de-chargement-dans-la-chaîne-de-triggers-dcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ordre de chargement dans la chaîne de triggers DCS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activer-ctld-dans-mission-scriptlua" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activer CTLD dans mission-script.lua
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activer-csar-dans-mission-scriptlua" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activer CSAR dans mission-script.lua
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valeurs-par-défaut-automatiques-veaf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valeurs par défaut automatiques VEAF
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#journalisation-de-débogage" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2521,6 +2665,8 @@
 <li><a href="#workflow-de-build-typique">Workflow de build typique</a></li>
 <li><a href="#référence-des-scripts">Référence des scripts</a></li>
 <li><a href="#exemples-de-configuration">Exemples de configuration</a></li>
+<li><a href="#intégration-ctld-et-csar">Intégration CTLD et CSAR</a></li>
+<li><a href="#journalisation-de-débogage">Journalisation de débogage</a></li>
 <li><a href="#ressources">Ressources</a></li>
 </ol>
 <blockquote>
@@ -2554,6 +2700,11 @@
 <td>Oui</td>
 </tr>
 <tr>
+<td>Éditeur de missions DCS</td>
+<td>Créer le <code>.miz</code> de base (inclus avec DCS)</td>
+<td>Oui</td>
+</tr>
+<tr>
 <td>Git</td>
 <td>Contrôle de version pour votre projet de mission</td>
 <td>Recommandé</td>
@@ -2569,12 +2720,15 @@
 <td>Oui (pour le pipeline de build)</td>
 </tr>
 <tr>
-<td>VS Code ou similaire</td>
+<td>VS Code ou Notepad++</td>
 <td>Édition des fichiers Lua/YAML de configuration</td>
 <td>Recommandé</td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p><strong>Exigence pour la mission de base</strong> : Le <code>.miz</code> créé dans l'éditeur DCS doit contenir <strong>au moins un groupe terrestre bleu et un groupe terrestre rouge</strong>. Sans les deux, les tables Lua de coalition sont incomplètes, ce qui peut amener les outils d'injection (<code>inject-presets</code>, <code>inject-waypoints</code>) à ignorer silencieusement des groupes.</p>
+</blockquote>
 <hr />
 <h2 id="installation-et-mises-à-jour">Installation et mises à jour<a class="headerlink" href="#installation-et-mises-à-jour" title="Permanent link">&para;</a></h2>
 <h3 id="première-installation">Première installation<a class="headerlink" href="#première-installation" title="Permanent link">&para;</a></h3>
@@ -2796,18 +2950,27 @@
 <p>Référence complète : <a href="../../TOOLS_REFERENCE/">Référence des outils</a></p>
 <hr />
 <h2 id="workflow-de-build-typique">Workflow de build typique<a class="headerlink" href="#workflow-de-build-typique" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c"># 1. Construire la mission (lit src/, injecte les triggers VEAF → .miz de sortie)</span>
-<span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span> <span class="n">ma-mission</span><span class="p">.</span><span class="n">miz</span>
+<div class="highlight"><pre><span></span><code><span class="c"># Construire la mission — le pipeline intégré exécute toutes les étapes activées automatiquement</span>
+<span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span>
+</code></pre></div>
+<p>La commande <code>build</code> lit <code>mission.yaml</code> et exécute chaque étape activée du pipeline (presets, waypoints, groupes d'aéronefs, météo) en une seule passe. Configurez les étapes actives sous la clé <code>pipeline:</code> dans <code>mission.yaml</code>.</p>
+<details>
+<summary>Avancé : exécuter les étapes du pipeline individuellement</summary>
 
-<span class="c"># 2. Injecter les préréglages radio depuis la config YAML (optionnel, opère sur le .miz construit)</span>
+Si vous devez exécuter une seule étape en isolation (ex : injecter la météo uniquement, sans rebuild complet) :
+
+<div class="highlight"><pre><span></span><code><span class="c"># Injecter les préréglages radio uniquement</span>
 <span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">inject-presets</span> <span class="n">ma-mission</span><span class="p">.</span><span class="n">miz</span> <span class="p">-</span><span class="n">-presets</span><span class="o">-file</span> <span class="n">src</span><span class="p">/</span><span class="n">presets</span><span class="p">.</span><span class="n">yaml</span>
 
-<span class="c"># 3. Injecter les waypoints bullseye et de navigation (optionnel)</span>
+<span class="c"># Injecter les waypoints bullseye et de navigation uniquement</span>
 <span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">inject-waypoints</span> <span class="n">ma-mission</span><span class="p">.</span><span class="n">miz</span> <span class="p">-</span><span class="n">-waypoints</span><span class="o">-file</span> <span class="n">src</span><span class="p">/</span><span class="n">waypoints</span><span class="p">.</span><span class="n">yaml</span>
 
-<span class="c"># 4. Créer des variantes météo/heure (optionnel)</span>
-<span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">inject-weather</span> <span class="n">ma-mission</span><span class="p">.</span><span class="n">miz</span> <span class="p">-</span><span class="n">-config</span><span class="o">-file</span> <span class="n">missions</span><span class="p">.</span><span class="n">yaml</span>
+<span class="c"># Créer des variantes météo/heure uniquement</span>
+<span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">inject-weather</span> <span class="n">ma-mission</span><span class="p">.</span><span class="n">miz</span> <span class="p">-</span><span class="n">-config</span><span class="o">-file</span> <span class="n">versions</span><span class="p">.</span><span class="n">yaml</span>
 </code></pre></div>
+
+</details>
+
 <p>Commitez le contenu de <code>src/</code> dans Git — pas le <code>.miz</code> construit. Utilisez <code>extract</code> une fois pour initialiser le dossier source depuis une mission existante :</p>
 <div class="highlight"><pre><span></span><code><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">extract</span> <span class="n">ma-mission</span><span class="p">.</span><span class="n">miz</span>
 </code></pre></div>
@@ -2876,6 +3039,71 @@
 <span class="w">  </span><span class="p">:</span><span class="nf">setMinimumPlayersForWave</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
 </code></pre></div>
+<hr />
+<h2 id="intégration-ctld-et-csar">Intégration CTLD et CSAR<a class="headerlink" href="#intégration-ctld-et-csar" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/ciribob/DCS-CTLD">CTLD</a> (Combat Troop Loading and Deployment) et <a href="https://github.com/ciribob/DCS-CSAR">CSAR</a> (Combat Search and Rescue) sont des scripts tiers que VEAF supporte nativement. VEAF monkey-patche leurs fonctions <code>initialize()</code> au démarrage, donc vous n'avez pas besoin de les charger ou de les initialiser séparément — appelez-les simplement depuis <code>mission-script.lua</code> en suivant le pattern VEAF standard.</p>
+<h3 id="configurer-ctld-via-missionyaml-yaml-first">Configurer CTLD via mission.yaml (YAML-first)<a class="headerlink" href="#configurer-ctld-via-missionyaml-yaml-first" title="Permanent link">&para;</a></h3>
+<p>Vous pouvez activer CTLD et définir ses propriétés directement dans <code>mission.yaml</code>, sans Lua :</p>
+<div class="highlight"><pre><span></span><code><span class="nt">external_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ctld</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">hoverPickup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">slingLoad</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>VEAF génère la configuration Lua correspondante dans <code>veaf-config.lua</code> au moment du build. Utilisez <code>mission-script.lua</code> uniquement pour les paramètres pas encore supportés par le schéma YAML.</p>
+<blockquote>
+<p><strong>CSAR</strong> : La configuration YAML de CSAR est prévue pour une future version. En attendant, configurez CSAR dans <code>mission-script.lua</code> comme indiqué ci-dessous.</p>
+</blockquote>
+<h3 id="ordre-de-chargement-dans-la-chaîne-de-triggers-dcs">Ordre de chargement dans la chaîne de triggers DCS<a class="headerlink" href="#ordre-de-chargement-dans-la-chaîne-de-triggers-dcs" title="Permanent link">&para;</a></h3>
+<p>Les scripts CTLD/CSAR doivent être chargés avant les scripts VEAF :</p>
+<div class="highlight"><pre><span></span><code>DO SCRIPT FILE → ctld.lua           (tiers)
+DO SCRIPT FILE → csar.lua           (tiers)
+DO SCRIPT FILE → veaf-scripts.lua   (modules VEAF)
+DO SCRIPT FILE → veaf-config.lua    (généré depuis mission.yaml)
+DO SCRIPT FILE → mission-script.lua (votre code personnalisé)
+</code></pre></div>
+<p>Quand <code>veaf-scripts.lua</code> se charge, il détecte la présence des tables globales <code>ctld</code> et <code>csar</code> et enveloppe leurs fonctions <code>initialize()</code>, appliquant les valeurs par défaut VEAF avant d'appeler le vrai initialiseur.</p>
+<h3 id="activer-ctld-dans-mission-scriptlua">Activer CTLD dans mission-script.lua<a class="headerlink" href="#activer-ctld-dans-mission-scriptlua" title="Permanent link">&para;</a></h3>
+<p>Pour les paramètres non couverts par <code>mission.yaml</code>, utilisez le pattern callback Lua :</p>
+<div class="highlight"><pre><span></span><code><span class="kr">if</span><span class="w"> </span><span class="nv">ctld</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">initializeCTLD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">initializeCTLD</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nv">veaf</span><span class="p">.</span><span class="py">loggers</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nv">veaf</span><span class="p">.</span><span class="py">Id</span><span class="p">):</span><span class="nf">info</span><span class="p">(</span><span class="s2">&quot;initialize CTLD&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">configurationCallback</span><span class="p">()</span>
+<span class="w">            </span><span class="c1">-- Configurer les paramètres CTLD avant son initialisation</span>
+<span class="w">            </span><span class="c1">-- ctld.hoverPickup = false</span>
+<span class="w">            </span><span class="c1">-- ctld.slingLoad   = true</span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">        </span><span class="c1">-- Appelle la version enveloppée par VEAF de ctld.initialize</span>
+<span class="w">        </span><span class="nv">ctld</span><span class="p">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">configurationCallback</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">else</span>
+<span class="w">        </span><span class="c1">-- Empêcher l&#39;auto-scheduled ctld.initialize de tourner</span>
+<span class="w">        </span><span class="nv">ctld</span><span class="p">.</span><span class="py">alreadyInitialized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+</code></pre></div>
+<p>Le <code>configurationCallback</code> est appelé immédiatement avant le vrai <code>ctld.initialize()</code> — définissez les propriétés CTLD là, pas avant.</p>
+<h3 id="activer-csar-dans-mission-scriptlua">Activer CSAR dans mission-script.lua<a class="headerlink" href="#activer-csar-dans-mission-scriptlua" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kr">if</span><span class="w"> </span><span class="nv">csar</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">initializeCSAR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">initializeCSAR</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nv">veaf</span><span class="p">.</span><span class="py">loggers</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nv">veaf</span><span class="p">.</span><span class="py">Id</span><span class="p">):</span><span class="nf">info</span><span class="p">(</span><span class="s2">&quot;initialize CSAR&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">configurationCallback</span><span class="p">()</span>
+<span class="w">            </span><span class="c1">-- Configurer les paramètres CSAR avant son initialisation</span>
+<span class="w">            </span><span class="nv">csar</span><span class="p">.</span><span class="py">enableAllslots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="nv">csar</span><span class="p">.</span><span class="py">aircraftType</span><span class="p">[</span><span class="s2">&quot;UH-1H&quot;</span><span class="p">]</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span>
+<span class="w">            </span><span class="nv">csar</span><span class="p">.</span><span class="py">aircraftType</span><span class="p">[</span><span class="s2">&quot;Mi-8MT&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span>
+<span class="w">            </span><span class="nv">csar</span><span class="p">.</span><span class="py">useprefix</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="nv">csar</span><span class="p">.</span><span class="py">csarPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;MEDEVAC&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">        </span><span class="nv">csar</span><span class="p">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">configurationCallback</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">else</span>
+<span class="w">        </span><span class="nv">csar</span><span class="p">.</span><span class="py">alreadyInitialized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+</code></pre></div>
+<h3 id="valeurs-par-défaut-automatiques-veaf">Valeurs par défaut automatiques VEAF<a class="headerlink" href="#valeurs-par-défaut-automatiques-veaf" title="Permanent link">&para;</a></h3>
+<p>Quand VEAF enveloppe les initialiseurs, il applique ses propres valeurs par défaut : journalisation et une entrée de menu radio standard. Vous n'avez pas besoin de configurer cela manuellement.</p>
 <hr />
 <h2 id="journalisation-de-débogage">Journalisation de débogage<a class="headerlink" href="#journalisation-de-débogage" title="Permanent link">&para;</a></h2>
 <p>Tous les scripts VEAF écrivent dans le journal DCS (<code>Saved Games\DCS\Logs\dcs.log</code>). Trois niveaux de journalisation sont disponibles, chacun avec son propre script de chargement :</p>

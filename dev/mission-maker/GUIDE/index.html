@@ -1018,6 +1018,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#configuring-ctld-via-missionyaml-yaml-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring CTLD via mission.yaml (YAML-first)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#loading-order-in-the-dcs-trigger-chain" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2509,6 +2520,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#configuring-ctld-via-missionyaml-yaml-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring CTLD via mission.yaml (YAML-first)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#loading-order-in-the-dcs-trigger-chain" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2678,6 +2700,11 @@
 <td>Yes</td>
 </tr>
 <tr>
+<td>DCS Mission Editor</td>
+<td>Create the base <code>.miz</code> (included with DCS)</td>
+<td>Yes</td>
+</tr>
+<tr>
 <td>Git</td>
 <td>Version control for your mission project</td>
 <td>Recommended</td>
@@ -2693,12 +2720,15 @@
 <td>Yes (for build pipeline)</td>
 </tr>
 <tr>
-<td>VS Code or similar</td>
+<td>VS Code or Notepad++</td>
 <td>Editing Lua/YAML config files</td>
 <td>Recommended</td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p><strong>Base mission requirement</strong>: The <code>.miz</code> you create in the DCS Mission Editor must contain <strong>at least one blue ground group and one red ground group</strong>. Without both, the Lua coalition tables are incomplete, which can cause the injection tools (<code>inject-presets</code>, <code>inject-waypoints</code>) to silently skip groups.</p>
+</blockquote>
 <hr />
 <h2 id="installation-and-updates">Installation and Updates<a class="headerlink" href="#installation-and-updates" title="Permanent link">&para;</a></h2>
 <h3 id="first-installation">First Installation<a class="headerlink" href="#first-installation" title="Permanent link">&para;</a></h3>
@@ -2920,18 +2950,27 @@
 <p>Full reference: <a href="../../TOOLS_REFERENCE/">Tools Reference</a></p>
 <hr />
 <h2 id="typical-build-workflow">Typical Build Workflow<a class="headerlink" href="#typical-build-workflow" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c"># 1. Build the mission (reads src/ folder, injects VEAF triggers → output .miz)</span>
-<span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span> <span class="n">my-mission</span><span class="p">.</span><span class="n">miz</span>
+<div class="highlight"><pre><span></span><code><span class="c"># Build the mission — the integrated pipeline runs all enabled steps automatically</span>
+<span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span>
+</code></pre></div>
+<p>The <code>build</code> command reads <code>mission.yaml</code> and runs every enabled pipeline step (presets, waypoints, aircraft groups, weather) in a single pass. Configure which steps are active under the <code>pipeline:</code> key in <code>mission.yaml</code>.</p>
+<details>
+<summary>Advanced: running pipeline steps individually</summary>
 
-<span class="c"># 2. Inject radio presets from YAML config (optional, operates on the built .miz)</span>
+If you need to run a single step in isolation (e.g. inject weather only, without a full rebuild):
+
+<div class="highlight"><pre><span></span><code><span class="c"># Inject radio presets only</span>
 <span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">inject-presets</span> <span class="n">my-mission</span><span class="p">.</span><span class="n">miz</span> <span class="p">-</span><span class="n">-presets</span><span class="o">-file</span> <span class="n">src</span><span class="p">/</span><span class="n">presets</span><span class="p">.</span><span class="n">yaml</span>
 
-<span class="c"># 3. Inject bullseye and nav waypoints (optional)</span>
+<span class="c"># Inject bullseye and nav waypoints only</span>
 <span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">inject-waypoints</span> <span class="n">my-mission</span><span class="p">.</span><span class="n">miz</span> <span class="p">-</span><span class="n">-waypoints</span><span class="o">-file</span> <span class="n">src</span><span class="p">/</span><span class="n">waypoints</span><span class="p">.</span><span class="n">yaml</span>
 
-<span class="c"># 4. Create weather/time variants (optional)</span>
-<span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">inject-weather</span> <span class="n">my-mission</span><span class="p">.</span><span class="n">miz</span> <span class="p">-</span><span class="n">-config</span><span class="o">-file</span> <span class="n">missions</span><span class="p">.</span><span class="n">yaml</span>
+<span class="c"># Create weather/time variants only</span>
+<span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">inject-weather</span> <span class="n">my-mission</span><span class="p">.</span><span class="n">miz</span> <span class="p">-</span><span class="n">-config</span><span class="o">-file</span> <span class="n">versions</span><span class="p">.</span><span class="n">yaml</span>
 </code></pre></div>
+
+</details>
+
 <p>Commit the contents of <code>src/</code> to Git — not the built <code>.miz</code>. Use <code>extract</code> once to bootstrap the source folder from an existing mission:</p>
 <div class="highlight"><pre><span></span><code><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">extract</span> <span class="n">my-mission</span><span class="p">.</span><span class="n">miz</span>
 </code></pre></div>
@@ -3003,6 +3042,18 @@
 <hr />
 <h2 id="ctld-and-csar-integration">CTLD and CSAR Integration<a class="headerlink" href="#ctld-and-csar-integration" title="Permanent link">&para;</a></h2>
 <p><a href="https://github.com/ciribob/DCS-CTLD">CTLD</a> (Combat Troop Loading and Deployment) and <a href="https://github.com/ciribob/DCS-CSAR">CSAR</a> (Combat Search and Rescue) are third-party scripts that VEAF supports natively. VEAF monkey-patches their <code>initialize()</code> functions at startup, so you do not need to load or initialise them separately — just call them from <code>mission-script.lua</code> using the standard VEAF pattern.</p>
+<h3 id="configuring-ctld-via-missionyaml-yaml-first">Configuring CTLD via mission.yaml (YAML-first)<a class="headerlink" href="#configuring-ctld-via-missionyaml-yaml-first" title="Permanent link">&para;</a></h3>
+<p>You can enable CTLD and set its properties directly in <code>mission.yaml</code>, without any Lua:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">external_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ctld</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">hoverPickup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">slingLoad</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>VEAF generates the corresponding Lua configuration in <code>veaf-config.lua</code> at build time. Use <code>mission-script.lua</code> only for settings not yet supported by the YAML schema.</p>
+<blockquote>
+<p><strong>CSAR</strong>: CSAR YAML configuration is planned for a future release. In the meantime, configure CSAR in <code>mission-script.lua</code> as shown below.</p>
+</blockquote>
 <h3 id="loading-order-in-the-dcs-trigger-chain">Loading order in the DCS trigger chain<a class="headerlink" href="#loading-order-in-the-dcs-trigger-chain" title="Permanent link">&para;</a></h3>
 <p>CTLD/CSAR scripts must be loaded before the VEAF scripts:</p>
 <div class="highlight"><pre><span></span><code>DO SCRIPT FILE → ctld.lua          (third-party)
@@ -3013,6 +3064,7 @@ DO SCRIPT FILE → mission-script.lua (your custom code)
 </code></pre></div>
 <p>When <code>veaf-scripts.lua</code> loads, it detects the presence of <code>ctld</code> and <code>csar</code> global tables and wraps their <code>initialize()</code> functions, applying VEAF defaults before calling the real initialiser.</p>
 <h3 id="enabling-ctld-in-mission-scriptlua">Enabling CTLD in mission-script.lua<a class="headerlink" href="#enabling-ctld-in-mission-scriptlua" title="Permanent link">&para;</a></h3>
+<p>For settings not covered by <code>mission.yaml</code>, use the Lua callback pattern:</p>
 <div class="highlight"><pre><span></span><code><span class="kr">if</span><span class="w"> </span><span class="nv">ctld</span><span class="w"> </span><span class="kr">then</span>
 <span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">initializeCTLD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">initializeCTLD</span><span class="w"> </span><span class="kr">then</span>
@@ -3051,7 +3103,7 @@ DO SCRIPT FILE → mission-script.lua (your custom code)
 <span class="kr">end</span>
 </code></pre></div>
 <h3 id="veaf-automatic-defaults">VEAF automatic defaults<a class="headerlink" href="#veaf-automatic-defaults" title="Permanent link">&para;</a></h3>
-<p>When VEAF wraps the initialisers it applies its own defaults: logging, a standard radio menu entry, and integration with <code>veafAssets</code> for auto-lasing JTACs that coordinate with CSAR helicopters. You do not need to configure any of this manually.</p>
+<p>When VEAF wraps the initialisers it applies its own defaults: logging and a standard radio menu entry. You do not need to configure any of this manually.</p>
 <hr />
 <h2 id="debug-logging">Debug Logging<a class="headerlink" href="#debug-logging" title="Permanent link">&para;</a></h2>
 <p>All VEAF scripts write to the DCS log file (<code>Saved Games\DCS\Logs\dcs.log</code>). Three log levels are available, each with its own loader script:</p>

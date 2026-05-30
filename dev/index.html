@@ -2020,6 +2020,7 @@
 
 
 <h1 id="veaf-mission-creation-tools--documentation">VEAF Mission Creation Tools — Documentation<a class="headerlink" href="#veaf-mission-creation-tools--documentation" title="Permanent link">&para;</a></h1>
+<p>VEAF MCT turns a standard DCS mission into a dynamic, player-driven sandbox — 34 Lua modules, a build pipeline, and a CLI tool that does the heavy lifting.</p>
 <p>Complete toolkit for creating dynamic <a href="https://www.digitalcombatsimulator.com/">DCS World</a> missions using VEAF Lua scripts and automation tools.</p>
 <hr />
 <h2 id="choose-your-guide">Choose Your Guide<a class="headerlink" href="#choose-your-guide" title="Permanent link">&para;</a></h2>
@@ -2051,7 +2052,7 @@
 </table>
 <hr />
 <h2 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart LR
+<pre class="mermaid"><code>flowchart TD
     A["Base .miz\n(DCS Editor)"] --&gt;|veaf-tools extract| B["Mission folder\n(src/ + mission.yaml)"]
     B --- C["published/\n(VEAF scripts)"]
     B --&gt;|veaf-tools build| D[".miz ready to fly"]

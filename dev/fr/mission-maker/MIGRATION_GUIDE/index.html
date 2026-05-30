@@ -1096,6 +1096,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#lire-les-journaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lire les journaux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#le-build-échoue-avec-veaf-scripts-file-not-found" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2537,6 +2548,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#lire-les-journaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lire les journaux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#le-build-échoue-avec-veaf-scripts-file-not-found" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2906,9 +2928,25 @@ __pycache__/
 <p>Vous avez à la fois un ancien trigger <code>DO SCRIPT FILE</code> manuel et le nouveau trigger auto-injecté v6. Supprimez le trigger manuel de l'éditeur de missions DCS (ouvrez le <code>.miz</code>, éditez les triggers, supprimez l'ancien, enregistrez), puis ré-extrayez et rebuildez.</p>
 <p>Alternativement, utilisez <code>--migrate-from-v5</code> sur le build pour que les anciens triggers soient supprimés automatiquement (c'est le comportement par défaut).</p>
 <h3 id="les-menus-radio-napparaissent-pas">Les menus radio n'apparaissent pas<a class="headerlink" href="#les-menus-radio-napparaissent-pas" title="Permanent link">&para;</a></h3>
-<p>Confirmez que <code>veafRadio.initialize(true)</code> est dans <code>missionConfig.lua</code> et n'est pas commenté.</p>
+<p>Vérifiez que <code>RADIO</code> est activé dans <code>mission.yaml</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="nt">lua_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">RADIO</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>Reconstruisez avec <code>veaf-tools.exe build</code> après toute modification de <code>mission.yaml</code>.</p>
 <h3 id="les-commandes-de-marqueurs-ne-fonctionnent-pas">Les commandes de marqueurs ne fonctionnent pas<a class="headerlink" href="#les-commandes-de-marqueurs-ne-fonctionnent-pas" title="Permanent link">&para;</a></h3>
-<p>Confirmez que <code>veafSpawn.initialize()</code> est appelé. Vérifiez le log DCS (Saved Games\DCS\Logs\dcs.log) pour les erreurs VEAF.</p>
+<p>Vérifiez que <code>SPAWN</code> est activé dans <code>mission.yaml</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="nt">lua_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">SPAWN</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>Ensuite, consultez le journal DCS (<code>Saved Games\DCS\Logs\dcs.log</code>) pour les erreurs VEAF — filtrez sur <code>VEAF</code> ou <code>ERROR</code>.</p>
+<h3 id="lire-les-journaux">Lire les journaux<a class="headerlink" href="#lire-les-journaux" title="Permanent link">&para;</a></h3>
+<p>Tous les messages VEAF sont écrits dans <code>Saved Games\DCS\Logs\dcs.log</code>. Pour les trouver rapidement :</p>
+<ul>
+<li><strong><a href="https://klogg.filimonov.dev/">Klogg</a></strong> (recommandé) : ouvrez <code>dcs.log</code>, utilisez la barre de recherche pour filtrer sur <code>VEAF</code>. Un profil Klogg pour VEAF est prévu — une fois disponible, il sera commité dans le dépôt et annoncé sur le <a href="https://www.veaf.org/discord">Discord VEAF</a>.</li>
+<li><strong>Notepad++</strong> : ouvrez <code>dcs.log</code> → Recherche → Rechercher (<code>Ctrl+F</code>) → cherchez <code>VEAF</code>.</li>
+</ul>
 <h3 id="le-build-échoue-avec-veaf-scripts-file-not-found">Le build échoue avec "VEAF scripts file not found"<a class="headerlink" href="#le-build-échoue-avec-veaf-scripts-file-not-found" title="Permanent link">&para;</a></h3>
 <p>Exécutez <code>veaf-tools-updater.exe</code> d'abord — le dossier <code>published/</code> est manquant ou obsolète.</p>
 <hr />

@@ -1096,6 +1096,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#reading-the-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading the logs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#build-fails-with-veaf-scripts-file-not-found" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2537,6 +2548,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#reading-the-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading the logs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#build-fails-with-veaf-scripts-file-not-found" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2906,9 +2928,25 @@ __pycache__/
 <p>You have both an old manual <code>DO SCRIPT FILE</code> trigger and the v6 auto-injected one. Remove the manual trigger from the DCS Mission Editor (open the <code>.miz</code>, edit triggers, delete the old one, save), then re-extract and rebuild.</p>
 <p>Alternatively, use <code>--migrate-from-v5</code> on the build to have the old triggers removed automatically (this is the default).</p>
 <h3 id="radio-menus-dont-appear">Radio menus don't appear<a class="headerlink" href="#radio-menus-dont-appear" title="Permanent link">&para;</a></h3>
-<p>Confirm <code>veafRadio.initialize(true)</code> is in <code>missionConfig.lua</code> and is not commented out.</p>
+<p>Confirm <code>RADIO</code> is enabled in <code>mission.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">lua_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">RADIO</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>Rebuild with <code>veaf-tools.exe build</code> after any <code>mission.yaml</code> change.</p>
 <h3 id="marker-commands-dont-work">Marker commands don't work<a class="headerlink" href="#marker-commands-dont-work" title="Permanent link">&para;</a></h3>
-<p>Confirm <code>veafSpawn.initialize()</code> is called. Check the DCS log (Saved Games\DCS\Logs\dcs.log) for VEAF errors.</p>
+<p>Confirm <code>SPAWN</code> is enabled in <code>mission.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">lua_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">SPAWN</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>Then check the DCS log (<code>Saved Games\DCS\Logs\dcs.log</code>) for VEAF errors — filter on <code>VEAF</code> or <code>ERROR</code>.</p>
+<h3 id="reading-the-logs">Reading the logs<a class="headerlink" href="#reading-the-logs" title="Permanent link">&para;</a></h3>
+<p>All VEAF messages go to <code>Saved Games\DCS\Logs\dcs.log</code>. To find them quickly:</p>
+<ul>
+<li><strong><a href="https://klogg.filimonov.dev/">Klogg</a></strong> (recommended): open <code>dcs.log</code>, use the search bar to filter on <code>VEAF</code>. A VEAF highlight profile for Klogg is planned — once available it will be committed to the repository and announced on the <a href="https://www.veaf.org/discord">VEAF Discord</a>.</li>
+<li><strong>Notepad++</strong>: open <code>dcs.log</code> → Search → Find (<code>Ctrl+F</code>) → search for <code>VEAF</code>.</li>
+</ul>
 <h3 id="build-fails-with-veaf-scripts-file-not-found">Build fails with "VEAF scripts file not found"<a class="headerlink" href="#build-fails-with-veaf-scripts-file-not-found" title="Permanent link">&para;</a></h3>
 <p>Run <code>veaf-tools-updater.exe</code> first — the <code>published/</code> folder is missing or outdated.</p>
 <hr />
