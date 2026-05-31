@@ -1663,6 +1663,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#comprendre-le-paysage-des-fichiers-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comprendre le paysage des fichiers YAML
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comprendre le paysage des fichiers YAML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#catégorie-a--fichiers-de-pipeline-de-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Catégorie A — Fichiers de pipeline de build
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catégorie-b--configuration-des-modules-runtime-ce-fichier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Catégorie B — Configuration des modules runtime (ce fichier)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exemple-minimal-fonctionnel" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2044,6 +2083,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#comprendre-le-paysage-des-fichiers-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comprendre le paysage des fichiers YAML
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comprendre le paysage des fichiers YAML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#catégorie-a--fichiers-de-pipeline-de-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Catégorie A — Fichiers de pipeline de build
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catégorie-b--configuration-des-modules-runtime-ce-fichier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Catégorie B — Configuration des modules runtime (ce fichier)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exemple-minimal-fonctionnel" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2293,6 +2371,59 @@
 <h1 id="référence-missionyaml">Référence mission.yaml<a class="headerlink" href="#référence-missionyaml" title="Permanent link">&para;</a></h1>
 <p><code>mission.yaml</code> est le fichier de configuration optionnel de build-time pour veaf-tools. Placez-le à la racine de votre dossier mission, à côté de <code>veaf-tools-updater.exe</code>. S'il est absent, <code>veaf-tools build</code> fonctionne avec les paramètres par défaut.</p>
 <p>Cette page couvre les <strong>sections de premier niveau</strong> de <code>mission.yaml</code>. La configuration des modules Lua individuels est documentée dans la page de chaque module (voir l'<a href="#index-par-module">index par module</a> ci-dessous).</p>
+<hr />
+<h2 id="comprendre-le-paysage-des-fichiers-yaml">Comprendre le paysage des fichiers YAML<a class="headerlink" href="#comprendre-le-paysage-des-fichiers-yaml" title="Permanent link">&para;</a></h2>
+<p>Un dossier de mission VEAF utilise <strong>deux catégories distinctes</strong> de fichiers YAML. Comprendre cette distinction vous aide à savoir quel fichier modifier pour une tâche donnée.</p>
+<h3 id="catégorie-a--fichiers-de-pipeline-de-build">Catégorie A — Fichiers de pipeline de build<a class="headerlink" href="#catégorie-a--fichiers-de-pipeline-de-build" title="Permanent link">&para;</a></h3>
+<p>Ces fichiers pilotent les étapes <strong>d'injection au moment du build</strong> que <code>veaf-tools build</code> effectue avant d'écrire le <code>.miz</code> final. Chaque étape lit son propre fichier YAML et injecte des données dans la mission. Ils sont listés sous la section <code>pipeline:</code> de <code>mission.yaml</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Fichier (dans <code>src/</code>)</th>
+<th>Étape de pipeline</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>waypoints.yaml</code></td>
+<td><code>waypoints</code></td>
+<td>Injecte les waypoints nommés dans la mission</td>
+</tr>
+<tr>
+<td><code>presets.yaml</code></td>
+<td><code>presets</code></td>
+<td>Configure les presets radio de chaque groupe d'avions</td>
+</tr>
+<tr>
+<td><code>aircraft-templates.yaml</code></td>
+<td><code>aircraft_groups</code></td>
+<td>Définit les templates de groupes d'avions</td>
+</tr>
+<tr>
+<td><code>versions.yaml</code></td>
+<td><code>weather</code></td>
+<td>Génère une variante <code>.miz</code> par preset météo</td>
+</tr>
+</tbody>
+</table>
+<p>Ces fichiers <strong>ne sont pas</strong> chargés à l'exécution dans DCS — ils sont consommés par <code>veaf-tools build</code> puis compilés dans le <code>.miz</code>.</p>
+<h3 id="catégorie-b--configuration-des-modules-runtime-ce-fichier">Catégorie B — Configuration des modules runtime (ce fichier)<a class="headerlink" href="#catégorie-b--configuration-des-modules-runtime-ce-fichier" title="Permanent link">&para;</a></h3>
+<p><code>mission.yaml</code> lui-même configure <strong>le comportement des modules Lua VEAF lors de l'exécution dans DCS</strong>. Il est traduit au moment du build en <code>veaf-config.lua</code>, injecté dans la mission et exécuté au chargement par DCS.</p>
+<p>Les sections <code>lua_modules:</code>, <code>qra:</code>, <code>assets:</code>, <code>shortcuts:</code> décrivent toutes le comportement des modules à l'exécution.</p>
+<div class="highlight"><pre><span></span><code>dossier mission/
+├── mission.yaml          ← config des modules runtime (CE FICHIER)
+│   └── pipeline:
+│       ├── waypoints: true  ──► src/waypoints.yaml       (injection build-time)
+│       ├── presets:  true   ──► src/presets.yaml          (injection build-time)
+│       ├── aircraft_groups: true  ──► src/aircraft-templates.yaml
+│       └── weather:  true   ──► src/versions.yaml
+└── src/
+    ├── waypoints.yaml
+    ├── presets.yaml
+    ├── aircraft-templates.yaml
+    └── versions.yaml
+</code></pre></div>
 <hr />
 <h2 id="exemple-minimal-fonctionnel">Exemple minimal fonctionnel<a class="headerlink" href="#exemple-minimal-fonctionnel" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># mission.yaml — configuration minimale viable</span>

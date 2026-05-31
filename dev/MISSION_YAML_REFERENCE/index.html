@@ -1663,6 +1663,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#understanding-the-yaml-file-landscape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding the YAML file landscape
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the YAML file landscape">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#category-a--build-pipeline-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Category A — Build pipeline files
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#category-b--runtime-module-configuration-this-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Category B — Runtime module configuration (this file)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#minimal-working-example" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2077,6 +2116,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#understanding-the-yaml-file-landscape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding the YAML file landscape
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the YAML file landscape">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#category-a--build-pipeline-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Category A — Build pipeline files
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#category-b--runtime-module-configuration-this-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Category B — Runtime module configuration (this file)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#minimal-working-example" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2359,6 +2437,59 @@
 <h1 id="missionyaml-reference">mission.yaml Reference<a class="headerlink" href="#missionyaml-reference" title="Permanent link">&para;</a></h1>
 <p><code>mission.yaml</code> is the optional build-time configuration file for veaf-tools. Place it at the root of your mission folder, next to <code>veaf-tools-updater.exe</code>. If absent, <code>veaf-tools build</code> works with default settings.</p>
 <p>This page covers the <strong>top-level sections</strong> of <code>mission.yaml</code>. Configuration for individual Lua modules is documented in each module's own page (see the <a href="#index-by-module">index by module</a> below).</p>
+<hr />
+<h2 id="understanding-the-yaml-file-landscape">Understanding the YAML file landscape<a class="headerlink" href="#understanding-the-yaml-file-landscape" title="Permanent link">&para;</a></h2>
+<p>A VEAF mission folder uses <strong>two distinct categories</strong> of YAML files. Understanding the difference helps you know which file to edit for a given task.</p>
+<h3 id="category-a--build-pipeline-files">Category A — Build pipeline files<a class="headerlink" href="#category-a--build-pipeline-files" title="Permanent link">&para;</a></h3>
+<p>These files drive the <strong>design-time injection</strong> steps that <code>veaf-tools build</code> performs before writing the final <code>.miz</code>. Each step reads its own YAML file and injects data into the mission. They are listed under the <code>pipeline:</code> section of <code>mission.yaml</code>.</p>
+<table>
+<thead>
+<tr>
+<th>File (in <code>src/</code>)</th>
+<th>Pipeline step</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>waypoints.yaml</code></td>
+<td><code>waypoints</code></td>
+<td>Injects named waypoints into the mission</td>
+</tr>
+<tr>
+<td><code>presets.yaml</code></td>
+<td><code>presets</code></td>
+<td>Configures radio presets for each aircraft group</td>
+</tr>
+<tr>
+<td><code>aircraft-templates.yaml</code></td>
+<td><code>aircraft_groups</code></td>
+<td>Defines aircraft group templates</td>
+</tr>
+<tr>
+<td><code>versions.yaml</code></td>
+<td><code>weather</code></td>
+<td>Generates one <code>.miz</code> variant per weather preset</td>
+</tr>
+</tbody>
+</table>
+<p>These files are <strong>not</strong> loaded at DCS runtime — they are consumed by <code>veaf-tools build</code> and then compiled into the <code>.miz</code>.</p>
+<h3 id="category-b--runtime-module-configuration-this-file">Category B — Runtime module configuration (this file)<a class="headerlink" href="#category-b--runtime-module-configuration-this-file" title="Permanent link">&para;</a></h3>
+<p><code>mission.yaml</code> itself configures <strong>how VEAF Lua modules behave at DCS runtime</strong>. It is translated at build time into <code>veaf-config.lua</code>, which is injected into the mission and executed when DCS loads the mission.</p>
+<p>Sections such as <code>lua_modules:</code>, <code>qra:</code>, <code>assets:</code>, and <code>shortcuts:</code> all describe runtime module behaviour.</p>
+<div class="highlight"><pre><span></span><code>mission folder/
+├── mission.yaml          ← runtime module config (THIS FILE)
+│   └── pipeline:
+│       ├── waypoints: true  ──► src/waypoints.yaml     (build-time injection)
+│       ├── presets:  true   ──► src/presets.yaml        (build-time injection)
+│       ├── aircraft_groups: true  ──► src/aircraft-templates.yaml
+│       └── weather:  true   ──► src/versions.yaml
+└── src/
+    ├── waypoints.yaml
+    ├── presets.yaml
+    ├── aircraft-templates.yaml
+    └── versions.yaml
+</code></pre></div>
 <hr />
 <h2 id="minimal-working-example">Minimal working example<a class="headerlink" href="#minimal-working-example" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># mission.yaml — minimum viable configuration</span>
