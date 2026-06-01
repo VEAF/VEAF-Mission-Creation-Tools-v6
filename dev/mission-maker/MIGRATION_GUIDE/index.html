@@ -1040,10 +1040,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#missionconfiglua-reference" class="md-nav__link">
+  <a href="#mission-scriptlua-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        missionConfig.lua Reference
+        mission-script.lua Reference
       
     </span>
   </a>
@@ -2492,10 +2492,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#missionconfiglua-reference" class="md-nav__link">
+  <a href="#mission-scriptlua-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        missionConfig.lua Reference
+        mission-script.lua Reference
       
     </span>
   </a>
@@ -2829,7 +2829,7 @@
 </code></pre></div>
 <p>This:
 1. Extracts <code>vanilla.miz</code> into <code>src/mission/</code>
-2. Copies the default <code>src/scripts/missionConfig.lua</code>
+2. Creates default <code>mission.yaml</code> and <code>src/scripts/mission-script.lua</code>
 3. Injects the v6 VEAF loader trigger
 4. Rebuilds a new <code>.miz</code> next to the folder</p>
 <h4 id="4-optionally-prepare-the-folder-with-defaults-only">4. Optionally: prepare the folder with defaults only<a class="headerlink" href="#4-optionally-prepare-the-folder-with-defaults-only" title="Permanent link">&para;</a></h4>
@@ -2841,27 +2841,23 @@
 <span class="p">.\</span><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span> <span class="n">mission</span> <span class="p">.</span>
 </code></pre></div>
 <h4 id="5-configure-which-modules-to-enable">5. Configure which modules to enable<a class="headerlink" href="#5-configure-which-modules-to-enable" title="Permanent link">&para;</a></h4>
-<p>Open <code>src/scripts/missionConfig.lua</code>. By default, only the essential modules (markers, spawn, radio) are enabled. Uncomment the modules you want:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">MISSION_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;My Vanilla Mission&quot;</span>
+<p>Edit <code>mission.yaml</code> to enable the modules you want. By default, only the essential modules (markers, spawn, radio) are active:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">My Vanilla Mission</span>
 
-<span class="kr">if</span><span class="w"> </span><span class="nv">veafRadio</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">    </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
-<span class="kr">end</span>
-<span class="kr">if</span><span class="w"> </span><span class="nv">veafSpawn</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">    </span><span class="nv">veafSpawn</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="kr">end</span>
-
-<span class="c1">-- Uncomment to enable CAS missions:</span>
-<span class="c1">-- if veafCasMission then</span>
-<span class="c1">--     veafCasMission.initialize()</span>
-<span class="c1">-- end</span>
-
-<span class="c1">-- Uncomment to enable carrier ops:</span>
-<span class="c1">-- if veafCarrierOperations then</span>
-<span class="c1">--     veafCarrierOperations.initialize()</span>
-<span class="c1">-- end</span>
+<span class="nt">lua_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">RADIO</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">SPAWN</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="c1"># Uncomment to enable CAS missions:</span>
+<span class="w">  </span><span class="c1"># CASMISSION:</span>
+<span class="w">  </span><span class="c1">#   enable: true</span>
+<span class="w">  </span><span class="c1"># Uncomment to enable carrier ops:</span>
+<span class="w">  </span><span class="c1"># CARRIER:</span>
+<span class="w">  </span><span class="c1">#   enable: true</span>
 </code></pre></div>
-<p>See <a href="#missionconfiglua-reference">missionConfig.lua reference</a> below and the individual script guides in <a href="../scripts/">scripts/</a> for all options.</p>
+<p>For custom Lua (advanced module calls, custom aliases, etc.), edit <code>src/scripts/mission-script.lua</code>.</p>
+<p>See the <a href="../../MISSION_YAML_REFERENCE.md">YAML reference</a> and the individual script guides in <a href="../scripts/">scripts/</a> for all options.</p>
 <h4 id="6-keep-your-existing-mission-content">6. Keep your existing mission content<a class="headerlink" href="#6-keep-your-existing-mission-content" title="Permanent link">&para;</a></h4>
 <p>Everything you built in the DCS Mission Editor (units, triggers, waypoints, zones) is preserved. VEAF does not remove or overwrite mission content — it only:
 - Adds a single loader trigger at mission start
@@ -2883,11 +2879,12 @@
 │   │   ├── options
 │   │   └── warehouses
 │   ├── scripts/
-│   │   ├── missionConfig.lua   ← your module config (commit this)
+│   │   ├── mission-script.lua  ← custom Lua code (commit this)
 │   │   └── veafDynamicConfig.lua   ← optional dynamic slots config
 │   ├── presets.yaml            ← radio presets config (optional)
 │   ├── spawnables.yaml         ← custom spawnable groups (optional)
 │   └── waypoints.yaml          ← custom waypoints (optional)
+├── mission.yaml                ← module config and pipeline settings (commit this)
 ├── published/                  ← installed by veaf-tools-updater (do NOT commit)
 │   ├── veaf-scripts.lua
 │   └── ...
@@ -2902,26 +2899,20 @@
 __pycache__/
 </code></pre></div>
 <hr />
-<h2 id="missionconfiglua-reference">missionConfig.lua Reference<a class="headerlink" href="#missionconfiglua-reference" title="Permanent link">&para;</a></h2>
-<p>The minimal working <code>missionConfig.lua</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">veaf</span><span class="p">.</span><span class="py">config</span><span class="p">.</span><span class="py">MISSION_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;My Mission&quot;</span><span class="w">   </span><span class="c1">-- shown in logs</span>
+<h2 id="mission-scriptlua-reference">mission-script.lua Reference<a class="headerlink" href="#mission-scriptlua-reference" title="Permanent link">&para;</a></h2>
+<p><code>mission-script.lua</code> is an optional file for custom Lua code that runs after all VEAF modules are initialized. Use it for advanced configuration that cannot yet be expressed in <code>mission.yaml</code> — custom shortcuts, per-module parameter overrides, custom assets, etc.</p>
+<p>A minimal example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Optional: override a module parameter</span>
+<span class="nv">veafSpawn</span><span class="p">.</span><span class="py">SpawnKeyphrase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;_spawn&quot;</span>
 
-<span class="c1">-- Radio module (required for all F10 menus)</span>
-<span class="kr">if</span><span class="w"> </span><span class="nv">veafRadio</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">    </span><span class="nv">veafRadio</span><span class="p">.</span><span class="nf">initialize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
-<span class="kr">end</span>
-
-<span class="c1">-- Spawn module (required for marker commands)</span>
-<span class="kr">if</span><span class="w"> </span><span class="nv">veafSpawn</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">    </span><span class="nv">veafSpawn</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="kr">end</span>
-
-<span class="c1">-- Shortcuts (required for aliases)</span>
-<span class="kr">if</span><span class="w"> </span><span class="nv">veafShortcuts</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">    </span><span class="nv">veafShortcuts</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
-<span class="kr">end</span>
+<span class="c1">-- Custom alias</span>
+<span class="nv">veafShortcuts</span><span class="p">.</span><span class="nf">AddAlias</span><span class="p">(</span>
+<span class="w">  </span><span class="nv">VeafAlias</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="w">    </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;-myalias&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">:</span><span class="nf">setVeafCommand</span><span class="p">(</span><span class="s2">&quot;_spawn group, name my-template&quot;</span><span class="p">)</span>
+<span class="p">)</span>
 </code></pre></div>
-<p>For each additional module, see the corresponding guide in <a href="../scripts/">scripts/</a>.</p>
+<p>Module enable/disable is configured in <code>mission.yaml</code> → <code>lua_modules:</code> — not in this file. See the <a href="../../MISSION_YAML_REFERENCE.md">YAML reference</a> for the full <code>mission.yaml</code> syntax.</p>
 <hr />
 <h2 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h2>
 <h3 id="veaf-scripts-loader-trigger-appears-twice">"VEAF scripts loader" trigger appears twice<a class="headerlink" href="#veaf-scripts-loader-trigger-appears-twice" title="Permanent link">&para;</a></h3>
