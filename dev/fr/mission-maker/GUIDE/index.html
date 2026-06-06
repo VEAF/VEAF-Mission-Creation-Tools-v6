@@ -1029,6 +1029,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#configurer-csar-via-missionyaml-yaml-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurer CSAR via mission.yaml (YAML-first)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ordre-de-chargement-dans-la-chaîne-de-triggers-dcs" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1040,10 +1051,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#activer-ctld-dans-mission-scriptlua" class="md-nav__link">
+  <a href="#fallback-lua--ctld-dans-mission-scriptlua" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Activer CTLD dans mission-script.lua
+        Fallback Lua — CTLD dans mission-script.lua
       
     </span>
   </a>
@@ -1051,10 +1062,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#activer-csar-dans-mission-scriptlua" class="md-nav__link">
+  <a href="#fallback-lua--csar-dans-mission-scriptlua" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Activer CSAR dans mission-script.lua
+        Fallback Lua — CSAR dans mission-script.lua
       
     </span>
   </a>
@@ -2531,6 +2542,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#configurer-csar-via-missionyaml-yaml-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurer CSAR via mission.yaml (YAML-first)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ordre-de-chargement-dans-la-chaîne-de-triggers-dcs" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2542,10 +2564,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#activer-ctld-dans-mission-scriptlua" class="md-nav__link">
+  <a href="#fallback-lua--ctld-dans-mission-scriptlua" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Activer CTLD dans mission-script.lua
+        Fallback Lua — CTLD dans mission-script.lua
       
     </span>
   </a>
@@ -2553,10 +2575,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#activer-csar-dans-mission-scriptlua" class="md-nav__link">
+  <a href="#fallback-lua--csar-dans-mission-scriptlua" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Activer CSAR dans mission-script.lua
+        Fallback Lua — CSAR dans mission-script.lua
       
     </span>
   </a>
@@ -3041,7 +3063,7 @@ Si vous devez exécuter une seule étape en isolation (ex : injecter la météo 
 </code></pre></div>
 <hr />
 <h2 id="intégration-ctld-et-csar">Intégration CTLD et CSAR<a class="headerlink" href="#intégration-ctld-et-csar" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/ciribob/DCS-CTLD">CTLD</a> (Combat Troop Loading and Deployment) et <a href="https://github.com/ciribob/DCS-CSAR">CSAR</a> (Combat Search and Rescue) sont des scripts tiers que VEAF supporte nativement. VEAF monkey-patche leurs fonctions <code>initialize()</code> au démarrage, donc vous n'avez pas besoin de les charger ou de les initialiser séparément — appelez-les simplement depuis <code>mission-script.lua</code> en suivant le pattern VEAF standard.</p>
+<p><a href="https://github.com/ciribob/DCS-CTLD">CTLD</a> (Combat Troop Loading and Deployment) et <a href="https://github.com/ciribob/DCS-CSAR">CSAR</a> (Combat Search and Rescue) sont des scripts tiers que VEAF supporte nativement. VEAF monkey-patche leurs fonctions <code>initialize()</code> au démarrage, donc vous n'avez pas besoin de les charger ou de les initialiser séparément — configurez-les directement dans <code>mission.yaml</code> avec l'approche YAML-first ci-dessous.</p>
 <h3 id="configurer-ctld-via-missionyaml-yaml-first">Configurer CTLD via mission.yaml (YAML-first)<a class="headerlink" href="#configurer-ctld-via-missionyaml-yaml-first" title="Permanent link">&para;</a></h3>
 <p>Vous pouvez activer CTLD et définir ses propriétés directement dans <code>mission.yaml</code>, sans Lua :</p>
 <div class="highlight"><pre><span></span><code><span class="nt">external_modules</span><span class="p">:</span>
@@ -3050,10 +3072,17 @@ Si vous devez exécuter une seule étape en isolation (ex : injecter la météo 
 <span class="w">    </span><span class="nt">hoverPickup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">slingLoad</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-<p>VEAF génère la configuration Lua correspondante dans <code>veaf-config.lua</code> au moment du build. Utilisez <code>mission-script.lua</code> uniquement pour les paramètres pas encore supportés par le schéma YAML.</p>
-<blockquote>
-<p><strong>CSAR</strong> : La configuration YAML de CSAR est prévue pour une future version. En attendant, configurez CSAR dans <code>mission-script.lua</code> comme indiqué ci-dessous.</p>
-</blockquote>
+<p>VEAF génère la configuration Lua correspondante dans <code>veaf-config.lua</code> au moment du build, y compris l'appel <code>ctld.initialize()</code>. Utilisez <code>mission-script.lua</code> uniquement pour les paramètres pas encore supportés par le schéma YAML (ex. tables <code>aircraftType</code>).</p>
+<h3 id="configurer-csar-via-missionyaml-yaml-first">Configurer CSAR via mission.yaml (YAML-first)<a class="headerlink" href="#configurer-csar-via-missionyaml-yaml-first" title="Permanent link">&para;</a></h3>
+<p>CSAR se configure de la même façon :</p>
+<div class="highlight"><pre><span></span><code><span class="nt">external_modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">csar</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">enableAllslots</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">useprefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">csarPrefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;MEDEVAC&quot;</span>
+</code></pre></div>
+<p>VEAF génère les assignations <code>csar.xxx = value</code> et l'appel <code>csar.initialize()</code> dans <code>veaf-config.lua</code>. Pour les paramètres complexes comme <code>aircraftType</code> (une table par appareil), continuez à utiliser le pattern callback Lua dans <code>mission-script.lua</code>.</p>
 <h3 id="ordre-de-chargement-dans-la-chaîne-de-triggers-dcs">Ordre de chargement dans la chaîne de triggers DCS<a class="headerlink" href="#ordre-de-chargement-dans-la-chaîne-de-triggers-dcs" title="Permanent link">&para;</a></h3>
 <p>Les scripts CTLD/CSAR doivent être chargés avant les scripts VEAF :</p>
 <div class="highlight"><pre><span></span><code>DO SCRIPT FILE → ctld.lua           (tiers)
@@ -3063,7 +3092,7 @@ DO SCRIPT FILE → veaf-config.lua    (généré depuis mission.yaml)
 DO SCRIPT FILE → mission-script.lua (votre code personnalisé)
 </code></pre></div>
 <p>Quand <code>veaf-scripts.lua</code> se charge, il détecte la présence des tables globales <code>ctld</code> et <code>csar</code> et enveloppe leurs fonctions <code>initialize()</code>, appliquant les valeurs par défaut VEAF avant d'appeler le vrai initialiseur.</p>
-<h3 id="activer-ctld-dans-mission-scriptlua">Activer CTLD dans mission-script.lua<a class="headerlink" href="#activer-ctld-dans-mission-scriptlua" title="Permanent link">&para;</a></h3>
+<h3 id="fallback-lua--ctld-dans-mission-scriptlua">Fallback Lua — CTLD dans mission-script.lua<a class="headerlink" href="#fallback-lua--ctld-dans-mission-scriptlua" title="Permanent link">&para;</a></h3>
 <p>Pour les paramètres non couverts par <code>mission.yaml</code>, utilisez le pattern callback Lua :</p>
 <div class="highlight"><pre><span></span><code><span class="kr">if</span><span class="w"> </span><span class="nv">ctld</span><span class="w"> </span><span class="kr">then</span>
 <span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">initializeCTLD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
@@ -3083,7 +3112,8 @@ DO SCRIPT FILE → mission-script.lua (votre code personnalisé)
 <span class="kr">end</span>
 </code></pre></div>
 <p>Le <code>configurationCallback</code> est appelé immédiatement avant le vrai <code>ctld.initialize()</code> — définissez les propriétés CTLD là, pas avant.</p>
-<h3 id="activer-csar-dans-mission-scriptlua">Activer CSAR dans mission-script.lua<a class="headerlink" href="#activer-csar-dans-mission-scriptlua" title="Permanent link">&para;</a></h3>
+<h3 id="fallback-lua--csar-dans-mission-scriptlua">Fallback Lua — CSAR dans mission-script.lua<a class="headerlink" href="#fallback-lua--csar-dans-mission-scriptlua" title="Permanent link">&para;</a></h3>
+<p>Pour les surcharges par type d'appareil ou d'autres paramètres complexes non supportés par YAML :</p>
 <div class="highlight"><pre><span></span><code><span class="kr">if</span><span class="w"> </span><span class="nv">csar</span><span class="w"> </span><span class="kr">then</span>
 <span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">initializeCSAR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">initializeCSAR</span><span class="w"> </span><span class="kr">then</span>
