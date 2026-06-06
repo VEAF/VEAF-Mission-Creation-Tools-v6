@@ -1862,6 +1862,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        profiles:
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2287,6 +2298,17 @@
     <span class="md-ellipsis">
       
         build:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        profiles:
       
     </span>
   </a>
@@ -2931,6 +2953,48 @@ Ces paramètres sont normalement définis via la CLI (<code>--dev-mode</code>, <
 <p>Voir la section <a href="../developer/GUIDE/#mode-développeur">Mode développeur</a> du Guide du développeur pour le workflow complet.</p>
 </blockquote>
 <hr />
+<h3 id="profiles"><code>profiles:</code><a class="headerlink" href="#profiles" title="Permanent link">&para;</a></h3>
+<p>Profils de build nommés. Chaque profil est un ensemble de surcharges qui fusionnent en profondeur sur la <code>mission.yaml</code> de base lorsque vous passez <code>--profile &lt;nom&gt;</code> à <code>veaf-tools build</code>. Les clés absentes du profil conservent leur valeur de base. Les listes sont remplacées intégralement, pas concaténées. La clé <code>profiles:</code> elle-même n'est jamais transmise au générateur Lua ni au pipeline.</p>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profiles.&lt;nom&gt;</code></td>
+<td><code>dict</code></td>
+<td>N'importe quelle clé de premier niveau de <code>mission.yaml</code> (ex : <code>global_log_level</code>, <code>security</code>, <code>pipeline</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Règles de fusion</strong>
+- Les dicts imbriqués sont fusionnés récursivement (seules les clés spécifiées sont surchargées).
+- Les valeurs scalaires et les listes sont remplacées en totalité.
+- <code>profiles:</code> est retiré de la config effective — il n'est jamais passé au générateur Lua ni au pipeline.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">profiles</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">TEST</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">global_log_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debug</span>
+<span class="w">    </span><span class="nt">security</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">disabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">pipeline</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">weather</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">SERVER</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">global_log_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">info</span>
+<span class="w">    </span><span class="nt">pipeline</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">weather</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>Usage :</p>
+<div class="highlight"><pre><span></span><code><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span> <span class="p">-</span><span class="n">-profile</span> <span class="n">TEST</span>
+<span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span> <span class="p">-</span><span class="n">-profile</span> <span class="n">SERVER</span>
+</code></pre></div>
+<blockquote>
+<p>Si le profil nommé n'existe pas dans <code>mission.yaml</code>, un avertissement est émis et la config de base est utilisée sans modification.</p>
+</blockquote>
+<hr />
 <h2 id="index-par-catégorie">Index par catégorie<a class="headerlink" href="#index-par-catégorie" title="Permanent link">&para;</a></h2>
 <h3 id="essentiel--toute-mission">Essentiel — toute mission<a class="headerlink" href="#essentiel--toute-mission" title="Permanent link">&para;</a></h3>
 <table>
@@ -3054,6 +3118,10 @@ Ces paramètres sont normalement définis via la CLI (<code>--dev-mode</code>, <
 <tr>
 <td><code>build.scripts_path</code></td>
 <td>Chemin vers un clone local de VEAF-Mission-Creation-Tools</td>
+</tr>
+<tr>
+<td><a href="#profiles"><code>profiles:</code></a></td>
+<td>Profils de build nommés (surcharges deep-merge pour <code>--profile</code>)</td>
 </tr>
 </tbody>
 </table>

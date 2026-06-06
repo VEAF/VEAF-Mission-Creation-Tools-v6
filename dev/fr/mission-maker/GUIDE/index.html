@@ -945,6 +945,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#profils-de-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Profils de build
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#référence-des-scripts" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2458,6 +2469,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#profils-de-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Profils de build
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#référence-des-scripts" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2996,6 +3018,39 @@ Si vous devez exécuter une seule étape en isolation (ex : injecter la météo 
 <p>Commitez le contenu de <code>src/</code> dans Git — pas le <code>.miz</code> construit. Utilisez <code>extract</code> une fois pour initialiser le dossier source depuis une mission existante :</p>
 <div class="highlight"><pre><span></span><code><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">extract</span> <span class="n">ma-mission</span><span class="p">.</span><span class="n">miz</span>
 </code></pre></div>
+<hr />
+<h2 id="profils-de-build">Profils de build<a class="headerlink" href="#profils-de-build" title="Permanent link">&para;</a></h2>
+<p>Les profils de build permettent de basculer entre différentes configurations nommées sans modifier <code>mission.yaml</code>. Définissez une section <code>profiles:</code> une seule fois, puis sélectionnez un profil au moment du build :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># mission.yaml</span>
+<span class="nt">global_log_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">info</span>
+<span class="nt">security</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">disabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">pipeline</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">weather</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">profiles</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">TEST</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">global_log_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debug</span>
+<span class="w">    </span><span class="nt">security</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">disabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">pipeline</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">weather</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">   </span><span class="c1"># pas de variantes météo pendant les builds de test</span>
+<span class="w">  </span><span class="nt">SERVER</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">global_log_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">info</span>
+<span class="w">    </span><span class="nt">pipeline</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">weather</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c"># Build pour les tests (pas de météo, sécurité désactivée, journalisation détaillée)</span>
+<span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span> <span class="p">-</span><span class="n">-profile</span> <span class="n">TEST</span>
+
+<span class="c"># Build pour le déploiement serveur</span>
+<span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span> <span class="p">-</span><span class="n">-profile</span> <span class="n">SERVER</span>
+
+<span class="c"># Build sans profil (config de base)</span>
+<span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span>
+</code></pre></div>
+<p>Les clés du profil <strong>fusionnent en profondeur</strong> sur la config de base : seules les clés que vous spécifiez sont surchargées, tout le reste reste tel que défini en haut de <code>mission.yaml</code>. Passer un nom de profil inconnu émet un avertissement et revient à la config de base.</p>
+<p>Voir <a href="../../MISSION_YAML_REFERENCE/#profiles"><code>profiles:</code> dans la référence YAML</a> pour la description complète.</p>
 <hr />
 <h2 id="référence-des-scripts">Référence des scripts<a class="headerlink" href="#référence-des-scripts" title="Permanent link">&para;</a></h2>
 <p>Tous les modules Lua VEAF sont disponibles une fois <code>veaf-scripts.lua</code> chargé. Voir <a href="../scripts/">scripts/README.md</a> pour la liste complète avec les guides de configuration.</p>

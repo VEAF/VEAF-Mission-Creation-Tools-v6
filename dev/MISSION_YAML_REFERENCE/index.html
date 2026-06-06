@@ -1862,6 +1862,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        profiles:
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2320,6 +2331,17 @@
     <span class="md-ellipsis">
       
         build:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        profiles:
       
     </span>
   </a>
@@ -2997,6 +3019,48 @@ These settings are normally set via the CLI (<code>--dev-mode</code>, <code>--sc
 <p>See the <a href="../developer/GUIDE/#developer-mode">Developer Mode</a> section of the Developer Guide for the full workflow.</p>
 </blockquote>
 <hr />
+<h3 id="profiles"><code>profiles:</code><a class="headerlink" href="#profiles" title="Permanent link">&para;</a></h3>
+<p>Named build profiles. Each profile is a set of config overrides that deep-merge onto the base <code>mission.yaml</code> when you pass <code>--profile &lt;name&gt;</code> to <code>veaf-tools build</code>. Keys absent from the profile retain their base values. Lists are replaced, not concatenated. The <code>profiles:</code> key itself is never written to the built mission.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profiles.&lt;name&gt;</code></td>
+<td><code>dict</code></td>
+<td>Any top-level <code>mission.yaml</code> key (e.g. <code>global_log_level</code>, <code>security</code>, <code>pipeline</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Merge rules</strong>
+- Nested dicts are merged recursively (only the keys you specify are overridden).
+- Scalar values and lists are replaced wholesale.
+- <code>profiles:</code> is stripped from the effective config — it is never passed to the Lua generator or the pipeline.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">profiles</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">TEST</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">global_log_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debug</span>
+<span class="w">    </span><span class="nt">security</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">disabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">pipeline</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">weather</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">SERVER</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">global_log_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">info</span>
+<span class="w">    </span><span class="nt">pipeline</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">weather</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>Usage:</p>
+<div class="highlight"><pre><span></span><code><span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span> <span class="p">-</span><span class="n">-profile</span> <span class="n">TEST</span>
+<span class="n">veaf-tools</span><span class="p">.</span><span class="n">exe</span> <span class="n">build</span> <span class="p">-</span><span class="n">-profile</span> <span class="n">SERVER</span>
+</code></pre></div>
+<blockquote>
+<p>If the named profile does not exist in <code>mission.yaml</code>, a warning is emitted and the base config is used unchanged.</p>
+</blockquote>
+<hr />
 <h2 id="index-by-category">Index by category<a class="headerlink" href="#index-by-category" title="Permanent link">&para;</a></h2>
 <h3 id="core">Core<a class="headerlink" href="#core" title="Permanent link">&para;</a></h3>
 <table>
@@ -3177,6 +3241,10 @@ These settings are normally set via the CLI (<code>--dev-mode</code>, <code>--sc
 <tr>
 <td><code>build.scripts_path</code></td>
 <td>Path to local VEAF-Mission-Creation-Tools clone</td>
+</tr>
+<tr>
+<td><a href="#profiles"><code>profiles:</code></a></td>
+<td>Named build profiles (deep-merge overrides for <code>--profile</code>)</td>
 </tr>
 </tbody>
 </table>
