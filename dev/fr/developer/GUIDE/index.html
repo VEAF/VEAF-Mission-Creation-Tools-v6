@@ -1797,21 +1797,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#automatisé-recommandé" class="md-nav__link">
+  <a href="#flow-de-release-git-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Automatisé (recommandé)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#manuel-mode-de-secours" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Manuel (mode de secours)
+        Flow de release (git flow)
       
     </span>
   </a>
@@ -2545,21 +2534,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#automatisé-recommandé" class="md-nav__link">
+  <a href="#flow-de-release-git-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Automatisé (recommandé)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#manuel-mode-de-secours" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Manuel (mode de secours)
+        Flow de release (git flow)
       
     </span>
   </a>
@@ -3015,25 +2993,30 @@ ou <code>poetry shell</code> pour ouvrir une session interactive.</p>
 3. Construit <code>veaf-tools.exe</code> et <code>veaf-tools-updater.exe</code> via PyInstaller
 4. Crée <code>published.zip</code> avec tous les artefacts + somme SHA256</p>
 <h3 id="publier-une-version">Publier une version<a class="headerlink" href="#publier-une-version" title="Permanent link">&para;</a></h3>
-<h4 id="automatisé-recommandé">Automatisé (recommandé)<a class="headerlink" href="#automatisé-recommandé" title="Permanent link">&para;</a></h4>
-<p>Pousser un tag versionné — GitHub Actions fait tout :</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>tag<span class="w"> </span>published-v6.0.6
-git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>published-v6.0.6
+<p>Utiliser le prompt <code>.prompts/generate-release-notes.md</code> pour lancer la préparation de release de façon interactive. Il guide à travers :
+1. Extraction des changements depuis <code>[Unreleased]</code> dans <code>CHANGELOG.md</code>
+2. Interview de consolidation (thème, breaking changes, highlights)
+3. Rédaction et validation de <code>RELEASE_NOTES.md</code>
+4. Clôture administrative (version CHANGELOG, <code>pyproject.toml</code>, ROADMAP)
+5. Commandes git à copier-coller</p>
+<h4 id="flow-de-release-git-flow">Flow de release (git flow)<a class="headerlink" href="#flow-de-release-git-flow" title="Permanent link">&para;</a></h4>
+<p>L'assistant AI gère : créer <code>release/x.y.z</code> depuis <code>develop-v6</code>, commiter tous les fichiers de release, et ouvrir la PR.</p>
+<p>Après le merge de la PR, le développeur exécute :</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>develop-v6
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>develop-v6
+git<span class="w"> </span>tag<span class="w"> </span>published-vx.y.z
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>published-vx.y.z
 </code></pre></div>
-<p>Le workflow CI <code>release</code> va :
-1. Générer les notes de release depuis les commits conventionnels (git-cliff)
-2. Construire <code>veaf-tools.exe</code>, <code>veaf-tools-updater.exe</code> et <code>published.zip</code>
-3. Créer la GitHub Release et uploader tous les artefacts
-4. Déplacer le tag flottant <code>published-latest</code></p>
-<p>Les notes de release sont auto-générées depuis les messages de commit. Elles sont éditables sur GitHub après la release.</p>
-<h4 id="manuel-mode-de-secours">Manuel (mode de secours)<a class="headerlink" href="#manuel-mode-de-secours" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c"># Build d&#39;abord</span>
-<span class="n">poetry</span> <span class="n">run</span> <span class="n">veaf-build</span> <span class="n">build</span> <span class="p">-</span><span class="n">-version</span> <span class="n">6</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">0</span>
-
-<span class="c"># Puis publication (interactif — demande RELEASE_NOTES.md)</span>
-<span class="c"># Nécessite la variable d&#39;environnement GITHUB_TOKEN</span>
-<span class="n">poetry</span> <span class="n">run</span> <span class="n">veaf-build</span> <span class="n">publish</span> <span class="p">-</span><span class="n">-version</span> <span class="n">6</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">0</span>
-</code></pre></div>
+<blockquote>
+<p><strong>Attention :</strong> pousser le tag est irréversible — uniquement après le merge de la PR.</p>
+</blockquote>
+<p>Pousser le tag déclenche le workflow CI <code>release</code>, qui va :
+1. Construire <code>veaf-tools.exe</code>, <code>veaf-tools-updater.exe</code> et <code>published.zip</code>
+2. Créer la GitHub Release en utilisant <strong><code>RELEASE_NOTES.md</code> tel quel</strong> depuis le commit tagué
+3. Uploader tous les artefacts et déplacer le tag flottant <code>published-latest</code></p>
+<blockquote>
+<p><strong>Important :</strong> <code>RELEASE_NOTES.md</code> doit être commité et à jour sur le commit tagué — la CI le prend verbatim, sans modification.</p>
+</blockquote>
 <h3 id="modèle-de-sécurité">Modèle de sécurité<a class="headerlink" href="#modèle-de-sécurité" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>veaf-build calcule le SHA256 de published.zip
     ↓
