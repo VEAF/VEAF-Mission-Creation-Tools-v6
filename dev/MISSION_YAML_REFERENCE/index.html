@@ -1851,6 +1851,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        build:
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2298,6 +2309,17 @@
     <span class="md-ellipsis">
       
         pipeline:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        build:
       
     </span>
   </a>
@@ -2936,6 +2958,45 @@
 <span class="w">  </span><span class="nt">weather</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <hr />
+<h3 id="build"><code>build:</code><a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
+<p>Controls how <code>veaf-tools build</code> resolves the VEAF scripts bundle.
+These settings are normally set via the CLI (<code>--dev-mode</code>, <code>--scripts-path</code>) and then persisted here automatically.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dev_mode</code></td>
+<td><code>bool</code></td>
+<td><code>false</code></td>
+<td>When <code>true</code>, scripts are loaded from <code>&lt;scripts_path&gt;/build/veaf-scripts.lua</code> instead of the published copy</td>
+</tr>
+<tr>
+<td><code>scripts_path</code></td>
+<td><code>string</code></td>
+<td><em>(user config)</em></td>
+<td>Path to a local VEAF-Mission-Creation-Tools clone; required when <code>dev_mode: true</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>scripts_path</code> resolution order (first match wins):
+1. <code>--scripts-path &lt;path&gt;</code> CLI option
+2. <code>mission.yaml build.scripts_path</code>
+3. <code>~/veafmct.yaml scripts_path</code></p>
+<div class="highlight"><pre><span></span><code><span class="nt">build</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">dev_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">scripts_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">C:/dev/VEAF-Mission-Creation-Tools</span>
+</code></pre></div>
+<blockquote>
+<p>See the <a href="../developer/GUIDE/#developer-mode">Developer Mode</a> section of the Developer Guide for the full workflow.</p>
+</blockquote>
+<hr />
 <h2 id="index-by-category">Index by category<a class="headerlink" href="#index-by-category" title="Permanent link">&para;</a></h2>
 <h3 id="core">Core<a class="headerlink" href="#core" title="Permanent link">&para;</a></h3>
 <table>
@@ -3104,6 +3165,18 @@
 <tr>
 <td><code>pipeline.weather</code></td>
 <td><a href="../PIPELINE_REFERENCE/#step-4--weather--time-versions-versionsyaml">versions.yaml schema</a></td>
+</tr>
+<tr>
+<td><a href="#build"><code>build:</code></a></td>
+<td>Developer mode and scripts path override</td>
+</tr>
+<tr>
+<td><code>build.dev_mode</code></td>
+<td>Use local Lua bundle instead of published scripts</td>
+</tr>
+<tr>
+<td><code>build.scripts_path</code></td>
+<td>Path to local VEAF-Mission-Creation-Tools clone</td>
 </tr>
 </tbody>
 </table>

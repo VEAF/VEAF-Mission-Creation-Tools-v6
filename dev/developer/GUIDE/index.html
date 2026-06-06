@@ -1951,6 +1951,67 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#developer-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Developer Mode
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Developer Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activation-priority-order--first-match-wins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activation (priority order — first match wins)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effect-on-the-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effect on the build
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#contributing" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2688,6 +2749,67 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#developer-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Developer Mode
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Developer Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activation-priority-order--first-match-wins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activation (priority order — first match wins)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effect-on-the-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effect on the build
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#contributing" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2779,6 +2901,7 @@
 <li><a href="#lua-runtime-scripts">Lua Runtime Scripts</a></li>
 <li><a href="#python-tools">Python Tools</a></li>
 <li><a href="#build-and-release">Build and Release</a></li>
+<li><a href="#developer-mode">Developer Mode</a></li>
 <li><a href="#testing">Testing</a></li>
 <li><a href="#quality-gates">Quality Gates</a></li>
 <li><a href="#contributing">Contributing</a></li>
@@ -3104,6 +3227,97 @@ Luacheck is enforced by the <code>Luacheck</code> CI job.</p>
 <p>Push a <code>published-v*</code> tag — the <code>Release</code> CI workflow does everything automatically:</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>tag<span class="w"> </span>published-v6.1.0
 git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>published-v6.1.0
+</code></pre></div>
+<hr />
+<h2 id="developer-mode">Developer Mode<a class="headerlink" href="#developer-mode" title="Permanent link">&para;</a></h2>
+<p>Developer mode lets you test local changes to <code>veaf-scripts.lua</code> without publishing a release.
+When enabled, <code>veaf-tools build</code> reads scripts from a local VEAF-Mission-Creation-Tools clone
+instead of the <code>published/</code> folder shipped with veaf-tools.</p>
+<h3 id="prerequisites_1">Prerequisites<a class="headerlink" href="#prerequisites_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Clone VEAF-Mission-Creation-Tools locally</li>
+<li>Build the Lua bundle: <code>poetry run veaf-build build</code> → produces <code>build/veaf-scripts.lua</code></li>
+</ol>
+<h3 id="activation-priority-order--first-match-wins">Activation (priority order — first match wins)<a class="headerlink" href="#activation-priority-order--first-match-wins" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Method</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>veaf-tools build --dev-mode</code></td>
+<td>CLI flag — sets <code>dev_mode: true</code>, persisted to <code>mission.yaml</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>mission.yaml build.dev_mode: true</code></td>
+<td>Persisted config — applies every build</td>
+</tr>
+<tr>
+<td>3</td>
+<td><em>(default)</em></td>
+<td><code>false</code> — uses published scripts</td>
+</tr>
+</tbody>
+</table>
+<p><code>scripts_path</code> resolution order (where to find the local repo):</p>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>--scripts-path &lt;path&gt;</code> CLI option</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>mission.yaml build.scripts_path</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>~/veafmct.yaml scripts_path</code></td>
+</tr>
+</tbody>
+</table>
+<p>When passed via CLI, both <code>dev_mode</code> and <code>scripts_path</code> are persisted in <code>mission.yaml</code>.</p>
+<h3 id="effect-on-the-build">Effect on the build<a class="headerlink" href="#effect-on-the-build" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Scripts source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dev_mode: false</code> (default)</td>
+<td><code>published/src/scripts/veaf/veaf-scripts.lua</code> (released copy)</td>
+</tr>
+<tr>
+<td><code>dev_mode: true</code></td>
+<td><code>&lt;scripts_path&gt;/build/veaf-scripts.lua</code> (local build output)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-workflow">Example workflow<a class="headerlink" href="#example-workflow" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c"># 1. Edit a Lua module</span>
+<span class="n">code</span> <span class="n">src</span><span class="p">/</span><span class="n">scripts</span><span class="p">/</span><span class="n">veaf</span><span class="p">/</span><span class="n">veafSpawn</span><span class="p">.</span><span class="n">lua</span>
+
+<span class="c"># 2. Rebuild the Lua bundle</span>
+<span class="n">poetry</span> <span class="n">run</span> <span class="n">veaf-build</span> <span class="n">build</span>
+
+<span class="c"># 3. Build a test mission using the local scripts</span>
+<span class="nb">cd </span><span class="n">path</span><span class="p">/</span><span class="n">to</span><span class="p">/</span><span class="n">my-mission</span>
+<span class="n">veaf-tools</span> <span class="n">build</span> <span class="p">-</span><span class="n">-dev-mode</span> <span class="p">-</span><span class="n">-scripts-path</span> <span class="n">path</span><span class="p">/</span><span class="n">to</span><span class="p">/</span><span class="n">VEAF-Mission-Creation-Tools</span>
 </code></pre></div>
 <hr />
 <h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
