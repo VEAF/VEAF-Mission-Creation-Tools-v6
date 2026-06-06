@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="fr" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -13,16 +13,16 @@
         <link rel="canonical" href="https://veaf.github.io/VEAF-Mission-Creation-Tools-v6/dev/mission-maker/scripts/veafMissileGuardian/">
       
       
-        <link rel="prev" href="../veafInterpreter/">
+        <link rel="prev" href="../veafGrass/">
       
       
         <link rel="next" href="../veafMove/">
       
       
         
-          <link rel="alternate" href="./" hreflang="en">
+          <link rel="alternate" href="./" hreflang="fr">
         
-          <link rel="alternate" href="../../../fr/mission-maker/scripts/veafMissileGuardian/" hreflang="fr">
+          <link rel="alternate" href="../../../en/mission-maker/scripts/veafMissileGuardian/" hreflang="en">
         
       
       
@@ -82,8 +82,8 @@
     <div data-md-component="skip">
       
         
-        <a href="#veafmissileguardian--missile-interception" class="md-skip">
-          Skip to content
+        <a href="#veafmissileguardian--interception-de-missiles" class="md-skip">
+          Aller au contenu
         </a>
       
     </div>
@@ -99,7 +99,7 @@
       
 
 <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
     <a href="../../.." title="VEAF Mission Creation Tools" class="md-header__button md-logo" aria-label="VEAF Mission Creation Tools" data-md-component="logo">
       
   
@@ -160,21 +160,21 @@
       <div class="md-header__option">
   <div class="md-select">
     
-    <button class="md-header__button md-icon" aria-label="Select language">
+    <button class="md-header__button md-icon" aria-label="Sélectionner la langue">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
     </button>
     <div class="md-select__inner">
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="./" hreflang="en" class="md-select__link">
-              English
+            <a href="./" hreflang="fr" class="md-select__link">
+              Français
             </a>
           </li>
         
           <li class="md-select__item">
-            <a href="../../../fr/mission-maker/scripts/veafMissileGuardian/" hreflang="fr" class="md-select__link">
-              Français
+            <a href="../../../en/mission-maker/scripts/veafMissileGuardian/" hreflang="en" class="md-select__link">
+              English
             </a>
           </li>
         
@@ -194,16 +194,16 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="Recherche">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -216,7 +216,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            Initialisation de la recherche
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -228,7 +228,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/VEAF/VEAF-Mission-Creation-Tools" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/VEAF/VEAF-Mission-Creation-Tools" title="Aller au dépôt" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
@@ -249,7 +249,7 @@
         
           
             
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
       
@@ -265,7 +265,7 @@
   
     
   
-  Home
+  Accueil
 
       </a>
     </li>
@@ -284,7 +284,7 @@
           
   
   
-  Pilot Guide
+  Guide Pilote
 
         </a>
       </li>
@@ -306,7 +306,7 @@
           
   
   
-  Mission Maker
+  Créateur de Mission
 
         </a>
       </li>
@@ -326,7 +326,7 @@
           
   
   
-  Developer
+  Développeur
 
         </a>
       </li>
@@ -346,7 +346,7 @@
           
   
   
-  References
+  Références
 
         </a>
       </li>
@@ -386,7 +386,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/VEAF/VEAF-Mission-Creation-Tools" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/VEAF/VEAF-Mission-Creation-Tools" title="Aller au dépôt" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
@@ -413,7 +413,7 @@
   <span class="md-ellipsis">
     
   
-    Home
+    Accueil
   
 
     
@@ -458,7 +458,7 @@
   <span class="md-ellipsis">
     
   
-    Pilot Guide
+    Guide Pilote
   
 
     
@@ -474,7 +474,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Pilot Guide
+    Guide Pilote
   
 
           </label>
@@ -494,7 +494,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Aperçu
   
 
     
@@ -550,7 +550,7 @@
   <span class="md-ellipsis">
     
   
-    Aliases
+    Alias
   
 
     
@@ -606,7 +606,7 @@
   <span class="md-ellipsis">
     
   
-    Mission Maker
+    Créateur de Mission
   
 
     
@@ -622,7 +622,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Mission Maker
+    Créateur de Mission
   
 
           </label>
@@ -642,7 +642,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Aperçu
   
 
     
@@ -698,7 +698,7 @@
   <span class="md-ellipsis">
     
   
-    Migration Guide
+    Guide de Migration
   
 
     
@@ -726,7 +726,7 @@
   <span class="md-ellipsis">
     
   
-    Aliases
+    Alias
   
 
     
@@ -811,7 +811,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Aperçu
   
 
     
@@ -1028,7 +1028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../veafInterpreter/" class="md-nav__link">
+      <a href="../veafInterpreter.md" class="md-nav__link">
         
   
   
@@ -1102,7 +1102,7 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
   
   
   
@@ -1111,15 +1111,15 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      Table des matières
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#purpose" class="md-nav__link">
+  <a href="#objectif" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Purpose
+        Objectif
       
     </span>
   </a>
@@ -1127,10 +1127,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dependencies" class="md-nav__link">
+  <a href="#dépendances" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Dependencies
+        Dépendances
       
     </span>
   </a>
@@ -1138,10 +1138,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#enable" class="md-nav__link">
+  <a href="#activation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enable
+        Activation
       
     </span>
   </a>
@@ -1149,10 +1149,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#builder-methods" class="md-nav__link">
+  <a href="#méthodes-du-builder" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Builder Methods
+        Méthodes du builder
       
     </span>
   </a>
@@ -1171,10 +1171,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#see-also" class="md-nav__link">
+  <a href="#voir-aussi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        See Also
+        Voir aussi
       
     </span>
   </a>
@@ -1545,7 +1545,7 @@
   <span class="md-ellipsis">
     
   
-    Developer
+    Développeur
   
 
     
@@ -1561,7 +1561,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Developer
+    Développeur
   
 
           </label>
@@ -1581,7 +1581,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Aperçu
   
 
     
@@ -1637,7 +1637,7 @@
   <span class="md-ellipsis">
     
   
-    Testing
+    Tests
   
 
     
@@ -1690,7 +1690,7 @@
   <span class="md-ellipsis">
     
   
-    References
+    Références
   
 
     
@@ -1706,7 +1706,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    References
+    Références
   
 
           </label>
@@ -1726,7 +1726,7 @@
   <span class="md-ellipsis">
     
   
-    mission.yaml Reference
+    Référence mission.yaml
   
 
     
@@ -1754,7 +1754,7 @@
   <span class="md-ellipsis">
     
   
-    Pipeline Reference
+    Référence Pipeline
   
 
     
@@ -1782,7 +1782,7 @@
   <span class="md-ellipsis">
     
   
-    Lua API Reference
+    Référence de l'API Lua
   
 
     
@@ -1810,7 +1810,7 @@
   <span class="md-ellipsis">
     
   
-    Tools CLI Reference
+    Référence CLI des outils
   
 
     
@@ -1838,7 +1838,7 @@
   <span class="md-ellipsis">
     
   
-    Roadmap
+    Feuille de route
   
 
     
@@ -1872,7 +1872,7 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
   
   
   
@@ -1881,15 +1881,15 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      Table des matières
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#purpose" class="md-nav__link">
+  <a href="#objectif" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Purpose
+        Objectif
       
     </span>
   </a>
@@ -1897,10 +1897,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dependencies" class="md-nav__link">
+  <a href="#dépendances" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Dependencies
+        Dépendances
       
     </span>
   </a>
@@ -1908,10 +1908,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#enable" class="md-nav__link">
+  <a href="#activation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enable
+        Activation
       
     </span>
   </a>
@@ -1919,10 +1919,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#builder-methods" class="md-nav__link">
+  <a href="#méthodes-du-builder" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Builder Methods
+        Méthodes du builder
       
     </span>
   </a>
@@ -1941,10 +1941,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#see-also" class="md-nav__link">
+  <a href="#voir-aussi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        See Also
+        Voir aussi
       
     </span>
   </a>
@@ -1971,84 +1971,84 @@
   
 
 
-<h1 id="veafmissileguardian--missile-interception">veafMissileGuardian — Missile Interception<a class="headerlink" href="#veafmissileguardian--missile-interception" title="Permanent link">&para;</a></h1>
-<p><strong>Module ID:</strong> — | <strong>File:</strong> <code>veafMissileGuardian.lua</code></p>
+<h1 id="veafmissileguardian--interception-de-missiles">veafMissileGuardian — Interception de missiles<a class="headerlink" href="#veafmissileguardian--interception-de-missiles" title="Permanent link">&para;</a></h1>
+<p><strong>Module ID:</strong> — | <strong>Fichier:</strong> <code>veafMissileGuardian.lua</code></p>
 <hr />
-<h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
-<p>Intercepts and destroys specific incoming missiles to protect designated assets or zones. Useful for protecting carriers, FARPs, or other high-value targets from ballistic threats in scenarios where realistic missile defense is desired.</p>
+<h2 id="objectif">Objectif<a class="headerlink" href="#objectif" title="Permanent link">&para;</a></h2>
+<p>Intercepte et détruit les missiles entrants spécifiques pour protéger des ressources ou zones désignées. Utile pour protéger les porte-avions, FARP ou autres cibles de haute valeur contre des menaces balistiques dans des scénarios où une défense antimissile réaliste est souhaitée.</p>
 <hr />
-<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
+<h2 id="dépendances">Dépendances<a class="headerlink" href="#dépendances" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>veafEventHandler</code> — for missile-fired event monitoring</li>
+<li><code>veafEventHandler</code> — pour la surveillance des événements de tir de missile</li>
 </ul>
 <hr />
-<h2 id="enable">Enable<a class="headerlink" href="#enable" title="Permanent link">&para;</a></h2>
+<h2 id="activation">Activation<a class="headerlink" href="#activation" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nv">veafMissileGuardian</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
 </code></pre></div>
-<p>Then define protection zones:</p>
+<p>Puis définir les zones de protection :</p>
 <div class="highlight"><pre><span></span><code><span class="nv">VeafMissileGuardian</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
 <span class="w">  </span><span class="p">:</span><span class="nf">setName</span><span class="p">(</span><span class="s2">&quot;Carrier Defense&quot;</span><span class="p">)</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setGroupName</span><span class="p">(</span><span class="s2">&quot;CVN-73&quot;</span><span class="p">)</span><span class="w">           </span><span class="c1">-- protect this group</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setRadius</span><span class="p">(</span><span class="mi">30000</span><span class="p">)</span><span class="w">                 </span><span class="c1">-- interception radius in metres</span>
-<span class="w">  </span><span class="p">:</span><span class="nf">setMissileTypes</span><span class="p">({</span><span class="w"> </span><span class="s2">&quot;P-700&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Kh-41&quot;</span><span class="w"> </span><span class="p">})</span><span class="w">  </span><span class="c1">-- intercept these missile types</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setGroupName</span><span class="p">(</span><span class="s2">&quot;CVN-73&quot;</span><span class="p">)</span><span class="w">           </span><span class="c1">-- protéger ce groupe</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setRadius</span><span class="p">(</span><span class="mi">30000</span><span class="p">)</span><span class="w">                 </span><span class="c1">-- rayon d&#39;interception en mètres</span>
+<span class="w">  </span><span class="p">:</span><span class="nf">setMissileTypes</span><span class="p">({</span><span class="w"> </span><span class="s2">&quot;P-700&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Kh-41&quot;</span><span class="w"> </span><span class="p">})</span><span class="w">  </span><span class="c1">-- intercepter ces types de missiles</span>
 <span class="w">  </span><span class="p">:</span><span class="nf">initialize</span><span class="p">()</span>
 </code></pre></div>
 <hr />
-<h2 id="builder-methods">Builder Methods<a class="headerlink" href="#builder-methods" title="Permanent link">&para;</a></h2>
+<h2 id="méthodes-du-builder">Méthodes du builder<a class="headerlink" href="#méthodes-du-builder" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Method</th>
+<th>Méthode</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>:setName(name)</code></td>
-<td>Internal identifier</td>
+<td>Identifiant interne</td>
 </tr>
 <tr>
 <td><code>:setGroupName(name)</code></td>
-<td>DCS group to protect</td>
+<td>Groupe DCS à protéger</td>
 </tr>
 <tr>
 <td><code>:setZoneName(zone)</code></td>
-<td>Alternatively, protect a zone</td>
+<td>Alternativement, protéger une zone</td>
 </tr>
 <tr>
 <td><code>:setRadius(m)</code></td>
-<td>Interception radius around the protected target</td>
+<td>Rayon d'interception autour de la cible protégée</td>
 </tr>
 <tr>
 <td><code>:setMissileTypes(list)</code></td>
-<td>List of DCS weapon type names to intercept</td>
+<td>Liste des noms de types d'armes DCS à intercepter</td>
 </tr>
 <tr>
 <td><code>:setAllMissiles(bool)</code></td>
-<td>If true, intercept all missiles</td>
+<td>Si vrai, intercepter tous les missiles</td>
 </tr>
 <tr>
 <td><code>:setSilent(bool)</code></td>
-<td>Suppress interception messages</td>
+<td>Supprimer les messages d'interception</td>
 </tr>
 <tr>
 <td><code>:initialize()</code></td>
-<td>Activate the guardian</td>
+<td>Activer le gardien</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Missiles are destroyed when they enter the protection radius</li>
-<li>Use specific missile type lists to avoid intercepting friendly ordnance</li>
-<li>Works for both anti-ship and surface-to-air missiles</li>
+<li>Les missiles sont détruits quand ils entrent dans le rayon de protection</li>
+<li>Utiliser des listes de types de missiles spécifiques pour éviter d'intercepter les munitions amies</li>
+<li>Fonctionne pour les missiles anti-navires et sol-air</li>
 </ul>
 <hr />
-<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<h2 id="voir-aussi">Voir aussi<a class="headerlink" href="#voir-aussi" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../veafSanctuary/">veafSanctuary</a> — unit entry protection</li>
-<li><a href="../../../LUA_API_REFERENCE/">Lua API Reference</a> — full <code>veafMissileGuardian</code> API</li>
+<li><a href="../veafSanctuary/">veafSanctuary</a> — protection contre les intrusions d'unités</li>
+<li><a href="../../../LUA_API_REFERENCE/">Référence API Lua</a> — API complète de <code>veafMissileGuardian</code></li>
 </ul>
 
 
@@ -2073,7 +2073,7 @@
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Back to top
+  Retour en haut de la page
 </button>
         
       </main>
@@ -2105,7 +2105,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "dev", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": {"default": "dev", "provider": "mike"}}</script>
     
     
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
